@@ -42,8 +42,11 @@ For example: automatically change order status to cancelled, when 24 hours have 
 
 == Changelog ==
 
+= 2.8.2 - 18/07/2022 =
+* Dev - Add deploy script.
+
 = 2.8.1 - 21/04/2022 =
-* Fix - Rule - Conditions - Coupons - Fixed.
+* Fix - Rule - Conditions - Coupons - "Any coupon" option was ignored (plugin was processing the "Specific coupon(s)" option instead). This is fixed now.
 * Dev - Rule - Conditions - Coupons - "No coupons" option added.
 
 = 2.8.0 - 20/04/2022 =
