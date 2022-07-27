@@ -115,7 +115,7 @@ class Alg_WC_Order_Status_Rules_Conditions {
 	 * @version 2.8.0
 	 * @since   2.8.0
 	 *
-	 * @todo    [now] (feature) states?
+	 * @todo    [next] (feature) states?
 	 */
 	function check_countries( $options, $rule_id, $order ) {
 		return (
@@ -302,9 +302,9 @@ class Alg_WC_Order_Status_Rules_Conditions {
 	 * @version 2.8.0
 	 * @since   2.8.0
 	 *
-	 * @todo    [now] (feature) `date_modified`, `date_paid`, `get_date_completed`?
-	 * @todo    [now] (feature) `relative_date_selector`
-	 * @todo    [now] (feature) `time`
+	 * @todo    [next] (feature) `date_modified`, `date_paid`, `get_date_completed`?
+	 * @todo    [next] (feature) `relative_date_selector`
+	 * @todo    [next] (feature) `time`
 	 */
 	function check_dates( $options, $rule_id, $order ) {
 		$date_created = ( ( $date_created = $order->get_date_created() ) ? $date_created->getTimestamp() : 0 );
@@ -331,7 +331,7 @@ class Alg_WC_Order_Status_Rules_Conditions {
 	 * @version 2.8.0
 	 * @since   2.8.0
 	 *
-	 * @todo    [now] (feature) `order_function`?
+	 * @todo    [next] (feature) `order_function`?
 	 */
 	function check( $options, $rule_id, $args ) {
 		foreach ( array( 'min_max_amounts', 'gateways', 'shipping_methods', 'countries', 'products', 'coupons', 'users', 'meta', 'dates' ) as $group ) {

@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Core Class
  *
- * @version 2.8.0
+ * @version 2.8.2
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -179,7 +179,7 @@ class Alg_WC_Order_Status_Rules_Core {
 	 * @version 2.4.0
 	 * @since   1.0.1
 	 *
-	 * @todo    [now] (dev) rename `get_time_remaining()` to `get_seconds_remaining()`, `$last_record_time` to `$start`, `$trigger_time` to `$offset`, `get_trigger_time_skip_days()` to `get_offset_skip_days()`?
+	 * @todo    [next] (dev) rename `get_time_remaining()` to `get_seconds_remaining()`, `$last_record_time` to `$start`, `$trigger_time` to `$offset`, `get_trigger_time_skip_days()` to `get_offset_skip_days()`?
 	 */
 	function get_time_remaining( $last_record_time, $trigger_time, $skip_days = false, $current_time = false ) {
 		return ( $last_record_time + $this->get_trigger_time_skip_days( $last_record_time, $trigger_time, $skip_days ) - ( $current_time ? $current_time : current_time( 'timestamp' ) ) );
@@ -273,7 +273,7 @@ class Alg_WC_Order_Status_Rules_Core {
 	 * @version 2.8.0
 	 * @since   1.6.0
 	 *
-	 * @todo    [now] (dev) safe-check: `status_from != status_to`
+	 * @todo    [next] (dev) safe-check: `status_from != status_to`
 	 */
 	function do_apply_rule( $rule_id, $args ) {
 		$this->init_options();
@@ -337,11 +337,11 @@ class Alg_WC_Order_Status_Rules_Core {
 	/**
 	 * process_rules_for_order.
 	 *
-	 * @version 2.8.0
+	 * @version 2.8.2
 	 * @since   2.2.0
 	 *
-	 * @todo    [now] (dev) `$unit = ( isset( $this->options['time_trigger_units'][ $i ] ) ? $this->options['time_trigger_units'][ $i ] : 'hour' );`
-	 * @todo    [now] (dev) rename `$i` to `$rule_id`?
+	 * @todo    [next] (dev) `$unit = ( isset( $this->options['time_trigger_units'][ $i ] ) ? $this->options['time_trigger_units'][ $i ] : 'hour' );`
+	 * @todo    [next] (dev) rename `$i` to `$rule_id`?
 	 */
 	function process_rules_for_order( $order_id ) {
 		$this->init_options();
@@ -350,9 +350,14 @@ class Alg_WC_Order_Status_Rules_Core {
 		}
 		$status_history = $this->get_order_status_change_history( $order_id );
 		if ( ! empty( $status_history ) ) {
+			if ( ! ( $order = wc_get_order( $order_id ) ) || ! is_callable( array( $order, 'update_status' ) ) ) {
+				if ( $this->do_debug() ) {
+					$this->add_to_log( sprintf( __( 'Process rules: Skipping order #%s', 'order-status-rules-for-woocommerce' ), $order_id ) );
+				}
+				return false;
+			}
 			$status_history      = array_reverse( $status_history, true );
 			$last_record         = current( $status_history );
-			$order               = wc_get_order( $order_id );
 			$args                = array( 'order_status' => $order->get_status(), 'order' => $order );
 			$last_record['to']   = ( $last_record['to'] !== $args['order_status'] && $this->do_use_last_record ? $args['order_status'] : $last_record['to'] );
 			$args['last_record'] = $last_record;

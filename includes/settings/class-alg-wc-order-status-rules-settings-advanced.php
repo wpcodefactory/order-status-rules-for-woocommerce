@@ -34,7 +34,7 @@ class Alg_WC_Order_Status_Rules_Settings_Advanced extends Alg_WC_Order_Status_Ru
 	 * @version 2.8.0
 	 * @since   1.5.0
 	 *
-	 * @todo    [now] (desc) Orders sorting
+	 * @todo    [next] (desc) Orders sorting
 	 * @todo    [maybe] (dev) Orders sorting: Order by: add `none`, `name`, `type`?
 	 * @todo    [next] (dev) `alg_wc_order_status_rules_non_matching`: default to `use_last_record`?
 	 * @todo    [later] (desc) `alg_wc_order_status_rules_non_matching`: better desc?

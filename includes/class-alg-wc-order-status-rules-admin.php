@@ -46,7 +46,7 @@ class Alg_WC_Order_Status_Rules_Admin {
 	 * @version 2.7.2
 	 * @since   2.7.2
 	 *
-	 * @todo    [now] [!] (dev) replace `guest` key with `0` key?
+	 * @todo    [next] [!] (dev) replace `guest` key with `0` key?
 	 */
 	function wc_customer_search_guest( $found_customers ) {
 		if ( isset( $_GET['term'], $_GET['exclude'] ) && 'alg_wc_order_status_rules' === wc_clean( $_GET['exclude'] ) ) {

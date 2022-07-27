@@ -2,8 +2,8 @@
 Contributors: algoritmika, anbinder
 Tags: woocommerce, order status, order, status, woo commerce
 Requires at least: 4.4
-Tested up to: 5.9
-Stable tag: 2.8.1
+Tested up to: 6.0
+Stable tag: 2.8.2
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -42,8 +42,11 @@ For example: automatically change order status to cancelled, when 24 hours have 
 
 == Changelog ==
 
-= 2.8.2 - 18/07/2022 =
-* Dev - Add deploy script.
+= 2.8.2 - 27/07/2022 =
+* Dev - Process rules - Extra safe-checks added for the orders.
+* Dev - Deploy script added.
+* Tested up to: 6.0.
+* WC tested up to: 6.7.
 
 = 2.8.1 - 21/04/2022 =
 * Fix - Rule - Conditions - Coupons - "Any coupon" option was ignored (plugin was processing the "Specific coupon(s)" option instead). This is fixed now.
