@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Conditions Class
  *
- * @version 2.8.1
+ * @version 2.9.0
  * @since   2.8.0
  *
  * @author  Algoritmika Ltd.
@@ -27,7 +27,7 @@ class Alg_WC_Order_Status_Rules_Conditions {
 	/**
 	 * get.
 	 *
-	 * @version 2.8.0
+	 * @version 2.9.0
 	 * @since   2.6.0
 	 */
 	function get() {
@@ -45,6 +45,7 @@ class Alg_WC_Order_Status_Rules_Conditions {
 			'product_tags'         => __( 'Product tags', 'order-status-rules-for-woocommerce' ),
 			'product_stock_status' => __( 'Product stock status', 'order-status-rules-for-woocommerce' ),
 			'coupons'              => __( 'Coupons', 'order-status-rules-for-woocommerce' ),
+			'billing_emails'       => __( 'Billing emails', 'order-status-rules-for-woocommerce' ),
 			'user_roles'           => __( 'User roles', 'order-status-rules-for-woocommerce' ),
 			'users'                => __( 'Users', 'order-status-rules-for-woocommerce' ),
 			'paying_customer'      => __( 'Paying customer', 'order-status-rules-for-woocommerce' ),
@@ -57,17 +58,41 @@ class Alg_WC_Order_Status_Rules_Conditions {
 	/**
 	 * check_min_max_amounts.
 	 *
-	 * @version 2.8.0
+	 * @version 2.9.0
 	 * @since   2.8.0
+	 *
+	 * @todo    [now] (dev) calculate only if needed, i.e., if the condition(s) is enabled, etc.
 	 */
 	function check_min_max_amounts( $options, $rule_id, $order ) {
-		$subtotal = $order->get_subtotal();
-		$quantity = $order->get_item_count();
+
+		// Get order amount, e.g., subtotal
+		foreach ( array( 'min_amount', 'max_amount' ) as $condition_id ) {
+			$amount_type = ( isset( $options[ "{$condition_id}_type" ][ $rule_id ] ) ? $options[ "{$condition_id}_type" ][ $rule_id ] : 'subtotal' );
+			switch ( $amount_type ) {
+				case 'total':
+					$amount[ $condition_id ] = apply_filters( 'alg_wc_order_status_rules_order_amount', ( float ) $order->get_total(),
+						$options, $rule_id, $order, $condition_id );
+					break;
+				default: // 'subtotal':
+					$amount[ $condition_id ] = apply_filters( 'alg_wc_order_status_rules_order_amount', $order->get_subtotal(),
+						$options, $rule_id, $order, $condition_id );
+			}
+		}
+
+		// Get order quantity
+		$quantity = apply_filters( 'alg_wc_order_status_rules_order_quantity', $order->get_item_count(), $options, $rule_id, $order );
+
+		// Check order amount and quantity
 		return (
-			( ! isset( $options['min_amount'][ $rule_id ] ) || '' === $options['min_amount'][ $rule_id ] || $subtotal >= $options['min_amount'][ $rule_id ] ) &&
-			( ! isset( $options['max_amount'][ $rule_id ] ) || '' === $options['max_amount'][ $rule_id ] || $subtotal <= $options['max_amount'][ $rule_id ] ) &&
+
+			// Amount
+			( ! isset( $options['min_amount'][ $rule_id ] ) || '' === $options['min_amount'][ $rule_id ] || $amount['min_amount'] >= $options['min_amount'][ $rule_id ] ) &&
+			( ! isset( $options['max_amount'][ $rule_id ] ) || '' === $options['max_amount'][ $rule_id ] || $amount['max_amount'] <= $options['max_amount'][ $rule_id ] ) &&
+
+			// Quantity
 			( ! isset( $options['min_qty'][ $rule_id ] )    || '' === $options['min_qty'][ $rule_id ]    || $quantity >= $options['min_qty'][ $rule_id ] ) &&
 			( ! isset( $options['max_qty'][ $rule_id ] )    || '' === $options['max_qty'][ $rule_id ]    || $quantity <= $options['max_qty'][ $rule_id ] )
+
 		);
 	}
 
@@ -110,30 +135,41 @@ class Alg_WC_Order_Status_Rules_Conditions {
 	}
 
 	/**
-	 * check_countries.
+	 * check_data.
 	 *
-	 * @version 2.8.0
+	 * @version 2.9.0
 	 * @since   2.8.0
 	 *
 	 * @todo    [next] (feature) states?
 	 */
-	function check_countries( $options, $rule_id, $order ) {
+	function check_data( $options, $rule_id, $order ) {
 		return (
+
 			( empty( $options['billing_countries'][ $rule_id ] )  ||
-				in_array( ( is_callable( array( $order, 'get_billing_country' ) )  ? $order->get_billing_country()  : '' ), $options['billing_countries'][ $rule_id ] ) ) &&
+				in_array( ( is_callable( array( $order, 'get_billing_country' ) )  ? $order->get_billing_country()  : '' ),
+					$options['billing_countries'][ $rule_id ] ) ) &&
+
 			( empty( $options['shipping_countries'][ $rule_id ] ) ||
-				in_array( ( is_callable( array( $order, 'get_shipping_country' ) ) ? $order->get_shipping_country() : '' ), $options['shipping_countries'][ $rule_id ] ) )
+				in_array( ( is_callable( array( $order, 'get_shipping_country' ) ) ? $order->get_shipping_country() : '' ),
+					$options['shipping_countries'][ $rule_id ] ) ) &&
+
+			( empty( $options['billing_emails'][ $rule_id ] ) ||
+				in_array( ( is_callable( array( $order, 'get_billing_email' ) )    ? $order->get_billing_email()    : '' ),
+					array_map( 'trim', explode( ',', $options['billing_emails'][ $rule_id ] ) ) ) )
+
 		);
 	}
 
 	/**
 	 * check_order_products.
 	 *
-	 * @version 2.8.0
+	 * @version 2.9.0
 	 * @since   1.6.0
 	 */
-	function check_order_products( $order, $values, $type, $do_require_all ) {
+	function check_order_products( $order, $values, $type, $do_check_all, $do_exclude ) {
 		$is_empty_order = true;
+
+		// Go through order's products
 		foreach ( $order->get_items() as $item ) {
 			$is_empty_order = false;
 
@@ -155,27 +191,60 @@ class Alg_WC_Order_Status_Rules_Conditions {
 			}
 
 			if ( $res ) {
-				if ( ! $do_require_all ) {
-					return true;
+				// Match
+				if ( ! $do_check_all ) {
+					return ( $do_exclude ?
+						false : // Exclude (match, do NOT check all)
+						true    // Require (match, do NOT check all)
+					);
 				}
-			} elseif ( $do_require_all ) {
-				return false;
+			} else {
+				// Non-match
+				if ( $do_check_all ) {
+					return ( $do_exclude ?
+						true :  // Exclude (non-match, do check all)
+						false   // Require (non-match, do check all)
+					);
+				}
 			}
+
 		}
-		return ( $is_empty_order ? false : $do_require_all );
+
+		// Final result
+		return ( $is_empty_order ?
+			( $do_exclude ?
+				true :          // Exclude (empty order)
+				false           // Require (empty order)
+			) :
+			( $do_exclude ?
+				( $do_check_all ?
+					false :     // Exclude (do check all)
+					true        // Exclude (do NOT check all)
+				) :
+				( $do_check_all ?
+					true :      // Require (do check all)
+					false       // Require (do NOT check all)
+				)
+			)
+		);
+
 	}
 
 	/**
 	 * check_products.
 	 *
-	 * @version 2.8.0
+	 * @version 2.9.0
 	 * @since   2.8.0
+	 *
+	 * @todo    [maybe] (feature) `exclude_all`
 	 */
 	function check_products( $options, $rule_id, $order ) {
 		foreach ( array( 'products', 'product_cats', 'product_tags', 'product_stock_status' ) as $type ) {
 			if ( ! empty( $options[ $type ][ $rule_id ] ) ) {
-				$do_require_all = ( isset( $options[ $type . '_require_all' ][ $rule_id ] ) && 'yes' === $options[ $type . '_require_all' ][ $rule_id ] );
-				if ( ! $this->check_order_products( $order, $options[ $type ][ $rule_id ], $type, $do_require_all ) ) {
+				$action       = ( isset( $options[ $type . '_require_all' ][ $rule_id ] ) ? $options[ $type . '_require_all' ][ $rule_id ] : 'no' );
+				$do_check_all = ( in_array( $action, array( 'yes',     'exclude_all' ) ) );
+				$do_exclude   = ( in_array( $action, array( 'exclude', 'exclude_all' ) ) );
+				if ( ! $this->check_order_products( $order, $options[ $type ][ $rule_id ], $type, $do_check_all, $do_exclude ) ) {
 					return false;
 				}
 			}
@@ -328,13 +397,13 @@ class Alg_WC_Order_Status_Rules_Conditions {
 	/**
 	 * check.
 	 *
-	 * @version 2.8.0
+	 * @version 2.9.0
 	 * @since   2.8.0
 	 *
 	 * @todo    [next] (feature) `order_function`?
 	 */
 	function check( $options, $rule_id, $args ) {
-		foreach ( array( 'min_max_amounts', 'gateways', 'shipping_methods', 'countries', 'products', 'coupons', 'users', 'meta', 'dates' ) as $group ) {
+		foreach ( array( 'min_max_amounts', 'gateways', 'shipping_methods', 'data', 'products', 'coupons', 'users', 'meta', 'dates' ) as $group ) {
 			$func = 'check_' . $group;
 			if ( ! $this->{$func}( $options, $rule_id, $args['order'] ) ) {
 				return false;

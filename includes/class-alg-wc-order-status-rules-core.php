@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Core Class
  *
- * @version 2.8.2
+ * @version 2.9.0
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -213,7 +213,7 @@ class Alg_WC_Order_Status_Rules_Core {
 	/**
 	 * init_options.
 	 *
-	 * @version 2.8.0
+	 * @version 2.9.0
 	 * @since   1.6.0
 	 *
 	 * @todo    [next] [!] (dev) call this only once, e.g. in constructor, or on `init` action
@@ -251,6 +251,10 @@ class Alg_WC_Order_Status_Rules_Core {
 					case 'product_tags':
 					case 'product_stock_status':
 						$keys = array( $condition_id, "{$condition_id}_require_all" );
+						break;
+					case 'min_amount':
+					case 'max_amount':
+						$keys = array( $condition_id, "{$condition_id}_type" );
 						break;
 					default:
 						$keys = array( $condition_id );
@@ -414,14 +418,14 @@ class Alg_WC_Order_Status_Rules_Core {
 	/**
 	 * save_status_change.
 	 *
-	 * @version 1.0.0
+	 * @version 2.9.0
 	 * @since   1.0.0
 	 *
 	 * @todo    [next] (dev) when `$from` doesn't exist `woocommerce_order_status_changed` is not called; check `do_action( 'woocommerce_order_status_' . $status_transition['to'], $this->get_id(), $this );`
 	 * @todo    [next] (dev) save `time()`, not `current_time()`
 	 * @todo    [maybe] (dev) mark status change as "changed by plugin" (vs "changed manually/otherwise")
 	 */
-	function save_status_change( $order_id, $from, $to, $order ) {
+	function save_status_change( $order_id, $from, $to, $order = false ) {
 		$status_history = get_post_meta( $order_id, '_alg_wc_order_status_change_history', true );
 		if ( empty( $status_history ) ) {
 			$status_history = array();

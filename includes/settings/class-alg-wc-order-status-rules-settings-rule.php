@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Rule Section Settings
  *
- * @version 2.8.1
+ * @version 2.9.0
  * @since   2.0.0
  *
  * @author  Algoritmika Ltd.
@@ -30,9 +30,10 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 	/**
 	 * get_settings.
 	 *
-	 * @version 2.8.1
+	 * @version 2.9.0
 	 * @since   2.0.0
 	 *
+	 * @todo    [now] (desc) add description to each subsection
 	 * @todo    [next] (dev) AJAX: Product categories, Product tags, Payment gateways, Shipping methods, User roles
 	 * @todo    [next] (dev) `alg_wc_order_status_rules()->core->init_options()`?
 	 * @todo    [next] (desc) `alg_wc_order_status_rules_skip_days`: better desc
@@ -41,6 +42,7 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 	 * @todo    [maybe] (feature) `alg_wc_order_status_rules_gateways`, `alg_wc_order_status_rules_products`, etc.: add "exclude" options?
 	 */
 	function get_settings() {
+		$settings = array();
 
 		add_action( 'admin_footer', array( $this, 'add_admin_script' ) );
 
@@ -49,7 +51,7 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 		$i = $this->num;
 
 		// General
-		$general_settings = array(
+		$settings = array_merge( $settings, array(
 			array(
 				'title'    => sprintf( __( 'Rule #%d', 'order-status-rules-for-woocommerce' ), $i ) . $this->get_admin_title(),
 				'type'     => 'title',
@@ -79,7 +81,27 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 				'options'  => wc_get_order_statuses(),
 			),
 			array(
+				'title'    => __( 'Admin title', 'order-status-rules-for-woocommerce' ) . ' (' . __( 'optional', 'order-status-rules-for-woocommerce' ) . ')',
+				'id'       => "alg_wc_order_status_rules_title[{$i}]",
+				'default'  => '',
+				'type'     => 'text',
+			),
+			array(
+				'type'     => 'sectionend',
+				'id'       => "alg_wc_order_status_rules_options_{$i}",
+			),
+		) );
+
+		// Time
+		$settings = array_merge( $settings, array(
+			array(
+				'title'    => __( 'Time', 'order-status-rules-for-woocommerce' ),
+				'type'     => 'title',
+				'id'       => "alg_wc_order_status_rules_time_options_{$i}",
+			),
+			array(
 				'title'    => __( 'Time trigger', 'order-status-rules-for-woocommerce' ),
+				'desc_tip' => __( 'Set it to zero for an immediate status update.', 'order-status-rules-for-woocommerce' ),
 				'id'       => "alg_wc_order_status_rules_time_trigger[{$i}]",
 				'default'  => 1,
 				'type'     => 'number',
@@ -117,21 +139,23 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 				),
 			),
 			array(
-				'title'    => __( 'Admin title', 'order-status-rules-for-woocommerce' ) . ' (' . __( 'optional', 'order-status-rules-for-woocommerce' ) . ')',
-				'id'       => "alg_wc_order_status_rules_title[{$i}]",
-				'default'  => '',
-				'type'     => 'text',
-			),
-			array(
 				'type'     => 'sectionend',
-				'id'       => "alg_wc_order_status_rules_options_{$i}",
+				'id'       => "alg_wc_order_status_rules_time_options_{$i}",
 			),
-		);
+		) );
 
-		// Conditions
-		$condition_settings = array();
+		// Minimum/Maximum Amounts
+		if ( ! in_array( 'min_amount', $disabled_conditions ) || ! in_array( 'max_amount', $disabled_conditions ) || ! in_array( 'min_qty', $disabled_conditions ) || ! in_array( 'max_qty', $disabled_conditions ) ) {
+			$settings = array_merge( $settings, array(
+				array(
+					'title'    => __( 'Order Minimum/Maximum Amounts', 'order-status-rules-for-woocommerce' ),
+					'type'     => 'title',
+					'id'       => "alg_wc_order_status_rules_min_max_amount_options_{$i}",
+				),
+			) );
+		}
 		if ( ! in_array( 'min_amount', $disabled_conditions ) ) {
-			$condition_settings = array_merge( $condition_settings, array(
+			$settings = array_merge( $settings, array(
 				array(
 					'title'    => __( 'Minimum amount', 'order-status-rules-for-woocommerce' ),
 					'desc_tip' => __( 'Minimum order amount (subtotal).', 'order-status-rules-for-woocommerce' ) . ' ' .
@@ -142,10 +166,22 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 					'type'     => 'number',
 					'custom_attributes' => array( 'step' => '0.000001' ),
 				),
+				array(
+					'desc'     => __( 'Order amount type', 'order-status-rules-for-woocommerce' ),
+					'desc_tip' => sprintf( __( 'Used in the "%s" option.', 'order-status-rules-for-woocommerce' ), __( 'Minimum amount', 'order-status-rules-for-woocommerce' ) ),
+					'id'       => "alg_wc_order_status_rules_min_amount_type[{$i}]",
+					'default'  => 'subtotal',
+					'type'     => 'select',
+					'class'    => 'chosen_select',
+					'options'  => array(
+						'subtotal' => __( 'Order subtotal', 'order-status-rules-for-woocommerce' ),
+						'total'    => __( 'Order total', 'order-status-rules-for-woocommerce' ),
+					),
+				),
 			) );
 		}
 		if ( ! in_array( 'max_amount', $disabled_conditions ) ) {
-			$condition_settings = array_merge( $condition_settings, array(
+			$settings = array_merge( $settings, array(
 				array(
 					'title'    => __( 'Maximum amount', 'order-status-rules-for-woocommerce' ),
 					'desc_tip' => __( 'Maximum order amount (subtotal).', 'order-status-rules-for-woocommerce' ) . ' ' .
@@ -156,10 +192,22 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 					'type'     => 'number',
 					'custom_attributes' => array( 'step' => '0.000001' ),
 				),
+				array(
+					'desc'     => __( 'Order amount type', 'order-status-rules-for-woocommerce' ),
+					'desc_tip' => sprintf( __( 'Used in the "%s" option.', 'order-status-rules-for-woocommerce' ), __( 'Maximum amount', 'order-status-rules-for-woocommerce' ) ),
+					'id'       => "alg_wc_order_status_rules_max_amount_type[{$i}]",
+					'default'  => 'subtotal',
+					'type'     => 'select',
+					'class'    => 'chosen_select',
+					'options'  => array(
+						'subtotal' => __( 'Order subtotal', 'order-status-rules-for-woocommerce' ),
+						'total'    => __( 'Order total', 'order-status-rules-for-woocommerce' ),
+					),
+				),
 			) );
 		}
 		if ( ! in_array( 'min_qty', $disabled_conditions ) ) {
-			$condition_settings = array_merge( $condition_settings, array(
+			$settings = array_merge( $settings, array(
 				array(
 					'title'    => __( 'Minimum quantity', 'order-status-rules-for-woocommerce' ),
 					'desc_tip' => __( 'Minimum number of items in the order.', 'order-status-rules-for-woocommerce' ) . ' ' .
@@ -173,7 +221,7 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 			) );
 		}
 		if ( ! in_array( 'max_qty', $disabled_conditions ) ) {
-			$condition_settings = array_merge( $condition_settings, array(
+			$settings = array_merge( $settings, array(
 				array(
 					'title'    => __( 'Maximum quantity', 'order-status-rules-for-woocommerce' ),
 					'desc_tip' => __( 'Maximum number of items in the order.', 'order-status-rules-for-woocommerce' ) . ' ' .
@@ -186,8 +234,27 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 				),
 			) );
 		}
+		if ( ! in_array( 'min_amount', $disabled_conditions ) || ! in_array( 'max_amount', $disabled_conditions ) || ! in_array( 'min_qty', $disabled_conditions ) || ! in_array( 'max_qty', $disabled_conditions ) ) {
+			$settings = array_merge( $settings, array(
+				array(
+					'type'     => 'sectionend',
+					'id'       => "alg_wc_order_status_rules_min_max_amount_options_{$i}",
+				),
+			) );
+		}
+
+		// Payment & Shipping
+		if ( ! in_array( 'gateways', $disabled_conditions ) || ! in_array( 'shipping_instances', $disabled_conditions ) ) {
+			$settings = array_merge( $settings, array(
+				array(
+					'title'    => __( 'Order Payment & Shipping', 'order-status-rules-for-woocommerce' ),
+					'type'     => 'title',
+					'id'       => "alg_wc_order_status_rules_payment_shipping_options_{$i}",
+				),
+			) );
+		}
 		if ( ! in_array( 'gateways', $disabled_conditions ) ) {
-			$condition_settings = array_merge( $condition_settings, array(
+			$settings = array_merge( $settings, array(
 				array(
 					'title'    => __( 'Payment gateways', 'order-status-rules-for-woocommerce' ),
 					'desc_tip' => __( 'Required payment gateways.', 'order-status-rules-for-woocommerce' ) . ' ' .
@@ -203,7 +270,7 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 			) );
 		}
 		if ( ! in_array( 'shipping_instances', $disabled_conditions ) ) {
-			$condition_settings = array_merge( $condition_settings, array(
+			$settings = array_merge( $settings, array(
 				array(
 					'title'    => __( 'Shipping methods', 'order-status-rules-for-woocommerce' ),
 					'desc_tip' => __( 'Required shipping methods.', 'order-status-rules-for-woocommerce' ) . ' ' .
@@ -218,8 +285,27 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 				),
 			) );
 		}
+		if ( ! in_array( 'gateways', $disabled_conditions ) || ! in_array( 'shipping_instances', $disabled_conditions ) ) {
+			$settings = array_merge( $settings, array(
+				array(
+					'type'     => 'sectionend',
+					'id'       => "alg_wc_order_status_rules_payment_shipping_options_{$i}",
+				),
+			) );
+		}
+
+		// Countries
+		if ( ! in_array( 'billing_countries', $disabled_conditions ) || ! in_array( 'shipping_countries', $disabled_conditions ) ) {
+			$settings = array_merge( $settings, array(
+				array(
+					'title'    => __( 'Order Countries', 'order-status-rules-for-woocommerce' ),
+					'type'     => 'title',
+					'id'       => "alg_wc_order_status_rules_country_options_{$i}",
+				),
+			) );
+		}
 		if ( ! in_array( 'billing_countries', $disabled_conditions ) ) {
-			$condition_settings = array_merge( $condition_settings, array(
+			$settings = array_merge( $settings, array(
 				array(
 					'title'    => __( 'Billing countries', 'order-status-rules-for-woocommerce' ),
 					'desc_tip' => __( 'Required billing countries', 'order-status-rules-for-woocommerce' ) . ' ' .
@@ -235,7 +321,7 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 			) );
 		}
 		if ( ! in_array( 'shipping_countries', $disabled_conditions ) ) {
-			$condition_settings = array_merge( $condition_settings, array(
+			$settings = array_merge( $settings, array(
 				array(
 					'title'    => __( 'Shipping countries', 'order-status-rules-for-woocommerce' ),
 					'desc_tip' => __( 'Required shipping countries', 'order-status-rules-for-woocommerce' ) . ' ' .
@@ -250,8 +336,27 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 				),
 			) );
 		}
+		if ( ! in_array( 'billing_countries', $disabled_conditions ) || ! in_array( 'shipping_countries', $disabled_conditions ) ) {
+			$settings = array_merge( $settings, array(
+				array(
+					'type'     => 'sectionend',
+					'id'       => "alg_wc_order_status_rules_country_options_{$i}",
+				),
+			) );
+		}
+
+		// Products
+		if ( ! in_array( 'products', $disabled_conditions ) || ! in_array( 'product_cats', $disabled_conditions ) || ! in_array( 'product_tags', $disabled_conditions ) || ! in_array( 'product_stock_status', $disabled_conditions ) ) {
+			$settings = array_merge( $settings, array(
+				array(
+					'title'    => __( 'Order Products', 'order-status-rules-for-woocommerce' ),
+					'type'     => 'title',
+					'id'       => "alg_wc_order_status_rules_product_options_{$i}",
+				),
+			) );
+		}
 		if ( ! in_array( 'products', $disabled_conditions ) ) {
-			$condition_settings = array_merge( $condition_settings, array(
+			$settings = array_merge( $settings, array(
 				array(
 					'title'    => __( 'Products', 'order-status-rules-for-woocommerce' ),
 					'desc_tip' => __( 'Required products.', 'order-status-rules-for-woocommerce' ) . ' ' .
@@ -269,15 +374,21 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 					),
 				),
 				array(
-					'desc'     => __( 'All products in the order must match the selection (vs at least one product)', 'order-status-rules-for-woocommerce' ),
-					'id'       => "alg_wc_order_status_rules_products_require_all[{$i}]",
+					'desc_tip' => __( '"Require all" means that all products in the order must match the selection (vs at least one product).', 'order-status-rules-for-woocommerce' ),
+					'id'       => "alg_wc_order_status_rules_products_require_all[{$i}]", // mislabeled; should be e.g., `alg_wc_order_status_rules_products_action`
 					'default'  => 'no',
-					'type'     => 'checkbox',
+					'type'     => 'select',
+					'class'    => 'chosen_select',
+					'options'  => array(
+						'no'      => __( 'Require', 'order-status-rules-for-woocommerce' ),
+						'yes'     => __( 'Require all', 'order-status-rules-for-woocommerce' ),
+						'exclude' => __( 'Exclude', 'order-status-rules-for-woocommerce' ),
+					),
 				),
 			) );
 		}
 		if ( ! in_array( 'product_cats', $disabled_conditions ) ) {
-			$condition_settings = array_merge( $condition_settings, array(
+			$settings = array_merge( $settings, array(
 				array(
 					'title'    => __( 'Product categories', 'order-status-rules-for-woocommerce' ),
 					'desc_tip' => __( 'Required product categories.', 'order-status-rules-for-woocommerce' ) . ' ' .
@@ -291,15 +402,21 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 					'options'  => $this->get_terms( 'product_cat' ),
 				),
 				array(
-					'desc'     => __( 'All products in the order must match the selection (vs at least one product)', 'order-status-rules-for-woocommerce' ),
-					'id'       => "alg_wc_order_status_rules_product_cats_require_all[{$i}]",
+					'desc_tip' => __( '"Require all" means that all products in the order must match the selection (vs at least one product).', 'order-status-rules-for-woocommerce' ),
+					'id'       => "alg_wc_order_status_rules_product_cats_require_all[{$i}]", // mislabeled; should be e.g., `alg_wc_order_status_rules_product_cats_action`
 					'default'  => 'no',
-					'type'     => 'checkbox',
+					'type'     => 'select',
+					'class'    => 'chosen_select',
+					'options'  => array(
+						'no'      => __( 'Require', 'order-status-rules-for-woocommerce' ),
+						'yes'     => __( 'Require all', 'order-status-rules-for-woocommerce' ),
+						'exclude' => __( 'Exclude', 'order-status-rules-for-woocommerce' ),
+					),
 				),
 			) );
 		}
 		if ( ! in_array( 'product_tags', $disabled_conditions ) ) {
-			$condition_settings = array_merge( $condition_settings, array(
+			$settings = array_merge( $settings, array(
 				array(
 					'title'    => __( 'Product tags', 'order-status-rules-for-woocommerce' ),
 					'desc_tip' => __( 'Required product tags.', 'order-status-rules-for-woocommerce' ) . ' ' .
@@ -313,15 +430,21 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 					'options'  => $this->get_terms( 'product_tag' ),
 				),
 				array(
-					'desc'     => __( 'All products in the order must match the selection (vs at least one product)', 'order-status-rules-for-woocommerce' ),
-					'id'       => "alg_wc_order_status_rules_product_tags_require_all[{$i}]",
+					'desc_tip' => __( '"Require all" means that all products in the order must match the selection (vs at least one product).', 'order-status-rules-for-woocommerce' ),
+					'id'       => "alg_wc_order_status_rules_product_tags_require_all[{$i}]", // mislabeled; should be e.g., `alg_wc_order_status_rules_product_tags_action`
 					'default'  => 'no',
-					'type'     => 'checkbox',
+					'type'     => 'select',
+					'class'    => 'chosen_select',
+					'options'  => array(
+						'no'      => __( 'Require', 'order-status-rules-for-woocommerce' ),
+						'yes'     => __( 'Require all', 'order-status-rules-for-woocommerce' ),
+						'exclude' => __( 'Exclude', 'order-status-rules-for-woocommerce' ),
+					),
 				),
 			) );
 		}
 		if ( ! in_array( 'product_stock_status', $disabled_conditions ) ) {
-			$condition_settings = array_merge( $condition_settings, array(
+			$settings = array_merge( $settings, array(
 				array(
 					'title'    => __( 'Product stock status', 'order-status-rules-for-woocommerce' ),
 					'desc_tip' => __( 'Required product stock status.', 'order-status-rules-for-woocommerce' ) . ' ' .
@@ -335,15 +458,36 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 					'options'  => wc_get_product_stock_status_options(),
 				),
 				array(
-					'desc'     => __( 'All products in the order must match the selection (vs at least one product)', 'order-status-rules-for-woocommerce' ),
-					'id'       => "alg_wc_order_status_rules_product_stock_status_require_all[{$i}]",
+					'desc_tip' => __( '"Require all" means that all products in the order must match the selection (vs at least one product).', 'order-status-rules-for-woocommerce' ),
+					'id'       => "alg_wc_order_status_rules_product_stock_status_require_all[{$i}]", // mislabeled; should be e.g., `alg_wc_order_status_rules_product_stock_status_action`
 					'default'  => 'no',
-					'type'     => 'checkbox',
+					'type'     => 'select',
+					'class'    => 'chosen_select',
+					'options'  => array(
+						'no'      => __( 'Require', 'order-status-rules-for-woocommerce' ),
+						'yes'     => __( 'Require all', 'order-status-rules-for-woocommerce' ),
+						'exclude' => __( 'Exclude', 'order-status-rules-for-woocommerce' ),
+					),
 				),
 			) );
 		}
+		if ( ! in_array( 'products', $disabled_conditions ) || ! in_array( 'product_cats', $disabled_conditions ) || ! in_array( 'product_tags', $disabled_conditions ) || ! in_array( 'product_stock_status', $disabled_conditions ) ) {
+			$settings = array_merge( $settings, array(
+				array(
+					'type'     => 'sectionend',
+					'id'       => "alg_wc_order_status_rules_product_options_{$i}",
+				),
+			) );
+		}
+
+		// Coupons
 		if ( ! in_array( 'coupons', $disabled_conditions ) ) {
-			$condition_settings = array_merge( $condition_settings, array(
+			$settings = array_merge( $settings, array(
+				array(
+					'title'    => __( 'Order Coupons', 'order-status-rules-for-woocommerce' ),
+					'type'     => 'title',
+					'id'       => "alg_wc_order_status_rules_coupon_options_{$i}",
+				),
 				array(
 					'title'    => __( 'Coupons', 'order-status-rules-for-woocommerce' ),
 					'desc_tip' => __( 'Required coupons.', 'order-status-rules-for-woocommerce' ) . ' ' .
@@ -368,10 +512,40 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 					'default'  => '',
 					'type'     => 'text',
 				),
+				array(
+					'type'     => 'sectionend',
+					'id'       => "alg_wc_order_status_rules_coupon_options_{$i}",
+				),
+			) );
+		}
+
+		// Users
+		if ( ! in_array( 'billing_emails', $disabled_conditions ) || ! in_array( 'user_roles', $disabled_conditions ) || ! in_array( 'users', $disabled_conditions ) || ! in_array( 'paying_customer', $disabled_conditions ) ) {
+			$settings = array_merge( $settings, array(
+				array(
+					'title'    => __( 'Order Users', 'order-status-rules-for-woocommerce' ),
+					'type'     => 'title',
+					'id'       => "alg_wc_order_status_rules_user_options_{$i}",
+				),
+			) );
+		}
+		if ( ! in_array( 'billing_emails', $disabled_conditions ) ) {
+			$settings = array_merge( $settings, array(
+				array(
+					'title'    => __( 'Billing emails', 'order-status-rules-for-woocommerce' ),
+					'desc_tip' => __( 'Required billing emails.', 'order-status-rules-for-woocommerce' ) . ' ' .
+						__( 'If you want the rule to be applied only for orders with selected billing emails, you can set them here.', 'order-status-rules-for-woocommerce' ) . ' ' .
+						__( 'Can be a comma-separated list.', 'order-status-rules-for-woocommerce' ) . ' ' .
+						__( 'Ignored if empty.', 'order-status-rules-for-woocommerce' ),
+					'id'       => "alg_wc_order_status_rules_billing_emails[{$i}]",
+					'default'  => '',
+					'type'     => 'textarea',
+					'css'      => 'min-height: 100px;',
+				),
 			) );
 		}
 		if ( ! in_array( 'user_roles', $disabled_conditions ) ) {
-			$condition_settings = array_merge( $condition_settings, array(
+			$settings = array_merge( $settings, array(
 				array(
 					'title'    => __( 'User roles', 'order-status-rules-for-woocommerce' ),
 					'desc_tip' => __( 'Required user roles.', 'order-status-rules-for-woocommerce' ) . ' ' .
@@ -387,7 +561,7 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 			) );
 		}
 		if ( ! in_array( 'users', $disabled_conditions ) ) {
-			$condition_settings = array_merge( $condition_settings, array(
+			$settings = array_merge( $settings, array(
 				array(
 					'title'    => __( 'Users', 'order-status-rules-for-woocommerce' ),
 					'desc_tip' => __( 'Required users.', 'order-status-rules-for-woocommerce' ) . ' ' .
@@ -407,7 +581,7 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 			) );
 		}
 		if ( ! in_array( 'paying_customer', $disabled_conditions ) ) {
-			$condition_settings = array_merge( $condition_settings, array(
+			$settings = array_merge( $settings, array(
 				array(
 					'title'    => __( 'Paying customer', 'order-status-rules-for-woocommerce' ),
 					'desc_tip' => __( 'Is order user a paying customer?', 'order-status-rules-for-woocommerce' ) . ' ' .
@@ -424,8 +598,27 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 				),
 			) );
 		}
+		if ( ! in_array( 'billing_emails', $disabled_conditions ) || ! in_array( 'user_roles', $disabled_conditions ) || ! in_array( 'users', $disabled_conditions ) || ! in_array( 'paying_customer', $disabled_conditions ) ) {
+			$settings = array_merge( $settings, array(
+				array(
+					'type'     => 'sectionend',
+					'id'       => "alg_wc_order_status_rules_user_options_{$i}",
+				),
+			) );
+		}
+
+		// Dates
+		if ( ! in_array( 'date_created_before', $disabled_conditions ) || ! in_array( 'date_created_after', $disabled_conditions ) ) {
+			$settings = array_merge( $settings, array(
+				array(
+					'title'    => __( 'Order Dates', 'order-status-rules-for-woocommerce' ),
+					'type'     => 'title',
+					'id'       => "alg_wc_order_status_rules_date_options_{$i}",
+				),
+			) );
+		}
 		if ( ! in_array( 'date_created_before', $disabled_conditions ) ) {
-			$condition_settings = array_merge( $condition_settings, array(
+			$settings = array_merge( $settings, array(
 				array(
 					'title'    => __( 'Date created before', 'order-status-rules-for-woocommerce' ),
 					'desc_tip' => __( 'Date (UTC).', 'order-status-rules-for-woocommerce' ) . ' ' .
@@ -438,7 +631,7 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 			) );
 		}
 		if ( ! in_array( 'date_created_after', $disabled_conditions ) ) {
-			$condition_settings = array_merge( $condition_settings, array(
+			$settings = array_merge( $settings, array(
 				array(
 					'title'    => __( 'Date created after', 'order-status-rules-for-woocommerce' ),
 					'desc_tip' => __( 'Date (UTC).', 'order-status-rules-for-woocommerce' ) . ' ' .
@@ -450,11 +643,25 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 				),
 			) );
 		}
-		if ( ! in_array( 'meta', $disabled_conditions ) ) {
-			$condition_settings = array_merge( $condition_settings, array(
+		if ( ! in_array( 'date_created_before', $disabled_conditions ) || ! in_array( 'date_created_after', $disabled_conditions ) ) {
+			$settings = array_merge( $settings, array(
 				array(
-					'title'    => __( 'Meta', 'order-status-rules-for-woocommerce' ),
-					'desc'     => __( 'Meta key', 'order-status-rules-for-woocommerce' ),
+					'type'     => 'sectionend',
+					'id'       => "alg_wc_order_status_rules_date_options_{$i}",
+				),
+			) );
+		}
+
+		// Meta
+		if ( ! in_array( 'meta', $disabled_conditions ) ) {
+			$settings = array_merge( $settings, array(
+				array(
+					'title'    => __( 'Order Meta', 'order-status-rules-for-woocommerce' ),
+					'type'     => 'title',
+					'id'       => "alg_wc_order_status_rules_meta_options_{$i}",
+				),
+				array(
+					'title'    => __( 'Meta key', 'order-status-rules-for-woocommerce' ),
 					'desc_tip' => __( 'Required order meta.', 'order-status-rules-for-woocommerce' ) . ' ' .
 						__( 'If you want the rule to be applied only for orders with specific order meta value, you can set it here.', 'order-status-rules-for-woocommerce' ) . ' ' .
 						__( 'Ignored if empty.', 'order-status-rules-for-woocommerce' ),
@@ -463,7 +670,7 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 					'type'     => 'text',
 				),
 				array(
-					'desc'     => __( 'Meta value', 'order-status-rules-for-woocommerce' ),
+					'title'    => __( 'Meta value', 'order-status-rules-for-woocommerce' ),
 					'id'       => "alg_wc_order_status_rules_meta_value[{$i}]",
 					'default'  => '',
 					'type'     => 'text',
@@ -475,28 +682,14 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 					'default'  => 'no',
 					'type'     => 'checkbox',
 				),
+				array(
+					'type'     => 'sectionend',
+					'id'       => "alg_wc_order_status_rules_meta_options_{$i}",
+				),
 			) );
 		}
-		if ( ! empty( $condition_settings ) ) {
-			$condition_settings = array_merge(
-				array(
-					array(
-						'title'    => __( 'Order Conditions', 'order-status-rules-for-woocommerce' ),
-						'type'     => 'title',
-						'id'       => "alg_wc_order_status_rules_condition_options_{$i}",
-					),
-				),
-				$condition_settings,
-				array(
-					array(
-						'type'     => 'sectionend',
-						'id'       => "alg_wc_order_status_rules_condition_options_{$i}",
-					),
-				)
-			);
-		}
 
-		return array_merge( $general_settings, $condition_settings );
+		return $settings;
 	}
 
 }

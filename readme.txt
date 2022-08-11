@@ -3,11 +3,11 @@ Contributors: algoritmika, anbinder
 Tags: woocommerce, order status, order, status, woo commerce
 Requires at least: 4.4
 Tested up to: 6.0
-Stable tag: 2.8.2
+Stable tag: 2.9.0
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Manage WooCommerce order statuses. Beautifully.
+Automate WooCommerce order statuses. Beautifully.
 
 == Description ==
 
@@ -25,7 +25,7 @@ For example: automatically change order status to cancelled, when 24 hours have 
 * Required **shipping methods**.
 * Required billing and shipping **countries**.
 * Required **products**, product **categories**, product **tags** or product **stock status**.
-* Required **users** or user **roles**.
+* Required **users**, user **roles**, or billing **emails**.
 * Required **coupons**.
 * And more...
 
@@ -41,6 +41,14 @@ For example: automatically change order status to cancelled, when 24 hours have 
 3. Start by visiting plugin settings at "WooCommerce > Settings > Order Status Rules".
 
 == Changelog ==
+
+= 2.9.0 - 11/08/2022 =
+* Dev - Rule - Conditions - Products/categories/tags/stock status - "Require all" option is now a dropdown with an additional "Exclude" value.
+* Dev - Rule - Conditions - "Billing emails" option added.
+* Dev - Rule - Conditions - Minimum/Maximum amount - "Minimum/Maximum order amount type" options added. Defaults to "Order subtotal". Another possible value is "Order total".
+* Dev - Admin settings updated; "Rule" subsections added; etc.
+* Dev - Minor code refactoring.
+* WC tested up to: 6.8.
 
 = 2.8.2 - 27/07/2022 =
 * Dev - Process rules - Extra safe-checks added for the orders.

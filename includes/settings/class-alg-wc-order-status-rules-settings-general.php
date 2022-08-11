@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - General Section Settings
  *
- * @version 2.0.0
+ * @version 2.9.0
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -29,7 +29,7 @@ class Alg_WC_Order_Status_Rules_Settings_General extends Alg_WC_Order_Status_Rul
 	/**
 	 * get_settings.
 	 *
-	 * @version 2.0.0
+	 * @version 2.9.0
 	 * @since   1.0.0
 	 */
 	function get_settings() {
@@ -43,7 +43,7 @@ class Alg_WC_Order_Status_Rules_Settings_General extends Alg_WC_Order_Status_Rul
 			array(
 				'title'    => __( 'Order Status Rules', 'order-status-rules-for-woocommerce' ),
 				'desc'     => '<strong>' . __( 'Enable plugin', 'order-status-rules-for-woocommerce' ) . '</strong>',
-				'desc_tip' => __( 'Manage WooCommerce order statuses. Beautifully.', 'order-status-rules-for-woocommerce' ),
+				'desc_tip' => __( 'Automate WooCommerce order statuses. Beautifully.', 'order-status-rules-for-woocommerce' ),
 				'id'       => 'alg_wc_order_status_rules_plugin_enabled',
 				'default'  => 'yes',
 				'type'     => 'checkbox',
