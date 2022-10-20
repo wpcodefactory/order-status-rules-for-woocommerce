@@ -3,12 +3,12 @@
 Plugin Name: Order Status Rules for WooCommerce
 Plugin URI: https://wpfactory.com/item/order-status-rules-for-woocommerce/
 Description: Automate WooCommerce order statuses. Beautifully.
-Version: 2.9.0
-Author: Algoritmika Ltd
-Author URI: https://algoritmika.com
+Version: 2.9.1
+Author: WPFactory
+Author URI: https://wpfactory.com
 Text Domain: order-status-rules-for-woocommerce
 Domain Path: /langs
-WC tested up to: 6.8
+WC tested up to: 7.0
 */
 
 defined( 'ABSPATH' ) || exit;
@@ -29,7 +29,7 @@ if ( 'order-status-rules-for-woocommerce.php' === basename( __FILE__ ) ) {
 	}
 }
 
-defined( 'ALG_WC_ORDER_STATUS_RULES_VERSION' ) || define( 'ALG_WC_ORDER_STATUS_RULES_VERSION', '2.9.0' );
+defined( 'ALG_WC_ORDER_STATUS_RULES_VERSION' ) || define( 'ALG_WC_ORDER_STATUS_RULES_VERSION', '2.9.1' );
 
 defined( 'ALG_WC_ORDER_STATUS_RULES_FILE' ) || define( 'ALG_WC_ORDER_STATUS_RULES_FILE', __FILE__ );
 

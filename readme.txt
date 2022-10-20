@@ -1,9 +1,9 @@
 === Order Status Rules for WooCommerce ===
-Contributors: algoritmika, anbinder
+Contributors: wpcodefactory, algoritmika, anbinder
 Tags: woocommerce, order status, order, status, woo commerce
 Requires at least: 4.4
 Tested up to: 6.0
-Stable tag: 2.9.0
+Stable tag: 2.9.1
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -42,11 +42,16 @@ For example: automatically change order status to cancelled, when 24 hours have 
 
 == Changelog ==
 
+= 2.9.1 - 20/10/2022 =
+* Dev - Admin settings updated.
+* Readme.txt updated.
+* WC tested up to: 7.0.
+
 = 2.9.0 - 11/08/2022 =
 * Dev - Rule - Conditions - Products/categories/tags/stock status - "Require all" option is now a dropdown with an additional "Exclude" value.
 * Dev - Rule - Conditions - "Billing emails" option added.
 * Dev - Rule - Conditions - Minimum/Maximum amount - "Minimum/Maximum order amount type" options added. Defaults to "Order subtotal". Another possible value is "Order total".
-* Dev - Admin settings updated; "Rule" subsections added; etc.
+* Dev - Admin settings updated; subsections added; etc.
 * Dev - Minor code refactoring.
 * WC tested up to: 6.8.
 

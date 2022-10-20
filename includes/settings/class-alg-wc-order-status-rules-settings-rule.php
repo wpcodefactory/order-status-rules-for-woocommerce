@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Rule Section Settings
  *
- * @version 2.9.0
+ * @version 2.9.1
  * @since   2.0.0
  *
  * @author  Algoritmika Ltd.
@@ -30,7 +30,7 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 	/**
 	 * get_settings.
 	 *
-	 * @version 2.9.0
+	 * @version 2.9.1
 	 * @since   2.0.0
 	 *
 	 * @todo    [now] (desc) add description to each subsection
@@ -661,7 +661,8 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 					'id'       => "alg_wc_order_status_rules_meta_options_{$i}",
 				),
 				array(
-					'title'    => __( 'Meta key', 'order-status-rules-for-woocommerce' ),
+					'title'    => __( 'Meta', 'order-status-rules-for-woocommerce' ),
+					'desc'     => __( 'Meta key', 'order-status-rules-for-woocommerce' ),
 					'desc_tip' => __( 'Required order meta.', 'order-status-rules-for-woocommerce' ) . ' ' .
 						__( 'If you want the rule to be applied only for orders with specific order meta value, you can set it here.', 'order-status-rules-for-woocommerce' ) . ' ' .
 						__( 'Ignored if empty.', 'order-status-rules-for-woocommerce' ),
@@ -670,7 +671,7 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 					'type'     => 'text',
 				),
 				array(
-					'title'    => __( 'Meta value', 'order-status-rules-for-woocommerce' ),
+					'desc'     => __( 'Meta value', 'order-status-rules-for-woocommerce' ),
 					'id'       => "alg_wc_order_status_rules_meta_value[{$i}]",
 					'default'  => '',
 					'type'     => 'text',
