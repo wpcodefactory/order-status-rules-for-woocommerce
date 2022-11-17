@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Core Class
  *
- * @version 2.9.0
+ * @version 2.9.2
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -341,55 +341,81 @@ class Alg_WC_Order_Status_Rules_Core {
 	/**
 	 * process_rules_for_order.
 	 *
-	 * @version 2.8.2
+	 * @version 2.9.2
 	 * @since   2.2.0
 	 *
 	 * @todo    [next] (dev) `$unit = ( isset( $this->options['time_trigger_units'][ $i ] ) ? $this->options['time_trigger_units'][ $i ] : 'hour' );`
-	 * @todo    [next] (dev) rename `$i` to `$rule_id`?
 	 */
 	function process_rules_for_order( $order_id ) {
 		$this->init_options();
+
 		if ( $this->do_debug() ) {
 			$this->add_to_log( sprintf( __( 'Process rules: Order #%s', 'order-status-rules-for-woocommerce' ), $order_id ) );
 		}
+
 		$status_history = $this->get_order_status_change_history( $order_id );
+
 		if ( ! empty( $status_history ) ) {
+
 			if ( ! ( $order = wc_get_order( $order_id ) ) || ! is_callable( array( $order, 'update_status' ) ) ) {
 				if ( $this->do_debug() ) {
 					$this->add_to_log( sprintf( __( 'Process rules: Skipping order #%s', 'order-status-rules-for-woocommerce' ), $order_id ) );
 				}
 				return false;
 			}
+
 			$status_history      = array_reverse( $status_history, true );
 			$last_record         = current( $status_history );
 			$args                = array( 'order_status' => $order->get_status(), 'order' => $order );
 			$last_record['to']   = ( $last_record['to'] !== $args['order_status'] && $this->do_use_last_record ? $args['order_status'] : $last_record['to'] );
 			$args['last_record'] = $last_record;
-			foreach ( $this->options['from'] as $i => $from ) {
+
+			// Rules loop
+			foreach ( $this->options['from'] as $rule_id => $from ) {
+
 				$args['from'] = $from;
-				$step = $this->get_trigger_unit_step( ( isset( $this->options['time_trigger_units'][ $i ] ) ? $this->options['time_trigger_units'][ $i ] : 'hour' ) );
-				$skip = ( isset( $this->options['skip_days'][ $i ] ) ? $this->options['skip_days'][ $i ] : false );
+				$step = $this->get_trigger_unit_step( ( isset( $this->options['time_trigger_units'][ $rule_id ] ) ? $this->options['time_trigger_units'][ $rule_id ] : 'hour' ) );
+				$skip = ( isset( $this->options['skip_days'][ $rule_id ] ) ? $this->options['skip_days'][ $rule_id ] : false );
+
+				// Apply the rule
 				if (
-					$this->do_apply_rule( $i, $args ) &&
-					( $this->get_time_remaining( $last_record['time'], $this->options['time_triggers'][ $i ] * $step, $skip ) <= 0 )
+					$this->do_apply_rule( $rule_id, $args ) &&
+					( $this->get_time_remaining( $last_record['time'], $this->options['time_triggers'][ $rule_id ] * $step, $skip ) <= 0 )
 				) {
-					$rule = sprintf( __( 'Rule #%s', 'order-status-rules-for-woocommerce' ), $i ) .
-						( ! empty( $this->options['titles'][ $i ] ) ? ': ' . $this->options['titles'][ $i ] : '' );
+
+					// Custom actions
+					do_action( 'alg_wc_order_status_rules_before_rule_applied', $order, $rule_id, $args, $this );
+
+					// Prepare note
+					$rule = sprintf( __( 'Rule #%s', 'order-status-rules-for-woocommerce' ), $rule_id ) .
+						( ! empty( $this->options['titles'][ $rule_id ] ) ? ': ' . $this->options['titles'][ $rule_id ] : '' );
 					$note = sprintf( __( 'Status updated by "Order Status Rules for WooCommerce" plugin (%s).', 'order-status-rules-for-woocommerce' ), $rule );
+
+					// Update status
 					remove_action( 'woocommerce_order_status_changed', array( $this, 'process_rules_for_order' ), 11 );
-					$order->update_status( substr( $this->options['to'][ $i ], 3 ), $note );
+					$order->update_status( substr( $this->options['to'][ $rule_id ], 3 ), $note );
 					add_action(    'woocommerce_order_status_changed', array( $this, 'process_rules_for_order' ), 11 );
+
+					// Custom actions
+					do_action( 'alg_wc_order_status_rules_after_rule_applied', $order, $rule_id, $args, $this );
+
 					// Debug
 					if ( $this->do_debug() ) {
 						$this->add_to_log( sprintf( __( 'Process rules: Order #%s: from %s to %s (%s)', 'order-status-rules-for-woocommerce' ),
-							$order_id, $from, $this->options['to'][ $i ], $rule ) );
+							$order_id, $from, $this->options['to'][ $rule_id ], $rule ) );
 					}
+
+					// Exit
 					break;
+
 				}
+
 			}
+
 		} elseif ( $this->do_debug() ) {
 			$this->add_to_log( sprintf( __( 'Process rules: Order #%s: No order status change history found', 'order-status-rules-for-woocommerce' ), $order_id ) );
 		}
+
 	}
 
 	/**

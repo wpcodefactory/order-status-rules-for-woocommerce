@@ -3,7 +3,7 @@ Contributors: wpcodefactory, algoritmika, anbinder
 Tags: woocommerce, order status, order, status, woo commerce
 Requires at least: 4.4
 Tested up to: 6.0
-Stable tag: 2.9.1
+Stable tag: 2.9.2
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -41,6 +41,10 @@ For example: automatically change order status to cancelled, when 24 hours have 
 3. Start by visiting plugin settings at "WooCommerce > Settings > Order Status Rules".
 
 == Changelog ==
+
+= 2.9.2 - 17/11/2022 =
+* Dev - Developers - `alg_wc_order_status_rules_before_rule_applied` and `alg_wc_order_status_rules_after_rule_applied` actions added.
+* WC tested up to: 7.1.
 
 = 2.9.1 - 20/10/2022 =
 * Dev - Admin settings updated.
