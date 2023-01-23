@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Core Class
  *
- * @version 2.9.2
+ * @version 2.9.3
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -22,7 +22,7 @@ class Alg_WC_Order_Status_Rules_Core {
 	 *
 	 * @todo    [next] (dev) remove `alg_wc_order_status_rules_plugin_enabled` (or move `process_rules_manual`, etc. inside the `alg_wc_order_status_rules_plugin_enabled`)
 	 * @todo    [maybe] (dev) remove rules with trigger set to zero from crons?
-	 * @todo    [maybe] (dev) `process_rules_for_order` on admin order edit page, order updated action, etc.?
+	 * @todo    [now] (dev) `process_rules_for_order` on admin order edit page, order updated action, etc.?
 	 * @todo    [maybe] (dev) `process_rules_for_order` on `woocommerce_order_status_changed`: use `woocommerce_order_status_ . $status_to` filter instead?
 	 * @todo    [maybe] (dev) pre-check for possible infinite loops in rules
 	 */
@@ -341,10 +341,11 @@ class Alg_WC_Order_Status_Rules_Core {
 	/**
 	 * process_rules_for_order.
 	 *
-	 * @version 2.9.2
+	 * @version 2.9.3
 	 * @since   2.2.0
 	 *
 	 * @todo    [next] (dev) `$unit = ( isset( $this->options['time_trigger_units'][ $i ] ) ? $this->options['time_trigger_units'][ $i ] : 'hour' );`
+	 * @todo    [maybe] (dev) `remove_action`: check with `has_action()`?
 	 */
 	function process_rules_for_order( $order_id ) {
 		$this->init_options();
@@ -370,7 +371,7 @@ class Alg_WC_Order_Status_Rules_Core {
 			$last_record['to']   = ( $last_record['to'] !== $args['order_status'] && $this->do_use_last_record ? $args['order_status'] : $last_record['to'] );
 			$args['last_record'] = $last_record;
 
-			// Rules loop
+			// Rules loop (stops after first applied rule)
 			foreach ( $this->options['from'] as $rule_id => $from ) {
 
 				$args['from'] = $from;
@@ -392,9 +393,11 @@ class Alg_WC_Order_Status_Rules_Core {
 					$note = sprintf( __( 'Status updated by "Order Status Rules for WooCommerce" plugin (%s).', 'order-status-rules-for-woocommerce' ), $rule );
 
 					// Update status
-					remove_action( 'woocommerce_order_status_changed', array( $this, 'process_rules_for_order' ), 11 );
+					$had_action = remove_action( 'woocommerce_order_status_changed', array( $this, 'process_rules_for_order' ) );
 					$order->update_status( substr( $this->options['to'][ $rule_id ], 3 ), $note );
-					add_action(    'woocommerce_order_status_changed', array( $this, 'process_rules_for_order' ), 11 );
+					if ( $had_action ) {
+						add_action( 'woocommerce_order_status_changed', array( $this, 'process_rules_for_order' ) );
+					}
 
 					// Custom actions
 					do_action( 'alg_wc_order_status_rules_after_rule_applied', $order, $rule_id, $args, $this );

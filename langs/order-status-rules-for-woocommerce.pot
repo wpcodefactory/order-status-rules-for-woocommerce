@@ -30,7 +30,7 @@ msgid "To"
 msgstr ""
 
 #: includes/class-alg-wc-order-status-rules-admin.php:130
-#: includes/class-alg-wc-order-status-rules-core.php:390
+#: includes/class-alg-wc-order-status-rules-core.php:391
 #, php-format
 msgid "Rule #%s"
 msgstr ""
@@ -205,27 +205,27 @@ msgstr ""
 msgid "Process rules: Finished"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:353
+#: includes/class-alg-wc-order-status-rules-core.php:354
 #, php-format
 msgid "Process rules: Order #%s"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:362
+#: includes/class-alg-wc-order-status-rules-core.php:363
 #, php-format
 msgid "Process rules: Skipping order #%s"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:392
+#: includes/class-alg-wc-order-status-rules-core.php:393
 #, php-format
 msgid "Status updated by \"Order Status Rules for WooCommerce\" plugin (%s)."
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:404
+#: includes/class-alg-wc-order-status-rules-core.php:407
 #, php-format
 msgid "Process rules: Order #%s: from %s to %s (%s)"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:416
+#: includes/class-alg-wc-order-status-rules-core.php:419
 #, php-format
 msgid "Process rules: Order #%s: No order status change history found"
 msgstr ""

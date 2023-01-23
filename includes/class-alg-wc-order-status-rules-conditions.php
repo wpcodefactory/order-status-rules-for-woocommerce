@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Conditions Class
  *
- * @version 2.9.0
+ * @version 2.9.3
  * @since   2.8.0
  *
  * @author  Algoritmika Ltd.
@@ -368,15 +368,15 @@ class Alg_WC_Order_Status_Rules_Conditions {
 	/**
 	 * check_dates.
 	 *
-	 * @version 2.8.0
+	 * @version 2.9.3
 	 * @since   2.8.0
 	 *
-	 * @todo    [next] (feature) `date_modified`, `date_paid`, `get_date_completed`?
 	 * @todo    [next] (feature) `relative_date_selector`
 	 * @todo    [next] (feature) `time`
 	 */
 	function check_dates( $options, $rule_id, $order ) {
 		$date_created = ( ( $date_created = $order->get_date_created() ) ? $date_created->getTimestamp() : 0 );
+		$date_created = apply_filters( 'alg_wc_order_status_rules_check_dates_order_date', $date_created, $options, $rule_id, $order );
 		return (
 			( empty( $options['date_created_before'][ $rule_id ] ) || $date_created < strtotime( $options['date_created_before'][ $rule_id ] ) ) &&
 			( empty( $options['date_created_after'][ $rule_id ] )  || $date_created > strtotime( $options['date_created_after'][ $rule_id ] ) )
