@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Crons Class
  *
- * @version 1.4.0
+ * @version 3.0.0
  * @since   1.4.0
  *
  * @author  Algoritmika Ltd.
@@ -17,7 +17,7 @@ class Alg_WC_Order_Status_Rules_Crons {
 	/**
 	 * Constructor.
 	 *
-	 * @version 1.4.0
+	 * @version 3.0.0
 	 * @since   1.4.0
 	 *
 	 * @todo    [next] (dev) `add_custom_cron_schedules`: only if `minutely`, `fifteen_minutes`, or `thirty_minutes` was selected
@@ -26,7 +26,6 @@ class Alg_WC_Order_Status_Rules_Crons {
 	function __construct() {
 		if ( 'yes' === get_option( 'alg_wc_order_status_rules_plugin_enabled', 'yes' ) ) {
 			if ( 'yes' === get_option( 'alg_wc_order_status_rules_use_wp_cron', 'yes' ) ) {
-				add_action( 'admin_notices',                           array( $this, 'check_if_wp_crons_disabled' ) );
 				add_action( 'init',                                    array( $this, 'schedule_cron' ) );
 				add_action( 'alg_wc_order_status_rules_process_rules', array( $this, 'process_rules_cron' ) );
 				add_filter( 'cron_schedules',                          array( $this, 'add_custom_cron_schedules' ) );
@@ -139,27 +138,6 @@ class Alg_WC_Order_Status_Rules_Crons {
 			} elseif ( $event_timestamp ) {
 				wp_unschedule_event( $event_timestamp, 'alg_wc_order_status_rules_process_rules', array( $schedule_id ) );
 			}
-		}
-	}
-
-	/**
-	 * check_if_wp_crons_disabled.
-	 *
-	 * @version 1.3.0
-	 * @since   1.0.0
-	 *
-	 * @todo    [maybe] (desc) better description
-	 * @todo    [maybe] (desc) display this in settings only (i.e. not `admin_notices`)
-	 */
-	function check_if_wp_crons_disabled() {
-		if ( defined( 'DISABLE_WP_CRON' ) && DISABLE_WP_CRON ) {
-			echo '<div class="notice notice-error"><p>' .
-				'<strong>' . __( 'Order Status Rules for WooCommerce plugin', 'order-status-rules-for-woocommerce' ) . '</strong>' . '<br>' .
-				sprintf( __( 'Crons (%s) are disabled on your server! Crons must be enabled for order status rules to be processed. You can read more <a target="_blank" href="%s">here</a>.', 'order-status-rules-for-woocommerce' ),
-					'<code>DISABLE_WP_CRON</code>', 'https://wordpress.org/support/article/editing-wp-config-php/#disable-cron-and-cron-timeout' ) . '<br>' .
-				sprintf( __( 'Alternatively you can use "real" (i.e. server) cron jobs. To do this, you need to enable "%s" option in <a href="%s">plugin settings</a> and set up a cron job on your server.', 'order-status-rules-for-woocommerce' ),
-					__( 'Allow rules processing via URL', 'order-status-rules-for-woocommerce' ), admin_url( 'admin.php?page=wc-settings&tab=alg_wc_order_status_rules' ) ) .
-			'</p></div>';
 		}
 	}
 

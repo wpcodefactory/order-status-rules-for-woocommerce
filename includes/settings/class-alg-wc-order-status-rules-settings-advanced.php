@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Advanced Section Settings
  *
- * @version 2.8.0
+ * @version 3.0.0
  * @since   1.5.0
  *
  * @author  Algoritmika Ltd.
@@ -31,13 +31,17 @@ class Alg_WC_Order_Status_Rules_Settings_Advanced extends Alg_WC_Order_Status_Ru
 	/**
 	 * get_settings.
 	 *
-	 * @version 2.8.0
+	 * @version 3.0.0
 	 * @since   1.5.0
 	 *
+	 * @todo    [now] (dev) `alg_wc_order_status_rules_hooks`: update default, e.g., add `woocommerce_checkout_order_processed`
+	 * @todo    [next] (dev) `alg_wc_order_status_rules_hooks`: `woocommerce_payment_complete`
+	 * @todo    [next] (dev) `alg_wc_order_status_rules_hooks`: `woocommerce_order_status_pending`, etc. (`woocommerce_order_status_ . $status_to`)
+	 * @todo    [next] (dev) `alg_wc_order_status_rules_hooks`: order updated action, etc.?
 	 * @todo    [next] (desc) Orders sorting
-	 * @todo    [maybe] (dev) Orders sorting: Order by: add `none`, `name`, `type`?
 	 * @todo    [next] (dev) `alg_wc_order_status_rules_non_matching`: default to `use_last_record`?
 	 * @todo    [later] (desc) `alg_wc_order_status_rules_non_matching`: better desc?
+	 * @todo    [maybe] (dev) Orders sorting: Order by: add `none`, `name`, `type`?
 	 * @todo    [maybe] (dev) `alg_wc_order_status_rules_non_matching`: add `use_date_created` and/or `use_date_modified` options
 	 * @todo    [maybe] (dev) My Account: "... next status change is scheduled on..."
 	 * @todo    [maybe] (desc) `alg_wc_order_status_rules_compatibility_doctreat`: better desc, e.g. add link to the theme?
@@ -85,7 +89,10 @@ class Alg_WC_Order_Status_Rules_Settings_Advanced extends Alg_WC_Order_Status_Ru
 				'type'     => 'multiselect',
 				'class'    => 'chosen_select',
 				'options'  => apply_filters( 'alg_wc_order_status_rules_hooks', array(
-					'woocommerce_order_status_changed' => __( 'Order status changed', 'order-status-rules-for-woocommerce' ),
+					'woocommerce_order_status_changed'            => __( 'Order status changed', 'order-status-rules-for-woocommerce' ),
+					'woocommerce_checkout_order_processed'        => __( 'Checkout order processed', 'order-status-rules-for-woocommerce' ),
+					'woocommerce_thankyou'                        => __( '"Thank you" (i.e., "Order received") page', 'order-status-rules-for-woocommerce' ),
+					'alg_wc_order_status_rules_shop_order_screen' => __( 'Admin "Edit order" page', 'order-status-rules-for-woocommerce' ),
 				) ),
 			),
 			array(
@@ -171,7 +178,9 @@ class Alg_WC_Order_Status_Rules_Settings_Advanced extends Alg_WC_Order_Status_Ru
 					sprintf( __( 'If you are going to disable both periodical processing options, you may want to enable the %s option and set up "real" (i.e. server) cron job.', 'order-status-rules-for-woocommerce' ),
 						'<span style="text-decoration:underline;">' . __( 'Allow rules processing via URL', 'order-status-rules-for-woocommerce' ) . '</span>' ) . ' ' .
 					sprintf( __( 'Also you can use our %s tool manually.', 'order-status-rules-for-woocommerce' ),
-						'<a target="_blank" href="' . admin_url( 'admin.php?page=wc-settings&tab=alg_wc_order_status_rules&section' ) . '">' . __( 'Run all rules now', 'order-status-rules-for-woocommerce' ) . '</a>' ),
+						'<a target="_blank" href="' . admin_url( 'admin.php?page=wc-settings&tab=alg_wc_order_status_rules&section' ) . '">' . __( 'Run all rules now', 'order-status-rules-for-woocommerce' ) . '</a>' ) .
+					( defined( 'DISABLE_WP_CRON' ) && DISABLE_WP_CRON ?
+						'<br>' . '<strong>' . sprintf( __( 'Crons (%s) are disabled on your site!', 'order-status-rules-for-woocommerce' ), '<code>DISABLE_WP_CRON</code>' ) . '</strong>' : '' ),
 				'type'     => 'title',
 				'id'       => 'alg_wc_order_status_rules_periodical_options',
 			),

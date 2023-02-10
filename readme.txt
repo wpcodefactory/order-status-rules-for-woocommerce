@@ -3,7 +3,7 @@ Contributors: wpcodefactory, algoritmika, anbinder
 Tags: woocommerce, order status, order, status, woo commerce
 Requires at least: 4.4
 Tested up to: 6.1
-Stable tag: 2.9.3
+Stable tag: 3.0.0
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -25,7 +25,7 @@ For example: automatically change order status to cancelled, when 24 hours have 
 * Required **shipping methods**.
 * Required billing and shipping **countries**.
 * Required **products**, product **categories**, product **tags** or product **stock status**.
-* Required **users**, user **roles**, or billing **emails**.
+* Required **users**, user **roles** or billing **emails**.
 * Required **coupons**.
 * And more...
 
@@ -41,6 +41,14 @@ For example: automatically change order status to cancelled, when 24 hours have 
 3. Start by visiting plugin settings at "WooCommerce > Settings > Order Status Rules".
 
 == Changelog ==
+
+= 3.0.0 - 10/02/2023 =
+* Fix - Admin settings - General - Reset Settings - Now displaying the correct "Total rules" on settings reset.
+* Dev - Admin - `DISABLE_WP_CRON` notice removed. Instead, a similar message added to the "Advanced > Periodical Processing Options" section description.
+* Dev - Advanced - Rules processing hooks - "Checkout order processed" option added.
+* Dev - Advanced - Rules processing hooks - '"Thank you" (i.e., "Order received") page' option added.
+* Dev - Advanced - Rules processing hooks - 'Admin "Edit order" page' option added.
+* Dev - Order status change history - `get_order_status_change_history()` - Code refactoring.
 
 = 2.9.3 - 23/01/2023 =
 * Fix - Advanced - Rules processing hooks - Now properly handling the `process_rules_for_order()` callback on order status update (`woocommerce_order_status_changed` action).

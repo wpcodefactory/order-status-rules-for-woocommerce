@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Core Class
  *
- * @version 2.9.3
+ * @version 3.0.0
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -17,13 +17,11 @@ class Alg_WC_Order_Status_Rules_Core {
 	/**
 	 * Constructor.
 	 *
-	 * @version 2.8.0
+	 * @version 3.0.0
 	 * @since   1.0.0
 	 *
 	 * @todo    [next] (dev) remove `alg_wc_order_status_rules_plugin_enabled` (or move `process_rules_manual`, etc. inside the `alg_wc_order_status_rules_plugin_enabled`)
 	 * @todo    [maybe] (dev) remove rules with trigger set to zero from crons?
-	 * @todo    [now] (dev) `process_rules_for_order` on admin order edit page, order updated action, etc.?
-	 * @todo    [maybe] (dev) `process_rules_for_order` on `woocommerce_order_status_changed`: use `woocommerce_order_status_ . $status_to` filter instead?
 	 * @todo    [maybe] (dev) pre-check for possible infinite loops in rules
 	 */
 	function __construct() {
@@ -33,10 +31,13 @@ class Alg_WC_Order_Status_Rules_Core {
 			// Track order status change
 			add_action( 'woocommerce_order_status_changed', array( $this, 'save_status_change' ), 1, 4 );
 
-			// Hooks (e.g. immediately process rules on any order status change)
+			// Hooks (e.g., immediately process rules on any order status change)
 			$hooks = get_option( 'alg_wc_order_status_rules_hooks', array( 'woocommerce_order_status_changed' ) );
 			foreach ( $hooks as $hook ) {
 				add_action( $hook, array( $this, 'process_rules_for_order' ) );
+				if ( 'alg_wc_order_status_rules_shop_order_screen' === $hook ) {
+					add_action( 'admin_head', array( $this, 'shop_order_screen' ) );
+				}
 			}
 
 			// Process rules via URL
@@ -92,6 +93,20 @@ class Alg_WC_Order_Status_Rules_Core {
 			$this->do_debug = ( 'yes' === get_option( 'alg_wc_order_status_rules_debug', 'no' ) );
 		}
 		return $this->do_debug;
+	}
+
+	/**
+	 * shop_order_screen.
+	 *
+	 * @version 3.0.0
+	 * @since   3.0.0
+	 *
+	 * @todo    [next] (dev) maybe there is an easier way, e.g., use some existing action instead?
+	 */
+	function shop_order_screen() {
+		if ( function_exists( 'get_current_screen' ) && ( $current_screen = get_current_screen() ) && 'shop_order' === $current_screen->id ) {
+			do_action( 'alg_wc_order_status_rules_shop_order_screen', get_the_ID() );
+		}
 	}
 
 	/**
@@ -188,7 +203,7 @@ class Alg_WC_Order_Status_Rules_Core {
 	/**
 	 * get_order_status_change_history.
 	 *
-	 * @version 1.7.0
+	 * @version 3.0.0
 	 * @since   1.4.0
 	 *
 	 * @todo    [next] (dev) use `getTimestamp()`, not `getOffsetTimestamp()`
@@ -196,8 +211,7 @@ class Alg_WC_Order_Status_Rules_Core {
 	function get_order_status_change_history( $order_id ) {
 		$data = get_post_meta( $order_id, '_alg_wc_order_status_change_history', true );
 		if ( empty( $data ) && 'do_nothing' != $this->on_no_history() ) {
-			$order = wc_get_order( $order_id );
-			if ( ( $date = ( 'use_date_created' === $this->on_no_history() ? $order->get_date_created() : $order->get_date_modified() ) ) ) {
+			if ( ( $order = wc_get_order( $order_id ) ) && ( $date = ( 'use_date_created' === $this->on_no_history() ? $order->get_date_created() : $order->get_date_modified() ) ) ) {
 				$data = array(
 					array(
 						'time' => $date->getOffsetTimestamp(),
@@ -344,10 +358,12 @@ class Alg_WC_Order_Status_Rules_Core {
 	 * @version 2.9.3
 	 * @since   2.2.0
 	 *
+	 * @todo    [now] (dev) check if it's a valid order at the beginning (i.e., `( $order = wc_get_order( $order_id ) )`)
 	 * @todo    [next] (dev) `$unit = ( isset( $this->options['time_trigger_units'][ $i ] ) ? $this->options['time_trigger_units'][ $i ] : 'hour' );`
 	 * @todo    [maybe] (dev) `remove_action`: check with `has_action()`?
 	 */
 	function process_rules_for_order( $order_id ) {
+
 		$this->init_options();
 
 		if ( $this->do_debug() ) {
@@ -452,6 +468,7 @@ class Alg_WC_Order_Status_Rules_Core {
 	 *
 	 * @todo    [next] (dev) when `$from` doesn't exist `woocommerce_order_status_changed` is not called; check `do_action( 'woocommerce_order_status_' . $status_transition['to'], $this->get_id(), $this );`
 	 * @todo    [next] (dev) save `time()`, not `current_time()`
+	 * @todo    [maybe] (dev) run this on more actions, e.g., `woocommerce_checkout_order_processed`?
 	 * @todo    [maybe] (dev) mark status change as "changed by plugin" (vs "changed manually/otherwise")
 	 */
 	function save_status_change( $order_id, $from, $to, $order = false ) {
