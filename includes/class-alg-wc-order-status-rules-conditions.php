@@ -61,7 +61,7 @@ class Alg_WC_Order_Status_Rules_Conditions {
 	 * @version 2.9.0
 	 * @since   2.8.0
 	 *
-	 * @todo    [now] (dev) calculate only if needed, i.e., if the condition(s) is enabled, etc.
+	 * @todo    (dev) calculate only if needed, i.e., if the condition(s) is enabled, etc.
 	 */
 	function check_min_max_amounts( $options, $rule_id, $order ) {
 
@@ -140,7 +140,7 @@ class Alg_WC_Order_Status_Rules_Conditions {
 	 * @version 2.9.0
 	 * @since   2.8.0
 	 *
-	 * @todo    [next] (feature) states?
+	 * @todo    (feature) states?
 	 */
 	function check_data( $options, $rule_id, $order ) {
 		return (
@@ -236,7 +236,7 @@ class Alg_WC_Order_Status_Rules_Conditions {
 	 * @version 2.9.0
 	 * @since   2.8.0
 	 *
-	 * @todo    [maybe] (feature) `exclude_all`
+	 * @todo    (feature) `exclude_all`
 	 */
 	function check_products( $options, $rule_id, $order ) {
 		foreach ( array( 'products', 'product_cats', 'product_tags', 'product_stock_status' ) as $type ) {
@@ -304,7 +304,7 @@ class Alg_WC_Order_Status_Rules_Conditions {
 	 * @version 2.8.0
 	 * @since   1.9.0
 	 *
-	 * @todo    [next] (dev) `paying_customer`: check if has any previous orders (vs `get_is_paying_customer()`)?
+	 * @todo    (dev) `paying_customer`: check if has any previous orders (vs `get_is_paying_customer()`)?
 	 */
 	function check_user( $user, $values, $type ) {
 		switch ( $type ) {
@@ -341,7 +341,7 @@ class Alg_WC_Order_Status_Rules_Conditions {
 	 * @version 2.4.0
 	 * @since   2.4.0
 	 *
-	 * @todo    [next] (dev) `alg_wc_order_status_rules_allow_multiple_order_meta`: make it always `yes`, i.e. remove the option?
+	 * @todo    (dev) `alg_wc_order_status_rules_allow_multiple_order_meta`: make it always `yes`, i.e. remove the option?
 	 */
 	function check_order_meta( $order, $meta_key, $meta_value, $meta_value_is_multiple ) {
 		$_meta_value = get_post_meta( $order->get_id(), $meta_key, true );
@@ -371,8 +371,8 @@ class Alg_WC_Order_Status_Rules_Conditions {
 	 * @version 2.9.3
 	 * @since   2.8.0
 	 *
-	 * @todo    [next] (feature) `relative_date_selector`
-	 * @todo    [next] (feature) `time`
+	 * @todo    (feature) `relative_date_selector`
+	 * @todo    (feature) `time`
 	 */
 	function check_dates( $options, $rule_id, $order ) {
 		$date_created = ( ( $date_created = $order->get_date_created() ) ? $date_created->getTimestamp() : 0 );
@@ -400,7 +400,7 @@ class Alg_WC_Order_Status_Rules_Conditions {
 	 * @version 2.9.0
 	 * @since   2.8.0
 	 *
-	 * @todo    [next] (feature) `order_function`?
+	 * @todo    (feature) `order_function`?
 	 */
 	function check( $options, $rule_id, $args ) {
 		foreach ( array( 'min_max_amounts', 'gateways', 'shipping_methods', 'data', 'products', 'coupons', 'users', 'meta', 'dates' ) as $group ) {

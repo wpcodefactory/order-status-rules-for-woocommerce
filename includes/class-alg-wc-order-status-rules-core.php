@@ -20,9 +20,9 @@ class Alg_WC_Order_Status_Rules_Core {
 	 * @version 3.0.0
 	 * @since   1.0.0
 	 *
-	 * @todo    [next] (dev) remove `alg_wc_order_status_rules_plugin_enabled` (or move `process_rules_manual`, etc. inside the `alg_wc_order_status_rules_plugin_enabled`)
-	 * @todo    [maybe] (dev) remove rules with trigger set to zero from crons?
-	 * @todo    [maybe] (dev) pre-check for possible infinite loops in rules
+	 * @todo    (dev) remove `alg_wc_order_status_rules_plugin_enabled` (or move `process_rules_manual`, etc. inside the `alg_wc_order_status_rules_plugin_enabled`)
+	 * @todo    (dev) remove rules with trigger set to zero from crons?
+	 * @todo    (dev) pre-check for possible infinite loops in rules
 	 */
 	function __construct() {
 
@@ -101,7 +101,7 @@ class Alg_WC_Order_Status_Rules_Core {
 	 * @version 3.0.0
 	 * @since   3.0.0
 	 *
-	 * @todo    [next] (dev) maybe there is an easier way, e.g., use some existing action instead?
+	 * @todo    (dev) maybe there is an easier way, e.g., use some existing action instead?
 	 */
 	function shop_order_screen() {
 		if ( function_exists( 'get_current_screen' ) && ( $current_screen = get_current_screen() ) && 'shop_order' === $current_screen->id ) {
@@ -128,8 +128,8 @@ class Alg_WC_Order_Status_Rules_Core {
 	 * @version 1.3.0
 	 * @since   1.3.0
 	 *
-	 * @todo    [maybe] (dev) optional "key" (for security)
-	 * @todo    [maybe] (dev) optional "rule ID to process"
+	 * @todo    (dev) optional "key" (for security)
+	 * @todo    (dev) optional "rule ID to process"
 	 */
 	function process_rules_url() {
 		if ( isset( $_REQUEST['alg_wc_order_status_rules_process_rules'] ) ) {
@@ -194,7 +194,7 @@ class Alg_WC_Order_Status_Rules_Core {
 	 * @version 2.4.0
 	 * @since   1.0.1
 	 *
-	 * @todo    [next] (dev) rename `get_time_remaining()` to `get_seconds_remaining()`, `$last_record_time` to `$start`, `$trigger_time` to `$offset`, `get_trigger_time_skip_days()` to `get_offset_skip_days()`?
+	 * @todo    (dev) rename `get_time_remaining()` to `get_seconds_remaining()`, `$last_record_time` to `$start`, `$trigger_time` to `$offset`, `get_trigger_time_skip_days()` to `get_offset_skip_days()`?
 	 */
 	function get_time_remaining( $last_record_time, $trigger_time, $skip_days = false, $current_time = false ) {
 		return ( $last_record_time + $this->get_trigger_time_skip_days( $last_record_time, $trigger_time, $skip_days ) - ( $current_time ? $current_time : current_time( 'timestamp' ) ) );
@@ -206,7 +206,7 @@ class Alg_WC_Order_Status_Rules_Core {
 	 * @version 3.0.0
 	 * @since   1.4.0
 	 *
-	 * @todo    [next] (dev) use `getTimestamp()`, not `getOffsetTimestamp()`
+	 * @todo    (dev) use `getTimestamp()`, not `getOffsetTimestamp()`
 	 */
 	function get_order_status_change_history( $order_id ) {
 		$data = get_post_meta( $order_id, '_alg_wc_order_status_change_history', true );
@@ -230,10 +230,10 @@ class Alg_WC_Order_Status_Rules_Core {
 	 * @version 2.9.0
 	 * @since   1.6.0
 	 *
-	 * @todo    [next] [!] (dev) call this only once, e.g. in constructor, or on `init` action
-	 * @todo    [next] (dev) `$this->options`: rename?
-	 * @todo    [next] (dev) `$this->options['from']`: redo?
-	 * @todo    [maybe] (dev) code refactoring?
+	 * @todo    (dev) call this only once, e.g. in constructor, or on `init` action
+	 * @todo    (dev) `$this->options`: rename?
+	 * @todo    (dev) `$this->options['from']`: redo?
+	 * @todo    (dev) code refactoring?
 	 */
 	function init_options() {
 		if ( ! isset( $this->options ) ) {
@@ -291,7 +291,7 @@ class Alg_WC_Order_Status_Rules_Core {
 	 * @version 2.8.0
 	 * @since   1.6.0
 	 *
-	 * @todo    [next] (dev) safe-check: `status_from != status_to`
+	 * @todo    (dev) safe-check: `status_from != status_to`
 	 */
 	function do_apply_rule( $rule_id, $args ) {
 		$this->init_options();
@@ -313,12 +313,12 @@ class Alg_WC_Order_Status_Rules_Core {
 	 *
 	 * @see     https://github.com/woocommerce/woocommerce/wiki/wc_get_orders-and-WC_Order_Query
 	 *
-	 * @todo    [next] (dev) code refactoring: `args`, `step`, `skip`?
-	 * @todo    [next] (dev) optimization: stop on `( $last_record['to'] !== $args['order_status'] && ! $this->do_use_last_record )`
-	 * @todo    [next] (dev) optimization: `$this->options['from']`: enabled rules only
-	 * @todo    [next] (dev) optimization: meta query: `_alg_wc_order_status_change_history` not empty? (only if `'do_nothing' === $this->on_no_history()`)
-	 * @todo    [next] (dev) log: add more info
-	 * @todo    [next] (desc) use `alg_wc_order_status_rules_process_rules_time_run`
+	 * @todo    (dev) code refactoring: `args`, `step`, `skip`?
+	 * @todo    (dev) optimization: stop on `( $last_record['to'] !== $args['order_status'] && ! $this->do_use_last_record )`
+	 * @todo    (dev) optimization: `$this->options['from']`: enabled rules only
+	 * @todo    (dev) optimization: meta query: `_alg_wc_order_status_change_history` not empty? (only if `'do_nothing' === $this->on_no_history()`)
+	 * @todo    (dev) log: add more info
+	 * @todo    (desc) use `alg_wc_order_status_rules_process_rules_time_run`
 	 */
 	function process_rules( $do_die = true ) {
 		update_option( 'alg_wc_order_status_rules_process_rules_time_run', time() );
@@ -358,9 +358,9 @@ class Alg_WC_Order_Status_Rules_Core {
 	 * @version 2.9.3
 	 * @since   2.2.0
 	 *
-	 * @todo    [now] (dev) check if it's a valid order at the beginning (i.e., `( $order = wc_get_order( $order_id ) )`)
-	 * @todo    [next] (dev) `$unit = ( isset( $this->options['time_trigger_units'][ $i ] ) ? $this->options['time_trigger_units'][ $i ] : 'hour' );`
-	 * @todo    [maybe] (dev) `remove_action`: check with `has_action()`?
+	 * @todo    (dev) check if it's a valid order at the beginning (i.e., `( $order = wc_get_order( $order_id ) )`)
+	 * @todo    (dev) `$unit = ( isset( $this->options['time_trigger_units'][ $i ] ) ? $this->options['time_trigger_units'][ $i ] : 'hour' );`
+	 * @todo    (dev) `remove_action`: check with `has_action()`?
 	 */
 	function process_rules_for_order( $order_id ) {
 
@@ -466,10 +466,10 @@ class Alg_WC_Order_Status_Rules_Core {
 	 * @version 2.9.0
 	 * @since   1.0.0
 	 *
-	 * @todo    [next] (dev) when `$from` doesn't exist `woocommerce_order_status_changed` is not called; check `do_action( 'woocommerce_order_status_' . $status_transition['to'], $this->get_id(), $this );`
-	 * @todo    [next] (dev) save `time()`, not `current_time()`
-	 * @todo    [maybe] (dev) run this on more actions, e.g., `woocommerce_checkout_order_processed`?
-	 * @todo    [maybe] (dev) mark status change as "changed by plugin" (vs "changed manually/otherwise")
+	 * @todo    (dev) when `$from` doesn't exist `woocommerce_order_status_changed` is not called; check `do_action( 'woocommerce_order_status_' . $status_transition['to'], $this->get_id(), $this );`
+	 * @todo    (dev) save `time()`, not `current_time()`
+	 * @todo    (dev) run this on more actions, e.g., `woocommerce_checkout_order_processed`?
+	 * @todo    (dev) mark status change as "changed by plugin" (vs "changed manually/otherwise")
 	 */
 	function save_status_change( $order_id, $from, $to, $order = false ) {
 		$status_history = get_post_meta( $order_id, '_alg_wc_order_status_change_history', true );

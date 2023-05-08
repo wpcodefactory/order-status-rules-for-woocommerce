@@ -20,8 +20,8 @@ class Alg_WC_Order_Status_Rules_Crons {
 	 * @version 3.0.0
 	 * @since   1.4.0
 	 *
-	 * @todo    [next] (dev) `add_custom_cron_schedules`: only if `minutely`, `fifteen_minutes`, or `thirty_minutes` was selected
-	 * @todo    [maybe] (dev) better `unschedule_cron()` (maybe on settings save?)
+	 * @todo    (dev) `add_custom_cron_schedules`: only if `minutely`, `fifteen_minutes`, or `thirty_minutes` was selected
+	 * @todo    (dev) better `unschedule_cron()` (maybe on settings save?)
 	 */
 	function __construct() {
 		if ( 'yes' === get_option( 'alg_wc_order_status_rules_plugin_enabled', 'yes' ) ) {
@@ -41,7 +41,7 @@ class Alg_WC_Order_Status_Rules_Crons {
 	 * @version 1.4.0
 	 * @since   1.4.0
 	 *
-	 * @todo    [maybe] (desc) `update_option( 'alg_wc_order_status_rules_process_rules_cron_time', time() );`
+	 * @todo    (desc) `update_option( 'alg_wc_order_status_rules_process_rules_cron_time', time() );`
 	 */
 	function process_rules_cron() {
 		alg_wc_order_status_rules()->core->process_rules();
@@ -53,8 +53,8 @@ class Alg_WC_Order_Status_Rules_Crons {
 	 * @version 1.4.0
 	 * @since   1.4.0
 	 *
-	 * @todo    [next] (dev) move this to `core`? (no need for `core->crons` then)
-	 * @todo    [maybe] (desc) better titles?
+	 * @todo    (dev) move this to `core`? (no need for `core->crons` then)
+	 * @todo    (desc) better titles?
 	 */
 	function get_schedules() {
 		return array(
@@ -76,7 +76,7 @@ class Alg_WC_Order_Status_Rules_Crons {
 	 *
 	 * @see     https://developer.wordpress.org/reference/functions/wp_get_schedules/
 	 *
-	 * @todo    [maybe] (dev) add more intervals?
+	 * @todo    (dev) add more intervals?
 	 */
 	function add_custom_cron_schedules( $schedules ) {
 		$schedules['minutely'] = array(
@@ -102,8 +102,8 @@ class Alg_WC_Order_Status_Rules_Crons {
 	 *
 	 * @see     https://developer.wordpress.org/reference/functions/wp_unschedule_event/
 	 *
-	 * @todo    [maybe] (dev) also run on plugin deactivation?
-	 * @todo    [maybe] (dev) remove `alg_wc_order_status_rules_process_rules_time_schedule`
+	 * @todo    (dev) also run on plugin deactivation?
+	 * @todo    (dev) remove `alg_wc_order_status_rules_process_rules_time_schedule`
 	 */
 	function unschedule_cron() {
 		foreach ( $this->get_schedules() as $schedule_id => $schedule_title ) {
@@ -123,8 +123,8 @@ class Alg_WC_Order_Status_Rules_Crons {
 	 *
 	 * @see     https://developer.wordpress.org/reference/functions/wp_schedule_event/
 	 *
-	 * @todo    [maybe] (dev) separate events for each rule
-	 * @todo    [maybe] (dev) remove `alg_wc_order_status_rules_process_rules_time_schedule`
+	 * @todo    (dev) separate events for each rule
+	 * @todo    (dev) remove `alg_wc_order_status_rules_process_rules_time_schedule`
 	 */
 	function schedule_cron() {
 		$selected_schedule = get_option( 'alg_wc_order_status_rules_wp_cron_schedule', 'hourly' );

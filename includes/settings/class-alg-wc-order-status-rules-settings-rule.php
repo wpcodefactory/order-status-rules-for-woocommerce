@@ -33,13 +33,13 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 	 * @version 2.9.1
 	 * @since   2.0.0
 	 *
-	 * @todo    [now] (desc) add description to each subsection
-	 * @todo    [next] (dev) AJAX: Product categories, Product tags, Payment gateways, Shipping methods, User roles
-	 * @todo    [next] (dev) `alg_wc_order_status_rules()->core->init_options()`?
-	 * @todo    [next] (desc) `alg_wc_order_status_rules_skip_days`: better desc
-	 * @todo    [later] (dev) group into more subsections?
-	 * @todo    [maybe] (desc) `alg_wc_order_status_rules_gateways`: better desc?
-	 * @todo    [maybe] (feature) `alg_wc_order_status_rules_gateways`, `alg_wc_order_status_rules_products`, etc.: add "exclude" options?
+	 * @todo    (desc) add description to each subsection
+	 * @todo    (dev) AJAX: Product categories, Product tags, Payment gateways, Shipping methods, User roles
+	 * @todo    (dev) `alg_wc_order_status_rules()->core->init_options()`?
+	 * @todo    (desc) `alg_wc_order_status_rules_skip_days`: better desc
+	 * @todo    (dev) group into more subsections?
+	 * @todo    (desc) `alg_wc_order_status_rules_gateways`: better desc?
+	 * @todo    (feature) `alg_wc_order_status_rules_gateways`, `alg_wc_order_status_rules_products`, etc.: add "exclude" options?
 	 */
 	function get_settings() {
 		$settings = array();

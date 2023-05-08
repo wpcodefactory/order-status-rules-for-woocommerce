@@ -54,8 +54,8 @@ class Alg_WC_Order_Status_Rules_Settings_Section {
 	 * @version 1.8.1
 	 * @since   1.8.1
 	 *
-	 * @todo    [next] (dev) move this to a separate js file
-	 * @todo    [next] (dev) load on needed pages only
+	 * @todo    (dev) move this to a separate js file
+	 * @todo    (dev) load on needed pages only
 	 */
 	function add_admin_script() {
 		?><script>
@@ -80,9 +80,9 @@ class Alg_WC_Order_Status_Rules_Settings_Section {
 	 * @version 1.4.0
 	 * @since   1.2.0
 	 *
-	 * @todo    [next] (desc) `alg_wc_order_status_rules_no_history`: better title and desc
-	 * @todo    [next] (desc) `crons`: desc ("... only when someone visits your site...")
-	 * @todo    [maybe] (desc) Advanced Options: better description?
+	 * @todo    (desc) `alg_wc_order_status_rules_no_history`: better title and desc
+	 * @todo    (desc) `crons`: desc ("... only when someone visits your site...")
+	 * @todo    (desc) Advanced Options: better description?
 	 */
 	function get_next_scheduled_desc() {
 		if (
@@ -166,7 +166,7 @@ class Alg_WC_Order_Status_Rules_Settings_Section {
 	 * @version 2.5.0
 	 * @since   2.5.0
 	 *
-	 * @todo    [maybe] (dev) add "Other" and/or "N/A" options?
+	 * @todo    (dev) add "Other" and/or "N/A" options?
 	 */
 	function get_gateways() {
 		$gateways = WC()->payment_gateways()->payment_gateways;
@@ -199,7 +199,7 @@ class Alg_WC_Order_Status_Rules_Settings_Section {
 	 * @version 2.5.0
 	 * @since   2.5.0
 	 *
-	 * @todo    [maybe] (desc) add term ID?
+	 * @todo    (desc) add term ID?
 	 */
 	function get_terms( $taxonomy ) {
 		$terms  = get_option( "alg_wc_order_status_rules_{$taxonomy}s", array() );

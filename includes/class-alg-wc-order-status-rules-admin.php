@@ -46,7 +46,7 @@ class Alg_WC_Order_Status_Rules_Admin {
 	 * @version 2.7.2
 	 * @since   2.7.2
 	 *
-	 * @todo    [next] [!] (dev) replace `guest` key with `0` key?
+	 * @todo    (dev) replace `guest` key with `0` key?
 	 */
 	function wc_customer_search_guest( $found_customers ) {
 		if ( isset( $_GET['term'], $_GET['exclude'] ) && 'alg_wc_order_status_rules' === wc_clean( $_GET['exclude'] ) ) {
@@ -82,7 +82,7 @@ class Alg_WC_Order_Status_Rules_Admin {
 	 * @version 2.8.0
 	 * @since   1.0.0
 	 *
-	 * @todo    [later] (desc) `( ! $is_status_match )`: better desc
+	 * @todo    (desc) `( ! $is_status_match )`: better desc
 	 */
 	function create_status_change_meta_box() {
 		$order_id       = get_the_ID();

@@ -20,7 +20,7 @@ class Alg_WC_Order_Status_Rules_My_Account {
 	 * @version 1.8.0
 	 * @since   1.8.0
 	 *
-	 * @todo    [maybe] (feature) additional "Position": `do_action( 'woocommerce_before_account_orders' || 'woocommerce_after_account_orders', $has_orders );`
+	 * @todo    (feature) additional "Position": `do_action( 'woocommerce_before_account_orders' || 'woocommerce_after_account_orders', $has_orders );`
 	 */
 	function __construct() {
 		if ( 'yes' === get_option( 'alg_wc_osr_my_account_orders_status_history_enabled', 'no' ) ) {
@@ -40,7 +40,7 @@ class Alg_WC_Order_Status_Rules_My_Account {
 	 *
 	 * @see     https://github.com/woocommerce/woocommerce/blob/5.5.2/includes/wc-account-functions.php#L192
 	 *
-	 * @todo    [later] (feature) customizable column position
+	 * @todo    (feature) customizable column position
 	 */
 	function add_status_history_column( $columns ) {
 		$_title   = get_option( 'alg_wc_osr_my_account_orders_status_history_column_title', __( 'History', 'order-status-rules-for-woocommerce' ) );
@@ -67,7 +67,7 @@ class Alg_WC_Order_Status_Rules_My_Account {
 	 *
 	 * @see     https://github.com/woocommerce/woocommerce/blob/5.5.2/templates/myaccount/orders.php#L45
 	 *
-	 * @todo    [next] (dev) `wc_get_order_status_name()`: use everywhere
+	 * @todo    (dev) `wc_get_order_status_name()`: use everywhere
 	 */
 	function status_history_column( $order ) {
 		$templates      = get_option( 'alg_wc_osr_my_account_orders_status_history_templates', array() );

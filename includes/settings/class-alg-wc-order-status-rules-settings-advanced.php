@@ -20,7 +20,7 @@ class Alg_WC_Order_Status_Rules_Settings_Advanced extends Alg_WC_Order_Status_Ru
 	 * @version 2.0.0
 	 * @since   1.5.0
 	 *
-	 * @todo    [next] (dev) split into separate sections: "Advanced", "My account", etc.
+	 * @todo    (dev) split into separate sections: "Advanced", "My account", etc.
 	 */
 	function __construct() {
 		$this->id   = 'advanced';
@@ -34,18 +34,18 @@ class Alg_WC_Order_Status_Rules_Settings_Advanced extends Alg_WC_Order_Status_Ru
 	 * @version 3.0.0
 	 * @since   1.5.0
 	 *
-	 * @todo    [now] (dev) `alg_wc_order_status_rules_hooks`: update default, e.g., add `woocommerce_checkout_order_processed`
-	 * @todo    [next] (dev) `alg_wc_order_status_rules_hooks`: `woocommerce_payment_complete`
-	 * @todo    [next] (dev) `alg_wc_order_status_rules_hooks`: `woocommerce_order_status_pending`, etc. (`woocommerce_order_status_ . $status_to`)
-	 * @todo    [next] (dev) `alg_wc_order_status_rules_hooks`: order updated action, etc.?
-	 * @todo    [next] (desc) Orders sorting
-	 * @todo    [next] (dev) `alg_wc_order_status_rules_non_matching`: default to `use_last_record`?
-	 * @todo    [later] (desc) `alg_wc_order_status_rules_non_matching`: better desc?
-	 * @todo    [maybe] (dev) Orders sorting: Order by: add `none`, `name`, `type`?
-	 * @todo    [maybe] (dev) `alg_wc_order_status_rules_non_matching`: add `use_date_created` and/or `use_date_modified` options
-	 * @todo    [maybe] (dev) My Account: "... next status change is scheduled on..."
-	 * @todo    [maybe] (desc) `alg_wc_order_status_rules_compatibility_doctreat`: better desc, e.g. add link to the theme?
-	 * @todo    [maybe] (desc) `alg_wc_order_status_rules_disabled_conditions`: better desc?
+	 * @todo    (dev) `alg_wc_order_status_rules_hooks`: update default, e.g., add `woocommerce_checkout_order_processed`
+	 * @todo    (dev) `alg_wc_order_status_rules_hooks`: `woocommerce_payment_complete`
+	 * @todo    (dev) `alg_wc_order_status_rules_hooks`: `woocommerce_order_status_pending`, etc. (`woocommerce_order_status_ . $status_to`)
+	 * @todo    (dev) `alg_wc_order_status_rules_hooks`: order updated action, etc.?
+	 * @todo    (desc) Orders sorting
+	 * @todo    (dev) `alg_wc_order_status_rules_non_matching`: default to `use_last_record`?
+	 * @todo    (desc) `alg_wc_order_status_rules_non_matching`: better desc?
+	 * @todo    (dev) Orders sorting: Order by: add `none`, `name`, `type`?
+	 * @todo    (dev) `alg_wc_order_status_rules_non_matching`: add `use_date_created` and/or `use_date_modified` options
+	 * @todo    (dev) My Account: "... next status change is scheduled on..."
+	 * @todo    (desc) `alg_wc_order_status_rules_compatibility_doctreat`: better desc, e.g. add link to the theme?
+	 * @todo    (desc) `alg_wc_order_status_rules_disabled_conditions`: better desc?
 	 */
 	function get_settings() {
 
