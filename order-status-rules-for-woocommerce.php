@@ -3,12 +3,12 @@
 Plugin Name: Order Status Rules for WooCommerce
 Plugin URI: https://wpfactory.com/item/order-status-rules-for-woocommerce/
 Description: Automate WooCommerce order statuses. Beautifully.
-Version: 3.0.1
+Version: 3.0.2
 Author: WPFactory
 Author URI: https://wpfactory.com
 Text Domain: order-status-rules-for-woocommerce
 Domain Path: /langs
-WC tested up to: 7.6
+WC tested up to: 7.8
 */
 
 defined( 'ABSPATH' ) || exit;
