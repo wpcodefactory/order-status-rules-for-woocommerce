@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Core Class
  *
- * @version 3.0.0
+ * @version 3.0.3
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -17,7 +17,7 @@ class Alg_WC_Order_Status_Rules_Core {
 	/**
 	 * Constructor.
 	 *
-	 * @version 3.0.0
+	 * @version 3.0.3
 	 * @since   1.0.0
 	 *
 	 * @todo    (dev) remove `alg_wc_order_status_rules_plugin_enabled` (or move `process_rules_manual`, etc. inside the `alg_wc_order_status_rules_plugin_enabled`)
@@ -34,7 +34,8 @@ class Alg_WC_Order_Status_Rules_Core {
 			// Hooks (e.g., immediately process rules on any order status change)
 			$hooks = get_option( 'alg_wc_order_status_rules_hooks', array( 'woocommerce_order_status_changed' ) );
 			foreach ( $hooks as $hook ) {
-				add_action( $hook, array( $this, 'process_rules_for_order' ) );
+				$priority = apply_filters( 'alg_wc_order_status_rules_hooks_priority', 10, $hook );
+				add_action( $hook, array( $this, 'process_rules_for_order' ), $priority );
 				if ( 'alg_wc_order_status_rules_shop_order_screen' === $hook ) {
 					add_action( 'admin_head', array( $this, 'shop_order_screen' ) );
 				}

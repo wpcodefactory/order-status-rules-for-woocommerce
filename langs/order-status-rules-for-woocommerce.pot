@@ -30,7 +30,7 @@ msgid "To"
 msgstr ""
 
 #: includes/class-alg-wc-order-status-rules-admin.php:130
-#: includes/class-alg-wc-order-status-rules-core.php:407
+#: includes/class-alg-wc-order-status-rules-core.php:408
 #, php-format
 msgid "Rule #%s"
 msgstr ""
@@ -188,44 +188,44 @@ msgstr ""
 msgid "Date created after"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:151
-#: includes/class-alg-wc-order-status-rules-core.php:166
+#: includes/class-alg-wc-order-status-rules-core.php:152
+#: includes/class-alg-wc-order-status-rules-core.php:167
 msgid "\"Run all rules now\" tool executed."
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:326
+#: includes/class-alg-wc-order-status-rules-core.php:327
 msgid "Process rules: Started"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:327
+#: includes/class-alg-wc-order-status-rules-core.php:328
 msgid "manual"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:344
+#: includes/class-alg-wc-order-status-rules-core.php:345
 msgid "Process rules: Finished"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:370
+#: includes/class-alg-wc-order-status-rules-core.php:371
 #, php-format
 msgid "Process rules: Order #%s"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:379
+#: includes/class-alg-wc-order-status-rules-core.php:380
 #, php-format
 msgid "Process rules: Skipping order #%s"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:409
+#: includes/class-alg-wc-order-status-rules-core.php:410
 #, php-format
 msgid "Status updated by \"Order Status Rules for WooCommerce\" plugin (%s)."
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:423
+#: includes/class-alg-wc-order-status-rules-core.php:424
 #, php-format
 msgid "Process rules: Order #%s: from %s to %s (%s)"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:435
+#: includes/class-alg-wc-order-status-rules-core.php:436
 #, php-format
 msgid "Process rules: Order #%s: No order status change history found"
 msgstr ""
