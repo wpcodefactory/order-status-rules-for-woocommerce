@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Advanced Section Settings
  *
- * @version 3.0.0
+ * @version 3.1.0
  * @since   1.5.0
  *
  * @author  Algoritmika Ltd.
@@ -31,7 +31,7 @@ class Alg_WC_Order_Status_Rules_Settings_Advanced extends Alg_WC_Order_Status_Ru
 	/**
 	 * get_settings.
 	 *
-	 * @version 3.0.0
+	 * @version 3.1.0
 	 * @since   1.5.0
 	 *
 	 * @todo    (dev) `alg_wc_order_status_rules_hooks`: update default, e.g., add `woocommerce_checkout_order_processed`
@@ -50,6 +50,8 @@ class Alg_WC_Order_Status_Rules_Settings_Advanced extends Alg_WC_Order_Status_Ru
 	function get_settings() {
 
 		add_action( 'admin_footer', array( $this, 'add_admin_script' ) );
+
+		$order_status_options = array_merge( array( '' => __( 'No changes...', 'order-status-rules-for-woocommerce' ) ), wc_get_order_statuses() );
 
 		$advanced_settings = array(
 			array(
@@ -326,7 +328,80 @@ class Alg_WC_Order_Status_Rules_Settings_Advanced extends Alg_WC_Order_Status_Ru
 			),
 		);
 
-		return array_merge( $advanced_settings, $status_history_settings, $periodical_settings, $compatibility_settings, $my_account_settings );
+		$default_status_settings = array(
+			array(
+				'title'    => __( 'Default Order Status', 'order-status-rules-for-woocommerce' ),
+				'type'     => 'title',
+				'id'       => 'alg_wc_order_status_rules_default_order_status_options',
+			),
+			array(
+				'title'    => __( 'Default order status', 'order-status-rules-for-woocommerce' ),
+				'desc_tip' => sprintf( __( 'WooCommerce default: %s.', 'order-status-rules-for-woocommerce' ),
+					_x( 'Pending payment', 'Order status', 'woocommerce' ) ),
+				'id'       => 'alg_wc_order_status_rules_default_order_status',
+				'default'  => '',
+				'type'     => 'select',
+				'class'    => 'wc-enhanced-select',
+				'options'  => $order_status_options,
+			),
+			array(
+				'type'     => 'sectionend',
+				'id'       => 'alg_wc_order_status_rules_default_order_status_options',
+			),
+		);
+
+		$process_payment_settings = array(
+			array(
+				'title'    => __( 'Process Payment Order Status', 'order-status-rules-for-woocommerce' ),
+				'desc'     => __( 'Order status updated in gateway\'s "process payment" function.', 'order-status-rules-for-woocommerce' ),
+				'type'     => 'title',
+				'id'       => 'alg_wc_order_status_rules_process_payment_order_status_options',
+			),
+			array(
+				'title'    => __( 'Direct bank transfer', 'order-status-rules-for-woocommerce' ),
+				'desc_tip' => sprintf( __( 'WooCommerce default: %s.', 'order-status-rules-for-woocommerce' ),
+					_x( 'On hold', 'Order status', 'woocommerce' ) ),
+				'id'       => 'alg_wc_order_status_rules_bacs_process_payment_order_status',
+				'default'  => '',
+				'type'     => 'select',
+				'class'    => 'wc-enhanced-select',
+				'options'  => $order_status_options,
+			),
+			array(
+				'title'    => __( 'Check payments', 'order-status-rules-for-woocommerce' ),
+				'desc_tip' => sprintf( __( 'WooCommerce default: %s.', 'order-status-rules-for-woocommerce' ),
+					_x( 'On hold', 'Order status', 'woocommerce' ) ),
+				'id'       => 'alg_wc_order_status_rules_cheque_process_payment_order_status',
+				'default'  => '',
+				'type'     => 'select',
+				'class'    => 'wc-enhanced-select',
+				'options'  => $order_status_options,
+			),
+			array(
+				'title'    => __( 'Cash on delivery (COD)', 'order-status-rules-for-woocommerce' ),
+				'desc_tip' => sprintf( __( 'WooCommerce default: %s or %s (if the order contains a downloadable product).', 'order-status-rules-for-woocommerce' ),
+					_x( 'Processing', 'Order status', 'woocommerce' ), _x( 'On hold', 'Order status', 'woocommerce' ) ),
+				'id'       => 'alg_wc_order_status_rules_cod_process_payment_order_status',
+				'default'  => '',
+				'type'     => 'select',
+				'class'    => 'wc-enhanced-select',
+				'options'  => $order_status_options,
+			),
+			array(
+				'type'     => 'sectionend',
+				'id'       => 'alg_wc_order_status_rules_process_payment_order_status_options',
+			),
+		);
+
+		return array_merge(
+			$advanced_settings,
+			$status_history_settings,
+			$periodical_settings,
+			$compatibility_settings,
+			$my_account_settings,
+			$default_status_settings,
+			$process_payment_settings
+		);
 	}
 
 }

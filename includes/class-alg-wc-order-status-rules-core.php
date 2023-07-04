@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Core Class
  *
- * @version 3.0.3
+ * @version 3.1.0
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -17,7 +17,7 @@ class Alg_WC_Order_Status_Rules_Core {
 	/**
 	 * Constructor.
 	 *
-	 * @version 3.0.3
+	 * @version 3.1.0
 	 * @since   1.0.0
 	 *
 	 * @todo    (dev) remove `alg_wc_order_status_rules_plugin_enabled` (or move `process_rules_manual`, etc. inside the `alg_wc_order_status_rules_plugin_enabled`)
@@ -54,6 +54,12 @@ class Alg_WC_Order_Status_Rules_Core {
 
 			// Compatibility
 			require_once( 'class-alg-wc-order-status-rules-compatibility.php' );
+
+			// Default order status
+			require_once( 'class-alg-wc-order-status-rules-default-status.php' );
+
+			// Process payment order status
+			require_once( 'class-alg-wc-order-status-rules-process-payment.php' );
 
 		}
 
