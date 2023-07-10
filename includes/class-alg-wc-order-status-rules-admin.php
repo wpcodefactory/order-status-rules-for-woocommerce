@@ -85,11 +85,16 @@ class Alg_WC_Order_Status_Rules_Admin {
 	 * @todo    (desc) `( ! $is_status_match )`: better desc
 	 */
 	function create_status_change_meta_box() {
+
 		$order_id       = get_the_ID();
 		$status_history = $this->get_core()->get_order_status_change_history( $order_id );
+
 		if ( empty( $status_history ) ) {
+
 			echo '<p><em>' . __( 'No data.', 'order-status-rules-for-woocommerce' ) . '</p></em>';
+
 		} else {
+
 			// Status history
 			$date_format    = $this->get_core()->get_date_time_format();
 			$status_history = array_reverse( $status_history, true );
@@ -110,6 +115,7 @@ class Alg_WC_Order_Status_Rules_Admin {
 				echo "<tr><td>{$i}</td><td>{$time}</td><td>{$from}</td><td>{$to}</td></tr>";
 			}
 			echo '</table>';
+
 			// Scheduled status update
 			$this->get_core()->init_options();
 			$order               = wc_get_order( $order_id );
@@ -149,6 +155,7 @@ class Alg_WC_Order_Status_Rules_Admin {
 			if ( ! $is_rule_applied ) {
 				echo '<p><em>' . __( 'No order status rules are scheduled to be applied for the current order.', 'order-status-rules-for-woocommerce' ) . '</em></p>';
 			}
+
 			// Check matching order status
 			if ( ! $is_status_match ) {
 				echo '<p>';
@@ -165,7 +172,9 @@ class Alg_WC_Order_Status_Rules_Admin {
 						__( 'Advanced', 'order-status-rules-for-woocommerce' ) . '</a>' );
 				echo '</p>';
 			}
+
 		}
+
 	}
 
 }

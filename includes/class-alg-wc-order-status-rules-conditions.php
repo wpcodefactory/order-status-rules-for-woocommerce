@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Conditions Class
  *
- * @version 2.9.3
+ * @version 3.2.0
  * @since   2.8.0
  *
  * @author  Algoritmika Ltd.
@@ -338,13 +338,13 @@ class Alg_WC_Order_Status_Rules_Conditions {
 	/**
 	 * check_order_meta.
 	 *
-	 * @version 2.4.0
+	 * @version 3.2.0
 	 * @since   2.4.0
 	 *
 	 * @todo    (dev) `alg_wc_order_status_rules_allow_multiple_order_meta`: make it always `yes`, i.e. remove the option?
 	 */
 	function check_order_meta( $order, $meta_key, $meta_value, $meta_value_is_multiple ) {
-		$_meta_value = get_post_meta( $order->get_id(), $meta_key, true );
+		$_meta_value = $order->get_meta( $meta_key );
 		return ( 'yes' === $meta_value_is_multiple ? in_array( $_meta_value, explode( ',', $meta_value ) ) : $_meta_value === $meta_value );
 	}
 

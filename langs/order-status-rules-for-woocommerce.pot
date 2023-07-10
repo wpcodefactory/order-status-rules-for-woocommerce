@@ -8,81 +8,81 @@ msgstr ""
 msgid "Order Status History"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-admin.php:91
+#: includes/class-alg-wc-order-status-rules-admin.php:94
 msgid "No data."
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-admin.php:100
+#: includes/class-alg-wc-order-status-rules-admin.php:105
 msgid "Nr."
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-admin.php:101
+#: includes/class-alg-wc-order-status-rules-admin.php:106
 #: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:98
 msgid "Time"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-admin.php:102
+#: includes/class-alg-wc-order-status-rules-admin.php:107
 msgid "From"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-admin.php:103
+#: includes/class-alg-wc-order-status-rules-admin.php:108
 msgid "To"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-admin.php:130
-#: includes/class-alg-wc-order-status-rules-core.php:414
+#: includes/class-alg-wc-order-status-rules-admin.php:136
+#: includes/class-alg-wc-order-status-rules-core.php:424
 #, php-format
 msgid "Rule #%s"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-admin.php:133
+#: includes/class-alg-wc-order-status-rules-admin.php:139
 #, php-format
 msgid "Status scheduled to be updated from %s to %s (%s) on %s (i.e. %s)."
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-admin.php:139
+#: includes/class-alg-wc-order-status-rules-admin.php:145
 #, php-format
 msgid "in %s"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-admin.php:140
+#: includes/class-alg-wc-order-status-rules-admin.php:146
 msgid "now"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-admin.php:142
+#: includes/class-alg-wc-order-status-rules-admin.php:148
 #: includes/settings/class-alg-wc-order-status-rules-settings-section.php:102
 #, php-format
 msgid "Current time is %s."
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-admin.php:150
+#: includes/class-alg-wc-order-status-rules-admin.php:156
 msgid ""
 "No order status rules are scheduled to be applied for the current order."
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-admin.php:157
+#: includes/class-alg-wc-order-status-rules-admin.php:164
 msgid ""
 "Although the current order status does not match the last record in the "
 "order history, it will be used anyway."
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-admin.php:160
+#: includes/class-alg-wc-order-status-rules-admin.php:167
 msgid ""
 "The current order status does not match the last record in the order "
 "history! Order status rules will not be applied!"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-admin.php:162
+#: includes/class-alg-wc-order-status-rules-admin.php:169
 #, php-format
 msgid ""
 "To change this behaviour, please check the \"%s\" option in the %s section."
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-admin.php:163
+#: includes/class-alg-wc-order-status-rules-admin.php:170
 msgid "On non-matching order status"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-admin.php:165
+#: includes/class-alg-wc-order-status-rules-admin.php:172
 #: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:27
 msgid "Advanced"
 msgstr ""
@@ -193,39 +193,39 @@ msgstr ""
 msgid "\"Run all rules now\" tool executed."
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:333
+#: includes/class-alg-wc-order-status-rules-core.php:343
 msgid "Process rules: Started"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:334
+#: includes/class-alg-wc-order-status-rules-core.php:344
 msgid "manual"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:351
+#: includes/class-alg-wc-order-status-rules-core.php:361
 msgid "Process rules: Finished"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:377
+#: includes/class-alg-wc-order-status-rules-core.php:387
 #, php-format
 msgid "Process rules: Order #%s"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:386
+#: includes/class-alg-wc-order-status-rules-core.php:396
 #, php-format
 msgid "Process rules: Skipping order #%s"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:416
+#: includes/class-alg-wc-order-status-rules-core.php:426
 #, php-format
 msgid "Status updated by \"Order Status Rules for WooCommerce\" plugin (%s)."
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:430
+#: includes/class-alg-wc-order-status-rules-core.php:440
 #, php-format
 msgid "Process rules: Order #%s: from %s to %s (%s)"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:442
+#: includes/class-alg-wc-order-status-rules-core.php:452
 #, php-format
 msgid "Process rules: Order #%s: No order status change history found"
 msgstr ""
@@ -275,11 +275,11 @@ msgstr ""
 msgid "History"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules.php:130
+#: includes/class-alg-wc-order-status-rules.php:147
 msgid "Settings"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules.php:133
+#: includes/class-alg-wc-order-status-rules.php:150
 msgid "Go Pro"
 msgstr ""
 

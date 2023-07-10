@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Core Class
  *
- * @version 3.1.0
+ * @version 3.2.0
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -210,15 +210,23 @@ class Alg_WC_Order_Status_Rules_Core {
 	/**
 	 * get_order_status_change_history.
 	 *
-	 * @version 3.0.0
+	 * @version 3.2.0
 	 * @since   1.4.0
 	 *
 	 * @todo    (dev) use `getTimestamp()`, not `getOffsetTimestamp()`
 	 */
 	function get_order_status_change_history( $order_id ) {
-		$data = get_post_meta( $order_id, '_alg_wc_order_status_change_history', true );
+
+		$order = wc_get_order( $order_id );
+		if ( ! $order ) {
+			return false;
+		}
+
+		$data = $this->get_order_status_change_history_meta( $order );
+
 		if ( empty( $data ) && 'do_nothing' != $this->on_no_history() ) {
-			if ( ( $order = wc_get_order( $order_id ) ) && ( $date = ( 'use_date_created' === $this->on_no_history() ? $order->get_date_created() : $order->get_date_modified() ) ) ) {
+			$date = ( 'use_date_created' === $this->on_no_history() ? $order->get_date_created() : $order->get_date_modified() );
+			if ( $date ) {
 				$data = array(
 					array(
 						'time' => $date->getOffsetTimestamp(),
@@ -228,7 +236,9 @@ class Alg_WC_Order_Status_Rules_Core {
 				);
 			}
 		}
+
 		return $data;
+
 	}
 
 	/**
@@ -470,7 +480,7 @@ class Alg_WC_Order_Status_Rules_Core {
 	/**
 	 * save_status_change.
 	 *
-	 * @version 2.9.0
+	 * @version 3.2.0
 	 * @since   1.0.0
 	 *
 	 * @todo    (dev) when `$from` doesn't exist `woocommerce_order_status_changed` is not called; check `do_action( 'woocommerce_order_status_' . $status_transition['to'], $this->get_id(), $this );`
@@ -479,16 +489,26 @@ class Alg_WC_Order_Status_Rules_Core {
 	 * @todo    (dev) mark status change as "changed by plugin" (vs "changed manually/otherwise")
 	 */
 	function save_status_change( $order_id, $from, $to, $order = false ) {
-		$status_history = get_post_meta( $order_id, '_alg_wc_order_status_change_history', true );
+
+		$order = ( is_a( $order, 'WC_Order' ) ? $order : wc_get_order( $order_id ) );
+		if ( ! $order ) {
+			return false;
+		}
+
+		$status_history = $this->get_order_status_change_history_meta( $order );
+
 		if ( empty( $status_history ) ) {
 			$status_history = array();
 		}
+
 		$status_history[] = array(
 			'time' => current_time( 'timestamp' ),
 			'from' => $from,
 			'to'   => $to,
 		);
-		update_post_meta( $order_id, '_alg_wc_order_status_change_history', $status_history );
+
+		$this->update_order_status_change_history_meta( $order, $status_history );
+
 	}
 
 	/**
@@ -499,6 +519,50 @@ class Alg_WC_Order_Status_Rules_Core {
 	 */
 	function get_date_time_format() {
 		return get_option( 'date_format' ) . ' ' . get_option( 'time_format' );
+	}
+
+	/**
+	 * get_order_status_change_history_meta.
+	 *
+	 * @version 3.2.0
+	 * @since   3.2.0
+	 */
+	function get_order_status_change_history_meta( $order ) {
+
+		if ( is_numeric( $order ) ) {
+			$order = wc_get_order( $order );
+		}
+
+		if ( ! $order ) {
+			return false;
+		}
+
+		return $order->get_meta( '_alg_wc_order_status_change_history' );
+
+	}
+
+	/**
+	 * update_order_status_change_history_meta.
+	 *
+	 * @version 3.2.0
+	 * @since   3.2.0
+	 */
+	function update_order_status_change_history_meta( $order, $data, $do_save = true ) {
+
+		if ( is_numeric( $order ) ) {
+			$order = wc_get_order( $order );
+		}
+
+		if ( ! $order ) {
+			return false;
+		}
+
+		$order->update_meta_data( '_alg_wc_order_status_change_history', $data );
+
+		if ( $do_save ) {
+			$order->save_meta_data();
+		}
+
 	}
 
 }

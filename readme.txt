@@ -3,7 +3,7 @@ Contributors: wpcodefactory, algoritmika, anbinder, karzin, omardabbas, kousikmu
 Tags: woocommerce, order status, order, status, woo commerce
 Requires at least: 4.4
 Tested up to: 6.2
-Stable tag: 3.1.0
+Stable tag: 3.2.0
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -29,6 +29,8 @@ For example: automatically change order status to cancelled, when 24 hours have 
 * Required **coupons**.
 * And more...
 
+The plugin is **"High-Performance Order Storage (HPOS)" compatible**.
+
 ### &#128472; Feedback ###
 
 * We are open to your suggestions and feedback. Thank you for using or trying out one of our plugins!
@@ -41,6 +43,9 @@ For example: automatically change order status to cancelled, when 24 hours have 
 3. Start by visiting plugin settings at "WooCommerce > Settings > Order Status Rules".
 
 == Changelog ==
+
+= 3.2.0 - 10/07/2023 =
+* Dev – "High-Performance Order Storage (HPOS)" compatibility.
 
 = 3.1.0 - 04/07/2023 =
 * Dev - Advanced - "Default order status" option added.
