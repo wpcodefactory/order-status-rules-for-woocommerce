@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Rule Section Settings
  *
- * @version 2.9.1
+ * @version 3.3.0
  * @since   2.0.0
  *
  * @author  Algoritmika Ltd.
@@ -17,12 +17,12 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 	/**
 	 * Constructor.
 	 *
-	 * @version 2.8.0
+	 * @version 3.3.0
 	 * @since   2.0.0
 	 */
 	function __construct( $rule_id ) {
 		$this->id   = 'rule_' . $rule_id;
-		$this->desc = sprintf( __( 'Rule #%d', 'order-status-rules-for-woocommerce' ), $rule_id );
+		$this->desc = strtoupper( sprintf( __( 'Rule #%d', 'order-status-rules-for-woocommerce' ), $rule_id ) );
 		$this->num  = $rule_id;
 		parent::__construct();
 	}
@@ -30,7 +30,7 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 	/**
 	 * get_settings.
 	 *
-	 * @version 2.9.1
+	 * @version 3.3.0
 	 * @since   2.0.0
 	 *
 	 * @todo    (desc) add description to each subsection
@@ -70,7 +70,7 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 				'default'  => 'wc-pending',
 				'type'     => 'select',
 				'class'    => 'wc-enhanced-select',
-				'options'  => wc_get_order_statuses(),
+				'options'  => alg_wc_order_status_rules()->core->get_statuses(),
 			),
 			array(
 				'title'    => __( 'Status to', 'order-status-rules-for-woocommerce' ),
@@ -78,7 +78,7 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 				'default'  => 'wc-cancelled',
 				'type'     => 'select',
 				'class'    => 'wc-enhanced-select',
-				'options'  => wc_get_order_statuses(),
+				'options'  => alg_wc_order_status_rules()->core->get_statuses(),
 			),
 			array(
 				'title'    => __( 'Admin title', 'order-status-rules-for-woocommerce' ) . ' (' . __( 'optional', 'order-status-rules-for-woocommerce' ) . ')',

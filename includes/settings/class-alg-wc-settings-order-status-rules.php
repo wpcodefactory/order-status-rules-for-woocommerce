@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Settings
  *
- * @version 2.8.0
+ * @version 3.3.0
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -17,7 +17,7 @@ class Alg_WC_Settings_Order_Status_Rules extends WC_Settings_Page {
 	/**
 	 * Constructor.
 	 *
-	 * @version 2.8.0
+	 * @version 3.3.0
 	 * @since   1.0.0
 	 */
 	function __construct() {
@@ -32,6 +32,9 @@ class Alg_WC_Settings_Order_Status_Rules extends WC_Settings_Page {
 			new Alg_WC_Order_Status_Rules_Settings_Rule( $rule_id );
 		}
 		require_once( 'class-alg-wc-order-status-rules-settings-advanced.php' );
+		require_once( 'class-alg-wc-order-status-rules-settings-tools.php' );
+		require_once( 'class-alg-wc-order-status-rules-settings-my-account.php' );
+		require_once( 'class-alg-wc-order-status-rules-settings-extra.php' );
 	}
 
 	/**

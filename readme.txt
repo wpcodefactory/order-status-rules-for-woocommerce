@@ -3,7 +3,7 @@ Contributors: wpcodefactory, algoritmika, anbinder, karzin, omardabbas, kousikmu
 Tags: woocommerce, order status, order, status, woo commerce
 Requires at least: 4.4
 Tested up to: 6.2
-Stable tag: 3.2.0
+Stable tag: 3.3.0
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -29,7 +29,10 @@ For example: automatically change order status to cancelled, when 24 hours have 
 * Required **coupons**.
 * And more...
 
-The plugin is **"High-Performance Order Storage (HPOS)" compatible**.
+### &#129309; Compatibility ###
+
+* [High-Performance Order Storage (HPOS)](https://woocommerce.com/document/high-performance-order-storage/).
+* [WooCommerce Subscriptions](https://woocommerce.com/products/woocommerce-subscriptions/) plugin.
 
 ### &#128472; Feedback ###
 
@@ -43,6 +46,17 @@ The plugin is **"High-Performance Order Storage (HPOS)" compatible**.
 3. Start by visiting plugin settings at "WooCommerce > Settings > Order Status Rules".
 
 == Changelog ==
+
+= 3.3.0 - 16/07/2023 =
+* Dev - Advanced - Process rules on - "Subscription status changed" and "Admin "Edit subscription" page" options added.
+* Dev - Advanced - "Statuses" option added. Possible values: "WooCommerce Order Statuses" and "WooCommerce Subscription Statuses". Defaults to "WooCommerce Order Statuses".
+* Dev - Advanced - "Save status change on" option added. Possible values: "Order status changed" and "Subscription status changed". Defaults to "Order status changed".
+* Dev - Advanced - "Meta box" option added. Possible values: "Orders" and "Subscriptions". Defaults to "Orders".
+* Dev - Advanced - Orders Query - "Order types" option added. Possible values: "Orders" and "Subscriptions". Defaults to "Orders".
+* Dev - Advanced - Admin settings - "Rules processing hooks" renamed to "Process rules on".
+* Dev - Admin settings sections rearranged - "Tools", "My Account", "Extra" sections added. "Advanced > Orders Query Options" subsection added.
+* Dev - Code refactoring.
+* Dev - Developers - `alg_wc_order_status_rules_wc_get_orders_args` filter added.
 
 = 3.2.0 - 10/07/2023 =
 * Dev – "High-Performance Order Storage (HPOS)" compatibility.

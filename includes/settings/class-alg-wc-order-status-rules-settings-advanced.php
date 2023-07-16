@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Advanced Section Settings
  *
- * @version 3.1.0
+ * @version 3.3.0
  * @since   1.5.0
  *
  * @author  Algoritmika Ltd.
@@ -19,8 +19,6 @@ class Alg_WC_Order_Status_Rules_Settings_Advanced extends Alg_WC_Order_Status_Ru
 	 *
 	 * @version 2.0.0
 	 * @since   1.5.0
-	 *
-	 * @todo    (dev) split into separate sections: "Advanced", "My account", etc.
 	 */
 	function __construct() {
 		$this->id   = 'advanced';
@@ -31,19 +29,20 @@ class Alg_WC_Order_Status_Rules_Settings_Advanced extends Alg_WC_Order_Status_Ru
 	/**
 	 * get_settings.
 	 *
-	 * @version 3.1.0
+	 * @version 3.3.0
 	 * @since   1.5.0
 	 *
+	 * @todo    (dev) split into sections, e.g., "Compatibility"
+	 * @todo    (dev) `woocommerce_can_subscription_be_updated_to_`
 	 * @todo    (dev) `alg_wc_order_status_rules_hooks`: update default, e.g., add `woocommerce_checkout_order_processed`
 	 * @todo    (dev) `alg_wc_order_status_rules_hooks`: `woocommerce_payment_complete`
 	 * @todo    (dev) `alg_wc_order_status_rules_hooks`: `woocommerce_order_status_pending`, etc. (`woocommerce_order_status_ . $status_to`)
 	 * @todo    (dev) `alg_wc_order_status_rules_hooks`: order updated action, etc.?
-	 * @todo    (desc) Orders sorting
 	 * @todo    (dev) `alg_wc_order_status_rules_non_matching`: default to `use_last_record`?
+	 * @todo    (dev) `alg_wc_order_status_rules_non_matching`: add `use_date_created` and/or `use_date_modified` options
 	 * @todo    (desc) `alg_wc_order_status_rules_non_matching`: better desc?
 	 * @todo    (dev) Orders sorting: Order by: add `none`, `name`, `type`?
-	 * @todo    (dev) `alg_wc_order_status_rules_non_matching`: add `use_date_created` and/or `use_date_modified` options
-	 * @todo    (dev) My Account: "... next status change is scheduled on..."
+	 * @todo    (desc) Orders sorting: better desc?
 	 * @todo    (desc) `alg_wc_order_status_rules_compatibility_doctreat`: better desc, e.g. add link to the theme?
 	 * @todo    (desc) `alg_wc_order_status_rules_disabled_conditions`: better desc?
 	 */
@@ -51,13 +50,115 @@ class Alg_WC_Order_Status_Rules_Settings_Advanced extends Alg_WC_Order_Status_Ru
 
 		add_action( 'admin_footer', array( $this, 'add_admin_script' ) );
 
-		$order_status_options = array_merge( array( '' => __( 'No changes...', 'order-status-rules-for-woocommerce' ) ), wc_get_order_statuses() );
-
 		$advanced_settings = array(
 			array(
 				'title'    => __( 'Advanced Options', 'order-status-rules-for-woocommerce' ),
 				'type'     => 'title',
 				'id'       => 'alg_wc_order_status_rules_advanced_options',
+			),
+			array(
+				'title'    => __( 'Save status change on', 'order-status-rules-for-woocommerce' ),
+				'id'       => 'alg_wc_order_status_rules_status_change_hooks',
+				'default'  => array( 'woocommerce_order_status_changed' ),
+				'type'     => 'multiselect',
+				'class'    => 'chosen_select',
+				'options'  => apply_filters( 'alg_wc_order_status_rules_status_change_hooks', array(
+					'woocommerce_order_status_changed'        => __( 'Order status changed', 'order-status-rules-for-woocommerce' ),
+					'woocommerce_subscription_status_changed' => __( 'Subscription status changed', 'order-status-rules-for-woocommerce' ),
+				) ),
+			),
+			array(
+				'title'    => __( 'Process rules on', 'order-status-rules-for-woocommerce' ),
+				'id'       => 'alg_wc_order_status_rules_hooks',
+				'default'  => array( 'woocommerce_order_status_changed' ),
+				'type'     => 'multiselect',
+				'class'    => 'chosen_select',
+				'options'  => apply_filters( 'alg_wc_order_status_rules_hooks', array(
+					'woocommerce_order_status_changed'                   => __( 'Order status changed', 'order-status-rules-for-woocommerce' ),
+					'woocommerce_checkout_order_processed'               => __( 'Checkout order processed', 'order-status-rules-for-woocommerce' ),
+					'woocommerce_thankyou'                               => __( '"Thank you" (i.e., "Order received") page', 'order-status-rules-for-woocommerce' ),
+					'alg_wc_order_status_rules_shop_order_screen'        => __( 'Admin "Edit order" page', 'order-status-rules-for-woocommerce' ),
+					'alg_wc_order_status_rules_shop_subscription_screen' => __( 'Admin "Edit subscription" page', 'order-status-rules-for-woocommerce' ),
+					'woocommerce_subscription_status_changed'            => __( 'Subscription status changed', 'order-status-rules-for-woocommerce' ),
+				) ),
+			),
+			array(
+				'title'    => __( 'Statuses', 'order-status-rules-for-woocommerce' ),
+				'id'       => 'alg_wc_order_status_rules_status_functions',
+				'default'  => array( 'wc_get_order_statuses' ),
+				'type'     => 'multiselect',
+				'class'    => 'chosen_select',
+				'options'  => apply_filters( 'alg_wc_order_status_rules_status_functions', array(
+					'wc_get_order_statuses'         => __( 'WooCommerce Order Statuses', 'order-status-rules-for-woocommerce' ),
+					'wcs_get_subscription_statuses' => __( 'WooCommerce Subscription Statuses', 'order-status-rules-for-woocommerce' ),
+				) ),
+			),
+			array(
+				'title'    => __( 'Meta box', 'order-status-rules-for-woocommerce' ),
+				'desc_tip' => __( 'Adds admin "Order Status History" meta box.', 'order-status-rules-for-woocommerce' ),
+				'id'       => 'alg_wc_order_status_rules_meta_box_screen',
+				'default'  => array( 'shop_order' ),
+				'type'     => 'multiselect',
+				'class'    => 'chosen_select',
+				'options'  => array(
+					'shop_order'        => __( 'Orders', 'order-status-rules-for-woocommerce' ),
+					'shop_subscription' => __( 'Subscriptions', 'order-status-rules-for-woocommerce' ),
+				),
+			),
+			array(
+				'title'    => __( 'Allow rules processing via URL', 'order-status-rules-for-woocommerce' ),
+				'desc'     => __( 'Enable', 'order-status-rules-for-woocommerce' ),
+				'desc_tip' => sprintf( __( 'This will allow to initiate all rules processing via URL: %s.', 'order-status-rules-for-woocommerce' ),
+					'<code>' . add_query_arg( 'alg_wc_order_status_rules_process_rules', '', get_site_url() ) . '</code>' ) . '<br>' .
+					sprintf( __( 'For example, this could be useful if you are going to disable %s and use "real" (i.e. server) cron jobs instead.', 'order-status-rules-for-woocommerce' ),
+						'<span style="text-decoration:underline;">' . __( 'Periodical Processing Options', 'order-status-rules-for-woocommerce' ) . '</span>' ),
+				'id'       => 'alg_wc_order_status_rules_allow_url',
+				'default'  => 'no',
+				'type'     => 'checkbox',
+			),
+			array(
+				'title'    => __( 'Disabled conditions', 'order-status-rules-for-woocommerce' ),
+				'desc_tip' => __( 'Removes the selected conditions from each rule\'s settings.', 'order-status-rules-for-woocommerce' ),
+				'desc'     => $this->get_select_all_buttons(),
+				'id'       => 'alg_wc_order_status_rules_disabled_conditions',
+				'default'  => array(),
+				'type'     => 'multiselect',
+				'class'    => 'chosen_select',
+				'options'  => alg_wc_order_status_rules()->core->conditions->get(),
+			),
+			array(
+				'title'    => __( 'Debug', 'order-status-rules-for-woocommerce' ),
+				'desc'     => __( 'Enable', 'order-status-rules-for-woocommerce' ),
+				'desc_tip' => sprintf( __( 'Will add a log to %s.', 'order-status-rules-for-woocommerce' ),
+					'<a target="_blank" href="' . admin_url( 'admin.php?page=wc-status&tab=logs' ) . '">' .
+						__( 'WooCommerce > Status > Logs', 'order-status-rules-for-woocommerce' ) . '</a>' ),
+				'id'       => 'alg_wc_order_status_rules_debug',
+				'default'  => 'no',
+				'type'     => 'checkbox',
+			),
+			array(
+				'type'     => 'sectionend',
+				'id'       => 'alg_wc_order_status_rules_advanced_options',
+			),
+		);
+
+		$orders_query_settings = array(
+			array(
+				'title'    => __( 'Orders Query Options', 'order-status-rules-for-woocommerce' ),
+				'desc'     => __( 'Affects "Periodical Processing" options, "Rules processing via URL" option and "Run all rules now" tool.', 'order-status-rules-for-woocommerce' ),
+				'type'     => 'title',
+				'id'       => 'alg_wc_order_status_rules_orders_query_options',
+			),
+			array(
+				'title'    => __( 'Order types', 'order-status-rules-for-woocommerce' ),
+				'id'       => 'alg_wc_order_status_rules_wc_get_orders_args[type]',
+				'default'  => array( 'shop_order' ),
+				'type'     => 'multiselect',
+				'class'    => 'chosen_select',
+				'options'  => array(
+					'shop_order'        => __( 'Orders', 'order-status-rules-for-woocommerce' ),
+					'shop_subscription' => __( 'Subscriptions', 'order-status-rules-for-woocommerce' ),
+				),
 			),
 			array(
 				'title'    => __( 'Orders sorting', 'order-status-rules-for-woocommerce' ),
@@ -85,52 +186,8 @@ class Alg_WC_Order_Status_Rules_Settings_Advanced extends Alg_WC_Order_Status_Ru
 				),
 			),
 			array(
-				'title'    => __( 'Rules processing hooks', 'order-status-rules-for-woocommerce' ),
-				'id'       => 'alg_wc_order_status_rules_hooks',
-				'default'  => array( 'woocommerce_order_status_changed' ),
-				'type'     => 'multiselect',
-				'class'    => 'chosen_select',
-				'options'  => apply_filters( 'alg_wc_order_status_rules_hooks', array(
-					'woocommerce_order_status_changed'            => __( 'Order status changed', 'order-status-rules-for-woocommerce' ),
-					'woocommerce_checkout_order_processed'        => __( 'Checkout order processed', 'order-status-rules-for-woocommerce' ),
-					'woocommerce_thankyou'                        => __( '"Thank you" (i.e., "Order received") page', 'order-status-rules-for-woocommerce' ),
-					'alg_wc_order_status_rules_shop_order_screen' => __( 'Admin "Edit order" page', 'order-status-rules-for-woocommerce' ),
-				) ),
-			),
-			array(
-				'title'    => __( 'Allow rules processing via URL', 'order-status-rules-for-woocommerce' ),
-				'desc'     => __( 'Enable', 'order-status-rules-for-woocommerce' ),
-				'desc_tip' => sprintf( __( 'This will allow to initiate all rules processing via URL: %s.', 'order-status-rules-for-woocommerce' ),
-					'<code>' . add_query_arg( 'alg_wc_order_status_rules_process_rules', '', get_site_url() ) . '</code>' ) . '<br>' .
-					sprintf( __( 'For example, this could be useful if you are going to disable %s and use "real" (i.e. server) cron jobs instead.', 'order-status-rules-for-woocommerce' ),
-						'<span style="text-decoration:underline;">' . __( 'Periodical Processing Options', 'order-status-rules-for-woocommerce' ) . '</span>' ),
-				'id'       => 'alg_wc_order_status_rules_allow_url',
-				'default'  => 'no',
-				'type'     => 'checkbox',
-			),
-			array(
-				'title'    => __( 'Debug', 'order-status-rules-for-woocommerce' ),
-				'desc'     => __( 'Enable', 'order-status-rules-for-woocommerce' ),
-				'desc_tip' => sprintf( __( 'Will add a log to %s.', 'order-status-rules-for-woocommerce' ),
-					'<a target="_blank" href="' . admin_url( 'admin.php?page=wc-status&tab=logs' ) . '">' .
-						__( 'WooCommerce > Status > Logs', 'order-status-rules-for-woocommerce' ) . '</a>' ),
-				'id'       => 'alg_wc_order_status_rules_debug',
-				'default'  => 'no',
-				'type'     => 'checkbox',
-			),
-			array(
-				'title'    => __( 'Disabled conditions', 'order-status-rules-for-woocommerce' ),
-				'desc_tip' => __( 'Removes the selected conditions from each rule\'s settings.', 'order-status-rules-for-woocommerce' ),
-				'desc'     => $this->get_select_all_buttons(),
-				'id'       => 'alg_wc_order_status_rules_disabled_conditions',
-				'default'  => array(),
-				'type'     => 'multiselect',
-				'class'    => 'chosen_select',
-				'options'  => alg_wc_order_status_rules()->core->conditions->get(),
-			),
-			array(
 				'type'     => 'sectionend',
-				'id'       => 'alg_wc_order_status_rules_advanced_options',
+				'id'       => 'alg_wc_order_status_rules_orders_query_options',
 			),
 		);
 
@@ -249,158 +306,12 @@ class Alg_WC_Order_Status_Rules_Settings_Advanced extends Alg_WC_Order_Status_Ru
 			),
 		);
 
-		$my_account_settings = array(
-			array(
-				'title'    => __( '"My Account" Options', 'order-status-rules-for-woocommerce' ),
-				'desc'     => __( 'This is a "bonus" feature of the plugin. As plugin tracks order status changes, we can display them on customer\'s "My Account" page.', 'order-status-rules-for-woocommerce' ),
-				'type'     => 'title',
-				'id'       => 'alg_wc_order_status_rules_my_account_options',
-			),
-			array(
-				'title'    => __( 'My Account > Orders', 'order-status-rules-for-woocommerce' ),
-				'desc'     => '<strong>' . __( 'Enable', 'order-status-rules-for-woocommerce' ) . '</strong>',
-				'desc_tip' => __( 'Adds order status history to "My Account > Orders".', 'order-status-rules-for-woocommerce' ),
-				'id'       => 'alg_wc_osr_my_account_orders_status_history_enabled',
-				'default'  => 'no',
-				'type'     => 'checkbox',
-			),
-			array(
-				'title'    => __( 'Position', 'order-status-rules-for-woocommerce' ),
-				'id'       => 'alg_wc_osr_my_account_orders_status_history_position',
-				'default'  => 'order-status',
-				'type'     => 'select',
-				'class'    => 'chosen_select',
-				'options'  => array(
-					'order-status'       => __( '"Status" column', 'order-status-rules-for-woocommerce' ),
-					'alg-wc-osr-history' => __( 'New column', 'order-status-rules-for-woocommerce' ),
-				),
-			),
-			array(
-				'title'    => __( 'Column title', 'order-status-rules-for-woocommerce' ),
-				'desc'     => __( 'Ignored unless "New column" is selected for the "Position".', 'order-status-rules-for-woocommerce' ),
-				'id'       => 'alg_wc_osr_my_account_orders_status_history_column_title',
-				'default'  => __( 'History', 'order-status-rules-for-woocommerce' ),
-				'type'     => 'text',
-			),
-			array(
-				'title'    => __( 'Templates', 'order-status-rules-for-woocommerce' ),
-				'desc'     => __( 'Before', 'order-status-rules-for-woocommerce' ) . '<br>' .
-					sprintf( __( 'Available placeholders: %s', 'order-status-rules-for-woocommerce' ), '<code>' . implode( '</code>, <code>', array(
-							'%current_status%',
-						) ) . '</code>' ),
-				'id'       => 'alg_wc_osr_my_account_orders_status_history_templates[before]',
-				'default'  => '%current_status%',
-				'type'     => 'textarea',
-			),
-			array(
-				'desc'     => __( 'Each record', 'order-status-rules-for-woocommerce' ) . '<br>' .
-					sprintf( __( 'Available placeholders: %s', 'order-status-rules-for-woocommerce' ), '<code>' . implode( '</code>, <code>', array(
-							'%record_nr%',
-							'%record_date%',
-							'%record_time%',
-							'%status_from%',
-							'%status_to%',
-						) ) . '</code>' ),
-				'desc_tip' => sprintf( __( '%s is a HTML code for the right arrow symbol.', 'order-status-rules-for-woocommerce' ), htmlentities( '&amp;rarr;' ) ),
-				'id'       => 'alg_wc_osr_my_account_orders_status_history_templates[each_record]',
-				'default'  => '<br>%status_from% &rarr; %status_to%',
-				'type'     => 'textarea',
-			),
-			array(
-				'desc'     => __( 'After', 'order-status-rules-for-woocommerce' ) . '<br>' .
-					sprintf( __( 'Available placeholders: %s', 'order-status-rules-for-woocommerce' ), '<code>' . implode( '</code>, <code>', array(
-							'%current_status%',
-						) ) . '</code>' ),
-				'id'       => 'alg_wc_osr_my_account_orders_status_history_templates[after]',
-				'default'  => '',
-				'type'     => 'textarea',
-			),
-			array(
-				'title'    => __( 'Reverse status history', 'order-status-rules-for-woocommerce' ),
-				'desc'     => __( 'Enable', 'order-status-rules-for-woocommerce' ),
-				'id'       => 'alg_wc_osr_my_account_orders_status_history_reverse',
-				'default'  => 'yes',
-				'type'     => 'checkbox',
-			),
-			array(
-				'type'     => 'sectionend',
-				'id'       => 'alg_wc_order_status_rules_my_account_options',
-			),
-		);
-
-		$default_status_settings = array(
-			array(
-				'title'    => __( 'Default Order Status', 'order-status-rules-for-woocommerce' ),
-				'type'     => 'title',
-				'id'       => 'alg_wc_order_status_rules_default_order_status_options',
-			),
-			array(
-				'title'    => __( 'Default order status', 'order-status-rules-for-woocommerce' ),
-				'desc_tip' => sprintf( __( 'WooCommerce default: %s.', 'order-status-rules-for-woocommerce' ),
-					_x( 'Pending payment', 'Order status', 'woocommerce' ) ),
-				'id'       => 'alg_wc_order_status_rules_default_order_status',
-				'default'  => '',
-				'type'     => 'select',
-				'class'    => 'wc-enhanced-select',
-				'options'  => $order_status_options,
-			),
-			array(
-				'type'     => 'sectionend',
-				'id'       => 'alg_wc_order_status_rules_default_order_status_options',
-			),
-		);
-
-		$process_payment_settings = array(
-			array(
-				'title'    => __( 'Process Payment Order Status', 'order-status-rules-for-woocommerce' ),
-				'desc'     => __( 'Order status updated in gateway\'s "process payment" function.', 'order-status-rules-for-woocommerce' ),
-				'type'     => 'title',
-				'id'       => 'alg_wc_order_status_rules_process_payment_order_status_options',
-			),
-			array(
-				'title'    => __( 'Direct bank transfer', 'order-status-rules-for-woocommerce' ),
-				'desc_tip' => sprintf( __( 'WooCommerce default: %s.', 'order-status-rules-for-woocommerce' ),
-					_x( 'On hold', 'Order status', 'woocommerce' ) ),
-				'id'       => 'alg_wc_order_status_rules_bacs_process_payment_order_status',
-				'default'  => '',
-				'type'     => 'select',
-				'class'    => 'wc-enhanced-select',
-				'options'  => $order_status_options,
-			),
-			array(
-				'title'    => __( 'Check payments', 'order-status-rules-for-woocommerce' ),
-				'desc_tip' => sprintf( __( 'WooCommerce default: %s.', 'order-status-rules-for-woocommerce' ),
-					_x( 'On hold', 'Order status', 'woocommerce' ) ),
-				'id'       => 'alg_wc_order_status_rules_cheque_process_payment_order_status',
-				'default'  => '',
-				'type'     => 'select',
-				'class'    => 'wc-enhanced-select',
-				'options'  => $order_status_options,
-			),
-			array(
-				'title'    => __( 'Cash on delivery (COD)', 'order-status-rules-for-woocommerce' ),
-				'desc_tip' => sprintf( __( 'WooCommerce default: %s or %s (if the order contains a downloadable product).', 'order-status-rules-for-woocommerce' ),
-					_x( 'Processing', 'Order status', 'woocommerce' ), _x( 'On hold', 'Order status', 'woocommerce' ) ),
-				'id'       => 'alg_wc_order_status_rules_cod_process_payment_order_status',
-				'default'  => '',
-				'type'     => 'select',
-				'class'    => 'wc-enhanced-select',
-				'options'  => $order_status_options,
-			),
-			array(
-				'type'     => 'sectionend',
-				'id'       => 'alg_wc_order_status_rules_process_payment_order_status_options',
-			),
-		);
-
 		return array_merge(
 			$advanced_settings,
+			$orders_query_settings,
 			$status_history_settings,
 			$periodical_settings,
-			$compatibility_settings,
-			$my_account_settings,
-			$default_status_settings,
-			$process_payment_settings
+			$compatibility_settings
 		);
 	}
 

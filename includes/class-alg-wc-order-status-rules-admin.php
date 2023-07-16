@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Admin Class
  *
- * @version 2.8.0
+ * @version 3.3.0
  * @since   1.4.0
  *
  * @author  Algoritmika Ltd.
@@ -62,26 +62,30 @@ class Alg_WC_Order_Status_Rules_Admin {
 	/**
 	 * add_status_change_meta_box.
 	 *
-	 * @version 1.0.0
+	 * @version 3.3.0
 	 * @since   1.0.0
 	 */
 	function add_status_change_meta_box() {
-		add_meta_box(
-			'alg-wc-order-status-change-history',
-			__( 'Order Status History', 'order-status-rules-for-woocommerce' ),
-			array( $this, 'create_status_change_meta_box' ),
-			'shop_order',
-			'normal',
-			'default'
-		);
+		$screen = get_option( 'alg_wc_order_status_rules_meta_box_screen', array( 'shop_order' ) );
+		if ( ! empty( $screen ) ) {
+			add_meta_box(
+				'alg-wc-order-status-change-history',
+				__( 'Order Status History', 'order-status-rules-for-woocommerce' ),
+				array( $this, 'create_status_change_meta_box' ),
+				$screen,
+				'normal',
+				'default'
+			);
+		}
 	}
 
 	/**
 	 * create_status_change_meta_box.
 	 *
-	 * @version 2.8.0
+	 * @version 3.3.0
 	 * @since   1.0.0
 	 *
+	 * @todo    (dev) use `$this->get_core()->get_status_name()`
 	 * @todo    (desc) `( ! $is_status_match )`: better desc
 	 */
 	function create_status_change_meta_box() {
@@ -99,7 +103,7 @@ class Alg_WC_Order_Status_Rules_Admin {
 			$date_format    = $this->get_core()->get_date_time_format();
 			$status_history = array_reverse( $status_history, true );
 			$last_record    = current( $status_history );
-			$status         = wc_get_order_statuses();
+			$status         = $this->get_core()->get_statuses();
 			echo '<table class="widefat stripped">' .
 				'<tr>' .
 					'<th>' . __( 'Nr.', 'order-status-rules-for-woocommerce' )  . '</th>' .

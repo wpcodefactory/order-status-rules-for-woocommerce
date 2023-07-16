@@ -4,86 +4,86 @@
 msgid "Guest"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-admin.php:71
+#: includes/class-alg-wc-order-status-rules-admin.php:73
 msgid "Order Status History"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-admin.php:94
+#: includes/class-alg-wc-order-status-rules-admin.php:98
 msgid "No data."
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-admin.php:105
+#: includes/class-alg-wc-order-status-rules-admin.php:109
 msgid "Nr."
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-admin.php:106
+#: includes/class-alg-wc-order-status-rules-admin.php:110
 #: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:98
 msgid "Time"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-admin.php:107
+#: includes/class-alg-wc-order-status-rules-admin.php:111
 msgid "From"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-admin.php:108
+#: includes/class-alg-wc-order-status-rules-admin.php:112
 msgid "To"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-admin.php:136
-#: includes/class-alg-wc-order-status-rules-core.php:424
+#: includes/class-alg-wc-order-status-rules-admin.php:140
+#: includes/class-alg-wc-order-status-rules-core.php:506
 #, php-format
 msgid "Rule #%s"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-admin.php:139
+#: includes/class-alg-wc-order-status-rules-admin.php:143
 #, php-format
 msgid "Status scheduled to be updated from %s to %s (%s) on %s (i.e. %s)."
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-admin.php:145
+#: includes/class-alg-wc-order-status-rules-admin.php:149
 #, php-format
 msgid "in %s"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-admin.php:146
+#: includes/class-alg-wc-order-status-rules-admin.php:150
 msgid "now"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-admin.php:148
+#: includes/class-alg-wc-order-status-rules-admin.php:152
 #: includes/settings/class-alg-wc-order-status-rules-settings-section.php:102
 #, php-format
 msgid "Current time is %s."
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-admin.php:156
+#: includes/class-alg-wc-order-status-rules-admin.php:160
 msgid ""
 "No order status rules are scheduled to be applied for the current order."
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-admin.php:164
+#: includes/class-alg-wc-order-status-rules-admin.php:168
 msgid ""
 "Although the current order status does not match the last record in the "
 "order history, it will be used anyway."
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-admin.php:167
+#: includes/class-alg-wc-order-status-rules-admin.php:171
 msgid ""
 "The current order status does not match the last record in the order "
 "history! Order status rules will not be applied!"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-admin.php:169
+#: includes/class-alg-wc-order-status-rules-admin.php:173
 #, php-format
 msgid ""
 "To change this behaviour, please check the \"%s\" option in the %s section."
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-admin.php:170
+#: includes/class-alg-wc-order-status-rules-admin.php:174
 msgid "On non-matching order status"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-admin.php:172
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:27
+#: includes/class-alg-wc-order-status-rules-admin.php:176
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:25
 msgid "Advanced"
 msgstr ""
 
@@ -188,44 +188,44 @@ msgstr ""
 msgid "Date created after"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:158
-#: includes/class-alg-wc-order-status-rules-core.php:173
+#: includes/class-alg-wc-order-status-rules-core.php:232
+#: includes/class-alg-wc-order-status-rules-core.php:247
 msgid "\"Run all rules now\" tool executed."
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:343
+#: includes/class-alg-wc-order-status-rules-core.php:419
 msgid "Process rules: Started"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:344
+#: includes/class-alg-wc-order-status-rules-core.php:420
 msgid "manual"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:361
+#: includes/class-alg-wc-order-status-rules-core.php:441
 msgid "Process rules: Finished"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:387
+#: includes/class-alg-wc-order-status-rules-core.php:469
 #, php-format
 msgid "Process rules: Order #%s"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:396
+#: includes/class-alg-wc-order-status-rules-core.php:478
 #, php-format
 msgid "Process rules: Skipping order #%s"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:426
+#: includes/class-alg-wc-order-status-rules-core.php:508
 #, php-format
 msgid "Status updated by \"Order Status Rules for WooCommerce\" plugin (%s)."
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:440
+#: includes/class-alg-wc-order-status-rules-core.php:518
 #, php-format
 msgid "Process rules: Order #%s: from %s to %s (%s)"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:452
+#: includes/class-alg-wc-order-status-rules-core.php:530
 #, php-format
 msgid "Process rules: Order #%s: No order status change history found"
 msgstr ""
@@ -271,7 +271,7 @@ msgid "Once Every 30 Minutes"
 msgstr ""
 
 #: includes/class-alg-wc-order-status-rules-my-account.php:46
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:282
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:68
 msgid "History"
 msgstr ""
 
@@ -283,132 +283,186 @@ msgstr ""
 msgid "Go Pro"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:54
-msgid "No changes..."
-msgstr ""
-
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:58
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:55
 msgid "Advanced Options"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:63
-msgid "Orders sorting"
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:60
+msgid "Save status change on"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:64
-msgid "Order by"
-msgstr ""
-
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:70
-msgid "ID"
-msgstr ""
-
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:71
-msgid "Random"
-msgstr ""
-
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:72
-msgid "Date"
-msgstr ""
-
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:73
-msgid "Modified"
-msgstr ""
-
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:66
 #: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:77
-msgid "Order"
-msgstr ""
-
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:83
-msgid "Descending"
-msgstr ""
-
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:84
-msgid "Ascending"
-msgstr ""
-
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:88
-msgid "Rules processing hooks"
-msgstr ""
-
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:94
 msgid "Order status changed"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:95
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:67
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:82
+msgid "Subscription status changed"
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:71
+msgid "Process rules on"
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:78
 msgid "Checkout order processed"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:96
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:79
 msgid "\"Thank you\" (i.e., \"Order received\") page"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:97
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:80
 msgid "Admin \"Edit order\" page"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:101
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:181
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:81
+msgid "Admin \"Edit subscription\" page"
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:86
+msgid "Statuses"
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:92
+msgid "WooCommerce Order Statuses"
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:93
+msgid "WooCommerce Subscription Statuses"
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:97
+msgid "Meta box"
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:98
+msgid "Adds admin \"Order Status History\" meta box."
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:104
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:159
+msgid "Orders"
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:105
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:160
+msgid "Subscriptions"
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:109
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:238
 msgid "Allow rules processing via URL"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:102
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:113
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:191
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:209
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:240
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:261
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:320
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:110
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:131
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:248
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:266
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:297
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:47
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:106
 msgid "Enable"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:103
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:111
 #, php-format
 msgid "This will allow to initiate all rules processing via URL: %s."
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:105
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:113
 #, php-format
 msgid ""
 "For example, this could be useful if you are going to disable %s and use "
 "\"real\" (i.e. server) cron jobs instead."
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:106
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:178
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:114
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:235
 msgid "Periodical Processing Options"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:112
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:120
+msgid "Disabled conditions"
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:121
+msgid "Removes the selected conditions from each rule's settings."
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:130
 msgid "Debug"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:114
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:132
 #, php-format
 msgid "Will add a log to %s."
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:116
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:134
 msgid "WooCommerce > Status > Logs"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:122
-msgid "Disabled conditions"
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:147
+msgid "Orders Query Options"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:123
-msgid "Removes the selected conditions from each rule's settings."
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:148
+msgid ""
+"Affects \"Periodical Processing\" options, \"Rules processing via URL\" "
+"option and \"Run all rules now\" tool."
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:139
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:153
+msgid "Order types"
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:164
+msgid "Orders sorting"
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:165
+msgid "Order by"
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:171
+msgid "ID"
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:172
+msgid "Random"
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:173
+msgid "Date"
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:174
+msgid "Modified"
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:178
+msgid "Order"
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:184
+msgid "Descending"
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:185
+msgid "Ascending"
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:196
 msgid "Order Status History Options"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:144
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:201
 msgid "Empty order status history"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:145
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:202
 msgid ""
 "Plugin must be enabled at the time order status change occurs, so there is "
 "no order status change history on initial plugin install. This can be solved "
@@ -417,97 +471,97 @@ msgid ""
 "change history."
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:151
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:166
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:208
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:223
 msgid "Do nothing"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:152
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:209
 msgid "Use order date created"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:153
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:210
 msgid "Use order date modified"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:157
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:214
 msgid "Non-matching order status"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:158
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:215
 msgid ""
 "If order status is not properly changed (e.g. by some plugin), it may happen "
 "that current order status does not match the last record in order status "
 "change history."
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:159
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:216
 msgid "In this case order status rules will not be applied."
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:160
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:217
 msgid "You can change this behaviour here."
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:167
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:224
 msgid "Use latest record anyway"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:179
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:236
 msgid ""
 "Although it's possible to enable both periodical processing options, we "
 "recommend enabling only one of them."
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:180
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:237
 #, php-format
 msgid ""
 "If you are going to disable both periodical processing options, you may want "
 "to enable the %s option and set up \"real\" (i.e. server) cron job."
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:182
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:239
 #, php-format
 msgid "Also you can use our %s tool manually."
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:183
-#: includes/settings/class-alg-wc-order-status-rules-settings-general.php:76
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:240
+#: includes/settings/class-alg-wc-order-status-rules-settings-tools.php:44
 msgid "Run all rules now"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:185
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:242
 #, php-format
 msgid "Crons (%s) are disabled on your site!"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:190
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:247
 msgid "Use WP cron"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:192
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:210
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:249
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:267
 #, php-format
 msgid "This will use %s to process the rules periodically."
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:194
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:251
 msgid "WordPress crons"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:200
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:257
 msgid "Interval"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:208
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:265
 msgid "Use Action Scheduler"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:212
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:269
 msgid "Action Scheduler"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:213
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:270
 #, php-format
 msgid ""
 "Action Scheduler has a built in <a href=\"%s\" target=\"_blank"
@@ -515,146 +569,84 @@ msgid ""
 "triggering scheduled actions. Search for the %s hook there."
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:220
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:277
 msgid "Interval (in seconds)"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:234
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:291
 msgid "Compatibility Options"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:239
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:296
 msgid "\"Doctreat\" theme"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:241
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:298
 msgid "For the \"Doctreat - Doctors Directory WordPress Theme\" by AmentoTech."
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:254
-msgid "\"My Account\" Options"
+#: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:25
+msgid "Extra"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:255
-msgid ""
-"This is a \"bonus\" feature of the plugin. As plugin tracks order status "
-"changes, we can display them on customer's \"My Account\" page."
+#: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:37
+msgid "No changes..."
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:260
-msgid "My Account > Orders"
-msgstr ""
-
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:262
-msgid "Adds order status history to \"My Account > Orders\"."
-msgstr ""
-
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:268
-msgid "Position"
-msgstr ""
-
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:274
-msgid "\"Status\" column"
-msgstr ""
-
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:275
-msgid "New column"
-msgstr ""
-
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:279
-msgid "Column title"
-msgstr ""
-
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:280
-msgid "Ignored unless \"New column\" is selected for the \"Position\"."
-msgstr ""
-
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:286
-msgid "Templates"
-msgstr ""
-
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:287
-msgid "Before"
-msgstr ""
-
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:288
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:297
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:311
-#, php-format
-msgid "Available placeholders: %s"
-msgstr ""
-
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:296
-msgid "Each record"
-msgstr ""
-
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:304
-#, php-format
-msgid "%s is a HTML code for the right arrow symbol."
-msgstr ""
-
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:310
-msgid "After"
-msgstr ""
-
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:319
-msgid "Reverse status history"
-msgstr ""
-
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:333
+#: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:41
 msgid "Default Order Status"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:338
+#: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:46
 msgid "Default order status"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:339
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:362
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:372
+#: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:47
+#: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:70
+#: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:80
 #, php-format
 msgid "WooCommerce default: %s."
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:340
+#: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:48
 msgctxt "Order status"
 msgid "Pending payment"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:355
+#: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:63
 msgid "Process Payment Order Status"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:356
+#: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:64
 msgid "Order status updated in gateway's \"process payment\" function."
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:361
+#: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:69
 msgid "Direct bank transfer"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:363
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:373
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:383
+#: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:71
+#: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:81
+#: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:91
 msgctxt "Order status"
 msgid "On hold"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:371
+#: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:79
 msgid "Check payments"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:381
+#: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:89
 msgid "Cash on delivery (COD)"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:382
+#: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:90
 #, php-format
 msgid ""
 "WooCommerce default: %s or %s (if the order contains a downloadable product)."
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:383
+#: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:91
 msgctxt "Order status"
 msgid "Processing"
 msgstr ""
@@ -663,43 +655,105 @@ msgstr ""
 msgid "General"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-general.php:39
+#: includes/settings/class-alg-wc-order-status-rules-settings-general.php:38
 msgid "Order Status Rules Options"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-general.php:44
+#: includes/settings/class-alg-wc-order-status-rules-settings-general.php:43
 #: includes/settings/class-alg-wc-settings-order-status-rules.php:25
 msgid "Order Status Rules"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-general.php:45
+#: includes/settings/class-alg-wc-order-status-rules-settings-general.php:44
 msgid "Enable plugin"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-general.php:46
+#: includes/settings/class-alg-wc-order-status-rules-settings-general.php:45
 msgid "Automate WooCommerce order statuses. Beautifully."
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-general.php:52
+#: includes/settings/class-alg-wc-order-status-rules-settings-general.php:51
 msgid "Total rules"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-general.php:53
+#: includes/settings/class-alg-wc-order-status-rules-settings-general.php:52
 msgid ""
 "New settings sections will be added if you change this option and \"Save "
 "changes\"."
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-general.php:70
-msgid "Tools"
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:25
+msgid "My Account"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-general.php:77
-msgid "Run"
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:40
+msgid "\"My Account\" Options"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-general.php:78
-msgid "Check the box and save changes to run all rules now."
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:41
+msgid ""
+"This is a \"bonus\" feature of the plugin. As plugin tracks order status "
+"changes, we can display them on customer's \"My Account\" page."
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:46
+msgid "My Account > Orders"
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:48
+msgid "Adds order status history to \"My Account > Orders\"."
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:54
+msgid "Position"
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:60
+msgid "\"Status\" column"
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:61
+msgid "New column"
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:65
+msgid "Column title"
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:66
+msgid "Ignored unless \"New column\" is selected for the \"Position\"."
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:72
+msgid "Templates"
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:73
+msgid "Before"
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:74
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:83
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:97
+#, php-format
+msgid "Available placeholders: %s"
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:82
+msgid "Each record"
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:90
+#, php-format
+msgid "%s is a HTML code for the right arrow symbol."
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:96
+msgid "After"
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:105
+msgid "Reverse status history"
 msgstr ""
 
 #: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:25
@@ -1224,23 +1278,36 @@ msgstr ""
 msgid "%1$s (#%2$s &ndash; %3$s)"
 msgstr ""
 
-#: includes/settings/class-alg-wc-settings-order-status-rules.php:47
+#: includes/settings/class-alg-wc-order-status-rules-settings-tools.php:25
+#: includes/settings/class-alg-wc-order-status-rules-settings-tools.php:38
+msgid "Tools"
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-tools.php:45
+msgid "Run"
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-tools.php:46
+msgid "Check the box and save changes to run all rules now."
+msgstr ""
+
+#: includes/settings/class-alg-wc-settings-order-status-rules.php:50
 msgid "Reset Settings"
 msgstr ""
 
-#: includes/settings/class-alg-wc-settings-order-status-rules.php:52
+#: includes/settings/class-alg-wc-settings-order-status-rules.php:55
 msgid "Reset section settings"
 msgstr ""
 
-#: includes/settings/class-alg-wc-settings-order-status-rules.php:53
+#: includes/settings/class-alg-wc-settings-order-status-rules.php:56
 msgid "Reset"
 msgstr ""
 
-#: includes/settings/class-alg-wc-settings-order-status-rules.php:54
+#: includes/settings/class-alg-wc-settings-order-status-rules.php:57
 msgid "Check the box and save changes to reset."
 msgstr ""
 
-#: includes/settings/class-alg-wc-settings-order-status-rules.php:82
-#: includes/settings/class-alg-wc-settings-order-status-rules.php:97
+#: includes/settings/class-alg-wc-settings-order-status-rules.php:85
+#: includes/settings/class-alg-wc-settings-order-status-rules.php:100
 msgid "Your settings have been reset."
 msgstr ""

@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - My Account Class
  *
- * @version 1.8.0
+ * @version 3.3.0
  * @since   1.8.0
  *
  * @author  Algoritmika Ltd.
@@ -62,19 +62,17 @@ class Alg_WC_Order_Status_Rules_My_Account {
 	/**
 	 * status_history_column.
 	 *
-	 * @version 1.8.0
+	 * @version 3.3.0
 	 * @since   1.8.0
 	 *
 	 * @see     https://github.com/woocommerce/woocommerce/blob/5.5.2/templates/myaccount/orders.php#L45
-	 *
-	 * @todo    (dev) `wc_get_order_status_name()`: use everywhere
 	 */
 	function status_history_column( $order ) {
 		$templates      = get_option( 'alg_wc_osr_my_account_orders_status_history_templates', array() );
 		$defaults       = array( 'before' => '%current_status%', 'each_record' => '<br>%status_from% &rarr; %status_to%', 'after' => '' );
 		$templates      = wp_parse_args( $templates, $defaults );
 		$is_reverse     = ( 'yes' === get_option( 'alg_wc_osr_my_account_orders_status_history_reverse', 'yes' ) );
-		$current_status = esc_html( wc_get_order_status_name( $order->get_status() ) );
+		$current_status = esc_html( alg_wc_order_status_rules()->core->get_status_name( $order->get_status() ) );
 		$records        = '';
 		$status_history = alg_wc_order_status_rules()->core->get_order_status_change_history( $order->get_id() );
 		if ( ! empty( $status_history ) ) {
@@ -86,8 +84,8 @@ class Alg_WC_Order_Status_Rules_My_Account {
 					'%record_nr%'   => ( $index + 1 ),
 					'%record_date%' => date_i18n( get_option( 'date_format' ), $record['time'] ),
 					'%record_time%' => date_i18n( get_option( 'time_format' ), $record['time'] ),
-					'%status_from%' => esc_html( wc_get_order_status_name( $record['from'] ) ),
-					'%status_to%'   => esc_html( wc_get_order_status_name( $record['to'] ) ),
+					'%status_from%' => esc_html( alg_wc_order_status_rules()->core->get_status_name( $record['from'] ) ),
+					'%status_to%'   => esc_html( alg_wc_order_status_rules()->core->get_status_name( $record['to'] ) ),
 				);
 				$records .= str_replace( array_keys( $placeholders ), $placeholders, $templates['each_record'] );
 			}

@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Core Class
  *
- * @version 3.2.0
+ * @version 3.3.0
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -17,7 +17,7 @@ class Alg_WC_Order_Status_Rules_Core {
 	/**
 	 * Constructor.
 	 *
-	 * @version 3.1.0
+	 * @version 3.3.0
 	 * @since   1.0.0
 	 *
 	 * @todo    (dev) remove `alg_wc_order_status_rules_plugin_enabled` (or move `process_rules_manual`, etc. inside the `alg_wc_order_status_rules_plugin_enabled`)
@@ -29,17 +29,10 @@ class Alg_WC_Order_Status_Rules_Core {
 		if ( 'yes' === get_option( 'alg_wc_order_status_rules_plugin_enabled', 'yes' ) ) {
 
 			// Track order status change
-			add_action( 'woocommerce_order_status_changed', array( $this, 'save_status_change' ), 1, 4 );
+			$this->add_track_status_change_actions();
 
 			// Hooks (e.g., immediately process rules on any order status change)
-			$hooks = get_option( 'alg_wc_order_status_rules_hooks', array( 'woocommerce_order_status_changed' ) );
-			foreach ( $hooks as $hook ) {
-				$priority = apply_filters( 'alg_wc_order_status_rules_hooks_priority', 10, $hook );
-				add_action( $hook, array( $this, 'process_rules_for_order' ), $priority );
-				if ( 'alg_wc_order_status_rules_shop_order_screen' === $hook ) {
-					add_action( 'admin_head', array( $this, 'shop_order_screen' ) );
-				}
-			}
+			$this->add_rules_processing_actions();
 
 			// Process rules via URL
 			if ( 'yes' === get_option( 'alg_wc_order_status_rules_allow_url', 'no' ) ) {
@@ -103,6 +96,73 @@ class Alg_WC_Order_Status_Rules_Core {
 	}
 
 	/**
+	 * get_statuses.
+	 *
+	 * @version 3.3.0
+	 * @since   3.3.0
+	 */
+	function get_statuses() {
+		$statuses         = array();
+		$status_functions = get_option( 'alg_wc_order_status_rules_status_functions', array( 'wc_get_order_statuses' ) );
+		foreach ( $status_functions as $status_function ) {
+			if ( function_exists( $status_function ) ) {
+				$statuses = array_merge( $status_function(), $statuses );
+			}
+		}
+		return $statuses;
+	}
+
+	/**
+	 * get_status_name.
+	 *
+	 * @version 3.3.0
+	 * @since   3.3.0
+	 *
+	 * @see     `wc_get_order_status_name()`
+	 * @see     `wcs_get_subscription_status_name()`
+	 */
+	function get_status_name( $status ) {
+		$statuses = $this->get_statuses();
+		$status   = 'wc-' === substr( $status, 0, 3 ) ? substr( $status, 3 ) : $status;
+		$status   = isset( $statuses[ 'wc-' . $status ] ) ? $statuses[ 'wc-' . $status ] : $status;
+		return $status;
+	}
+
+	/**
+	 * add_track_status_change_actions.
+	 *
+	 * @version 3.3.0
+	 * @since   3.3.0
+	 */
+	function add_track_status_change_actions() {
+		$hooks = get_option( 'alg_wc_order_status_rules_status_change_hooks', array( 'woocommerce_order_status_changed' ) );
+		foreach ( $hooks as $hook ) {
+			$priority = apply_filters( 'alg_wc_order_status_rules_status_change_hooks_priority', 1, $hook );
+			add_action( $hook, array( $this, 'save_status_change' ), $priority, 4 );
+		}
+	}
+
+	/**
+	 * add_rules_processing_actions.
+	 *
+	 * @version 3.3.0
+	 * @since   3.3.0
+	 */
+	function add_rules_processing_actions() {
+		$hooks = get_option( 'alg_wc_order_status_rules_hooks', array( 'woocommerce_order_status_changed' ) );
+		foreach ( $hooks as $hook ) {
+			$priority = apply_filters( 'alg_wc_order_status_rules_hooks_priority', 10, $hook );
+			add_action( $hook, array( $this, 'process_rules_for_order' ), $priority );
+			if ( 'alg_wc_order_status_rules_shop_order_screen' === $hook ) {
+				add_action( 'admin_head', array( $this, 'shop_order_screen' ) );
+			}
+			if ( 'alg_wc_order_status_rules_shop_subscription_screen' === $hook ) {
+				add_action( 'admin_head', array( $this, 'shop_subscription_screen' ) );
+			}
+		}
+	}
+
+	/**
 	 * shop_order_screen.
 	 *
 	 * @version 3.0.0
@@ -113,6 +173,20 @@ class Alg_WC_Order_Status_Rules_Core {
 	function shop_order_screen() {
 		if ( function_exists( 'get_current_screen' ) && ( $current_screen = get_current_screen() ) && 'shop_order' === $current_screen->id ) {
 			do_action( 'alg_wc_order_status_rules_shop_order_screen', get_the_ID() );
+		}
+	}
+
+	/**
+	 * shop_subscription_screen.
+	 *
+	 * @version 3.3.0
+	 * @since   3.3.0
+	 *
+	 * @todo    (dev) maybe there is an easier way, e.g., use some existing action instead?
+	 */
+	function shop_subscription_screen() {
+		if ( function_exists( 'get_current_screen' ) && ( $current_screen = get_current_screen() ) && 'shop_subscription' === $current_screen->id ) {
+			do_action( 'alg_wc_order_status_rules_shop_subscription_screen', get_the_ID() );
 		}
 	}
 
@@ -257,13 +331,13 @@ class Alg_WC_Order_Status_Rules_Core {
 
 			// Rules options: General
 			$this->options = array(
-				'enabled'                => get_option( 'alg_wc_order_status_rules_enabled',                array() ),
-				'from'                   => get_option( 'alg_wc_order_status_rules_from',                   array() ),
-				'to'                     => get_option( 'alg_wc_order_status_rules_to',                     array() ),
-				'time_triggers'          => get_option( 'alg_wc_order_status_rules_time_trigger',           array() ),
-				'time_trigger_units'     => get_option( 'alg_wc_order_status_rules_time_trigger_unit',      array() ),
-				'skip_days'              => get_option( 'alg_wc_order_status_rules_skip_days',              array() ),
-				'titles'                 => get_option( 'alg_wc_order_status_rules_title',                  array() ),
+				'enabled'                => get_option( 'alg_wc_order_status_rules_enabled',           array() ),
+				'from'                   => get_option( 'alg_wc_order_status_rules_from',              array() ),
+				'to'                     => get_option( 'alg_wc_order_status_rules_to',                array() ),
+				'time_triggers'          => get_option( 'alg_wc_order_status_rules_time_trigger',      array() ),
+				'time_trigger_units'     => get_option( 'alg_wc_order_status_rules_time_trigger_unit', array() ),
+				'skip_days'              => get_option( 'alg_wc_order_status_rules_skip_days',         array() ),
+				'titles'                 => get_option( 'alg_wc_order_status_rules_title',             array() ),
 			);
 
 			// Rules options: Conditions
@@ -325,7 +399,7 @@ class Alg_WC_Order_Status_Rules_Core {
 	/**
 	 * process_rules.
 	 *
-	 * @version 2.5.1
+	 * @version 3.3.0
 	 * @since   1.0.0
 	 *
 	 * @see     https://github.com/woocommerce/woocommerce/wiki/wc_get_orders-and-WC_Order_Query
@@ -338,46 +412,54 @@ class Alg_WC_Order_Status_Rules_Core {
 	 * @todo    (desc) use `alg_wc_order_status_rules_process_rules_time_run`
 	 */
 	function process_rules( $do_die = true ) {
+
 		update_option( 'alg_wc_order_status_rules_process_rules_time_run', time() );
+
 		if ( $this->do_debug() ) {
 			$this->add_to_log( __( 'Process rules: Started', 'order-status-rules-for-woocommerce' ) .
 				( ! $do_die ? ' (' . __( 'manual', 'order-status-rules-for-woocommerce' ) . ')' : '' ) );
 		}
+
 		$this->init_options();
+
 		if ( ! empty( $this->options['from'] ) ) {
 			$user_args = get_option( 'alg_wc_order_status_rules_wc_get_orders_args', array() );
-			$orders = wc_get_orders( array(
+			$orders = wc_get_orders( apply_filters( 'alg_wc_order_status_rules_wc_get_orders_args', array(
 				'limit'    => -1,
 				'status'   => $this->options['from'],
 				'return'   => 'ids',
 				'orderby'  => ( isset( $user_args['orderby'] ) ? $user_args['orderby'] : 'date' ),
 				'order'    => ( isset( $user_args['order'] )   ? $user_args['order']   : 'DESC' ),
-			) );
+				'type'     => ( isset( $user_args['type'] )    ? $user_args['type']    : array( 'shop_order' ) ),
+			), $this ) );
 			foreach ( $orders as $order_id ) {
 				$this->process_rules_for_order( $order_id );
 			}
 		}
+
 		if ( $this->do_debug() ) {
 			$this->add_to_log( __( 'Process rules: Finished', 'order-status-rules-for-woocommerce' ) );
 		}
+
 		if ( isset( $_REQUEST['alg_wc_order_status_rules_process_rules_redirect'] ) ) {
 			wp_redirect( esc_url_raw( $_REQUEST['alg_wc_order_status_rules_process_rules_redirect'] ) );
 			exit;
 		}
+
 		if ( $do_die ) {
 			die();
 		}
+
 	}
 
 	/**
 	 * process_rules_for_order.
 	 *
-	 * @version 2.9.3
+	 * @version 3.3.0
 	 * @since   2.2.0
 	 *
 	 * @todo    (dev) check if it's a valid order at the beginning (i.e., `( $order = wc_get_order( $order_id ) )`)
 	 * @todo    (dev) `$unit = ( isset( $this->options['time_trigger_units'][ $i ] ) ? $this->options['time_trigger_units'][ $i ] : 'hour' );`
-	 * @todo    (dev) `remove_action`: check with `has_action()`?
 	 */
 	function process_rules_for_order( $order_id ) {
 
@@ -426,11 +508,7 @@ class Alg_WC_Order_Status_Rules_Core {
 					$note = sprintf( __( 'Status updated by "Order Status Rules for WooCommerce" plugin (%s).', 'order-status-rules-for-woocommerce' ), $rule );
 
 					// Update status
-					$had_action = remove_action( 'woocommerce_order_status_changed', array( $this, 'process_rules_for_order' ) );
-					$order->update_status( substr( $this->options['to'][ $rule_id ], 3 ), $note );
-					if ( $had_action ) {
-						add_action( 'woocommerce_order_status_changed', array( $this, 'process_rules_for_order' ) );
-					}
+					$this->update_status( $order, substr( $this->options['to'][ $rule_id ], 3 ), $note );
 
 					// Custom actions
 					do_action( 'alg_wc_order_status_rules_after_rule_applied', $order, $rule_id, $args, $this );
@@ -450,6 +528,31 @@ class Alg_WC_Order_Status_Rules_Core {
 
 		} elseif ( $this->do_debug() ) {
 			$this->add_to_log( sprintf( __( 'Process rules: Order #%s: No order status change history found', 'order-status-rules-for-woocommerce' ), $order_id ) );
+		}
+
+	}
+
+	/**
+	 * update_status.
+	 *
+	 * @version 3.3.0
+	 * @since   3.3.0
+	 *
+	 * @todo    (dev) `remove_action`: check with `has_action()`?
+	 */
+	function update_status( $order, $new_status, $note = '' ) {
+
+		$had_action = array();
+		foreach ( array( 'woocommerce_order_status_changed', 'woocommerce_subscription_status_changed' ) as $_hook ) {
+			$had_action[ $_hook ] = remove_action( $_hook, array( $this, 'process_rules_for_order' ) );
+		}
+
+		$order->update_status( $new_status, $note );
+
+		foreach ( $had_action as $_hook => $_had_action ) {
+			if ( $_had_action ) {
+				add_action( $_hook, array( $this, 'process_rules_for_order' ) );
+			}
 		}
 
 	}
