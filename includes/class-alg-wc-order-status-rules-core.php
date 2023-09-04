@@ -425,8 +425,8 @@ class Alg_WC_Order_Status_Rules_Core {
 		if ( ! empty( $this->options['from'] ) ) {
 			$max_orders = get_option( 'alg_wc_order_status_rules_wc_get_orders_max_orders', -1 );
 			$counter    = 0;
-			$user_args = get_option( 'alg_wc_order_status_rules_wc_get_orders_args', array() );
-			$orders = wc_get_orders( apply_filters( 'alg_wc_order_status_rules_wc_get_orders_args', array(
+			$user_args  = get_option( 'alg_wc_order_status_rules_wc_get_orders_args', array() );
+			$orders     = wc_get_orders( apply_filters( 'alg_wc_order_status_rules_wc_get_orders_args', array(
 				'limit'    => -1,
 				'status'   => $this->options['from'],
 				'return'   => 'ids',
