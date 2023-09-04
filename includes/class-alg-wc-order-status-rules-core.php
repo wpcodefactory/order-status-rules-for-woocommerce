@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Core Class
  *
- * @version 3.3.0
+ * @version 3.4.0
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -399,7 +399,7 @@ class Alg_WC_Order_Status_Rules_Core {
 	/**
 	 * process_rules.
 	 *
-	 * @version 3.3.0
+	 * @version 3.4.0
 	 * @since   1.0.0
 	 *
 	 * @see     https://github.com/woocommerce/woocommerce/wiki/wc_get_orders-and-WC_Order_Query
@@ -423,6 +423,8 @@ class Alg_WC_Order_Status_Rules_Core {
 		$this->init_options();
 
 		if ( ! empty( $this->options['from'] ) ) {
+			$max_orders = get_option( 'alg_wc_order_status_rules_wc_get_orders_max_orders', -1 );
+			$counter    = 0;
 			$user_args = get_option( 'alg_wc_order_status_rules_wc_get_orders_args', array() );
 			$orders = wc_get_orders( apply_filters( 'alg_wc_order_status_rules_wc_get_orders_args', array(
 				'limit'    => -1,
@@ -433,7 +435,15 @@ class Alg_WC_Order_Status_Rules_Core {
 				'type'     => ( isset( $user_args['type'] )    ? $user_args['type']    : array( 'shop_order' ) ),
 			), $this ) );
 			foreach ( $orders as $order_id ) {
-				$this->process_rules_for_order( $order_id );
+				if ( -1 != $max_orders && $counter >= $max_orders ) {
+					if ( $this->do_debug() ) {
+						$this->add_to_log( __( 'Process rules: Maximum number of updated orders reached', 'order-status-rules-for-woocommerce' ) );
+					}
+					break;
+				}
+				if ( $this->process_rules_for_order( $order_id ) ) {
+					$counter++;
+				}
 			}
 		}
 
@@ -455,7 +465,7 @@ class Alg_WC_Order_Status_Rules_Core {
 	/**
 	 * process_rules_for_order.
 	 *
-	 * @version 3.3.0
+	 * @version 3.4.0
 	 * @since   2.2.0
 	 *
 	 * @todo    (dev) check if it's a valid order at the beginning (i.e., `( $order = wc_get_order( $order_id ) )`)
@@ -520,7 +530,7 @@ class Alg_WC_Order_Status_Rules_Core {
 					}
 
 					// Exit
-					break;
+					return true;
 
 				}
 
@@ -529,6 +539,8 @@ class Alg_WC_Order_Status_Rules_Core {
 		} elseif ( $this->do_debug() ) {
 			$this->add_to_log( sprintf( __( 'Process rules: Order #%s: No order status change history found', 'order-status-rules-for-woocommerce' ), $order_id ) );
 		}
+
+		return false;
 
 	}
 

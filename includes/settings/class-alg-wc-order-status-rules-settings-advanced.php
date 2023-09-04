@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Advanced Section Settings
  *
- * @version 3.3.0
+ * @version 3.4.0
  * @since   1.5.0
  *
  * @author  Algoritmika Ltd.
@@ -29,11 +29,11 @@ class Alg_WC_Order_Status_Rules_Settings_Advanced extends Alg_WC_Order_Status_Ru
 	/**
 	 * get_settings.
 	 *
-	 * @version 3.3.0
+	 * @version 3.4.0
 	 * @since   1.5.0
 	 *
 	 * @todo    (dev) split into sections, e.g., "Compatibility"
-	 * @todo    (dev) `woocommerce_can_subscription_be_updated_to_`
+	 * @todo    (dev) `woocommerce_can_subscription_be_updated_to_` (for the "Unable to change subscription status to ..." error)
 	 * @todo    (dev) `alg_wc_order_status_rules_hooks`: update default, e.g., add `woocommerce_checkout_order_processed`
 	 * @todo    (dev) `alg_wc_order_status_rules_hooks`: `woocommerce_payment_complete`
 	 * @todo    (dev) `alg_wc_order_status_rules_hooks`: `woocommerce_order_status_pending`, etc. (`woocommerce_order_status_ . $status_to`)
@@ -144,30 +144,30 @@ class Alg_WC_Order_Status_Rules_Settings_Advanced extends Alg_WC_Order_Status_Ru
 
 		$orders_query_settings = array(
 			array(
-				'title'    => __( 'Orders Query Options', 'order-status-rules-for-woocommerce' ),
-				'desc'     => __( 'Affects "Periodical Processing" options, "Rules processing via URL" option and "Run all rules now" tool.', 'order-status-rules-for-woocommerce' ),
-				'type'     => 'title',
-				'id'       => 'alg_wc_order_status_rules_orders_query_options',
+				'title'             => __( 'Orders Query Options', 'order-status-rules-for-woocommerce' ),
+				'desc'              => __( 'Affects "Periodical Processing" options, "Rules processing via URL" option and "Run all rules now" tool.', 'order-status-rules-for-woocommerce' ),
+				'type'              => 'title',
+				'id'                => 'alg_wc_order_status_rules_orders_query_options',
 			),
 			array(
-				'title'    => __( 'Order types', 'order-status-rules-for-woocommerce' ),
-				'id'       => 'alg_wc_order_status_rules_wc_get_orders_args[type]',
-				'default'  => array( 'shop_order' ),
-				'type'     => 'multiselect',
-				'class'    => 'chosen_select',
-				'options'  => array(
+				'title'             => __( 'Order types', 'order-status-rules-for-woocommerce' ),
+				'id'                => 'alg_wc_order_status_rules_wc_get_orders_args[type]',
+				'default'           => array( 'shop_order' ),
+				'type'              => 'multiselect',
+				'class'             => 'chosen_select',
+				'options'           => array(
 					'shop_order'        => __( 'Orders', 'order-status-rules-for-woocommerce' ),
 					'shop_subscription' => __( 'Subscriptions', 'order-status-rules-for-woocommerce' ),
 				),
 			),
 			array(
-				'title'    => __( 'Orders sorting', 'order-status-rules-for-woocommerce' ),
-				'desc'     => __( 'Order by', 'order-status-rules-for-woocommerce' ),
-				'id'       => 'alg_wc_order_status_rules_wc_get_orders_args[orderby]',
-				'default'  => 'date',
-				'type'     => 'select',
-				'class'    => 'chosen_select',
-				'options'  => array(
+				'title'             => __( 'Orders sorting', 'order-status-rules-for-woocommerce' ),
+				'desc'              => __( 'Order by', 'order-status-rules-for-woocommerce' ),
+				'id'                => 'alg_wc_order_status_rules_wc_get_orders_args[orderby]',
+				'default'           => 'date',
+				'type'              => 'select',
+				'class'             => 'chosen_select',
+				'options'           => array(
 					'ID'       => __( 'ID', 'order-status-rules-for-woocommerce' ),
 					'rand'     => __( 'Random', 'order-status-rules-for-woocommerce' ),
 					'date'     => __( 'Date', 'order-status-rules-for-woocommerce' ),
@@ -175,19 +175,28 @@ class Alg_WC_Order_Status_Rules_Settings_Advanced extends Alg_WC_Order_Status_Ru
 				),
 			),
 			array(
-				'desc'     => __( 'Order', 'order-status-rules-for-woocommerce' ),
-				'id'       => 'alg_wc_order_status_rules_wc_get_orders_args[order]',
-				'default'  => 'DESC',
-				'type'     => 'select',
-				'class'    => 'chosen_select',
-				'options'  => array(
+				'desc'              => __( 'Order', 'order-status-rules-for-woocommerce' ),
+				'id'                => 'alg_wc_order_status_rules_wc_get_orders_args[order]',
+				'default'           => 'DESC',
+				'type'              => 'select',
+				'class'             => 'chosen_select',
+				'options'           => array(
 					'DESC' => __( 'Descending', 'order-status-rules-for-woocommerce' ),
 					'ASC'  => __( 'Ascending', 'order-status-rules-for-woocommerce' ),
 				),
 			),
 			array(
-				'type'     => 'sectionend',
-				'id'       => 'alg_wc_order_status_rules_orders_query_options',
+				'title'             => __( 'Max orders', 'order-status-rules-for-woocommerce' ),
+				'desc_tip'          => __( 'Maximum number of orders to update in a single run.', 'order-status-rules-for-woocommerce' ) . ' ' .
+					__( 'Set to -1 to update all eligible orders at once.', 'order-status-rules-for-woocommerce' ),
+				'id'                => 'alg_wc_order_status_rules_wc_get_orders_max_orders',
+				'default'           => -1,
+				'type'              => 'number',
+				'custom_attributes' => array( 'min' => -1 ),
+			),
+			array(
+				'type'              => 'sectionend',
+				'id'                => 'alg_wc_order_status_rules_orders_query_options',
 			),
 		);
 

@@ -3,12 +3,12 @@
 Plugin Name: Order Status Rules for WooCommerce
 Plugin URI: https://wpfactory.com/item/order-status-rules-for-woocommerce/
 Description: Automate WooCommerce order statuses. Beautifully.
-Version: 3.3.0
+Version: 3.4.0
 Author: WPFactory
 Author URI: https://wpfactory.com
 Text Domain: order-status-rules-for-woocommerce
 Domain Path: /langs
-WC tested up to: 7.8
+WC tested up to: 8.0
 */
 
 defined( 'ABSPATH' ) || exit;
@@ -17,7 +17,7 @@ if ( 'order-status-rules-for-woocommerce.php' === basename( __FILE__ ) ) {
 	/**
 	 * Check if Pro plugin version is activated.
 	 *
-	 * @version 1.7.0
+	 * @version 3.4.0
 	 * @since   1.7.0
 	 */
 	$plugin = 'order-status-rules-for-woocommerce-pro/order-status-rules-for-woocommerce-pro.php';
@@ -25,11 +25,12 @@ if ( 'order-status-rules-for-woocommerce.php' === basename( __FILE__ ) ) {
 		in_array( $plugin, (array) get_option( 'active_plugins', array() ), true ) ||
 		( is_multisite() && array_key_exists( $plugin, (array) get_site_option( 'active_sitewide_plugins', array() ) ) )
 	) {
+		defined( 'ALG_WC_ORDER_STATUS_RULES_FILE_FREE' ) || define( 'ALG_WC_ORDER_STATUS_RULES_FILE_FREE', __FILE__ );
 		return;
 	}
 }
 
-defined( 'ALG_WC_ORDER_STATUS_RULES_VERSION' ) || define( 'ALG_WC_ORDER_STATUS_RULES_VERSION', '3.3.0' );
+defined( 'ALG_WC_ORDER_STATUS_RULES_VERSION' ) || define( 'ALG_WC_ORDER_STATUS_RULES_VERSION', '3.4.0' );
 
 defined( 'ALG_WC_ORDER_STATUS_RULES_FILE' ) || define( 'ALG_WC_ORDER_STATUS_RULES_FILE', __FILE__ );
 

@@ -29,6 +29,8 @@ class Alg_WC_Order_Status_Rules_Conditions {
 	 *
 	 * @version 2.9.0
 	 * @since   2.6.0
+	 *
+	 * @todo    (feature) "Order type", e.g., "Any", "Order", "Subscription"
 	 */
 	function get() {
 		return array(
