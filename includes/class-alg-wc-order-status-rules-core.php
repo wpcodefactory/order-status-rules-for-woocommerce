@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Core Class
  *
- * @version 3.4.0
+ * @version 3.4.1
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -399,7 +399,7 @@ class Alg_WC_Order_Status_Rules_Core {
 	/**
 	 * process_rules.
 	 *
-	 * @version 3.4.0
+	 * @version 3.4.1
 	 * @since   1.0.0
 	 *
 	 * @see     https://github.com/woocommerce/woocommerce/wiki/wc_get_orders-and-WC_Order_Query
@@ -434,6 +434,7 @@ class Alg_WC_Order_Status_Rules_Core {
 				'order'    => ( isset( $user_args['order'] )   ? $user_args['order']   : 'DESC' ),
 				'type'     => ( isset( $user_args['type'] )    ? $user_args['type']    : array( 'shop_order' ) ),
 			), $this ) );
+			$orders     = apply_filters( 'alg_wc_order_status_rules_wc_get_orders', $orders, $this );
 			foreach ( $orders as $order_id ) {
 				if ( -1 != $max_orders && $counter >= $max_orders ) {
 					if ( $this->do_debug() ) {
