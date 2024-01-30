@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Conditions Class
  *
- * @version 3.2.0
+ * @version 3.5.0
  * @since   2.8.0
  *
  * @author  Algoritmika Ltd.
@@ -60,7 +60,7 @@ class Alg_WC_Order_Status_Rules_Conditions {
 	/**
 	 * check_min_max_amounts.
 	 *
-	 * @version 2.9.0
+	 * @version 3.5.0
 	 * @since   2.8.0
 	 *
 	 * @todo    (dev) calculate only if needed, i.e., if the condition(s) is enabled, etc.
@@ -69,7 +69,7 @@ class Alg_WC_Order_Status_Rules_Conditions {
 
 		// Get order amount, e.g., subtotal
 		foreach ( array( 'min_amount', 'max_amount' ) as $condition_id ) {
-			$amount_type = ( isset( $options[ "{$condition_id}_type" ][ $rule_id ] ) ? $options[ "{$condition_id}_type" ][ $rule_id ] : 'subtotal' );
+			$amount_type = ( $options[ "{$condition_id}_type" ][ $rule_id ] ?? 'subtotal' );
 			switch ( $amount_type ) {
 				case 'total':
 					$amount[ $condition_id ] = apply_filters( 'alg_wc_order_status_rules_order_amount', ( float ) $order->get_total(),
@@ -235,7 +235,7 @@ class Alg_WC_Order_Status_Rules_Conditions {
 	/**
 	 * check_products.
 	 *
-	 * @version 2.9.0
+	 * @version 3.5.0
 	 * @since   2.8.0
 	 *
 	 * @todo    (feature) `exclude_all`
@@ -243,7 +243,7 @@ class Alg_WC_Order_Status_Rules_Conditions {
 	function check_products( $options, $rule_id, $order ) {
 		foreach ( array( 'products', 'product_cats', 'product_tags', 'product_stock_status' ) as $type ) {
 			if ( ! empty( $options[ $type ][ $rule_id ] ) ) {
-				$action       = ( isset( $options[ $type . '_require_all' ][ $rule_id ] ) ? $options[ $type . '_require_all' ][ $rule_id ] : 'no' );
+				$action       = ( $options[ $type . '_require_all' ][ $rule_id ] ?? 'no' );
 				$do_check_all = ( in_array( $action, array( 'yes',     'exclude_all' ) ) );
 				$do_exclude   = ( in_array( $action, array( 'exclude', 'exclude_all' ) ) );
 				if ( ! $this->check_order_products( $order, $options[ $type ][ $rule_id ], $type, $do_check_all, $do_exclude ) ) {
@@ -277,7 +277,7 @@ class Alg_WC_Order_Status_Rules_Conditions {
 	/**
 	 * check_coupons.
 	 *
-	 * @version 2.8.1
+	 * @version 3.5.0
 	 * @since   2.8.0
 	 */
 	function check_coupons( $options, $rule_id, $order ) {
@@ -285,7 +285,7 @@ class Alg_WC_Order_Status_Rules_Conditions {
 			$this->check_order_coupons(
 				$order,
 				$options['coupons'][ $rule_id ],
-				( isset( $options['specific_coupons'][ $rule_id ] ) ? $options['specific_coupons'][ $rule_id ] : '' )
+				( $options['specific_coupons'][ $rule_id ] ?? '' )
 			)
 		);
 	}
@@ -353,7 +353,7 @@ class Alg_WC_Order_Status_Rules_Conditions {
 	/**
 	 * check_meta.
 	 *
-	 * @version 2.8.0
+	 * @version 3.5.0
 	 * @since   2.8.0
 	 */
 	function check_meta( $options, $rule_id, $order ) {
@@ -361,8 +361,8 @@ class Alg_WC_Order_Status_Rules_Conditions {
 			$this->check_order_meta(
 				$order,
 				$options['meta_key'][ $rule_id ],
-				( isset( $options['meta_value'][ $rule_id ] )             ? $options['meta_value'][ $rule_id ]             : '' ),
-				( isset( $options['meta_value_is_multiple'][ $rule_id ] ) ? $options['meta_value_is_multiple'][ $rule_id ] : 'no' )
+				( $options['meta_value'][ $rule_id ]             ?? '' ),
+				( $options['meta_value_is_multiple'][ $rule_id ] ?? 'no' )
 			)
 		);
 	}

@@ -1,484 +1,484 @@
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-admin.php:54
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-section.php:220
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-section.php:270
+#: includes/class-alg-wc-order-status-rules-admin.php:62
+#: includes/settings/class-alg-wc-order-status-rules-settings-section.php:244
+#: includes/settings/class-alg-wc-order-status-rules-settings-section.php:294
 msgid "Guest"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-admin.php:73
+#: includes/class-alg-wc-order-status-rules-admin.php:81
 msgid "Order Status History"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-admin.php:98
+#: includes/class-alg-wc-order-status-rules-admin.php:106
 msgid "No data."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-admin.php:109
+#: includes/class-alg-wc-order-status-rules-admin.php:117
 msgid "Nr."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-admin.php:110
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:98
+#: includes/class-alg-wc-order-status-rules-admin.php:118
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:98
 msgid "Time"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-admin.php:111
+#: includes/class-alg-wc-order-status-rules-admin.php:119
 msgid "From"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-admin.php:112
+#: includes/class-alg-wc-order-status-rules-admin.php:120
 msgid "To"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-admin.php:140
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-core.php:517
+#: includes/class-alg-wc-order-status-rules-admin.php:149
+#: includes/class-alg-wc-order-status-rules-core.php:590
 #, php-format
 msgid "Rule #%s"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-admin.php:143
+#: includes/class-alg-wc-order-status-rules-admin.php:152
 #, php-format
 msgid "Status scheduled to be updated from %s to %s (%s) on %s (i.e. %s)."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-admin.php:149
+#: includes/class-alg-wc-order-status-rules-admin.php:158
 #, php-format
 msgid "in %s"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-admin.php:150
+#: includes/class-alg-wc-order-status-rules-admin.php:159
 msgid "now"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-admin.php:152
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-section.php:102
+#: includes/class-alg-wc-order-status-rules-admin.php:161
+#: includes/settings/class-alg-wc-order-status-rules-settings-section.php:126
 #, php-format
 msgid "Current time is %s."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-admin.php:160
+#: includes/class-alg-wc-order-status-rules-admin.php:169
 msgid ""
 "No order status rules are scheduled to be applied for the current order."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-admin.php:168
+#: includes/class-alg-wc-order-status-rules-admin.php:177
 msgid ""
 "Although the current order status does not match the last record in the "
 "order history, it will be used anyway."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-admin.php:171
+#: includes/class-alg-wc-order-status-rules-admin.php:180
 msgid ""
 "The current order status does not match the last record in the order "
 "history! Order status rules will not be applied!"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-admin.php:173
+#: includes/class-alg-wc-order-status-rules-admin.php:182
 #, php-format
 msgid ""
 "To change this behaviour, please check the \"%s\" option in the %s section."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-admin.php:174
+#: includes/class-alg-wc-order-status-rules-admin.php:183
 msgid "On non-matching order status"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-admin.php:176
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:25
+#: includes/class-alg-wc-order-status-rules-admin.php:185
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:25
 msgid "Advanced"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-conditions.php:37
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:160
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:171
+#: includes/class-alg-wc-order-status-rules-conditions.php:37
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:171
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:182
 msgid "Minimum amount"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-conditions.php:38
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:186
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:197
+#: includes/class-alg-wc-order-status-rules-conditions.php:38
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:197
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:208
 msgid "Maximum amount"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-conditions.php:39
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:212
+#: includes/class-alg-wc-order-status-rules-conditions.php:39
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:223
 msgid "Minimum quantity"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-conditions.php:40
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:226
+#: includes/class-alg-wc-order-status-rules-conditions.php:40
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:237
 msgid "Maximum quantity"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-conditions.php:41
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:259
+#: includes/class-alg-wc-order-status-rules-conditions.php:41
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:270
 msgid "Payment gateways"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-conditions.php:42
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:275
+#: includes/class-alg-wc-order-status-rules-conditions.php:42
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:286
 msgid "Shipping methods"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-conditions.php:43
+#: includes/class-alg-wc-order-status-rules-conditions.php:43
 msgid "Billing country"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-conditions.php:44
+#: includes/class-alg-wc-order-status-rules-conditions.php:44
 msgid "Shipping country"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-conditions.php:45
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:361
+#: includes/class-alg-wc-order-status-rules-conditions.php:45
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:372
 msgid "Products"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-conditions.php:46
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:393
+#: includes/class-alg-wc-order-status-rules-conditions.php:46
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:404
 msgid "Product categories"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-conditions.php:47
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:421
+#: includes/class-alg-wc-order-status-rules-conditions.php:47
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:432
 msgid "Product tags"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-conditions.php:48
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:449
+#: includes/class-alg-wc-order-status-rules-conditions.php:48
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:460
 msgid "Product stock status"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-conditions.php:49
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:492
+#: includes/class-alg-wc-order-status-rules-conditions.php:49
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:503
 msgid "Coupons"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-conditions.php:50
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:535
+#: includes/class-alg-wc-order-status-rules-conditions.php:50
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:546
 msgid "Billing emails"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-conditions.php:51
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:550
+#: includes/class-alg-wc-order-status-rules-conditions.php:51
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:561
 msgid "User roles"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-conditions.php:52
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:566
+#: includes/class-alg-wc-order-status-rules-conditions.php:52
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:577
 msgid "Users"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-conditions.php:53
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:586
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:595
+#: includes/class-alg-wc-order-status-rules-conditions.php:53
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:597
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:606
 msgid "Paying customer"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-conditions.php:54
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:664
+#: includes/class-alg-wc-order-status-rules-conditions.php:54
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:675
 msgid "Meta"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-conditions.php:55
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:623
+#: includes/class-alg-wc-order-status-rules-conditions.php:55
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:634
 msgid "Date created before"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-conditions.php:56
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:636
+#: includes/class-alg-wc-order-status-rules-conditions.php:56
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:647
 msgid "Date created after"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-core.php:232
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-core.php:247
+#: includes/class-alg-wc-order-status-rules-core.php:288
+#: includes/class-alg-wc-order-status-rules-core.php:303
 msgid "\"Run all rules now\" tool executed."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-core.php:419
+#: includes/class-alg-wc-order-status-rules-core.php:491
 msgid "Process rules: Started"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-core.php:420
+#: includes/class-alg-wc-order-status-rules-core.php:492
 msgid "manual"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-core.php:441
+#: includes/class-alg-wc-order-status-rules-core.php:513
 msgid "Process rules: Maximum number of updated orders reached"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-core.php:452
+#: includes/class-alg-wc-order-status-rules-core.php:524
 msgid "Process rules: Finished"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-core.php:480
+#: includes/class-alg-wc-order-status-rules-core.php:551
 #, php-format
 msgid "Process rules: Order #%s"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-core.php:489
+#: includes/class-alg-wc-order-status-rules-core.php:560
 #, php-format
 msgid "Process rules: Skipping order #%s"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-core.php:519
+#: includes/class-alg-wc-order-status-rules-core.php:592
 #, php-format
 msgid "Status updated by \"Order Status Rules for WooCommerce\" plugin (%s)."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-core.php:529
+#: includes/class-alg-wc-order-status-rules-core.php:602
 #, php-format
 msgid "Process rules: Order #%s: from %s to %s (%s)"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-core.php:541
+#: includes/class-alg-wc-order-status-rules-core.php:614
 #, php-format
 msgid "Process rules: Order #%s: No order status change history found"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-crons.php:61
+#: includes/class-alg-wc-order-status-rules-crons.php:61
 msgid "Once every minute"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-crons.php:62
+#: includes/class-alg-wc-order-status-rules-crons.php:62
 msgid "Once every 15 minutes"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-crons.php:63
+#: includes/class-alg-wc-order-status-rules-crons.php:63
 msgid "Once every 30 minutes"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-crons.php:64
+#: includes/class-alg-wc-order-status-rules-crons.php:64
 msgid "Once hourly"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-crons.php:65
+#: includes/class-alg-wc-order-status-rules-crons.php:65
 msgid "Twice daily"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-crons.php:66
+#: includes/class-alg-wc-order-status-rules-crons.php:66
 msgid "Once daily"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-crons.php:67
+#: includes/class-alg-wc-order-status-rules-crons.php:67
 msgid "Once weekly"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-crons.php:84
+#: includes/class-alg-wc-order-status-rules-crons.php:84
 msgid "Once Every Minute"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-crons.php:88
+#: includes/class-alg-wc-order-status-rules-crons.php:88
 msgid "Once Every 15 Minutes"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-crons.php:92
+#: includes/class-alg-wc-order-status-rules-crons.php:92
 msgid "Once Every 30 Minutes"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules-my-account.php:46
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-my-account.php:68
+#: includes/class-alg-wc-order-status-rules-my-account.php:46
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:68
 msgid "History"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules.php:151
+#: includes/class-alg-wc-order-status-rules.php:159
 msgid "Settings"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\class-alg-wc-order-status-rules.php:154
+#: includes/class-alg-wc-order-status-rules.php:162
 msgid "Go Pro"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:55
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:55
 msgid "Advanced Options"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:60
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:60
 msgid "Save status change on"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:66
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:77
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:66
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:77
 msgid "Order status changed"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:67
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:82
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:67
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:82
 msgid "Subscription status changed"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:71
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:71
 msgid "Process rules on"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:78
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:78
 msgid "Checkout order processed"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:79
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:79
 msgid "\"Thank you\" (i.e., \"Order received\") page"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:80
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:80
 msgid "Admin \"Edit order\" page"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:81
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:81
 msgid "Admin \"Edit subscription\" page"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:86
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:86
 msgid "Statuses"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:92
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:92
 msgid "WooCommerce Order Statuses"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:93
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:93
 msgid "WooCommerce Subscription Statuses"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:97
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:97
 msgid "Meta box"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:98
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:98
 msgid "Adds admin \"Order Status History\" meta box."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:104
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:159
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:104
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:159
 msgid "Orders"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:105
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:160
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:105
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:160
 msgid "Subscriptions"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:109
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:247
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:109
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:247
 msgid "Allow rules processing via URL"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:110
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:131
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:257
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:275
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:306
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-my-account.php:47
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-my-account.php:106
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:110
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:131
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:257
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:275
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:306
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:47
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:106
 msgid "Enable"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:111
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:111
 #, php-format
 msgid "This will allow to initiate all rules processing via URL: %s."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:113
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:113
 #, php-format
 msgid ""
 "For example, this could be useful if you are going to disable %s and use "
 "\"real\" (i.e. server) cron jobs instead."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:114
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:244
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:114
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:244
 msgid "Periodical Processing Options"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:120
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:120
 msgid "Disabled conditions"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:121
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:121
 msgid "Removes the selected conditions from each rule's settings."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:130
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:130
 msgid "Debug"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:132
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:132
 #, php-format
 msgid "Will add a log to %s."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:134
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:134
 msgid "WooCommerce > Status > Logs"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:147
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:147
 msgid "Orders Query Options"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:148
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:148
 msgid ""
 "Affects \"Periodical Processing\" options, \"Rules processing via URL\" "
 "option and \"Run all rules now\" tool."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:153
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:153
 msgid "Order types"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:164
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:164
 msgid "Orders sorting"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:165
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:165
 msgid "Order by"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:171
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:171
 msgid "ID"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:172
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:172
 msgid "Random"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:173
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:173
 msgid "Date"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:174
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:174
 msgid "Modified"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:178
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:178
 msgid "Order"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:184
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:184
 msgid "Descending"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:185
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:185
 msgid "Ascending"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:189
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:189
 msgid "Max orders"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:190
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:190
 msgid "Maximum number of orders to update in a single run."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:191
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:191
 msgid "Set to -1 to update all eligible orders at once."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:205
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:205
 msgid "Order Status History Options"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:210
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:210
 msgid "Empty order status history"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:211
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:211
 msgid ""
 "Plugin must be enabled at the time order status change occurs, so there is "
 "no order status change history on initial plugin install. This can be solved "
@@ -487,97 +487,97 @@ msgid ""
 "change history."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:217
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:232
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:217
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:232
 msgid "Do nothing"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:218
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:218
 msgid "Use order date created"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:219
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:219
 msgid "Use order date modified"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:223
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:223
 msgid "Non-matching order status"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:224
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:224
 msgid ""
 "If order status is not properly changed (e.g. by some plugin), it may happen "
 "that current order status does not match the last record in order status "
 "change history."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:225
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:225
 msgid "In this case order status rules will not be applied."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:226
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:226
 msgid "You can change this behaviour here."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:233
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:233
 msgid "Use latest record anyway"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:245
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:245
 msgid ""
 "Although it's possible to enable both periodical processing options, we "
 "recommend enabling only one of them."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:246
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:246
 #, php-format
 msgid ""
 "If you are going to disable both periodical processing options, you may want "
 "to enable the %s option and set up \"real\" (i.e. server) cron job."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:248
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:248
 #, php-format
 msgid "Also you can use our %s tool manually."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:249
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-tools.php:44
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:249
+#: includes/settings/class-alg-wc-order-status-rules-settings-tools.php:44
 msgid "Run all rules now"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:251
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:251
 #, php-format
 msgid "Crons (%s) are disabled on your site!"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:256
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:256
 msgid "Use WP cron"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:258
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:276
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:258
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:276
 #, php-format
 msgid "This will use %s to process the rules periodically."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:260
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:260
 msgid "WordPress crons"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:266
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:266
 msgid "Interval"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:274
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:274
 msgid "Use Action Scheduler"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:278
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:278
 msgid "Action Scheduler"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:279
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:279
 #, php-format
 msgid ""
 "Action Scheduler has a built in <a href=\"%s\" target=\"_blank"
@@ -585,745 +585,766 @@ msgid ""
 "triggering scheduled actions. Search for the %s hook there."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:286
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:286
 msgid "Interval (in seconds)"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:300
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:300
 msgid "Compatibility Options"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:305
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:305
 msgid "\"Doctreat\" theme"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-advanced.php:307
+#: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:307
 msgid "For the \"Doctreat - Doctors Directory WordPress Theme\" by AmentoTech."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-extra.php:25
+#: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:25
 msgid "Extra"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-extra.php:37
+#: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:37
 msgid "No changes..."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-extra.php:41
+#: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:41
 msgid "Default Order Status"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-extra.php:46
+#: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:46
 msgid "Default order status"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-extra.php:47
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-extra.php:70
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-extra.php:80
+#: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:47
+#: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:70
+#: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:80
 #, php-format
 msgid "WooCommerce default: %s."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-extra.php:48
+#: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:48
 msgctxt "Order status"
 msgid "Pending payment"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-extra.php:63
+#: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:63
 msgid "Process Payment Order Status"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-extra.php:64
+#: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:64
 msgid "Order status updated in gateway's \"process payment\" function."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-extra.php:69
+#: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:69
 msgid "Direct bank transfer"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-extra.php:71
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-extra.php:81
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-extra.php:91
+#: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:71
+#: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:81
+#: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:91
 msgctxt "Order status"
 msgid "On hold"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-extra.php:79
+#: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:79
 msgid "Check payments"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-extra.php:89
+#: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:89
 msgid "Cash on delivery (COD)"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-extra.php:90
+#: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:90
 #, php-format
 msgid ""
 "WooCommerce default: %s or %s (if the order contains a downloadable product)."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-extra.php:91
+#: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:91
 msgctxt "Order status"
 msgid "Processing"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-general.php:25
+#: includes/settings/class-alg-wc-order-status-rules-settings-general.php:25
 msgid "General"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-general.php:38
+#: includes/settings/class-alg-wc-order-status-rules-settings-general.php:38
 msgid "Order Status Rules Options"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-general.php:43
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-settings-order-status-rules.php:25
+#: includes/settings/class-alg-wc-order-status-rules-settings-general.php:43
+#: includes/settings/class-alg-wc-settings-order-status-rules.php:25
 msgid "Order Status Rules"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-general.php:44
+#: includes/settings/class-alg-wc-order-status-rules-settings-general.php:44
 msgid "Enable plugin"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-general.php:45
+#: includes/settings/class-alg-wc-order-status-rules-settings-general.php:45
 msgid "Automate WooCommerce order statuses. Beautifully."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-general.php:51
+#: includes/settings/class-alg-wc-order-status-rules-settings-general.php:51
 msgid "Total rules"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-general.php:52
+#: includes/settings/class-alg-wc-order-status-rules-settings-general.php:52
 msgid ""
 "New settings sections will be added if you change this option and \"Save "
 "changes\"."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-my-account.php:25
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:25
 msgid "My Account"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-my-account.php:40
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:40
 msgid "\"My Account\" Options"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-my-account.php:41
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:41
 msgid ""
 "This is a \"bonus\" feature of the plugin. As plugin tracks order status "
 "changes, we can display them on customer's \"My Account\" page."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-my-account.php:46
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:46
 msgid "My Account > Orders"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-my-account.php:48
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:48
 msgid "Adds order status history to \"My Account > Orders\"."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-my-account.php:54
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:54
 msgid "Position"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-my-account.php:60
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:60
 msgid "\"Status\" column"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-my-account.php:61
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:61
 msgid "New column"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-my-account.php:65
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:65
 msgid "Column title"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-my-account.php:66
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:66
 msgid "Ignored unless \"New column\" is selected for the \"Position\"."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-my-account.php:72
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:72
 msgid "Templates"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-my-account.php:73
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:73
 msgid "Before"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-my-account.php:74
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-my-account.php:83
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-my-account.php:97
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:74
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:83
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:97
 #, php-format
 msgid "Available placeholders: %s"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-my-account.php:82
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:82
 msgid "Each record"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-my-account.php:90
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:90
 #, php-format
 msgid "%s is a HTML code for the right arrow symbol."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-my-account.php:96
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:96
 msgid "After"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-my-account.php:105
+#: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:105
 msgid "Reverse status history"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:25
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:56
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:25
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:56
 #, php-format
 msgid "Rule #%d"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:61
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:61
 msgid "Enable/Disable"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:62
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:62
 #, php-format
 msgid "Enable rule #%s"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:68
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:68
 msgid "Status from"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:76
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:76
 msgid "Status to"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:84
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:84
 msgid "Admin title"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:84
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:84
 msgid "optional"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:103
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:103
 msgid "Time trigger"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:104
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:104
 msgid "Set it to zero for an immediate status update."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:116
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:116
 msgid "second(s)"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:117
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:117
 msgid "minute(s)"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:118
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:118
 msgid "hour(s)"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:119
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:119
 msgid "day(s)"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:120
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:120
 msgid "week(s)"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:124
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:124
 msgid "Skip days"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:125
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:125
 msgid "Ignored if empty, or if all seven days are selected."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:132
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:132
 msgid "Monday"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:133
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:133
 msgid "Tuesday"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:134
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:134
 msgid "Wednesday"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:135
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:135
 msgid "Thursday"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:136
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:136
 msgid "Friday"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:137
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:137
 msgid "Saturday"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:138
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:138
 msgid "Sunday"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:151
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:142
+msgid "Skip dates"
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:143
+#, php-format
+msgid ""
+"Comma-separated list of dates in %s format (two digits with leading zeros, "
+"month - %s to %s, day - %s to %s)."
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:145
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:174
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:200
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:226
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:240
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:273
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:289
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:324
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:340
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:375
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:407
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:435
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:463
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:550
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:564
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:580
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:637
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:650
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:679
+msgid "Ignored if empty."
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:146
+msgid "Dates (e.g., holidays)."
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:147
+#, php-format
+msgid "E.g.: %s"
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:162
 msgid "Order Minimum/Maximum Amounts"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:161
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:172
 msgid "Minimum order amount (subtotal)."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:162
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:173
 msgid ""
 "If you want the rule to be applied only for orders with subtotal equal or "
 "greater than some value, you can set it here."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:163
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:189
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:215
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:229
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:262
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:278
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:313
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:329
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:364
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:396
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:424
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:452
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:539
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:553
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:569
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:626
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:639
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:668
-msgid "Ignored if empty."
-msgstr ""
-
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:170
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:196
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:181
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:207
 msgid "Order amount type"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:171
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:197
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:182
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:208
 #, php-format
 msgid "Used in the \"%s\" option."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:177
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:203
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:188
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:214
 msgid "Order subtotal"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:178
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:204
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:189
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:215
 msgid "Order total"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:187
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:198
 msgid "Maximum order amount (subtotal)."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:188
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:199
 msgid ""
 "If you want the rule to be applied only for orders with subtotal equal or "
 "less than some value, you can set it here."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:213
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:224
 msgid "Minimum number of items in the order."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:214
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:225
 msgid ""
 "If you want the rule to be applied only for orders with number of items "
 "equal or greater than some value, you can set it here."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:227
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:238
 msgid "Maximum number of items in the order."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:228
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:239
 msgid ""
 "If you want the rule to be applied only for orders with number of items "
 "equal or less than some value, you can set it here."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:250
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:261
 msgid "Order Payment & Shipping"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:260
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:271
 msgid "Required payment gateways."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:261
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:272
 msgid ""
 "If you want the rule to be applied only for orders with selected payment "
 "gateways, you can set them here."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:276
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:287
 msgid "Required shipping methods."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:277
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:288
 msgid ""
 "If you want the rule to be applied only for orders with selected shipping "
 "methods, you can set them here."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:301
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:312
 msgid "Order Countries"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:310
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:321
 msgid "Billing countries"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:311
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:322
 msgid "Required billing countries"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:312
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:323
 msgid ""
 "If you want the rule to be applied only for orders with selected billing "
 "countries, you can set them here."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:326
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:337
 msgid "Shipping countries"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:327
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:338
 msgid "Required shipping countries"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:328
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:339
 msgid ""
 "If you want the rule to be applied only for orders with selected shipping "
 "countries, you can set them here."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:352
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:363
 msgid "Order Products"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:362
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:373
 msgid "Required products."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:363
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:374
 msgid ""
 "If you want the rule to be applied only for orders with selected products, "
 "you can set them here."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:371
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:382
 msgid "Search for a product&hellip;"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:377
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:405
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:433
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:461
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:388
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:416
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:444
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:472
 msgid ""
 "\"Require all\" means that all products in the order must match the "
 "selection (vs at least one product)."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:383
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:411
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:439
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:467
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:394
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:422
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:450
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:478
 msgid "Require"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:384
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:412
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:440
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:468
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:395
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:423
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:451
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:479
 msgid "Require all"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:385
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:413
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:441
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:469
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:396
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:424
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:452
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:480
 msgid "Exclude"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:394
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:405
 msgid "Required product categories."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:395
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:406
 msgid ""
 "If you want the rule to be applied only for orders with selected product "
 "categories, you can set them here."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:422
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:433
 msgid "Required product tags."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:423
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:434
 msgid ""
 "If you want the rule to be applied only for orders with selected product "
 "tags, you can set them here."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:450
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:461
 msgid "Required product stock status."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:451
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:462
 msgid ""
 "If you want the rule to be applied only for orders with selected product "
 "stock status, you can set them here."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:487
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:498
 msgid "Order Coupons"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:493
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:504
 msgid "Required coupons."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:494
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:505
 msgid ""
 "If you want the rule to be applied only for orders with any or specific "
 "coupon(s), you can set it here."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:500
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:594
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:511
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:605
 msgid "Do not check"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:501
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:512
 msgid "Any coupon"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:502
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:513
 msgid "Specific coupon(s)"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:503
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:514
 msgid "No coupons"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:507
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:518
 msgid "Specific coupons"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:508
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:519
 msgid "Coupon codes."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:509
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:538
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:520
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:549
 msgid "Can be a comma-separated list."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:510
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:521
 msgid "Ignored unless the \"Coupons\" option is set to \"Specific coupon(s)\"."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:526
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:537
 msgid "Order Users"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:536
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:547
 msgid "Required billing emails."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:537
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:548
 msgid ""
 "If you want the rule to be applied only for orders with selected billing "
 "emails, you can set them here."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:551
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:562
 msgid "Required user roles."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:552
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:563
 msgid ""
 "If you want the rule to be applied only for orders from selected user roles, "
 "you can set them here."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:567
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:578
 msgid "Required users."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:568
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:579
 msgid ""
 "If you want the rule to be applied only for orders from selected users, you "
 "can set them here."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:576
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:587
 msgid "Search for a user&hellip;"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:587
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:598
 msgid "Is order user a paying customer?"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:588
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:599
 msgid ""
 "If you want the rule to be applied only for orders from paying or not paying "
 "customers, you can set it here."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:596
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:607
 msgid "Not paying customer"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:614
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:625
 msgid "Order Dates"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:624
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:637
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:635
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:648
 msgid "Date (UTC)."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:625
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:636
 msgid ""
 "If you want the rule to be applied only for orders created before some date, "
 "you can set it here."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:638
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:649
 msgid ""
 "If you want the rule to be applied only for orders created after some date, "
 "you can set it here."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:659
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:670
 msgid "Order Meta"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:665
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:676
 msgid "Meta key"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:666
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:677
 msgid "Required order meta."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:667
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:678
 msgid ""
 "If you want the rule to be applied only for orders with specific order meta "
 "value, you can set it here."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:674
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:685
 msgid "Meta value"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:680
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:691
 msgid "Multiple meta values"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-rule.php:681
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:692
 msgid "Allows setting multiple meta values as a comma-separated list."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-section.php:47
+#: includes/settings/class-alg-wc-order-status-rules-settings-section.php:71
 msgid "Select all"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-section.php:48
+#: includes/settings/class-alg-wc-order-status-rules-settings-section.php:72
 msgid "Deselect all"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-section.php:96
+#: includes/settings/class-alg-wc-order-status-rules-settings-section.php:120
 #, php-format
 msgid "Next cron event is scheduled on %s (%s)."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-section.php:99
+#: includes/settings/class-alg-wc-order-status-rules-settings-section.php:123
 msgid "i.e. now"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-section.php:100
+#: includes/settings/class-alg-wc-order-status-rules-settings-section.php:124
 #, php-format
 msgid "i.e. in %s"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-section.php:124
+#: includes/settings/class-alg-wc-order-status-rules-settings-section.php:148
 #, php-format
 msgid "Enabled rule(s): %s."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-section.php:125
+#: includes/settings/class-alg-wc-order-status-rules-settings-section.php:149
 msgid "Rule"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-section.php:183
+#: includes/settings/class-alg-wc-order-status-rules-settings-section.php:207
 #, php-format
 msgid "Product category #%s"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-section.php:193
+#: includes/settings/class-alg-wc-order-status-rules-settings-section.php:217
 #, php-format
 msgid "Product tag #%s"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-section.php:267
+#: includes/settings/class-alg-wc-order-status-rules-settings-section.php:291
 #, php-format
 msgid "Product #%d"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-section.php:271
+#: includes/settings/class-alg-wc-order-status-rules-settings-section.php:295
 #, php-format
 msgid "User #%d"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-section.php:282
+#: includes/settings/class-alg-wc-order-status-rules-settings-section.php:306
 #, php-format
 msgid "%1$s (#%2$s &ndash; %3$s)"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-tools.php:25
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-tools.php:38
+#: includes/settings/class-alg-wc-order-status-rules-settings-tools.php:25
+#: includes/settings/class-alg-wc-order-status-rules-settings-tools.php:38
 msgid "Tools"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-tools.php:45
+#: includes/settings/class-alg-wc-order-status-rules-settings-tools.php:45
 msgid "Run"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-order-status-rules-settings-tools.php:46
+#: includes/settings/class-alg-wc-order-status-rules-settings-tools.php:46
 msgid "Check the box and save changes to run all rules now."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-settings-order-status-rules.php:50
+#: includes/settings/class-alg-wc-settings-order-status-rules.php:50
 msgid "Reset Settings"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-settings-order-status-rules.php:55
+#: includes/settings/class-alg-wc-settings-order-status-rules.php:55
 msgid "Reset section settings"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-settings-order-status-rules.php:56
+#: includes/settings/class-alg-wc-settings-order-status-rules.php:56
 msgid "Reset"
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-settings-order-status-rules.php:57
+#: includes/settings/class-alg-wc-settings-order-status-rules.php:57
 msgid "Check the box and save changes to reset."
 msgstr ""
 
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-settings-order-status-rules.php:85
-#: E:\xampp\htdocs\wpfactory-local\wp-content\plugins\order-status-rules-for-woocommerce-pro\includes\settings\class-alg-wc-settings-order-status-rules.php:100
+#: includes/settings/class-alg-wc-settings-order-status-rules.php:85
+#: includes/settings/class-alg-wc-settings-order-status-rules.php:100
 msgid "Your settings have been reset."
 msgstr ""

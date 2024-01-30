@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Rule Section Settings
  *
- * @version 3.3.0
+ * @version 3.5.0
  * @since   2.0.0
  *
  * @author  Algoritmika Ltd.
@@ -30,7 +30,7 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 	/**
 	 * get_settings.
 	 *
-	 * @version 3.3.0
+	 * @version 3.5.0
 	 * @since   2.0.0
 	 *
 	 * @todo    (desc) add description to each subsection
@@ -100,11 +100,11 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 				'id'       => "alg_wc_order_status_rules_time_options_{$i}",
 			),
 			array(
-				'title'    => __( 'Time trigger', 'order-status-rules-for-woocommerce' ),
-				'desc_tip' => __( 'Set it to zero for an immediate status update.', 'order-status-rules-for-woocommerce' ),
-				'id'       => "alg_wc_order_status_rules_time_trigger[{$i}]",
-				'default'  => 1,
-				'type'     => 'number',
+				'title'             => __( 'Time trigger', 'order-status-rules-for-woocommerce' ),
+				'desc_tip'          => __( 'Set it to zero for an immediate status update.', 'order-status-rules-for-woocommerce' ),
+				'id'                => "alg_wc_order_status_rules_time_trigger[{$i}]",
+				'default'           => 1,
+				'type'              => 'number',
 				'custom_attributes' => array( 'min' => 0 ),
 			),
 			array(
@@ -139,6 +139,17 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 				),
 			),
 			array(
+				'title'    => __( 'Skip dates', 'order-status-rules-for-woocommerce' ),
+				'desc_tip' => sprintf( __( 'Comma-separated list of dates in %s format (two digits with leading zeros, month - %s to %s, day - %s to %s).', 'order-status-rules-for-woocommerce' ),
+						'<code>MM-DD</code>', '<code>01</code>', '<code>12</code>', '<code>01</code>', '<code>31</code>' ) . ' ' .
+					__( 'Ignored if empty.', 'order-status-rules-for-woocommerce' ),
+				'desc'     => __( 'Dates (e.g., holidays).', 'order-status-rules-for-woocommerce' ) . ' ' .
+					sprintf( __( 'E.g.: %s', 'order-status-rules-for-woocommerce' ), '<code>01-01,12-25,12-26</code>' ),
+				'id'       => "alg_wc_order_status_rules_skip_dates[{$i}]",
+				'default'  => '',
+				'type'     => 'text',
+			),
+			array(
 				'type'     => 'sectionend',
 				'id'       => "alg_wc_order_status_rules_time_options_{$i}",
 			),
@@ -157,13 +168,13 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 		if ( ! in_array( 'min_amount', $disabled_conditions ) ) {
 			$settings = array_merge( $settings, array(
 				array(
-					'title'    => __( 'Minimum amount', 'order-status-rules-for-woocommerce' ),
-					'desc_tip' => __( 'Minimum order amount (subtotal).', 'order-status-rules-for-woocommerce' ) . ' ' .
+					'title'             => __( 'Minimum amount', 'order-status-rules-for-woocommerce' ),
+					'desc_tip'          => __( 'Minimum order amount (subtotal).', 'order-status-rules-for-woocommerce' ) . ' ' .
 						__( 'If you want the rule to be applied only for orders with subtotal equal or greater than some value, you can set it here.', 'order-status-rules-for-woocommerce' ) . ' ' .
 						__( 'Ignored if empty.', 'order-status-rules-for-woocommerce' ),
-					'id'       => "alg_wc_order_status_rules_min_amount[{$i}]",
-					'default'  => '',
-					'type'     => 'number',
+					'id'                => "alg_wc_order_status_rules_min_amount[{$i}]",
+					'default'           => '',
+					'type'              => 'number',
 					'custom_attributes' => array( 'step' => '0.000001' ),
 				),
 				array(
@@ -183,13 +194,13 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 		if ( ! in_array( 'max_amount', $disabled_conditions ) ) {
 			$settings = array_merge( $settings, array(
 				array(
-					'title'    => __( 'Maximum amount', 'order-status-rules-for-woocommerce' ),
-					'desc_tip' => __( 'Maximum order amount (subtotal).', 'order-status-rules-for-woocommerce' ) . ' ' .
+					'title'             => __( 'Maximum amount', 'order-status-rules-for-woocommerce' ),
+					'desc_tip'          => __( 'Maximum order amount (subtotal).', 'order-status-rules-for-woocommerce' ) . ' ' .
 						__( 'If you want the rule to be applied only for orders with subtotal equal or less than some value, you can set it here.', 'order-status-rules-for-woocommerce' ) . ' ' .
 						__( 'Ignored if empty.', 'order-status-rules-for-woocommerce' ),
-					'id'       => "alg_wc_order_status_rules_max_amount[{$i}]",
-					'default'  => '',
-					'type'     => 'number',
+					'id'                => "alg_wc_order_status_rules_max_amount[{$i}]",
+					'default'           => '',
+					'type'              => 'number',
 					'custom_attributes' => array( 'step' => '0.000001' ),
 				),
 				array(
@@ -209,13 +220,13 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 		if ( ! in_array( 'min_qty', $disabled_conditions ) ) {
 			$settings = array_merge( $settings, array(
 				array(
-					'title'    => __( 'Minimum quantity', 'order-status-rules-for-woocommerce' ),
-					'desc_tip' => __( 'Minimum number of items in the order.', 'order-status-rules-for-woocommerce' ) . ' ' .
+					'title'             => __( 'Minimum quantity', 'order-status-rules-for-woocommerce' ),
+					'desc_tip'          => __( 'Minimum number of items in the order.', 'order-status-rules-for-woocommerce' ) . ' ' .
 						__( 'If you want the rule to be applied only for orders with number of items equal or greater than some value, you can set it here.', 'order-status-rules-for-woocommerce' ) . ' ' .
 						__( 'Ignored if empty.', 'order-status-rules-for-woocommerce' ),
-					'id'       => "alg_wc_order_status_rules_min_qty[{$i}]",
-					'default'  => '',
-					'type'     => 'number',
+					'id'                => "alg_wc_order_status_rules_min_qty[{$i}]",
+					'default'           => '',
+					'type'              => 'number',
 					'custom_attributes' => array( 'min' => 0 ),
 				),
 			) );
@@ -223,13 +234,13 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 		if ( ! in_array( 'max_qty', $disabled_conditions ) ) {
 			$settings = array_merge( $settings, array(
 				array(
-					'title'    => __( 'Maximum quantity', 'order-status-rules-for-woocommerce' ),
-					'desc_tip' => __( 'Maximum number of items in the order.', 'order-status-rules-for-woocommerce' ) . ' ' .
+					'title'             => __( 'Maximum quantity', 'order-status-rules-for-woocommerce' ),
+					'desc_tip'          => __( 'Maximum number of items in the order.', 'order-status-rules-for-woocommerce' ) . ' ' .
 						__( 'If you want the rule to be applied only for orders with number of items equal or less than some value, you can set it here.', 'order-status-rules-for-woocommerce' ) . ' ' .
 						__( 'Ignored if empty.', 'order-status-rules-for-woocommerce' ),
-					'id'       => "alg_wc_order_status_rules_max_qty[{$i}]",
-					'default'  => '',
-					'type'     => 'number',
+					'id'                => "alg_wc_order_status_rules_max_qty[{$i}]",
+					'default'           => '',
+					'type'              => 'number',
 					'custom_attributes' => array( 'min' => 0 ),
 				),
 			) );
@@ -358,15 +369,15 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 		if ( ! in_array( 'products', $disabled_conditions ) ) {
 			$settings = array_merge( $settings, array(
 				array(
-					'title'    => __( 'Products', 'order-status-rules-for-woocommerce' ),
-					'desc_tip' => __( 'Required products.', 'order-status-rules-for-woocommerce' ) . ' ' .
+					'title'             => __( 'Products', 'order-status-rules-for-woocommerce' ),
+					'desc_tip'          => __( 'Required products.', 'order-status-rules-for-woocommerce' ) . ' ' .
 						__( 'If you want the rule to be applied only for orders with selected products, you can set them here.', 'order-status-rules-for-woocommerce' ) . ' ' .
 						__( 'Ignored if empty.', 'order-status-rules-for-woocommerce' ),
-					'id'       => "alg_wc_order_status_rules_products[{$i}]",
-					'default'  => array(),
-					'type'     => 'multiselect',
-					'class'    => 'wc-product-search',
-					'options'  => $this->get_ajax_options( 'product', 'alg_wc_order_status_rules_products', $this->num ),
+					'id'                => "alg_wc_order_status_rules_products[{$i}]",
+					'default'           => array(),
+					'type'              => 'multiselect',
+					'class'             => 'wc-product-search',
+					'options'           => $this->get_ajax_options( 'product', 'alg_wc_order_status_rules_products', $this->num ),
 					'custom_attributes' => array(
 						'data-placeholder' => esc_attr__( 'Search for a product&hellip;', 'woocommerce' ),
 						'data-action'      => 'woocommerce_json_search_products_and_variations',
@@ -563,15 +574,15 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 		if ( ! in_array( 'users', $disabled_conditions ) ) {
 			$settings = array_merge( $settings, array(
 				array(
-					'title'    => __( 'Users', 'order-status-rules-for-woocommerce' ),
-					'desc_tip' => __( 'Required users.', 'order-status-rules-for-woocommerce' ) . ' ' .
+					'title'             => __( 'Users', 'order-status-rules-for-woocommerce' ),
+					'desc_tip'          => __( 'Required users.', 'order-status-rules-for-woocommerce' ) . ' ' .
 						__( 'If you want the rule to be applied only for orders from selected users, you can set them here.', 'order-status-rules-for-woocommerce' ) . ' ' .
 						__( 'Ignored if empty.', 'order-status-rules-for-woocommerce' ),
-					'id'       => "alg_wc_order_status_rules_users[{$i}]",
-					'default'  => array(),
-					'type'     => 'multiselect',
-					'class'    => 'wc-customer-search',
-					'options'  => $this->get_ajax_options( 'customer', 'alg_wc_order_status_rules_users', $this->num ),
+					'id'                => "alg_wc_order_status_rules_users[{$i}]",
+					'default'           => array(),
+					'type'              => 'multiselect',
+					'class'             => 'wc-customer-search',
+					'options'           => $this->get_ajax_options( 'customer', 'alg_wc_order_status_rules_users', $this->num ),
 					'custom_attributes' => array(
 						'data-placeholder' => esc_attr__( 'Search for a user&hellip;', 'woocommerce' ),
 						'data-allow_clear' => true,

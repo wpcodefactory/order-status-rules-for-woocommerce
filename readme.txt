@@ -2,8 +2,8 @@
 Contributors: wpcodefactory, algoritmika, anbinder, karzin, omardabbas, kousikmukherjeeli
 Tags: woocommerce, order status, order, status, woo commerce
 Requires at least: 4.4
-Tested up to: 6.3
-Stable tag: 3.4.2
+Tested up to: 6.4
+Stable tag: 3.5.0
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -47,8 +47,15 @@ For example: automatically change order status to cancelled, when 24 hours have 
 
 == Changelog ==
 
+= 3.5.0 - 30/01/2024 =
+* Dev - Rule - "Skip dates" option added.
+* Dev - PHP 8.2 compatibility - "Creation of dynamic property is deprecated" notice fixed.
+* Dev - Code refactoring.
+* Tested up to: 6.4.
+* WC tested up to: 8.5.
+
 = 3.4.2 - 23/09/2023 =
-* update wordpress plugin logo, banner
+* WordPress plugin logo, banner updated.
 
 = 3.4.1 - 20/09/2023 =
 * Dev - Developers - `alg_wc_order_status_rules_wc_get_orders` filter added.

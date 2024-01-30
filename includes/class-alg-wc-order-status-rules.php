@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Main Class
  *
- * @version 3.4.0
+ * @version 3.5.0
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -21,6 +21,14 @@ final class Alg_WC_Order_Status_Rules {
 	 * @since 1.0.0
 	 */
 	public $version = ALG_WC_ORDER_STATUS_RULES_VERSION;
+
+	/**
+	 * core.
+	 *
+	 * @version 3.5.0
+	 * @since   3.5.0
+	 */
+	public $core;
 
 	/**
 	 * @var   Alg_WC_Order_Status_Rules The single instance of the class

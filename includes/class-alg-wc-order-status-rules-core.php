@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Core Class
  *
- * @version 3.4.1
+ * @version 3.5.0
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -13,6 +13,62 @@ defined( 'ABSPATH' ) || exit;
 if ( ! class_exists( 'Alg_WC_Order_Status_Rules_Core' ) ) :
 
 class Alg_WC_Order_Status_Rules_Core {
+
+	/**
+	 * conditions.
+	 *
+	 * @version 3.5.0
+	 * @since   3.5.0
+	 */
+	public $conditions;
+
+	/**
+	 * crons.
+	 *
+	 * @version 3.5.0
+	 * @since   3.5.0
+	 */
+	public $crons;
+
+	/**
+	 * action_scheduler.
+	 *
+	 * @version 3.5.0
+	 * @since   3.5.0
+	 */
+	public $action_scheduler;
+
+	/**
+	 * options.
+	 *
+	 * @version 3.5.0
+	 * @since   3.5.0
+	 */
+	public $options;
+
+	/**
+	 * do_debug.
+	 *
+	 * @version 3.5.0
+	 * @since   3.5.0
+	 */
+	public $do_debug;
+
+	/**
+	 * do_use_last_record.
+	 *
+	 * @version 3.5.0
+	 * @since   3.5.0
+	 */
+	public $do_use_last_record;
+
+	/**
+	 * on_no_history.
+	 *
+	 * @version 3.5.0
+	 * @since   3.5.0
+	 */
+	public $on_no_history;
 
 	/**
 	 * Constructor.
@@ -115,7 +171,7 @@ class Alg_WC_Order_Status_Rules_Core {
 	/**
 	 * get_status_name.
 	 *
-	 * @version 3.3.0
+	 * @version 3.5.0
 	 * @since   3.3.0
 	 *
 	 * @see     `wc_get_order_status_name()`
@@ -124,7 +180,7 @@ class Alg_WC_Order_Status_Rules_Core {
 	function get_status_name( $status ) {
 		$statuses = $this->get_statuses();
 		$status   = 'wc-' === substr( $status, 0, 3 ) ? substr( $status, 3 ) : $status;
-		$status   = isset( $statuses[ 'wc-' . $status ] ) ? $statuses[ 'wc-' . $status ] : $status;
+		$status   = $statuses[ 'wc-' . $status ] ?? $status;
 		return $status;
 	}
 
@@ -250,35 +306,50 @@ class Alg_WC_Order_Status_Rules_Core {
 	/**
 	 * get_trigger_time_skip_days.
 	 *
-	 * @version 2.4.0
+	 * @version 3.5.0
 	 * @since   2.4.0
 	 */
-	function get_trigger_time_skip_days( $last_record_time, $trigger_time, $skip_days = false ) {
-		if ( ! empty( $skip_days ) && count( $skip_days ) < 7 ) {
+	function get_trigger_time_skip_days( $last_record_time, $trigger_time, $skip_days = false, $skip_dates = false ) {
+
+		$skip_days  = ( count( $skip_days ) < 7 ? $skip_days : false );
+		$skip_dates = array_map( 'trim', explode( ',', $skip_dates ) );
+
+		if ( ! empty( $skip_days ) || ! empty( $skip_dates ) ) {
+
 			$total = $last_record_time;
 			$valid = 0;
+
 			while ( $valid <= $trigger_time ) {
 				$step = ( strtotime( 'tomorrow', $total ) - $total );
-				if ( ! in_array( date( 'N', $total ), $skip_days ) ) {
+				if (
+					( empty( $skip_days )  || ! in_array( date( 'N',   $total ), $skip_days  ) ) &&
+					( empty( $skip_dates ) || ! in_array( date( 'm-d', $total ), $skip_dates ) )
+				) {
 					$valid += $step;
 				}
 				$total += $step;
 			}
+
 			$trigger_time = ( $total - $last_record_time - ( $valid - $trigger_time ) );
+
 		}
+
 		return $trigger_time;
+
 	}
 
 	/**
 	 * get_time_remaining.
 	 *
-	 * @version 2.4.0
+	 * @version 3.5.0
 	 * @since   1.0.1
 	 *
 	 * @todo    (dev) rename `get_time_remaining()` to `get_seconds_remaining()`, `$last_record_time` to `$start`, `$trigger_time` to `$offset`, `get_trigger_time_skip_days()` to `get_offset_skip_days()`?
 	 */
-	function get_time_remaining( $last_record_time, $trigger_time, $skip_days = false, $current_time = false ) {
-		return ( $last_record_time + $this->get_trigger_time_skip_days( $last_record_time, $trigger_time, $skip_days ) - ( $current_time ? $current_time : current_time( 'timestamp' ) ) );
+	function get_time_remaining( $last_record_time, $trigger_time, $skip_days = false, $skip_dates = false, $current_time = false ) {
+		$current_time = ( $current_time ? $current_time : current_time( 'timestamp' ) );
+		$offset       = $this->get_trigger_time_skip_days( $last_record_time, $trigger_time, $skip_days, $skip_dates );
+		return ( $last_record_time + $offset - $current_time );
 	}
 
 	/**
@@ -318,7 +389,7 @@ class Alg_WC_Order_Status_Rules_Core {
 	/**
 	 * init_options.
 	 *
-	 * @version 2.9.0
+	 * @version 3.5.0
 	 * @since   1.6.0
 	 *
 	 * @todo    (dev) call this only once, e.g. in constructor, or on `init` action
@@ -337,6 +408,7 @@ class Alg_WC_Order_Status_Rules_Core {
 				'time_triggers'          => get_option( 'alg_wc_order_status_rules_time_trigger',      array() ),
 				'time_trigger_units'     => get_option( 'alg_wc_order_status_rules_time_trigger_unit', array() ),
 				'skip_days'              => get_option( 'alg_wc_order_status_rules_skip_days',         array() ),
+				'skip_dates'             => get_option( 'alg_wc_order_status_rules_skip_dates',        array() ),
 				'titles'                 => get_option( 'alg_wc_order_status_rules_title',             array() ),
 			);
 
@@ -399,7 +471,7 @@ class Alg_WC_Order_Status_Rules_Core {
 	/**
 	 * process_rules.
 	 *
-	 * @version 3.4.1
+	 * @version 3.5.0
 	 * @since   1.0.0
 	 *
 	 * @see     https://github.com/woocommerce/woocommerce/wiki/wc_get_orders-and-WC_Order_Query
@@ -430,9 +502,9 @@ class Alg_WC_Order_Status_Rules_Core {
 				'limit'    => -1,
 				'status'   => $this->options['from'],
 				'return'   => 'ids',
-				'orderby'  => ( isset( $user_args['orderby'] ) ? $user_args['orderby'] : 'date' ),
-				'order'    => ( isset( $user_args['order'] )   ? $user_args['order']   : 'DESC' ),
-				'type'     => ( isset( $user_args['type'] )    ? $user_args['type']    : array( 'shop_order' ) ),
+				'orderby'  => ( $user_args['orderby'] ?? 'date' ),
+				'order'    => ( $user_args['order']   ?? 'DESC' ),
+				'type'     => ( $user_args['type']    ?? array( 'shop_order' ) ),
 			), $this ) );
 			$orders     = apply_filters( 'alg_wc_order_status_rules_wc_get_orders', $orders, $this );
 			foreach ( $orders as $order_id ) {
@@ -466,11 +538,10 @@ class Alg_WC_Order_Status_Rules_Core {
 	/**
 	 * process_rules_for_order.
 	 *
-	 * @version 3.4.0
+	 * @version 3.5.0
 	 * @since   2.2.0
 	 *
 	 * @todo    (dev) check if it's a valid order at the beginning (i.e., `( $order = wc_get_order( $order_id ) )`)
-	 * @todo    (dev) `$unit = ( isset( $this->options['time_trigger_units'][ $i ] ) ? $this->options['time_trigger_units'][ $i ] : 'hour' );`
 	 */
 	function process_rules_for_order( $order_id ) {
 
@@ -501,13 +572,15 @@ class Alg_WC_Order_Status_Rules_Core {
 			foreach ( $this->options['from'] as $rule_id => $from ) {
 
 				$args['from'] = $from;
-				$step = $this->get_trigger_unit_step( ( isset( $this->options['time_trigger_units'][ $rule_id ] ) ? $this->options['time_trigger_units'][ $rule_id ] : 'hour' ) );
-				$skip = ( isset( $this->options['skip_days'][ $rule_id ] ) ? $this->options['skip_days'][ $rule_id ] : false );
+				$unit         = ( $this->options['time_trigger_units'][ $rule_id ] ?? 'hour' );
+				$step         = $this->get_trigger_unit_step( $unit );
+				$skip_days    = ( $this->options['skip_days'][ $rule_id ] ?? false );
+				$skip_dates   = ( $this->options['skip_dates'][ $rule_id ] ?? false );
 
 				// Apply the rule
 				if (
 					$this->do_apply_rule( $rule_id, $args ) &&
-					( $this->get_time_remaining( $last_record['time'], $this->options['time_triggers'][ $rule_id ] * $step, $skip ) <= 0 )
+					( $this->get_time_remaining( $last_record['time'], $this->options['time_triggers'][ $rule_id ] * $step, $skip_days, $skip_dates ) <= 0 )
 				) {
 
 					// Custom actions

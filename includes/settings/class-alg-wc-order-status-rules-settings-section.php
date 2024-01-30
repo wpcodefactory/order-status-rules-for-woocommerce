@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Section Settings
  *
- * @version 2.7.2
+ * @version 3.5.0
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -13,6 +13,30 @@ defined( 'ABSPATH' ) || exit;
 if ( ! class_exists( 'Alg_WC_Order_Status_Rules_Settings_Section' ) ) :
 
 class Alg_WC_Order_Status_Rules_Settings_Section {
+
+	/**
+	 * id.
+	 *
+	 * @version 3.5.0
+	 * @since   3.5.0
+	 */
+	public $id;
+
+	/**
+	 * desc.
+	 *
+	 * @version 3.5.0
+	 * @since   3.5.0
+	 */
+	public $desc;
+
+	/**
+	 * num.
+	 *
+	 * @version 3.5.0
+	 * @since   3.5.0
+	 */
+	public $num;
 
 	/**
 	 * Constructor.
@@ -234,7 +258,7 @@ class Alg_WC_Order_Status_Rules_Settings_Section {
 	/**
 	 * get_ajax_options.
 	 *
-	 * @version 2.7.2
+	 * @version 3.5.0
 	 * @since   2.6.1
 	 *
 	 * @see     https://github.com/woocommerce/woocommerce/blob/6.3.1/plugins/woocommerce/includes/class-wc-ajax.php#L1569
@@ -244,7 +268,7 @@ class Alg_WC_Order_Status_Rules_Settings_Section {
 		$options = array();
 		$current = get_option( $option, array() );
 		if ( false !== $key ) {
-			$current = ( isset( $current[ $key ] ) ? $current[ $key ] : array() );
+			$current = ( $current[ $key ] ?? array() );
 		}
 		foreach ( $current as $id ) {
 			switch ( $type ) {

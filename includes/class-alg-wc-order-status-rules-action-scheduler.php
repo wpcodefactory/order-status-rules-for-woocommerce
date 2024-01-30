@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Action Scheduler Class
  *
- * @version 2.3.0
+ * @version 3.5.0
  * @since   2.3.0
  *
  * @author  Algoritmika Ltd.
@@ -13,6 +13,14 @@ defined( 'ABSPATH' ) || exit;
 if ( ! class_exists( 'Alg_WC_Order_Status_Rules_Action_Scheduler' ) ) :
 
 class Alg_WC_Order_Status_Rules_Action_Scheduler {
+
+	/**
+	 * action.
+	 *
+	 * @version 3.5.0
+	 * @since   3.5.0
+	 */
+	public $action;
 
 	/**
 	 * Constructor.

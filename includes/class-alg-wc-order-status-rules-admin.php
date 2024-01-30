@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Admin Class
  *
- * @version 3.3.0
+ * @version 3.5.0
  * @since   1.4.0
  *
  * @author  Algoritmika Ltd.
@@ -13,6 +13,14 @@ defined( 'ABSPATH' ) || exit;
 if ( ! class_exists( 'Alg_WC_Order_Status_Rules_Admin' ) ) :
 
 class Alg_WC_Order_Status_Rules_Admin {
+
+	/**
+	 * core.
+	 *
+	 * @version 3.5.0
+	 * @since   3.5.0
+	 */
+	public $core;
 
 	/**
 	 * Constructor.
@@ -82,7 +90,7 @@ class Alg_WC_Order_Status_Rules_Admin {
 	/**
 	 * create_status_change_meta_box.
 	 *
-	 * @version 3.3.0
+	 * @version 3.5.0
 	 * @since   1.0.0
 	 *
 	 * @todo    (dev) use `$this->get_core()->get_status_name()`
@@ -114,8 +122,8 @@ class Alg_WC_Order_Status_Rules_Admin {
 			foreach ( $status_history as $index => $record ) {
 				$i    = ( $index + 1 );
 				$time = date_i18n( $date_format, $record['time'] );
-				$from = '<code>' . ( isset( $status[ 'wc-' . $record['from'] ] ) ? $status[ 'wc-' . $record['from'] ] : $record['from'] ) . '</code>';
-				$to   = '<code>' . ( isset( $status[ 'wc-' . $record['to'] ] )   ? $status[ 'wc-' . $record['to'] ]   : $record['to'] )   . '</code>';
+				$from = '<code>' . ( $status[ 'wc-' . $record['from'] ] ?? $record['from'] ) . '</code>';
+				$to   = '<code>' . ( $status[ 'wc-' . $record['to'] ]   ?? $record['to'] )   . '</code>';
 				echo "<tr><td>{$i}</td><td>{$time}</td><td>{$from}</td><td>{$to}</td></tr>";
 			}
 			echo '</table>';
@@ -131,18 +139,19 @@ class Alg_WC_Order_Status_Rules_Admin {
 			foreach ( $this->get_core()->options['from'] as $i => $from ) {
 				$args['from'] = $from;
 				if ( $this->get_core()->do_apply_rule( $i, $args ) ) {
-					$unit           = ( isset( $this->get_core()->options['time_trigger_units'][ $i ] ) ? $this->get_core()->options['time_trigger_units'][ $i ] : 'hour' );
+					$unit           = ( $this->get_core()->options['time_trigger_units'][ $i ] ?? 'hour' );
 					$step           = $this->get_core()->get_trigger_unit_step( $unit );
-					$skip           = ( isset( $this->get_core()->options['skip_days'][ $i ] ) ? $this->get_core()->options['skip_days'][ $i ] : false );
+					$skip_days      = ( $this->get_core()->options['skip_days'][ $i ] ?? false );
+					$skip_dates     = ( $this->get_core()->options['skip_dates'][ $i ] ?? false );
 					$current_time   = current_time( 'timestamp' );
-					$time_remaining = $this->get_core()->get_time_remaining( $last_record['time'], $this->get_core()->options['time_triggers'][ $i ] * $step, $skip, $current_time );
+					$time_remaining = $this->get_core()->get_time_remaining( $last_record['time'], $this->get_core()->options['time_triggers'][ $i ] * $step, $skip_days, $skip_dates, $current_time );
 					$to             = $this->get_core()->options['to'][ $i ];
 					$rule           = sprintf( __( 'Rule #%s', 'order-status-rules-for-woocommerce' ), $i ) .
 						( ! empty( $this->get_core()->options['titles'][ $i ] ) ? ': ' . $this->get_core()->options['titles'][ $i ] : '' );
 					echo '<p><em>' .
 						sprintf( __( 'Status scheduled to be updated from %s to %s (%s) on %s (i.e. %s).', 'order-status-rules-for-woocommerce' ),
-							'<code>' . ( isset( $status[ $from ] ) ? $status[ $from ] : $from ) . '</code>',
-							'<code>' . ( isset( $status[ $to ] )   ? $status[ $to ]   : $to )   . '</code>',
+							'<code>' . ( $status[ $from ] ?? $from ) . '</code>',
+							'<code>' . ( $status[ $to ]   ?? $to )   . '</code>',
 							$rule,
 							date_i18n( $date_format, $current_time + $time_remaining ),
 							( $time_remaining > 0 ?
