@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Section Settings
  *
- * @version 3.5.0
+ * @version 3.5.1
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -101,7 +101,7 @@ class Alg_WC_Order_Status_Rules_Settings_Section {
 	/**
 	 * get_next_scheduled_desc.
 	 *
-	 * @version 1.4.0
+	 * @version 3.5.1
 	 * @since   1.2.0
 	 *
 	 * @todo    (desc) `alg_wc_order_status_rules_no_history`: better title and desc
@@ -120,8 +120,8 @@ class Alg_WC_Order_Status_Rules_Settings_Section {
 			return sprintf( __( 'Next cron event is scheduled on %s (%s).', 'order-status-rules-for-woocommerce' ),
 					'<code>' . date_i18n( $date_format, $next_scheduled ) . '</code>',
 					( ( $next_scheduled - $current_time ) <= 0 ?
-						__( 'i.e. now', 'order-status-rules-for-woocommerce' ) :
-						sprintf( __( 'i.e. in %s', 'order-status-rules-for-woocommerce' ), human_time_diff( $next_scheduled, $current_time ) ) )
+						__( 'i.e., now', 'order-status-rules-for-woocommerce' ) :
+						sprintf( __( 'i.e., in %s', 'order-status-rules-for-woocommerce' ), human_time_diff( $next_scheduled, $current_time ) ) )
 				) . ' ' .
 				sprintf( __( 'Current time is %s.', 'order-status-rules-for-woocommerce' ),
 					'<code>' . date_i18n( $date_format, $current_time ) . '</code>' );

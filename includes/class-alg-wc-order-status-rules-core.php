@@ -392,7 +392,7 @@ class Alg_WC_Order_Status_Rules_Core {
 	 * @version 3.5.0
 	 * @since   1.6.0
 	 *
-	 * @todo    (dev) call this only once, e.g. in constructor, or on `init` action
+	 * @todo    (dev) call this only once, e.g., in constructor, or on `init` action
 	 * @todo    (dev) `$this->options`: rename?
 	 * @todo    (dev) `$this->options['from']`: redo?
 	 * @todo    (dev) code refactoring?

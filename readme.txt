@@ -3,7 +3,7 @@ Contributors: wpcodefactory, algoritmika, anbinder, karzin, omardabbas, kousikmu
 Tags: woocommerce, order status, order, status, woo commerce
 Requires at least: 4.4
 Tested up to: 6.4
-Stable tag: 3.5.0
+Stable tag: 3.5.1
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -46,6 +46,10 @@ For example: automatically change order status to cancelled, when 24 hours have 
 3. Start by visiting plugin settings at "WooCommerce > Settings > Order Status Rules".
 
 == Changelog ==
+
+= 3.5.1 - 06/03/2024 =
+* Dev - Admin settings descriptions updated.
+* WC tested up to: 8.6.
 
 = 3.5.0 - 30/01/2024 =
 * Dev - Rule - "Skip dates" option added.
@@ -178,7 +182,7 @@ For example: automatically change order status to cancelled, when 24 hours have 
 * Dev - Rule - Conditions - "Date created before" and "Date created after" options added.
 
 = 2.4.0 - 09/12/2021 =
-* Dev - Rule - Conditions - Order meta - "Multiple meta values" option added (i.e. multiple values are now allowed in the "Meta value" option, as a comma-separated list).
+* Dev - Rule - Conditions - Order meta - "Multiple meta values" option added (i.e., multiple values are now allowed in the "Meta value" option, as a comma-separated list).
 * Dev - Rule - Skip days - Algorithm improved.
 * Dev - Order Status History - "No order status rules are scheduled to be applied..." message added.
 * Dev - Code refactoring.
@@ -191,7 +195,7 @@ For example: automatically change order status to cancelled, when 24 hours have 
 
 = 2.2.0 - 22/10/2021 =
 * Fix - Admin settings - The issue when "Total rules" option has just been changed, but number of rule settings tabs doesn't reflect it, is fixed now.
-* Dev - Triggering order status rules processing on any order status change now (i.e. rules with zero time triggers will be processed immediately now).
+* Dev - Triggering order status rules processing on any order status change now (i.e., rules with zero time triggers will be processed immediately now).
 
 = 2.1.0 - 21/10/2021 =
 * Dev - Rule - "Shipping methods" option added.
@@ -230,7 +234,7 @@ For example: automatically change order status to cancelled, when 24 hours have 
 = 1.7.0 - 29/07/2021 =
 * Fix - PHP error fixed. Was occurring when creating a new order by admin with "On empty order status change history" option set to "Use order date ...".
 * Dev - Advanced - Compatibility Options - "Doctreat" option added.
-* Dev - Debug - Now adding to the log if rules was processed manually (i.e. via "Tools > Run all rules now").
+* Dev - Debug - Now adding to the log if rules was processed manually (i.e., via "Tools > Run all rules now").
 * Dev - Plugin is initialized on `plugins_loaded` action now.
 * Dev - Code refactoring.
 * Tested up to: 5.8.
@@ -243,7 +247,7 @@ For example: automatically change order status to cancelled, when 24 hours have 
 * Dev - Rule - "Products" option added.
 * Dev - Rule - "Product categories" option added.
 * Dev - Rule - "Product tags" option added.
-* Dev - Order Status History - Descriptions updated in the meta box, e.g. rule title added.
+* Dev - Order Status History - Descriptions updated in the meta box, e.g., rule title added.
 * Dev - Code refactoring.
 
 = 1.5.0 - 20/04/2021 =
@@ -270,7 +274,7 @@ For example: automatically change order status to cancelled, when 24 hours have 
 
 = 1.3.0 - 15/09/2020 =
 * Dev - Advanced - "Use WP cron" option added (defaults to `yes`).
-* Dev - Advanced - "Allow rules processing via URL" option added (defaults to `no`). This is an alternative to WP crons (i.e. allows using "real" (i.e. server) cron jobs instead).
+* Dev - Advanced - "Allow rules processing via URL" option added (defaults to `no`). This is an alternative to WP crons (i.e., allows using "real" (i.e., server) cron jobs instead).
 * WC tested up to: 4.5.
 * Tested up to: 5.5.
 

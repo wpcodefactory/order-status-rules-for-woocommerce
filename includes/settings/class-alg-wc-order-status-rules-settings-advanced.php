@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Advanced Section Settings
  *
- * @version 3.4.0
+ * @version 3.5.1
  * @since   1.5.0
  *
  * @author  Algoritmika Ltd.
@@ -29,7 +29,7 @@ class Alg_WC_Order_Status_Rules_Settings_Advanced extends Alg_WC_Order_Status_Ru
 	/**
 	 * get_settings.
 	 *
-	 * @version 3.4.0
+	 * @version 3.5.1
 	 * @since   1.5.0
 	 *
 	 * @todo    (dev) split into sections, e.g., "Compatibility"
@@ -43,7 +43,7 @@ class Alg_WC_Order_Status_Rules_Settings_Advanced extends Alg_WC_Order_Status_Ru
 	 * @todo    (desc) `alg_wc_order_status_rules_non_matching`: better desc?
 	 * @todo    (dev) Orders sorting: Order by: add `none`, `name`, `type`?
 	 * @todo    (desc) Orders sorting: better desc?
-	 * @todo    (desc) `alg_wc_order_status_rules_compatibility_doctreat`: better desc, e.g. add link to the theme?
+	 * @todo    (desc) `alg_wc_order_status_rules_compatibility_doctreat`: better desc, e.g., add link to the theme?
 	 * @todo    (desc) `alg_wc_order_status_rules_disabled_conditions`: better desc?
 	 */
 	function get_settings() {
@@ -110,7 +110,7 @@ class Alg_WC_Order_Status_Rules_Settings_Advanced extends Alg_WC_Order_Status_Ru
 				'desc'     => __( 'Enable', 'order-status-rules-for-woocommerce' ),
 				'desc_tip' => sprintf( __( 'This will allow to initiate all rules processing via URL: %s.', 'order-status-rules-for-woocommerce' ),
 					'<code>' . add_query_arg( 'alg_wc_order_status_rules_process_rules', '', get_site_url() ) . '</code>' ) . '<br>' .
-					sprintf( __( 'For example, this could be useful if you are going to disable %s and use "real" (i.e. server) cron jobs instead.', 'order-status-rules-for-woocommerce' ),
+					sprintf( __( 'For example, this could be useful if you are going to disable %s and use "real" (i.e., server) cron jobs instead.', 'order-status-rules-for-woocommerce' ),
 						'<span style="text-decoration:underline;">' . __( 'Periodical Processing Options', 'order-status-rules-for-woocommerce' ) . '</span>' ),
 				'id'       => 'alg_wc_order_status_rules_allow_url',
 				'default'  => 'no',
@@ -208,7 +208,7 @@ class Alg_WC_Order_Status_Rules_Settings_Advanced extends Alg_WC_Order_Status_Ru
 			),
 			array(
 				'title'    => __( 'Empty order status history', 'order-status-rules-for-woocommerce' ),
-				'desc_tip' => __( 'Plugin must be enabled at the time order status change occurs, so there is no order status change history on initial plugin install. This can be solved by using order creation (or modification) date instead (i.e. instead of real status change date). This is ignored for orders with available real status change history.', 'order-status-rules-for-woocommerce' ),
+				'desc_tip' => __( 'Plugin must be enabled at the time order status change occurs, so there is no order status change history on initial plugin install. This can be solved by using order creation (or modification) date instead (i.e., instead of real status change date). This is ignored for orders with available real status change history.', 'order-status-rules-for-woocommerce' ),
 				'id'       => 'alg_wc_order_status_rules_no_history',
 				'default'  => 'use_date_modified',
 				'type'     => 'select',
@@ -221,7 +221,7 @@ class Alg_WC_Order_Status_Rules_Settings_Advanced extends Alg_WC_Order_Status_Ru
 			),
 			array(
 				'title'    => __( 'Non-matching order status', 'order-status-rules-for-woocommerce' ),
-				'desc_tip' => __( 'If order status is not properly changed (e.g. by some plugin), it may happen that current order status does not match the last record in order status change history.', 'order-status-rules-for-woocommerce' ) . ' ' .
+				'desc_tip' => __( 'If order status is not properly changed (e.g., by some plugin), it may happen that current order status does not match the last record in order status change history.', 'order-status-rules-for-woocommerce' ) . ' ' .
 					__( 'In this case order status rules will not be applied.', 'order-status-rules-for-woocommerce' ) . ' ' .
 					__( 'You can change this behaviour here.', 'order-status-rules-for-woocommerce' ),
 				'id'       => 'alg_wc_order_status_rules_non_matching',
@@ -243,7 +243,7 @@ class Alg_WC_Order_Status_Rules_Settings_Advanced extends Alg_WC_Order_Status_Ru
 			array(
 				'title'    => __( 'Periodical Processing Options', 'order-status-rules-for-woocommerce' ),
 				'desc'     => __( 'Although it\'s possible to enable both periodical processing options, we recommend enabling only one of them.', 'order-status-rules-for-woocommerce' ) . '<br>' .
-					sprintf( __( 'If you are going to disable both periodical processing options, you may want to enable the %s option and set up "real" (i.e. server) cron job.', 'order-status-rules-for-woocommerce' ),
+					sprintf( __( 'If you are going to disable both periodical processing options, you may want to enable the %s option and set up "real" (i.e., server) cron job.', 'order-status-rules-for-woocommerce' ),
 						'<span style="text-decoration:underline;">' . __( 'Allow rules processing via URL', 'order-status-rules-for-woocommerce' ) . '</span>' ) . ' ' .
 					sprintf( __( 'Also you can use our %s tool manually.', 'order-status-rules-for-woocommerce' ),
 						'<a target="_blank" href="' . admin_url( 'admin.php?page=wc-settings&tab=alg_wc_order_status_rules&section' ) . '">' . __( 'Run all rules now', 'order-status-rules-for-woocommerce' ) . '</a>' ) .

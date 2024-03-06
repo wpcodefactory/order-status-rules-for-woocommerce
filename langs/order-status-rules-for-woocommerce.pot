@@ -37,7 +37,7 @@ msgstr ""
 
 #: includes/class-alg-wc-order-status-rules-admin.php:152
 #, php-format
-msgid "Status scheduled to be updated from %s to %s (%s) on %s (i.e. %s)."
+msgid "Status scheduled to be updated from %s to %s (%s) on %s (i.e., %s)."
 msgstr ""
 
 #: includes/class-alg-wc-order-status-rules-admin.php:158
@@ -379,7 +379,7 @@ msgstr ""
 #, php-format
 msgid ""
 "For example, this could be useful if you are going to disable %s and use "
-"\"real\" (i.e. server) cron jobs instead."
+"\"real\" (i.e., server) cron jobs instead."
 msgstr ""
 
 #: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:114
@@ -482,9 +482,9 @@ msgstr ""
 msgid ""
 "Plugin must be enabled at the time order status change occurs, so there is "
 "no order status change history on initial plugin install. This can be solved "
-"by using order creation (or modification) date instead (i.e. instead of real "
-"status change date). This is ignored for orders with available real status "
-"change history."
+"by using order creation (or modification) date instead (i.e., instead of "
+"real status change date). This is ignored for orders with available real "
+"status change history."
 msgstr ""
 
 #: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:217
@@ -506,9 +506,9 @@ msgstr ""
 
 #: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:224
 msgid ""
-"If order status is not properly changed (e.g. by some plugin), it may happen "
-"that current order status does not match the last record in order status "
-"change history."
+"If order status is not properly changed (e.g., by some plugin), it may "
+"happen that current order status does not match the last record in order "
+"status change history."
 msgstr ""
 
 #: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:225
@@ -533,7 +533,7 @@ msgstr ""
 #, php-format
 msgid ""
 "If you are going to disable both periodical processing options, you may want "
-"to enable the %s option and set up \"real\" (i.e. server) cron job."
+"to enable the %s option and set up \"real\" (i.e., server) cron job."
 msgstr ""
 
 #: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:248
@@ -1273,12 +1273,12 @@ msgid "Next cron event is scheduled on %s (%s)."
 msgstr ""
 
 #: includes/settings/class-alg-wc-order-status-rules-settings-section.php:123
-msgid "i.e. now"
+msgid "i.e., now"
 msgstr ""
 
 #: includes/settings/class-alg-wc-order-status-rules-settings-section.php:124
 #, php-format
-msgid "i.e. in %s"
+msgid "i.e., in %s"
 msgstr ""
 
 #: includes/settings/class-alg-wc-order-status-rules-settings-section.php:148

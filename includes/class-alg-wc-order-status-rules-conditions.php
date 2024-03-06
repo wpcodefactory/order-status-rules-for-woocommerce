@@ -343,7 +343,7 @@ class Alg_WC_Order_Status_Rules_Conditions {
 	 * @version 3.2.0
 	 * @since   2.4.0
 	 *
-	 * @todo    (dev) `alg_wc_order_status_rules_allow_multiple_order_meta`: make it always `yes`, i.e. remove the option?
+	 * @todo    (dev) `alg_wc_order_status_rules_allow_multiple_order_meta`: make it always `yes`, i.e., remove the option?
 	 */
 	function check_order_meta( $order, $meta_key, $meta_value, $meta_value_is_multiple ) {
 		$_meta_value = $order->get_meta( $meta_key );

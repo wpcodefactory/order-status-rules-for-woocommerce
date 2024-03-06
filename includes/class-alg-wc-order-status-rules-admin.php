@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Admin Class
  *
- * @version 3.5.0
+ * @version 3.5.1
  * @since   1.4.0
  *
  * @author  Algoritmika Ltd.
@@ -90,7 +90,7 @@ class Alg_WC_Order_Status_Rules_Admin {
 	/**
 	 * create_status_change_meta_box.
 	 *
-	 * @version 3.5.0
+	 * @version 3.5.1
 	 * @since   1.0.0
 	 *
 	 * @todo    (dev) use `$this->get_core()->get_status_name()`
@@ -149,7 +149,7 @@ class Alg_WC_Order_Status_Rules_Admin {
 					$rule           = sprintf( __( 'Rule #%s', 'order-status-rules-for-woocommerce' ), $i ) .
 						( ! empty( $this->get_core()->options['titles'][ $i ] ) ? ': ' . $this->get_core()->options['titles'][ $i ] : '' );
 					echo '<p><em>' .
-						sprintf( __( 'Status scheduled to be updated from %s to %s (%s) on %s (i.e. %s).', 'order-status-rules-for-woocommerce' ),
+						sprintf( __( 'Status scheduled to be updated from %s to %s (%s) on %s (i.e., %s).', 'order-status-rules-for-woocommerce' ),
 							'<code>' . ( $status[ $from ] ?? $from ) . '</code>',
 							'<code>' . ( $status[ $to ]   ?? $to )   . '</code>',
 							$rule,
