@@ -156,7 +156,12 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 		) );
 
 		// Minimum/Maximum Amounts
-		if ( ! in_array( 'min_amount', $disabled_conditions ) || ! in_array( 'max_amount', $disabled_conditions ) || ! in_array( 'min_qty', $disabled_conditions ) || ! in_array( 'max_qty', $disabled_conditions ) ) {
+		if (
+			! in_array( 'min_amount', $disabled_conditions ) ||
+			! in_array( 'max_amount', $disabled_conditions ) ||
+			! in_array( 'min_qty', $disabled_conditions ) ||
+			! in_array( 'max_qty', $disabled_conditions )
+		) {
 			$settings = array_merge( $settings, array(
 				array(
 					'title'    => __( 'Order Minimum/Maximum Amounts', 'order-status-rules-for-woocommerce' ),
@@ -245,7 +250,12 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 				),
 			) );
 		}
-		if ( ! in_array( 'min_amount', $disabled_conditions ) || ! in_array( 'max_amount', $disabled_conditions ) || ! in_array( 'min_qty', $disabled_conditions ) || ! in_array( 'max_qty', $disabled_conditions ) ) {
+		if (
+			! in_array( 'min_amount', $disabled_conditions ) ||
+			! in_array( 'max_amount', $disabled_conditions ) ||
+			! in_array( 'min_qty', $disabled_conditions ) ||
+			! in_array( 'max_qty', $disabled_conditions )
+		) {
 			$settings = array_merge( $settings, array(
 				array(
 					'type'     => 'sectionend',
@@ -255,7 +265,10 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 		}
 
 		// Payment & Shipping
-		if ( ! in_array( 'gateways', $disabled_conditions ) || ! in_array( 'shipping_instances', $disabled_conditions ) ) {
+		if (
+			! in_array( 'gateways', $disabled_conditions ) ||
+			! in_array( 'shipping_instances', $disabled_conditions )
+		) {
 			$settings = array_merge( $settings, array(
 				array(
 					'title'    => __( 'Order Payment & Shipping', 'order-status-rules-for-woocommerce' ),
@@ -296,7 +309,10 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 				),
 			) );
 		}
-		if ( ! in_array( 'gateways', $disabled_conditions ) || ! in_array( 'shipping_instances', $disabled_conditions ) ) {
+		if (
+			! in_array( 'gateways', $disabled_conditions ) ||
+			! in_array( 'shipping_instances', $disabled_conditions )
+		) {
 			$settings = array_merge( $settings, array(
 				array(
 					'type'     => 'sectionend',
@@ -306,7 +322,10 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 		}
 
 		// Countries
-		if ( ! in_array( 'billing_countries', $disabled_conditions ) || ! in_array( 'shipping_countries', $disabled_conditions ) ) {
+		if (
+			! in_array( 'billing_countries', $disabled_conditions ) ||
+			! in_array( 'shipping_countries', $disabled_conditions )
+		) {
 			$settings = array_merge( $settings, array(
 				array(
 					'title'    => __( 'Order Countries', 'order-status-rules-for-woocommerce' ),
@@ -347,7 +366,10 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 				),
 			) );
 		}
-		if ( ! in_array( 'billing_countries', $disabled_conditions ) || ! in_array( 'shipping_countries', $disabled_conditions ) ) {
+		if (
+			! in_array( 'billing_countries', $disabled_conditions ) ||
+			! in_array( 'shipping_countries', $disabled_conditions )
+		) {
 			$settings = array_merge( $settings, array(
 				array(
 					'type'     => 'sectionend',
@@ -357,7 +379,12 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 		}
 
 		// Products
-		if ( ! in_array( 'products', $disabled_conditions ) || ! in_array( 'product_cats', $disabled_conditions ) || ! in_array( 'product_tags', $disabled_conditions ) || ! in_array( 'product_stock_status', $disabled_conditions ) ) {
+		if (
+			! in_array( 'products', $disabled_conditions ) ||
+			! in_array( 'product_cats', $disabled_conditions ) ||
+			! in_array( 'product_tags', $disabled_conditions ) ||
+			! in_array( 'product_stock_status', $disabled_conditions )
+		) {
 			$settings = array_merge( $settings, array(
 				array(
 					'title'    => __( 'Order Products', 'order-status-rules-for-woocommerce' ),
@@ -482,7 +509,12 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 				),
 			) );
 		}
-		if ( ! in_array( 'products', $disabled_conditions ) || ! in_array( 'product_cats', $disabled_conditions ) || ! in_array( 'product_tags', $disabled_conditions ) || ! in_array( 'product_stock_status', $disabled_conditions ) ) {
+		if (
+			! in_array( 'products', $disabled_conditions ) ||
+			! in_array( 'product_cats', $disabled_conditions ) ||
+			! in_array( 'product_tags', $disabled_conditions ) ||
+			! in_array( 'product_stock_status', $disabled_conditions )
+		) {
 			$settings = array_merge( $settings, array(
 				array(
 					'type'     => 'sectionend',
@@ -531,7 +563,12 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 		}
 
 		// Users
-		if ( ! in_array( 'billing_emails', $disabled_conditions ) || ! in_array( 'user_roles', $disabled_conditions ) || ! in_array( 'users', $disabled_conditions ) || ! in_array( 'paying_customer', $disabled_conditions ) ) {
+		if (
+			! in_array( 'billing_emails', $disabled_conditions ) ||
+			! in_array( 'user_roles', $disabled_conditions ) ||
+			! in_array( 'users', $disabled_conditions ) ||
+			! in_array( 'paying_customer', $disabled_conditions )
+		) {
 			$settings = array_merge( $settings, array(
 				array(
 					'title'    => __( 'Order Users', 'order-status-rules-for-woocommerce' ),
@@ -609,7 +646,12 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 				),
 			) );
 		}
-		if ( ! in_array( 'billing_emails', $disabled_conditions ) || ! in_array( 'user_roles', $disabled_conditions ) || ! in_array( 'users', $disabled_conditions ) || ! in_array( 'paying_customer', $disabled_conditions ) ) {
+		if (
+			! in_array( 'billing_emails', $disabled_conditions ) ||
+			! in_array( 'user_roles', $disabled_conditions ) ||
+			! in_array( 'users', $disabled_conditions ) ||
+			! in_array( 'paying_customer', $disabled_conditions )
+		) {
 			$settings = array_merge( $settings, array(
 				array(
 					'type'     => 'sectionend',
@@ -619,7 +661,10 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 		}
 
 		// Dates
-		if ( ! in_array( 'date_created_before', $disabled_conditions ) || ! in_array( 'date_created_after', $disabled_conditions ) ) {
+		if (
+			! in_array( 'date_created_before', $disabled_conditions ) ||
+			! in_array( 'date_created_after', $disabled_conditions )
+		) {
 			$settings = array_merge( $settings, array(
 				array(
 					'title'    => __( 'Order Dates', 'order-status-rules-for-woocommerce' ),
@@ -654,7 +699,10 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 				),
 			) );
 		}
-		if ( ! in_array( 'date_created_before', $disabled_conditions ) || ! in_array( 'date_created_after', $disabled_conditions ) ) {
+		if (
+			! in_array( 'date_created_before', $disabled_conditions ) ||
+			! in_array( 'date_created_after', $disabled_conditions )
+		) {
 			$settings = array_merge( $settings, array(
 				array(
 					'type'     => 'sectionend',

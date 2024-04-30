@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Conditions Class
  *
- * @version 3.5.0
+ * @version 3.5.2
  * @since   2.8.0
  *
  * @author  Algoritmika Ltd.
@@ -303,22 +303,33 @@ class Alg_WC_Order_Status_Rules_Conditions {
 	/**
 	 * check_user.
 	 *
-	 * @version 2.8.0
+	 * @version 3.5.2
 	 * @since   1.9.0
 	 *
 	 * @todo    (dev) `paying_customer`: check if has any previous orders (vs `get_is_paying_customer()`)?
 	 */
 	function check_user( $user, $values, $type ) {
 		switch ( $type ) {
+
 			case 'user_id':
 				$user_id = ( $user && 0 != $user->ID ? $user->ID : 'guest' );
 				return in_array( $user_id, $values );
+
 			case 'user_roles':
-				$user_roles = ( $user && ! empty( $user->roles ) ? array_map( array( $this, 'handle_guest_user_role' ), $user->roles ) : array( 'guest' ) );
+				$user_roles = ( $user && ! empty( $user->roles ) ?
+					array_map( array( $this, 'handle_guest_user_role' ), $user->roles ) :
+					array( 'guest' )
+				);
 				return $this->is_array_intersect( $user_roles, $values );
+
 			case 'paying_customer':
-				$customer = new WC_Customer( $user->ID );
-				return ( ( 'yes' === $values && $customer->get_is_paying_customer() ) || ( 'no' === $values && ! $customer->get_is_paying_customer() ) );
+				$customer = ( $user ? new WC_Customer( $user->ID ) : false );
+				$is_paying_customer = ( $customer ? $customer->get_is_paying_customer() : false );
+				return (
+					( 'yes' === $values &&   $is_paying_customer ) ||
+					( 'no'  === $values && ! $is_paying_customer )
+				);
+
 		}
 	}
 
