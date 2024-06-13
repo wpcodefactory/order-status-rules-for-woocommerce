@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Core Class
  *
- * @version 3.5.0
+ * @version 3.5.3
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -267,6 +267,7 @@ class Alg_WC_Order_Status_Rules_Core {
 	 *
 	 * @todo    (dev) optional "key" (for security)
 	 * @todo    (dev) optional "rule ID to process"
+	 * @todo    (dev) optional "order ID to process" (https://wordpress.org/support/topic/orderid-trigger/)
 	 */
 	function process_rules_url() {
 		if ( isset( $_REQUEST['alg_wc_order_status_rules_process_rules'] ) ) {
@@ -389,7 +390,7 @@ class Alg_WC_Order_Status_Rules_Core {
 	/**
 	 * init_options.
 	 *
-	 * @version 3.5.0
+	 * @version 3.5.3
 	 * @since   1.6.0
 	 *
 	 * @todo    (dev) call this only once, e.g., in constructor, or on `init` action
@@ -418,7 +419,7 @@ class Alg_WC_Order_Status_Rules_Core {
 				$is_enabled = ( ! in_array( $condition_id, $disabled_conditions ) );
 				switch ( $condition_id ) {
 					case 'meta':
-						$keys = array( 'meta_key', 'meta_value', 'meta_value_is_multiple' );
+						$keys = array( 'meta_key', 'meta_value', 'meta_value_is_multiple', 'meta_compare' );
 						break;
 					case 'coupons':
 						$keys = array( 'coupons', 'specific_coupons' );

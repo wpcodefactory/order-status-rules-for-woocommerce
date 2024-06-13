@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Conditions Class
  *
- * @version 3.5.2
+ * @version 3.5.3
  * @since   2.8.0
  *
  * @author  Algoritmika Ltd.
@@ -351,20 +351,39 @@ class Alg_WC_Order_Status_Rules_Conditions {
 	/**
 	 * check_order_meta.
 	 *
-	 * @version 3.2.0
+	 * @version 3.5.3
 	 * @since   2.4.0
 	 *
 	 * @todo    (dev) `alg_wc_order_status_rules_allow_multiple_order_meta`: make it always `yes`, i.e., remove the option?
 	 */
-	function check_order_meta( $order, $meta_key, $meta_value, $meta_value_is_multiple ) {
+	function check_order_meta( $order, $meta_key, $meta_value, $meta_value_is_multiple, $meta_compare ) {
+
+		// Get order meta value
 		$_meta_value = $order->get_meta( $meta_key );
-		return ( 'yes' === $meta_value_is_multiple ? in_array( $_meta_value, explode( ',', $meta_value ) ) : $_meta_value === $meta_value );
+
+		// Compare
+		$res = ( 'yes' === $meta_value_is_multiple ?
+			in_array( $_meta_value, explode( ',', $meta_value ) ) :
+			$_meta_value === $meta_value
+		);
+
+		// Result
+		switch ( $meta_compare ) {
+
+			case 'not_equals':
+				return ! $res;
+
+			default: // 'equals'
+				return $res;
+
+		}
+
 	}
 
 	/**
 	 * check_meta.
 	 *
-	 * @version 3.5.0
+	 * @version 3.5.3
 	 * @since   2.8.0
 	 */
 	function check_meta( $options, $rule_id, $order ) {
@@ -373,7 +392,8 @@ class Alg_WC_Order_Status_Rules_Conditions {
 				$order,
 				$options['meta_key'][ $rule_id ],
 				( $options['meta_value'][ $rule_id ]             ?? '' ),
-				( $options['meta_value_is_multiple'][ $rule_id ] ?? 'no' )
+				( $options['meta_value_is_multiple'][ $rule_id ] ?? 'no' ),
+				( $options['meta_compare'][ $rule_id ]           ?? 'equals' )
 			)
 		);
 	}

@@ -30,7 +30,7 @@ msgid "To"
 msgstr ""
 
 #: includes/class-alg-wc-order-status-rules-admin.php:149
-#: includes/class-alg-wc-order-status-rules-core.php:590
+#: includes/class-alg-wc-order-status-rules-core.php:591
 #, php-format
 msgid "Rule #%s"
 msgstr ""
@@ -188,48 +188,48 @@ msgstr ""
 msgid "Date created after"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:288
-#: includes/class-alg-wc-order-status-rules-core.php:303
+#: includes/class-alg-wc-order-status-rules-core.php:289
+#: includes/class-alg-wc-order-status-rules-core.php:304
 msgid "\"Run all rules now\" tool executed."
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:491
+#: includes/class-alg-wc-order-status-rules-core.php:492
 msgid "Process rules: Started"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:492
+#: includes/class-alg-wc-order-status-rules-core.php:493
 msgid "manual"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:513
+#: includes/class-alg-wc-order-status-rules-core.php:514
 msgid "Process rules: Maximum number of updated orders reached"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:524
+#: includes/class-alg-wc-order-status-rules-core.php:525
 msgid "Process rules: Finished"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:551
+#: includes/class-alg-wc-order-status-rules-core.php:552
 #, php-format
 msgid "Process rules: Order #%s"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:560
+#: includes/class-alg-wc-order-status-rules-core.php:561
 #, php-format
 msgid "Process rules: Skipping order #%s"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:592
+#: includes/class-alg-wc-order-status-rules-core.php:593
 #, php-format
 msgid "Status updated by \"Order Status Rules for WooCommerce\" plugin (%s)."
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:602
+#: includes/class-alg-wc-order-status-rules-core.php:603
 #, php-format
 msgid "Process rules: Order #%s: from %s to %s (%s)"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:614
+#: includes/class-alg-wc-order-status-rules-core.php:615
 #, php-format
 msgid "Process rules: Order #%s: No order status change history found"
 msgstr ""
@@ -1257,6 +1257,18 @@ msgstr ""
 
 #: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:740
 msgid "Allows setting multiple meta values as a comma-separated list."
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:746
+msgid "Meta compare"
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:752
+msgid "Equals"
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:753
+msgid "Not equals"
 msgstr ""
 
 #: includes/settings/class-alg-wc-order-status-rules-settings-section.php:71

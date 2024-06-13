@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Rule Section Settings
  *
- * @version 3.5.0
+ * @version 3.5.3
  * @since   2.0.0
  *
  * @author  Algoritmika Ltd.
@@ -30,7 +30,7 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 	/**
 	 * get_settings.
 	 *
-	 * @version 3.5.0
+	 * @version 3.5.3
 	 * @since   2.0.0
 	 *
 	 * @todo    (desc) add description to each subsection
@@ -741,6 +741,17 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 					'id'       => "alg_wc_order_status_rules_meta_value_is_multiple[{$i}]",
 					'default'  => 'no',
 					'type'     => 'checkbox',
+				),
+				array(
+					'desc'     => __( 'Meta compare', 'order-status-rules-for-woocommerce' ),
+					'id'       => "alg_wc_order_status_rules_meta_compare[{$i}]",
+					'default'  => 'equals',
+					'type'     => 'select',
+					'class'    => 'chosen_select',
+					'options'  => array(
+						'equals'     => __( 'Equals', 'order-status-rules-for-woocommerce' ),
+						'not_equals' => __( 'Not equals', 'order-status-rules-for-woocommerce' ),
+					),
 				),
 				array(
 					'type'     => 'sectionend',
