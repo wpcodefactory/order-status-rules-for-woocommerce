@@ -237,13 +237,11 @@ class Alg_WC_Order_Status_Rules_Conditions {
 	 *
 	 * @version 3.5.0
 	 * @since   2.8.0
-	 *
-	 * @todo    (feature) `exclude_all`
 	 */
 	function check_products( $options, $rule_id, $order ) {
 		foreach ( array( 'products', 'product_cats', 'product_tags', 'product_stock_status' ) as $type ) {
 			if ( ! empty( $options[ $type ][ $rule_id ] ) ) {
-				$action       = ( $options[ $type . '_require_all' ][ $rule_id ] ?? 'no' );
+				$action       = ( $options[ $type . '_require_all' ][ $rule_id ] ?? 'no' ); // mislabeled; should be e.g., `$type . '_action'`
 				$do_check_all = ( in_array( $action, array( 'yes',     'exclude_all' ) ) );
 				$do_exclude   = ( in_array( $action, array( 'exclude', 'exclude_all' ) ) );
 				if ( ! $this->check_order_products( $order, $options[ $type ][ $rule_id ], $type, $do_check_all, $do_exclude ) ) {

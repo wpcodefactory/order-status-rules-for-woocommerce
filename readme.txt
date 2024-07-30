@@ -2,8 +2,8 @@
 Contributors: wpcodefactory, algoritmika, anbinder, karzin, omardabbas, kousikmukherjeeli
 Tags: woocommerce, order status, order, status, woo commerce
 Requires at least: 4.4
-Tested up to: 6.5
-Stable tag: 3.5.3
+Tested up to: 6.6
+Stable tag: 3.5.4
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -46,6 +46,13 @@ For example: automatically change order status to cancelled, when 24 hours have 
 3. Start by visiting plugin settings at "WooCommerce > Settings > Order Status Rules".
 
 == Changelog ==
+
+= 3.5.4 - 30/07/2024 =
+* Fix - Admin Options - Settings Tools - "Reset section settings" tool fixed (it was resetting settings for all rules).
+* Dev - Admin Options - Settings Tools - "Copy settings" tool added.
+* Dev - Rule - Conditions - Products/categories/tags/stock status - Action - "Exclude all" option added.
+* Tested up to: 6.6.
+* WC tested up to: 9.1.
 
 = 3.5.3 - 13/06/2024 =
 * Dev - Conditions - Order meta - "Meta compare" option added (defaults to "Equals").

@@ -428,7 +428,7 @@ class Alg_WC_Order_Status_Rules_Core {
 					case 'product_cats':
 					case 'product_tags':
 					case 'product_stock_status':
-						$keys = array( $condition_id, "{$condition_id}_require_all" );
+						$keys = array( $condition_id, "{$condition_id}_require_all" ); // mislabeled; should be e.g., `"{$condition_id}_action"`
 						break;
 					case 'min_amount':
 					case 'max_amount':

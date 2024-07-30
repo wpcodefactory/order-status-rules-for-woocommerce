@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Rule Section Settings
  *
- * @version 3.5.3
+ * @version 3.5.4
  * @since   2.0.0
  *
  * @author  Algoritmika Ltd.
@@ -30,7 +30,7 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 	/**
 	 * get_settings.
 	 *
-	 * @version 3.5.3
+	 * @version 3.5.4
 	 * @since   2.0.0
 	 *
 	 * @todo    (desc) add description to each subsection
@@ -412,15 +412,16 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 					),
 				),
 				array(
-					'desc_tip' => __( '"Require all" means that all products in the order must match the selection (vs at least one product).', 'order-status-rules-for-woocommerce' ),
+					'desc_tip' => __( '"Require all / Exclude all" means that all products in the order must match the selection (vs at least one product).', 'order-status-rules-for-woocommerce' ),
 					'id'       => "alg_wc_order_status_rules_products_require_all[{$i}]", // mislabeled; should be e.g., `alg_wc_order_status_rules_products_action`
 					'default'  => 'no',
 					'type'     => 'select',
 					'class'    => 'chosen_select',
 					'options'  => array(
-						'no'      => __( 'Require', 'order-status-rules-for-woocommerce' ),
-						'yes'     => __( 'Require all', 'order-status-rules-for-woocommerce' ),
-						'exclude' => __( 'Exclude', 'order-status-rules-for-woocommerce' ),
+						'no'          => __( 'Require', 'order-status-rules-for-woocommerce' ),
+						'yes'         => __( 'Require all', 'order-status-rules-for-woocommerce' ),
+						'exclude'     => __( 'Exclude', 'order-status-rules-for-woocommerce' ),
+						'exclude_all' => __( 'Exclude all', 'order-status-rules-for-woocommerce' ),
 					),
 				),
 			) );
@@ -440,15 +441,16 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 					'options'  => $this->get_terms( 'product_cat' ),
 				),
 				array(
-					'desc_tip' => __( '"Require all" means that all products in the order must match the selection (vs at least one product).', 'order-status-rules-for-woocommerce' ),
+					'desc_tip' => __( '"Require all / Exclude all" means that all products in the order must match the selection (vs at least one product).', 'order-status-rules-for-woocommerce' ),
 					'id'       => "alg_wc_order_status_rules_product_cats_require_all[{$i}]", // mislabeled; should be e.g., `alg_wc_order_status_rules_product_cats_action`
 					'default'  => 'no',
 					'type'     => 'select',
 					'class'    => 'chosen_select',
 					'options'  => array(
-						'no'      => __( 'Require', 'order-status-rules-for-woocommerce' ),
-						'yes'     => __( 'Require all', 'order-status-rules-for-woocommerce' ),
-						'exclude' => __( 'Exclude', 'order-status-rules-for-woocommerce' ),
+						'no'          => __( 'Require', 'order-status-rules-for-woocommerce' ),
+						'yes'         => __( 'Require all', 'order-status-rules-for-woocommerce' ),
+						'exclude'     => __( 'Exclude', 'order-status-rules-for-woocommerce' ),
+						'exclude_all' => __( 'Exclude all', 'order-status-rules-for-woocommerce' ),
 					),
 				),
 			) );
@@ -468,15 +470,16 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 					'options'  => $this->get_terms( 'product_tag' ),
 				),
 				array(
-					'desc_tip' => __( '"Require all" means that all products in the order must match the selection (vs at least one product).', 'order-status-rules-for-woocommerce' ),
+					'desc_tip' => __( '"Require all / Exclude all" means that all products in the order must match the selection (vs at least one product).', 'order-status-rules-for-woocommerce' ),
 					'id'       => "alg_wc_order_status_rules_product_tags_require_all[{$i}]", // mislabeled; should be e.g., `alg_wc_order_status_rules_product_tags_action`
 					'default'  => 'no',
 					'type'     => 'select',
 					'class'    => 'chosen_select',
 					'options'  => array(
-						'no'      => __( 'Require', 'order-status-rules-for-woocommerce' ),
-						'yes'     => __( 'Require all', 'order-status-rules-for-woocommerce' ),
-						'exclude' => __( 'Exclude', 'order-status-rules-for-woocommerce' ),
+						'no'          => __( 'Require', 'order-status-rules-for-woocommerce' ),
+						'yes'         => __( 'Require all', 'order-status-rules-for-woocommerce' ),
+						'exclude'     => __( 'Exclude', 'order-status-rules-for-woocommerce' ),
+						'exclude_all' => __( 'Exclude all', 'order-status-rules-for-woocommerce' ),
 					),
 				),
 			) );
@@ -496,15 +499,16 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 					'options'  => wc_get_product_stock_status_options(),
 				),
 				array(
-					'desc_tip' => __( '"Require all" means that all products in the order must match the selection (vs at least one product).', 'order-status-rules-for-woocommerce' ),
+					'desc_tip' => __( '"Require all / Exclude all" means that all products in the order must match the selection (vs at least one product).', 'order-status-rules-for-woocommerce' ),
 					'id'       => "alg_wc_order_status_rules_product_stock_status_require_all[{$i}]", // mislabeled; should be e.g., `alg_wc_order_status_rules_product_stock_status_action`
 					'default'  => 'no',
 					'type'     => 'select',
 					'class'    => 'chosen_select',
 					'options'  => array(
-						'no'      => __( 'Require', 'order-status-rules-for-woocommerce' ),
-						'yes'     => __( 'Require all', 'order-status-rules-for-woocommerce' ),
-						'exclude' => __( 'Exclude', 'order-status-rules-for-woocommerce' ),
+						'no'          => __( 'Require', 'order-status-rules-for-woocommerce' ),
+						'yes'         => __( 'Require all', 'order-status-rules-for-woocommerce' ),
+						'exclude'     => __( 'Exclude', 'order-status-rules-for-woocommerce' ),
+						'exclude_all' => __( 'Exclude all', 'order-status-rules-for-woocommerce' ),
 					),
 				),
 			) );
