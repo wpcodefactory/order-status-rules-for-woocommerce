@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Core Class
  *
- * @version 3.5.3
+ * @version 3.5.5
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -539,7 +539,7 @@ class Alg_WC_Order_Status_Rules_Core {
 	/**
 	 * process_rules_for_order.
 	 *
-	 * @version 3.5.0
+	 * @version 3.5.5
 	 * @since   2.2.0
 	 *
 	 * @todo    (dev) check if it's a valid order at the beginning (i.e., `( $order = wc_get_order( $order_id ) )`)
@@ -581,7 +581,7 @@ class Alg_WC_Order_Status_Rules_Core {
 				// Apply the rule
 				if (
 					$this->do_apply_rule( $rule_id, $args ) &&
-					( $this->get_time_remaining( $last_record['time'], $this->options['time_triggers'][ $rule_id ] * $step, $skip_days, $skip_dates ) <= 0 )
+					( $this->get_time_remaining( $last_record['time'], (int) $this->options['time_triggers'][ $rule_id ] * $step, $skip_days, $skip_dates ) <= 0 )
 				) {
 
 					// Custom actions
