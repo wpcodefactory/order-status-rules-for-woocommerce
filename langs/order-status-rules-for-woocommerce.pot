@@ -279,12 +279,19 @@ msgstr ""
 msgid "History"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules.php:159
+#: includes/class-alg-wc-order-status-rules.php:180
 msgid "Settings"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules.php:162
+#: includes/class-alg-wc-order-status-rules.php:183
 msgid "Go Pro"
+msgstr ""
+
+#: includes/class-alg-wc-order-status-rules.php:227
+#: includes/class-alg-wc-order-status-rules.php:228
+#: includes/settings/class-alg-wc-order-status-rules-settings-general.php:43
+#: includes/settings/class-alg-wc-settings-order-status-rules.php:26
+msgid "Order Status Rules"
 msgstr ""
 
 #: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:55
@@ -673,11 +680,6 @@ msgstr ""
 
 #: includes/settings/class-alg-wc-order-status-rules-settings-general.php:38
 msgid "Order Status Rules Options"
-msgstr ""
-
-#: includes/settings/class-alg-wc-order-status-rules-settings-general.php:43
-#: includes/settings/class-alg-wc-settings-order-status-rules.php:26
-msgid "Order Status Rules"
 msgstr ""
 
 #: includes/settings/class-alg-wc-order-status-rules-settings-general.php:44
