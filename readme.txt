@@ -1,9 +1,9 @@
-=== Order Status Rules for WooCommerce ===
+=== Scheduled & Automatic Order Status Controller for WooCommerce ===
 Contributors: wpcodefactory, algoritmika, anbinder, karzin, omardabbas, kousikmukherjeeli
 Tags: woocommerce, order status, order, status, woo commerce
 Requires at least: 4.4
-Tested up to: 6.6
-Stable tag: 3.7.0
+Tested up to: 6.7
+Stable tag: 3.7.1
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -11,7 +11,7 @@ Automate WooCommerce order statuses. Beautifully.
 
 == Description ==
 
-**Order Status Rules for WooCommerce** plugin lets you schedule automatic WooCommerce order status changes.
+**Scheduled & Automatic Order Status Controller for WooCommerce** plugin lets you schedule automatic WooCommerce order status changes.
 
 For example: automatically change order status to cancelled, when 24 hours have passed since order status was set to pending.
 
@@ -46,6 +46,14 @@ For example: automatically change order status to cancelled, when 24 hours have 
 3. Start by visiting plugin settings at "WooCommerce > Settings > Order Status Rules".
 
 == Changelog ==
+
+= 3.7.1 - 20/12/2024 =
+* Dev - Recommendations - Library updated.
+* Dev - Key Manager - Library updated.
+* Dev - Coding standards improved.
+* WC tested up to: 9.5.
+* Tested up to: 6.7.
+* Plugin name updated.
 
 = 3.7.0 - 21/10/2024 =
 * Dev - Plugin settings moved to the "WPFactory" menu.

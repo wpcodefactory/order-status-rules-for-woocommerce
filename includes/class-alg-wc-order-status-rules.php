@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Main Class
  *
- * @version 3.7.0
+ * @version 3.7.1
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -169,7 +169,7 @@ final class Alg_WC_Order_Status_Rules {
 	/**
 	 * Show action links on the plugin screen.
 	 *
-	 * @version 1.7.0
+	 * @version 3.7.1
 	 * @since   1.0.0
 	 *
 	 * @param   mixed $links
@@ -177,12 +177,17 @@ final class Alg_WC_Order_Status_Rules {
 	 */
 	function action_links( $links ) {
 		$custom_links = array();
-		$custom_links[] = '<a href="' . admin_url( 'admin.php?page=wc-settings&tab=alg_wc_order_status_rules' ) . '">' . __( 'Settings', 'woocommerce' ) . '</a>';
+
+		$custom_links[] = '<a href="' . admin_url( 'admin.php?page=wc-settings&tab=alg_wc_order_status_rules' ) . '">' .
+			__( 'Settings', 'order-status-rules-for-woocommerce' ) .
+		'</a>';
+
 		if ( 'order-status-rules-for-woocommerce.php' === basename( ALG_WC_ORDER_STATUS_RULES_FILE ) ) {
 			$custom_links[] = '<a target="_blank" style="font-weight: bold; color: green;" href="https://wpfactory.com/item/order-status-rules-for-woocommerce/">' .
 				__( 'Go Pro', 'order-status-rules-for-woocommerce' ) .
 			'</a>';
 		}
+
 		return array_merge( $custom_links, $links );
 	}
 
