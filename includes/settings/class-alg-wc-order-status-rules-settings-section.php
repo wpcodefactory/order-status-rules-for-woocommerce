@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Section Settings
  *
- * @version 3.5.1
+ * @version 3.8.0
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -45,8 +45,15 @@ class Alg_WC_Order_Status_Rules_Settings_Section {
 	 * @since   1.0.0
 	 */
 	function __construct() {
-		add_filter( 'woocommerce_get_sections_alg_wc_order_status_rules', array( $this, 'settings_section' ) );
-		add_filter( 'woocommerce_get_settings_alg_wc_order_status_rules_' . $this->id, array( $this, 'get_settings' ), PHP_INT_MAX );
+		add_filter(
+			'woocommerce_get_sections_alg_wc_order_status_rules',
+			array( $this, 'settings_section' )
+		);
+		add_filter(
+			'woocommerce_get_settings_alg_wc_order_status_rules_' . $this->id,
+			array( $this, 'get_settings' ),
+			PHP_INT_MAX
+		);
 	}
 
 	/**
@@ -101,7 +108,7 @@ class Alg_WC_Order_Status_Rules_Settings_Section {
 	/**
 	 * get_next_scheduled_desc.
 	 *
-	 * @version 3.5.1
+	 * @version 3.8.0
 	 * @since   1.2.0
 	 *
 	 * @todo    (desc) `alg_wc_order_status_rules_no_history`: better title and desc
@@ -117,14 +124,27 @@ class Alg_WC_Order_Status_Rules_Settings_Section {
 			$current_time   = current_time( 'timestamp' );
 			$server_time    = time();
 			$next_scheduled = $next_scheduled + ( $current_time - $server_time );
-			return sprintf( __( 'Next cron event is scheduled on %s (%s).', 'order-status-rules-for-woocommerce' ),
+			return (
+				sprintf(
+					/* Translators: %1$s: Time, %2$s: Human-readable time difference. */
+					__( 'Next cron event is scheduled on %1$s (%2$s).', 'order-status-rules-for-woocommerce' ),
 					'<code>' . date_i18n( $date_format, $next_scheduled ) . '</code>',
-					( ( $next_scheduled - $current_time ) <= 0 ?
+					(
+						( $next_scheduled - $current_time ) <= 0 ?
 						__( 'i.e., now', 'order-status-rules-for-woocommerce' ) :
-						sprintf( __( 'i.e., in %s', 'order-status-rules-for-woocommerce' ), human_time_diff( $next_scheduled, $current_time ) ) )
+						sprintf(
+							/* Translators: %s: Human-readable time difference. */
+							__( 'i.e., in %s', 'order-status-rules-for-woocommerce' ),
+							human_time_diff( $next_scheduled, $current_time )
+						)
+					)
 				) . ' ' .
-				sprintf( __( 'Current time is %s.', 'order-status-rules-for-woocommerce' ),
-					'<code>' . date_i18n( $date_format, $current_time ) . '</code>' );
+				sprintf(
+					/* Translators: %s: Time. */
+					__( 'Current time is %s.', 'order-status-rules-for-woocommerce' ),
+					'<code>' . date_i18n( $date_format, $current_time ) . '</code>'
+				)
+			);
 		} else {
 			return '';
 		}
@@ -133,7 +153,7 @@ class Alg_WC_Order_Status_Rules_Settings_Section {
 	/**
 	 * get_enabled_rules_desc.
 	 *
-	 * @version 2.0.0
+	 * @version 3.8.0
 	 * @since   2.0.0
 	 */
 	function get_enabled_rules_desc() {
@@ -144,10 +164,22 @@ class Alg_WC_Order_Status_Rules_Settings_Section {
 				$enabled_rules[] = $rule_num;
 			}
 		}
-		return ( ! empty( $enabled_rules ) ?
-			sprintf( __( 'Enabled rule(s): %s.', 'order-status-rules-for-woocommerce' ),
-				__( 'Rule', 'order-status-rules-for-woocommerce' ) . ' #' . implode( ', ' . __( 'Rule', 'order-status-rules-for-woocommerce' ) . ' #', $enabled_rules ) ) :
-			'' );
+		asort( $enabled_rules );
+		return (
+			! empty( $enabled_rules ) ?
+			sprintf(
+				/* Translators: %s: Rule number list. */
+				__( 'Enabled rule(s): %s.', 'order-status-rules-for-woocommerce' ),
+				(
+					__( 'Rule', 'order-status-rules-for-woocommerce' ) . ' #' .
+					implode(
+						', ' . __( 'Rule', 'order-status-rules-for-woocommerce' ) . ' #',
+						$enabled_rules
+					)
+				)
+			) :
+			''
+		);
 	}
 
 	/**
@@ -159,7 +191,7 @@ class Alg_WC_Order_Status_Rules_Settings_Section {
 	function get_shipping_zones( $include_empty_zone = true ) {
 		$zones = WC_Shipping_Zones::get_zones();
 		if ( $include_empty_zone ) {
-			$zone                                                = new WC_Shipping_Zone( 0 );
+			$zone = new WC_Shipping_Zone( 0 );
 			$zones[ $zone->get_id() ]                            = $zone->get_data();
 			$zones[ $zone->get_id() ]['zone_id']                 = $zone->get_id();
 			$zones[ $zone->get_id() ]['formatted_zone_location'] = $zone->get_formatted_location();
@@ -204,7 +236,11 @@ class Alg_WC_Order_Status_Rules_Settings_Section {
 	 * @since   1.6.0
 	 */
 	function get_missing_product_cat_title( $term_id ) {
-		return sprintf( __( 'Product category #%s', 'order-status-rules-for-woocommerce' ), $term_id );
+		return sprintf(
+			/* Translators: %s: Term ID. */
+			__( 'Product category #%s', 'order-status-rules-for-woocommerce' ),
+			$term_id
+		);
 	}
 
 	/**
@@ -214,7 +250,11 @@ class Alg_WC_Order_Status_Rules_Settings_Section {
 	 * @since   1.6.0
 	 */
 	function get_missing_product_tag_title( $term_id ) {
-		return sprintf( __( 'Product tag #%s', 'order-status-rules-for-woocommerce' ), $term_id );
+		return sprintf(
+			/* Translators: %s: Term ID. */
+			__( 'Product tag #%s', 'order-status-rules-for-woocommerce' ),
+			$term_id
+		);
 	}
 
 	/**
@@ -288,11 +328,22 @@ class Alg_WC_Order_Status_Rules_Settings_Section {
 			if ( ! $is_valid ) {
 				switch ( $type ) {
 					case 'product':
-						$res = sprintf( esc_html__( 'Product #%d', 'order-status-rules-for-woocommerce' ), $id );
+						$res = sprintf(
+							/* Translators: %d: Product ID. */
+							esc_html__( 'Product #%d', 'order-status-rules-for-woocommerce' ),
+							$id
+						);
 						break;
 					case 'customer':
-						$res = ( 'guest' === $id ? esc_html__( 'Guest', 'order-status-rules-for-woocommerce' ) :
-							sprintf( esc_html__( 'User #%d', 'order-status-rules-for-woocommerce' ), $id ) );
+						$res = (
+							'guest' === $id ?
+							esc_html__( 'Guest', 'order-status-rules-for-woocommerce' ) :
+							sprintf(
+								/* Translators: %d: User ID. */
+								esc_html__( 'User #%d', 'order-status-rules-for-woocommerce' ),
+								$id
+							)
+						);
 						break;
 				}
 			} else {
@@ -302,8 +353,8 @@ class Alg_WC_Order_Status_Rules_Settings_Section {
 						break;
 					case 'customer':
 						$res = sprintf(
-							/* translators: $1: customer name, $2 customer id, $3: customer email */
-							esc_html__( '%1$s (#%2$s &ndash; %3$s)', 'woocommerce' ),
+							/* Translators: %1$s: Customer name, %2$s Customer id, %3$s: Customer email. */
+							esc_html__( '%1$s (#%2$s &ndash; %3$s)', 'woocommerce' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch
 							$obj->get_first_name() . ' ' . $obj->get_last_name(),
 							$obj->get_id(),
 							$obj->get_email()

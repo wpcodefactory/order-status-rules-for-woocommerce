@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Main Class
  *
- * @version 3.7.1
+ * @version 3.8.0
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -37,7 +37,7 @@ final class Alg_WC_Order_Status_Rules {
 	protected static $_instance = null;
 
 	/**
-	 * Main Alg_WC_Order_Status_Rules Instance
+	 * Main Alg_WC_Order_Status_Rules Instance.
 	 *
 	 * Ensures only one instance of Alg_WC_Order_Status_Rules is loaded or can be loaded.
 	 *
@@ -115,16 +115,21 @@ final class Alg_WC_Order_Status_Rules {
 	 * @version 3.4.0
 	 * @since   3.2.0
 	 *
-	 * @see     https://github.com/woocommerce/woocommerce/wiki/High-Performance-Order-Storage-Upgrade-Recipe-Book#declaring-extension-incompatibility
+	 * @see     https://developer.woocommerce.com/docs/features/high-performance-order-storage/recipe-book/
 	 */
 	function wc_declare_compatibility() {
 		if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
-			$files = ( defined( 'ALG_WC_ORDER_STATUS_RULES_FILE_FREE' ) ?
+			$files = (
+				defined( 'ALG_WC_ORDER_STATUS_RULES_FILE_FREE' ) ?
 				array( ALG_WC_ORDER_STATUS_RULES_FILE, ALG_WC_ORDER_STATUS_RULES_FILE_FREE ) :
 				array( ALG_WC_ORDER_STATUS_RULES_FILE )
 			);
 			foreach ( $files as $file ) {
-				\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', $file, true );
+				\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility(
+					'custom_order_tables',
+					$file,
+					true
+				);
 			}
 		}
 	}
@@ -142,19 +147,22 @@ final class Alg_WC_Order_Status_Rules {
 	/**
 	 * admin.
 	 *
-	 * @version 3.7.0
+	 * @version 3.8.0
 	 * @since   1.1.0
 	 */
 	function admin() {
 
 		// Action links
-		add_filter( 'plugin_action_links_' . plugin_basename( ALG_WC_ORDER_STATUS_RULES_FILE ), array( $this, 'action_links' ) );
+		add_filter(
+			'plugin_action_links_' . plugin_basename( ALG_WC_ORDER_STATUS_RULES_FILE ),
+			array( $this, 'action_links' )
+		);
 
 		// "Recommendations" page
-		$this->add_cross_selling_library();
+		add_action( 'init', array( $this, 'add_cross_selling_library' ) );
 
 		// WC Settings tab as WPFactory submenu item
-		$this->move_wc_settings_tab_to_wpfactory_menu();
+		add_action( 'init', array( $this, 'move_wc_settings_tab_to_wpfactory_menu' ) );
 
 		// Settings
 		add_filter( 'woocommerce_get_settings_pages', array( $this, 'add_woocommerce_settings_tab' ) );
@@ -212,7 +220,7 @@ final class Alg_WC_Order_Status_Rules {
 	/**
 	 * move_wc_settings_tab_to_wpfactory_menu.
 	 *
-	 * @version 3.7.0
+	 * @version 3.8.0
 	 * @since   3.7.0
 	 */
 	function move_wc_settings_tab_to_wpfactory_menu() {
@@ -230,7 +238,11 @@ final class Alg_WC_Order_Status_Rules {
 		$wpfactory_admin_menu->move_wc_settings_tab_to_wpfactory_menu( array(
 			'wc_settings_tab_id' => 'alg_wc_order_status_rules',
 			'menu_title'         => __( 'Order Status Rules', 'order-status-rules-for-woocommerce' ),
-			'page_title'         => __( 'Order Status Rules', 'order-status-rules-for-woocommerce' ),
+			'page_title'         => __( 'Scheduled & Automatic Order Status Controller for WooCommerce', 'order-status-rules-for-woocommerce' ),
+			'plugin_icon'        => array(
+				'get_url_method'    => 'wporg_plugins_api',
+				'wporg_plugin_slug' => 'order-status-rules-for-woocommerce',
+			),
 		) );
 
 	}

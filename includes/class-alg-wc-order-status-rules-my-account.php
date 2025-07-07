@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - My Account Class
  *
- * @version 3.3.0
+ * @version 3.8.0
  * @since   1.8.0
  *
  * @author  Algoritmika Ltd.
@@ -62,7 +62,7 @@ class Alg_WC_Order_Status_Rules_My_Account {
 	/**
 	 * status_history_column.
 	 *
-	 * @version 3.3.0
+	 * @version 3.8.0
 	 * @since   1.8.0
 	 *
 	 * @see     https://github.com/woocommerce/woocommerce/blob/5.5.2/templates/myaccount/orders.php#L45
@@ -87,10 +87,18 @@ class Alg_WC_Order_Status_Rules_My_Account {
 					'%status_from%' => esc_html( alg_wc_order_status_rules()->core->get_status_name( $record['from'] ) ),
 					'%status_to%'   => esc_html( alg_wc_order_status_rules()->core->get_status_name( $record['to'] ) ),
 				);
-				$records .= str_replace( array_keys( $placeholders ), $placeholders, $templates['each_record'] );
+				$records .= str_replace(
+					array_keys( $placeholders ),
+					$placeholders,
+					$templates['each_record']
+				);
 			}
 		}
-		echo str_replace( '%current_status%', $current_status, $templates['before'] ) . $records . str_replace( '%current_status%', $current_status, $templates['after'] );
+		echo wp_kses_post(
+			str_replace( '%current_status%', $current_status, $templates['before'] ) .
+			$records .
+			str_replace( '%current_status%', $current_status, $templates['after'] )
+		);
 	}
 
 }

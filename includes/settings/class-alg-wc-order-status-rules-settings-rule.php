@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Rule Section Settings
  *
- * @version 3.5.4
+ * @version 3.8.0
  * @since   2.0.0
  *
  * @author  Algoritmika Ltd.
@@ -22,7 +22,13 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 	 */
 	function __construct( $rule_id ) {
 		$this->id   = 'rule_' . $rule_id;
-		$this->desc = strtoupper( sprintf( __( 'Rule #%d', 'order-status-rules-for-woocommerce' ), $rule_id ) );
+		$this->desc = strtoupper(
+			sprintf(
+				/* Translators: %d: Rule ID. */
+				__( 'Rule #%d', 'order-status-rules-for-woocommerce' ),
+				$rule_id
+			)
+		);
 		$this->num  = $rule_id;
 		parent::__construct();
 	}
@@ -30,7 +36,7 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 	/**
 	 * get_settings.
 	 *
-	 * @version 3.5.4
+	 * @version 3.8.0
 	 * @since   2.0.0
 	 *
 	 * @todo    (desc) add description to each subsection
@@ -53,13 +59,26 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 		// General
 		$settings = array_merge( $settings, array(
 			array(
-				'title'    => sprintf( __( 'Rule #%d', 'order-status-rules-for-woocommerce' ), $i ) . $this->get_admin_title(),
+				'title'    => (
+					sprintf(
+						/* Translators: %d: Rule ID. */
+						__( 'Rule #%d', 'order-status-rules-for-woocommerce' ),
+						$i
+					) .
+					$this->get_admin_title()
+				),
 				'type'     => 'title',
 				'id'       => "alg_wc_order_status_rules_options_{$i}",
 			),
 			array(
 				'title'    => __( 'Enable/Disable', 'order-status-rules-for-woocommerce' ),
-				'desc'     => '<strong>' . sprintf( __( 'Enable rule #%s', 'order-status-rules-for-woocommerce' ), $i ) . '</strong>',
+				'desc'     => '<strong>' .
+					sprintf(
+						/* Translators: %d: Rule ID. */
+						__( 'Enable rule #%d', 'order-status-rules-for-woocommerce' ),
+						$i
+					) .
+				'</strong>',
 				'id'       => "alg_wc_order_status_rules_enabled[{$i}]",
 				'default'  => 'no',
 				'type'     => 'checkbox',
@@ -140,11 +159,26 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 			),
 			array(
 				'title'    => __( 'Skip dates', 'order-status-rules-for-woocommerce' ),
-				'desc_tip' => sprintf( __( 'Comma-separated list of dates in %s format (two digits with leading zeros, month - %s to %s, day - %s to %s).', 'order-status-rules-for-woocommerce' ),
-						'<code>MM-DD</code>', '<code>01</code>', '<code>12</code>', '<code>01</code>', '<code>31</code>' ) . ' ' .
-					__( 'Ignored if empty.', 'order-status-rules-for-woocommerce' ),
-				'desc'     => __( 'Dates (e.g., holidays).', 'order-status-rules-for-woocommerce' ) . ' ' .
-					sprintf( __( 'E.g.: %s', 'order-status-rules-for-woocommerce' ), '<code>01-01,12-25,12-26</code>' ),
+				'desc_tip' => (
+					sprintf(
+						/* Translators: %1$s: Date format, %2$s: 01, %3$s: 12, %4$s: 01, %5$s: 31. */
+						__( 'Comma-separated list of dates in %1$s format (two digits with leading zeros, month - %2$s to %3$s, day - %4$s to %5$s).', 'order-status-rules-for-woocommerce' ),
+						'<code>MM-DD</code>',
+						'<code>01</code>',
+						'<code>12</code>',
+						'<code>01</code>',
+						'<code>31</code>'
+					) . ' ' .
+					__( 'Ignored if empty.', 'order-status-rules-for-woocommerce' )
+				),
+				'desc'     => (
+					__( 'Dates (e.g., holidays).', 'order-status-rules-for-woocommerce' ) . ' ' .
+					sprintf(
+						/* Translators: %s: Date examples. */
+						__( 'E.g.: %s', 'order-status-rules-for-woocommerce' ),
+						'<code>01-01,12-25,12-26</code>'
+					)
+				),
 				'id'       => "alg_wc_order_status_rules_skip_dates[{$i}]",
 				'default'  => '',
 				'type'     => 'text',
@@ -184,7 +218,11 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 				),
 				array(
 					'desc'     => __( 'Order amount type', 'order-status-rules-for-woocommerce' ),
-					'desc_tip' => sprintf( __( 'Used in the "%s" option.', 'order-status-rules-for-woocommerce' ), __( 'Minimum amount', 'order-status-rules-for-woocommerce' ) ),
+					'desc_tip' => sprintf(
+						/* Translators: %s: Option title. */
+						__( 'Used in the "%s" option.', 'order-status-rules-for-woocommerce' ),
+						__( 'Minimum amount', 'order-status-rules-for-woocommerce' )
+					),
 					'id'       => "alg_wc_order_status_rules_min_amount_type[{$i}]",
 					'default'  => 'subtotal',
 					'type'     => 'select',
@@ -210,7 +248,11 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 				),
 				array(
 					'desc'     => __( 'Order amount type', 'order-status-rules-for-woocommerce' ),
-					'desc_tip' => sprintf( __( 'Used in the "%s" option.', 'order-status-rules-for-woocommerce' ), __( 'Maximum amount', 'order-status-rules-for-woocommerce' ) ),
+					'desc_tip' => sprintf(
+						/* Translators: %s: Option title. */
+						__( 'Used in the "%s" option.', 'order-status-rules-for-woocommerce' ),
+						__( 'Maximum amount', 'order-status-rules-for-woocommerce' )
+					),
 					'id'       => "alg_wc_order_status_rules_max_amount_type[{$i}]",
 					'default'  => 'subtotal',
 					'type'     => 'select',
@@ -406,7 +448,7 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 					'class'             => 'wc-product-search',
 					'options'           => $this->get_ajax_options( 'product', 'alg_wc_order_status_rules_products', $this->num ),
 					'custom_attributes' => array(
-						'data-placeholder' => esc_attr__( 'Search for a product&hellip;', 'woocommerce' ),
+						'data-placeholder' => esc_attr__( 'Search for a product&hellip;', 'woocommerce' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch
 						'data-action'      => 'woocommerce_json_search_products_and_variations',
 						'data-allow_clear' => true,
 					),
@@ -420,7 +462,7 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 					'options'  => array(
 						'no'          => __( 'Require', 'order-status-rules-for-woocommerce' ),
 						'yes'         => __( 'Require all', 'order-status-rules-for-woocommerce' ),
-						'exclude'     => __( 'Exclude', 'order-status-rules-for-woocommerce' ),
+						'exclude'     => __( 'Exclude', 'order-status-rules-for-woocommerce' ), // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
 						'exclude_all' => __( 'Exclude all', 'order-status-rules-for-woocommerce' ),
 					),
 				),
@@ -449,7 +491,7 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 					'options'  => array(
 						'no'          => __( 'Require', 'order-status-rules-for-woocommerce' ),
 						'yes'         => __( 'Require all', 'order-status-rules-for-woocommerce' ),
-						'exclude'     => __( 'Exclude', 'order-status-rules-for-woocommerce' ),
+						'exclude'     => __( 'Exclude', 'order-status-rules-for-woocommerce' ), // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
 						'exclude_all' => __( 'Exclude all', 'order-status-rules-for-woocommerce' ),
 					),
 				),
@@ -478,7 +520,7 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 					'options'  => array(
 						'no'          => __( 'Require', 'order-status-rules-for-woocommerce' ),
 						'yes'         => __( 'Require all', 'order-status-rules-for-woocommerce' ),
-						'exclude'     => __( 'Exclude', 'order-status-rules-for-woocommerce' ),
+						'exclude'     => __( 'Exclude', 'order-status-rules-for-woocommerce' ), // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
 						'exclude_all' => __( 'Exclude all', 'order-status-rules-for-woocommerce' ),
 					),
 				),
@@ -507,7 +549,7 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 					'options'  => array(
 						'no'          => __( 'Require', 'order-status-rules-for-woocommerce' ),
 						'yes'         => __( 'Require all', 'order-status-rules-for-woocommerce' ),
-						'exclude'     => __( 'Exclude', 'order-status-rules-for-woocommerce' ),
+						'exclude'     => __( 'Exclude', 'order-status-rules-for-woocommerce' ), // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
 						'exclude_all' => __( 'Exclude all', 'order-status-rules-for-woocommerce' ),
 					),
 				),
@@ -625,7 +667,7 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 					'class'             => 'wc-customer-search',
 					'options'           => $this->get_ajax_options( 'customer', 'alg_wc_order_status_rules_users', $this->num ),
 					'custom_attributes' => array(
-						'data-placeholder' => esc_attr__( 'Search for a user&hellip;', 'woocommerce' ),
+						'data-placeholder' => esc_attr__( 'Search for a user&hellip;', 'woocommerce' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch
 						'data-allow_clear' => true,
 						'data-exclude'     => 'alg_wc_order_status_rules', // workaround for the `wc_customer_search_guest()` function
 					),

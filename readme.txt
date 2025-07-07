@@ -1,9 +1,9 @@
 === Scheduled & Automatic Order Status Controller for WooCommerce ===
-Contributors: wpcodefactory, algoritmika, anbinder, karzin, omardabbas, kousikmukherjeeli
-Tags: woocommerce, order status, order, status, woo commerce
+Contributors: wpcodefactory, algoritmika, anbinder, karzin, omardabbas
+Tags: woocommerce, order status, order, status, ecommerce
 Requires at least: 4.4
-Tested up to: 6.7
-Stable tag: 3.7.2
+Tested up to: 6.8
+Stable tag: 3.8.0
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -46,6 +46,19 @@ For example: automatically change order status to cancelled, when 24 hours have 
 3. Start by visiting plugin settings at "WooCommerce > Settings > Order Status Rules".
 
 == Changelog ==
+
+= 3.8.0 - 07/07/2025 =
+* Dev - Security - Escape output.
+* Dev - Security - Sanitize input.
+* Dev - WPFactory Admin Menu - Library updated.
+* Dev - WPFactory Admin Menu - Moved to the `init` hook.
+* Dev - WPFactory Recommendations - Moved to the `init` hook.
+* Dev - WPFactory Key Manager - Library updated.
+* Dev - WPFactory Key Manager - Moved to the `init` hook.
+* Dev - Code refactoring.
+* Dev - Coding standards improved.
+* WC tested up to: 9.9.
+* Tested up to: 6.8.
 
 = 3.7.2 - 12/03/2025 =
 * Fix - Fixed an Open Redirection vulnerability in the admin.

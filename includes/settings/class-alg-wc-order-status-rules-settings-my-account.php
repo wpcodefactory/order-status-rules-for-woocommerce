@@ -70,33 +70,55 @@ class Alg_WC_Order_Status_Rules_Settings_My_Account extends Alg_WC_Order_Status_
 			),
 			array(
 				'title'    => __( 'Templates', 'order-status-rules-for-woocommerce' ),
-				'desc'     => __( 'Before', 'order-status-rules-for-woocommerce' ) . '<br>' .
-					sprintf( __( 'Available placeholders: %s', 'order-status-rules-for-woocommerce' ), '<code>' . implode( '</code>, <code>', array(
+				'desc'     => (
+					__( 'Before', 'order-status-rules-for-woocommerce' ) . '<br>' .
+					sprintf(
+						/* Translators: %s: Placeholder list. */
+						__( 'Available placeholders: %s', 'order-status-rules-for-woocommerce' ),
+						'<code>' . implode( '</code>, <code>', array(
 							'%current_status%',
-						) ) . '</code>' ),
+						) ) . '</code>'
+					)
+				),
 				'id'       => 'alg_wc_osr_my_account_orders_status_history_templates[before]',
 				'default'  => '%current_status%',
 				'type'     => 'textarea',
 			),
 			array(
-				'desc'     => __( 'Each record', 'order-status-rules-for-woocommerce' ) . '<br>' .
-					sprintf( __( 'Available placeholders: %s', 'order-status-rules-for-woocommerce' ), '<code>' . implode( '</code>, <code>', array(
+				'desc'     => (
+					__( 'Each record', 'order-status-rules-for-woocommerce' ) . '<br>' .
+					sprintf(
+						/* Translators: %s: Placeholder list. */
+						__( 'Available placeholders: %s', 'order-status-rules-for-woocommerce' ),
+						'<code>' . implode( '</code>, <code>', array(
 							'%record_nr%',
 							'%record_date%',
 							'%record_time%',
 							'%status_from%',
 							'%status_to%',
-						) ) . '</code>' ),
-				'desc_tip' => sprintf( __( '%s is a HTML code for the right arrow symbol.', 'order-status-rules-for-woocommerce' ), htmlentities( '&amp;rarr;' ) ),
+						) ) . '</code>'
+					)
+				),
+				'desc_tip' => sprintf(
+					/* Translators: %s: Symbol code. */
+					__( '%s is a HTML code for the right arrow symbol.', 'order-status-rules-for-woocommerce' ),
+					htmlentities( '&amp;rarr;' )
+				),
 				'id'       => 'alg_wc_osr_my_account_orders_status_history_templates[each_record]',
 				'default'  => '<br>%status_from% &rarr; %status_to%',
 				'type'     => 'textarea',
 			),
 			array(
-				'desc'     => __( 'After', 'order-status-rules-for-woocommerce' ) . '<br>' .
-					sprintf( __( 'Available placeholders: %s', 'order-status-rules-for-woocommerce' ), '<code>' . implode( '</code>, <code>', array(
+				'desc'     => (
+					__( 'After', 'order-status-rules-for-woocommerce' ) . '<br>' .
+					sprintf(
+						/* Translators: %s: Placeholder list. */
+						__( 'Available placeholders: %s', 'order-status-rules-for-woocommerce' ),
+						'<code>' . implode( '</code>, <code>', array(
 							'%current_status%',
-						) ) . '</code>' ),
+						) ) . '</code>'
+					)
+				),
 				'id'       => 'alg_wc_osr_my_account_orders_status_history_templates[after]',
 				'default'  => '',
 				'type'     => 'textarea',

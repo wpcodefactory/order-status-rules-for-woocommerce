@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Advanced Section Settings
  *
- * @version 3.5.1
+ * @version 3.8.0
  * @since   1.5.0
  *
  * @author  Algoritmika Ltd.
@@ -29,7 +29,7 @@ class Alg_WC_Order_Status_Rules_Settings_Advanced extends Alg_WC_Order_Status_Ru
 	/**
 	 * get_settings.
 	 *
-	 * @version 3.5.1
+	 * @version 3.8.0
 	 * @since   1.5.0
 	 *
 	 * @todo    (dev) split into sections, e.g., "Compatibility"
@@ -78,8 +78,8 @@ class Alg_WC_Order_Status_Rules_Settings_Advanced extends Alg_WC_Order_Status_Ru
 					'woocommerce_checkout_order_processed'               => __( 'Checkout order processed', 'order-status-rules-for-woocommerce' ),
 					'woocommerce_thankyou'                               => __( '"Thank you" (i.e., "Order received") page', 'order-status-rules-for-woocommerce' ),
 					'alg_wc_order_status_rules_shop_order_screen'        => __( 'Admin "Edit order" page', 'order-status-rules-for-woocommerce' ),
-					'alg_wc_order_status_rules_shop_subscription_screen' => __( 'Admin "Edit subscription" page', 'order-status-rules-for-woocommerce' ),
 					'woocommerce_subscription_status_changed'            => __( 'Subscription status changed', 'order-status-rules-for-woocommerce' ),
+					'alg_wc_order_status_rules_shop_subscription_screen' => __( 'Admin "Edit subscription" page', 'order-status-rules-for-woocommerce' ),
 				) ),
 			),
 			array(
@@ -108,10 +108,26 @@ class Alg_WC_Order_Status_Rules_Settings_Advanced extends Alg_WC_Order_Status_Ru
 			array(
 				'title'    => __( 'Allow rules processing via URL', 'order-status-rules-for-woocommerce' ),
 				'desc'     => __( 'Enable', 'order-status-rules-for-woocommerce' ),
-				'desc_tip' => sprintf( __( 'This will allow to initiate all rules processing via URL: %s.', 'order-status-rules-for-woocommerce' ),
-					'<code>' . add_query_arg( 'alg_wc_order_status_rules_process_rules', '', get_site_url() ) . '</code>' ) . '<br>' .
-					sprintf( __( 'For example, this could be useful if you are going to disable %s and use "real" (i.e., server) cron jobs instead.', 'order-status-rules-for-woocommerce' ),
-						'<span style="text-decoration:underline;">' . __( 'Periodical Processing Options', 'order-status-rules-for-woocommerce' ) . '</span>' ),
+				'desc_tip' => (
+					sprintf(
+						/* Translators: %s: URL. */
+						__( 'This will allow to initiate all rules processing via URL: %s.', 'order-status-rules-for-woocommerce' ),
+						'<code>' .
+							add_query_arg(
+								'alg_wc_order_status_rules_process_rules',
+								'',
+								get_site_url()
+							) .
+						'</code>'
+					) . '<br>' .
+					sprintf(
+						/* Translators: %s: Section title. */
+						__( 'For example, this could be useful if you are going to disable %s and use "real" (i.e., server) cron jobs instead.', 'order-status-rules-for-woocommerce' ),
+						'<span style="text-decoration:underline;">' .
+							__( 'Periodical Processing Options', 'order-status-rules-for-woocommerce' ) .
+						'</span>'
+					)
+				),
 				'id'       => 'alg_wc_order_status_rules_allow_url',
 				'default'  => 'no',
 				'type'     => 'checkbox',
@@ -129,9 +145,13 @@ class Alg_WC_Order_Status_Rules_Settings_Advanced extends Alg_WC_Order_Status_Ru
 			array(
 				'title'    => __( 'Debug', 'order-status-rules-for-woocommerce' ),
 				'desc'     => __( 'Enable', 'order-status-rules-for-woocommerce' ),
-				'desc_tip' => sprintf( __( 'Will add a log to %s.', 'order-status-rules-for-woocommerce' ),
+				'desc_tip' => sprintf(
+					/* Translators: %s: Link. */
+					__( 'Will add a log to %s.', 'order-status-rules-for-woocommerce' ),
 					'<a target="_blank" href="' . admin_url( 'admin.php?page=wc-status&tab=logs' ) . '">' .
-						__( 'WooCommerce > Status > Logs', 'order-status-rules-for-woocommerce' ) . '</a>' ),
+						__( 'WooCommerce > Status > Logs', 'order-status-rules-for-woocommerce' ) .
+					'</a>'
+				),
 				'id'       => 'alg_wc_order_status_rules_debug',
 				'default'  => 'no',
 				'type'     => 'checkbox',
@@ -242,22 +262,45 @@ class Alg_WC_Order_Status_Rules_Settings_Advanced extends Alg_WC_Order_Status_Ru
 		$periodical_settings = array(
 			array(
 				'title'    => __( 'Periodical Processing Options', 'order-status-rules-for-woocommerce' ),
-				'desc'     => __( 'Although it\'s possible to enable both periodical processing options, we recommend enabling only one of them.', 'order-status-rules-for-woocommerce' ) . '<br>' .
-					sprintf( __( 'If you are going to disable both periodical processing options, you may want to enable the %s option and set up "real" (i.e., server) cron job.', 'order-status-rules-for-woocommerce' ),
-						'<span style="text-decoration:underline;">' . __( 'Allow rules processing via URL', 'order-status-rules-for-woocommerce' ) . '</span>' ) . ' ' .
-					sprintf( __( 'Also you can use our %s tool manually.', 'order-status-rules-for-woocommerce' ),
-						'<a target="_blank" href="' . admin_url( 'admin.php?page=wc-settings&tab=alg_wc_order_status_rules&section' ) . '">' . __( 'Run all rules now', 'order-status-rules-for-woocommerce' ) . '</a>' ) .
-					( defined( 'DISABLE_WP_CRON' ) && DISABLE_WP_CRON ?
-						'<br>' . '<strong>' . sprintf( __( 'Crons (%s) are disabled on your site!', 'order-status-rules-for-woocommerce' ), '<code>DISABLE_WP_CRON</code>' ) . '</strong>' : '' ),
+				'desc'     => (
+					__( 'Although it\'s possible to enable both periodical processing options, we recommend enabling only one of them.', 'order-status-rules-for-woocommerce' ) . '<br>' .
+					sprintf(
+						/* Translators: %s: Option title. */
+						__( 'If you are going to disable both periodical processing options, you may want to enable the %s option and set up "real" (i.e., server) cron job.', 'order-status-rules-for-woocommerce' ),
+						'<span style="text-decoration:underline;">' .
+							__( 'Allow rules processing via URL', 'order-status-rules-for-woocommerce' ) .
+						'</span>'
+					) . ' ' .
+					sprintf(
+						/* Translators: %s: Tool link. */
+						__( 'Also you can use our %s tool manually.', 'order-status-rules-for-woocommerce' ),
+						'<a target="_blank" href="' . admin_url( 'admin.php?page=wc-settings&tab=alg_wc_order_status_rules&section' ) . '">' .
+							__( 'Run all rules now', 'order-status-rules-for-woocommerce' ) .
+						'</a>'
+					) .
+					(
+						defined( 'DISABLE_WP_CRON' ) && DISABLE_WP_CRON ?
+						'<br>' . '<strong>' . sprintf(
+							/* Translators: %s: Name of the constant. */
+							__( 'Crons (%s) are disabled on your site!', 'order-status-rules-for-woocommerce' ),
+							'<code>DISABLE_WP_CRON</code>'
+						) . '</strong>' :
+						''
+					)
+				),
 				'type'     => 'title',
 				'id'       => 'alg_wc_order_status_rules_periodical_options',
 			),
 			array(
 				'title'    => __( 'Use WP cron', 'order-status-rules-for-woocommerce' ),
 				'desc'     => __( 'Enable', 'order-status-rules-for-woocommerce' ),
-				'desc_tip' => sprintf( __( 'This will use %s to process the rules periodically.', 'order-status-rules-for-woocommerce' ),
-						'<a href="https://developer.wordpress.org/plugins/cron/" target="_blank">' .
-							__( 'WordPress crons', 'order-status-rules-for-woocommerce' ) . '</a>' ),
+				'desc_tip' => sprintf(
+					/* Translators: %s: Page link. */
+					__( 'This will use %s to process the rules periodically.', 'order-status-rules-for-woocommerce' ),
+					'<a href="https://developer.wordpress.org/plugins/cron/" target="_blank">' .
+						__( 'WordPress crons', 'order-status-rules-for-woocommerce' ) .
+					'</a>'
+				),
 				'id'       => 'alg_wc_order_status_rules_use_wp_cron',
 				'default'  => 'yes',
 				'type'     => 'checkbox',
@@ -273,11 +316,23 @@ class Alg_WC_Order_Status_Rules_Settings_Advanced extends Alg_WC_Order_Status_Ru
 			array(
 				'title'    => __( 'Use Action Scheduler', 'order-status-rules-for-woocommerce' ),
 				'desc'     => __( 'Enable', 'order-status-rules-for-woocommerce' ),
-				'desc_tip' => sprintf( __( 'This will use %s to process the rules periodically.', 'order-status-rules-for-woocommerce' ),
+				'desc_tip' => (
+					sprintf(
+						/* Translators: %s: Action Scheduler link. */
+						__( 'This will use %s to process the rules periodically.', 'order-status-rules-for-woocommerce' ),
 						'<a href="https://actionscheduler.org/" target="_blank">' .
-							__( 'Action Scheduler', 'order-status-rules-for-woocommerce' ) . '</a>' ) .
-					'<br>* ' . sprintf( __( 'Action Scheduler has a built in <a href="%s" target="_blank">administration screen</a> for monitoring, debugging and manually triggering scheduled actions. Search for the %s hook there.', 'order-status-rules-for-woocommerce' ),
-						admin_url( 'admin.php?page=wc-status&tab=action-scheduler' ), '<code>' . alg_wc_order_status_rules()->core->action_scheduler->action . '</code>' ),
+							__( 'Action Scheduler', 'order-status-rules-for-woocommerce' ) .
+						'</a>'
+					) .
+					'<br>* ' . sprintf(
+						/* Translators: %1$s: URL, %2$s: Hook name. */
+						__( 'Action Scheduler has a built in <a href="%1$s" target="_blank">administration screen</a> for monitoring, debugging and manually triggering scheduled actions. Search for the %2$s hook there.', 'order-status-rules-for-woocommerce' ),
+						admin_url( 'admin.php?page=wc-status&tab=action-scheduler' ),
+						'<code>' .
+							alg_wc_order_status_rules()->core->action_scheduler->action .
+						'</code>'
+					)
+				),
 				'id'       => 'alg_wc_order_status_rules_use_action_scheduler',
 				'default'  => 'no',
 				'type'     => 'checkbox',

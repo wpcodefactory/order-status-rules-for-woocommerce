@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Core Class
  *
- * @version 3.7.2
+ * @version 3.8.0
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -73,7 +73,7 @@ class Alg_WC_Order_Status_Rules_Core {
 	/**
 	 * Constructor.
 	 *
-	 * @version 3.3.0
+	 * @version 3.8.0
 	 * @since   1.0.0
 	 *
 	 * @todo    (dev) remove `alg_wc_order_status_rules_plugin_enabled` (or move `process_rules_manual`, etc. inside the `alg_wc_order_status_rules_plugin_enabled`)
@@ -96,30 +96,30 @@ class Alg_WC_Order_Status_Rules_Core {
 			}
 
 			// Admin order edit page meta box, etc.
-			require_once( 'class-alg-wc-order-status-rules-admin.php' );
+			require_once plugin_dir_path( __FILE__ ) . 'class-alg-wc-order-status-rules-admin.php';
 
 			// My account > Orders
-			require_once( 'class-alg-wc-order-status-rules-my-account.php' );
+			require_once plugin_dir_path( __FILE__ ) . 'class-alg-wc-order-status-rules-my-account.php';
 
 			// Compatibility
-			require_once( 'class-alg-wc-order-status-rules-compatibility.php' );
+			require_once plugin_dir_path( __FILE__ ) . 'class-alg-wc-order-status-rules-compatibility.php';
 
 			// Default order status
-			require_once( 'class-alg-wc-order-status-rules-default-status.php' );
+			require_once plugin_dir_path( __FILE__ ) . 'class-alg-wc-order-status-rules-default-status.php';
 
 			// Process payment order status
-			require_once( 'class-alg-wc-order-status-rules-process-payment.php' );
+			require_once plugin_dir_path( __FILE__ ) . 'class-alg-wc-order-status-rules-process-payment.php';
 
 		}
 
 		// Conditions
-		$this->conditions = require_once( 'class-alg-wc-order-status-rules-conditions.php' );
+		$this->conditions = require_once plugin_dir_path( __FILE__ ) . 'class-alg-wc-order-status-rules-conditions.php';
 
 		// Crons
-		$this->crons = require_once( 'class-alg-wc-order-status-rules-crons.php' );
+		$this->crons = require_once plugin_dir_path( __FILE__ ) . 'class-alg-wc-order-status-rules-crons.php';
 
 		// Action scheduler
-		$this->action_scheduler = require_once( 'class-alg-wc-order-status-rules-action-scheduler.php' );
+		$this->action_scheduler = require_once plugin_dir_path( __FILE__ ) . 'class-alg-wc-order-status-rules-action-scheduler.php';
 
 		// Process rules manually
 		add_action( 'alg_wc_order_status_rules_after_save_settings', array( $this, 'process_rules_manual' ) );
@@ -270,7 +270,10 @@ class Alg_WC_Order_Status_Rules_Core {
 	 * @todo    (dev) optional "order ID to process" (https://wordpress.org/support/topic/orderid-trigger/)
 	 */
 	function process_rules_url() {
-		if ( isset( $_REQUEST['alg_wc_order_status_rules_process_rules'] ) && ! is_admin() ) {
+		if (
+			isset( $_REQUEST['alg_wc_order_status_rules_process_rules'] ) && // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			! is_admin()
+		) {
 			$this->process_rules();
 		}
 	}
@@ -296,12 +299,13 @@ class Alg_WC_Order_Status_Rules_Core {
 	/**
 	 * admin_notice_process_rules_manual.
 	 *
-	 * @version 1.2.0
+	 * @version 3.8.0
 	 * @since   1.2.0
 	 */
 	function admin_notice_process_rules_manual() {
 		echo '<div class="notice notice-warning is-dismissible"><p><strong>' .
-			__( '"Run all rules now" tool executed.', 'order-status-rules-for-woocommerce' ) . '</strong></p></div>';
+			esc_html__( '"Run all rules now" tool executed.', 'order-status-rules-for-woocommerce' ) .
+		'</strong></p></div>';
 	}
 
 	/**
@@ -323,8 +327,8 @@ class Alg_WC_Order_Status_Rules_Core {
 			while ( $valid <= $trigger_time ) {
 				$step = ( strtotime( 'tomorrow', $total ) - $total );
 				if (
-					( empty( $skip_days )  || ! in_array( date( 'N',   $total ), $skip_days  ) ) &&
-					( empty( $skip_dates ) || ! in_array( date( 'm-d', $total ), $skip_dates ) )
+					( empty( $skip_days )  || ! in_array( date( 'N',   $total ), $skip_days  ) ) && // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
+					( empty( $skip_dates ) || ! in_array( date( 'm-d', $total ), $skip_dates ) )    // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
 				) {
 					$valid += $step;
 				}
@@ -472,7 +476,7 @@ class Alg_WC_Order_Status_Rules_Core {
 	/**
 	 * process_rules.
 	 *
-	 * @version 3.5.0
+	 * @version 3.8.0
 	 * @since   1.0.0
 	 *
 	 * @see     https://github.com/woocommerce/woocommerce/wiki/wc_get_orders-and-WC_Order_Query
@@ -525,8 +529,8 @@ class Alg_WC_Order_Status_Rules_Core {
 			$this->add_to_log( __( 'Process rules: Finished', 'order-status-rules-for-woocommerce' ) );
 		}
 
-		if ( isset( $_REQUEST['alg_wc_order_status_rules_process_rules_redirect'] ) ) {
-			wp_redirect( esc_url_raw( $_REQUEST['alg_wc_order_status_rules_process_rules_redirect'] ) );
+		if ( isset( $_REQUEST['alg_wc_order_status_rules_process_rules_redirect'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			wp_redirect( sanitize_url( wp_unslash( $_REQUEST['alg_wc_order_status_rules_process_rules_redirect'] ) ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			exit;
 		}
 
@@ -539,7 +543,7 @@ class Alg_WC_Order_Status_Rules_Core {
 	/**
 	 * process_rules_for_order.
 	 *
-	 * @version 3.5.5
+	 * @version 3.8.0
 	 * @since   2.2.0
 	 *
 	 * @todo    (dev) check if it's a valid order at the beginning (i.e., `( $order = wc_get_order( $order_id ) )`)
@@ -549,7 +553,13 @@ class Alg_WC_Order_Status_Rules_Core {
 		$this->init_options();
 
 		if ( $this->do_debug() ) {
-			$this->add_to_log( sprintf( __( 'Process rules: Order #%s', 'order-status-rules-for-woocommerce' ), $order_id ) );
+			$this->add_to_log(
+				sprintf(
+					/* Translators: %s: Order ID. */
+					__( 'Process rules: Order #%s', 'order-status-rules-for-woocommerce' ),
+					$order_id
+				)
+			);
 		}
 
 		$status_history = $this->get_order_status_change_history( $order_id );
@@ -558,7 +568,13 @@ class Alg_WC_Order_Status_Rules_Core {
 
 			if ( ! ( $order = wc_get_order( $order_id ) ) || ! is_callable( array( $order, 'update_status' ) ) ) {
 				if ( $this->do_debug() ) {
-					$this->add_to_log( sprintf( __( 'Process rules: Skipping order #%s', 'order-status-rules-for-woocommerce' ), $order_id ) );
+					$this->add_to_log(
+						sprintf(
+							/* Translators: %s: Order ID. */
+							__( 'Process rules: Skipping order #%s', 'order-status-rules-for-woocommerce' ),
+							$order_id
+						)
+					);
 				}
 				return false;
 			}
@@ -588,9 +604,23 @@ class Alg_WC_Order_Status_Rules_Core {
 					do_action( 'alg_wc_order_status_rules_before_rule_applied', $order, $rule_id, $args, $this );
 
 					// Prepare note
-					$rule = sprintf( __( 'Rule #%s', 'order-status-rules-for-woocommerce' ), $rule_id ) .
-						( ! empty( $this->options['titles'][ $rule_id ] ) ? ': ' . $this->options['titles'][ $rule_id ] : '' );
-					$note = sprintf( __( 'Status updated by "Order Status Rules for WooCommerce" plugin (%s).', 'order-status-rules-for-woocommerce' ), $rule );
+					$rule = (
+						sprintf(
+							/* Translators: %s: Rule ID. */
+							__( 'Rule #%s', 'order-status-rules-for-woocommerce' ),
+							$rule_id
+						) .
+						(
+							! empty( $this->options['titles'][ $rule_id ] ) ?
+							': ' . $this->options['titles'][ $rule_id ] :
+							''
+						)
+					);
+					$note = sprintf(
+						/* Translators: %s: Rule title. */
+						__( 'Status updated by "Order Status Rules for WooCommerce" plugin (%s).', 'order-status-rules-for-woocommerce' ),
+						$rule
+					);
 
 					// Update status
 					$this->update_status( $order, substr( $this->options['to'][ $rule_id ], 3 ), $note );
@@ -600,8 +630,16 @@ class Alg_WC_Order_Status_Rules_Core {
 
 					// Debug
 					if ( $this->do_debug() ) {
-						$this->add_to_log( sprintf( __( 'Process rules: Order #%s: from %s to %s (%s)', 'order-status-rules-for-woocommerce' ),
-							$order_id, $from, $this->options['to'][ $rule_id ], $rule ) );
+						$this->add_to_log(
+							sprintf(
+								/* Translators: %1$s: Order ID, %2$s: Order status, %3$s: Order status, %4$s: Rule title. */
+								__( 'Process rules: Order #%1$s: from %2$s to %3$s (%4$s)', 'order-status-rules-for-woocommerce' ),
+								$order_id,
+								$from,
+								$this->options['to'][ $rule_id ],
+								$rule
+							)
+						);
 					}
 
 					// Exit
@@ -612,7 +650,13 @@ class Alg_WC_Order_Status_Rules_Core {
 			}
 
 		} elseif ( $this->do_debug() ) {
-			$this->add_to_log( sprintf( __( 'Process rules: Order #%s: No order status change history found', 'order-status-rules-for-woocommerce' ), $order_id ) );
+			$this->add_to_log(
+				sprintf(
+					/* Translators: %s: Order ID. */
+					__( 'Process rules: Order #%s: No order status change history found', 'order-status-rules-for-woocommerce' ),
+					$order_id
+				)
+			);
 		}
 
 		return false;

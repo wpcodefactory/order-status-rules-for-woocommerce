@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Extra Section Settings
  *
- * @version 3.3.0
+ * @version 3.8.0
  * @since   3.3.0
  *
  * @author  Algoritmika Ltd.
@@ -29,7 +29,7 @@ class Alg_WC_Order_Status_Rules_Settings_Extra extends Alg_WC_Order_Status_Rules
 	/**
 	 * get_settings.
 	 *
-	 * @version 3.3.0
+	 * @version 3.8.0
 	 * @since   3.3.0
 	 */
 	function get_settings() {
@@ -44,8 +44,11 @@ class Alg_WC_Order_Status_Rules_Settings_Extra extends Alg_WC_Order_Status_Rules
 			),
 			array(
 				'title'    => __( 'Default order status', 'order-status-rules-for-woocommerce' ),
-				'desc_tip' => sprintf( __( 'WooCommerce default: %s.', 'order-status-rules-for-woocommerce' ),
-					_x( 'Pending payment', 'Order status', 'woocommerce' ) ),
+				'desc_tip' => sprintf(
+					/* Translators: %s: Order status. */
+					__( 'WooCommerce default: %s.', 'order-status-rules-for-woocommerce' ),
+					_x( 'Pending payment', 'Order status', 'woocommerce' ) // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch
+				),
 				'id'       => 'alg_wc_order_status_rules_default_order_status',
 				'default'  => '',
 				'type'     => 'select',
@@ -67,8 +70,11 @@ class Alg_WC_Order_Status_Rules_Settings_Extra extends Alg_WC_Order_Status_Rules
 			),
 			array(
 				'title'    => __( 'Direct bank transfer', 'order-status-rules-for-woocommerce' ),
-				'desc_tip' => sprintf( __( 'WooCommerce default: %s.', 'order-status-rules-for-woocommerce' ),
-					_x( 'On hold', 'Order status', 'woocommerce' ) ),
+				'desc_tip' => sprintf(
+					/* Translators: %s: Order status. */
+					__( 'WooCommerce default: %s.', 'order-status-rules-for-woocommerce' ),
+					_x( 'On hold', 'Order status', 'woocommerce' ) // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch
+				),
 				'id'       => 'alg_wc_order_status_rules_bacs_process_payment_order_status',
 				'default'  => '',
 				'type'     => 'select',
@@ -77,8 +83,11 @@ class Alg_WC_Order_Status_Rules_Settings_Extra extends Alg_WC_Order_Status_Rules
 			),
 			array(
 				'title'    => __( 'Check payments', 'order-status-rules-for-woocommerce' ),
-				'desc_tip' => sprintf( __( 'WooCommerce default: %s.', 'order-status-rules-for-woocommerce' ),
-					_x( 'On hold', 'Order status', 'woocommerce' ) ),
+				'desc_tip' => sprintf(
+					/* Translators: %s: Order status. */
+					__( 'WooCommerce default: %s.', 'order-status-rules-for-woocommerce' ),
+					_x( 'On hold', 'Order status', 'woocommerce' ) // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch
+				),
 				'id'       => 'alg_wc_order_status_rules_cheque_process_payment_order_status',
 				'default'  => '',
 				'type'     => 'select',
@@ -87,8 +96,12 @@ class Alg_WC_Order_Status_Rules_Settings_Extra extends Alg_WC_Order_Status_Rules
 			),
 			array(
 				'title'    => __( 'Cash on delivery (COD)', 'order-status-rules-for-woocommerce' ),
-				'desc_tip' => sprintf( __( 'WooCommerce default: %s or %s (if the order contains a downloadable product).', 'order-status-rules-for-woocommerce' ),
-					_x( 'Processing', 'Order status', 'woocommerce' ), _x( 'On hold', 'Order status', 'woocommerce' ) ),
+				'desc_tip' => sprintf(
+					/* Translators: %1$s: Order status, %2$s: Order status. */
+					__( 'WooCommerce default: %1$s or %2$s (if the order contains a downloadable product).', 'order-status-rules-for-woocommerce' ),
+					_x( 'Processing', 'Order status', 'woocommerce' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch
+					_x( 'On hold', 'Order status', 'woocommerce' )     // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch
+				),
 				'id'       => 'alg_wc_order_status_rules_cod_process_payment_order_status',
 				'default'  => '',
 				'type'     => 'select',

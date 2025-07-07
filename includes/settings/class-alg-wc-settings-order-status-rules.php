@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Settings
  *
- * @version 3.5.4
+ * @version 3.8.0
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -17,7 +17,7 @@ class Alg_WC_Settings_Order_Status_Rules extends WC_Settings_Page {
 	/**
 	 * Constructor.
 	 *
-	 * @version 3.3.0
+	 * @version 3.8.0
 	 * @since   1.0.0
 	 */
 	function __construct() {
@@ -27,16 +27,16 @@ class Alg_WC_Settings_Order_Status_Rules extends WC_Settings_Page {
 		parent::__construct();
 
 		// Sections
-		require_once( 'class-alg-wc-order-status-rules-settings-section.php' );
-		require_once( 'class-alg-wc-order-status-rules-settings-general.php' );
-		require_once( 'class-alg-wc-order-status-rules-settings-rule.php' );
+		require_once plugin_dir_path( __FILE__ ) . 'class-alg-wc-order-status-rules-settings-section.php';
+		require_once plugin_dir_path( __FILE__ ) . 'class-alg-wc-order-status-rules-settings-general.php';
+		require_once plugin_dir_path( __FILE__ ) . 'class-alg-wc-order-status-rules-settings-rule.php';
 		for ( $rule_id = 1; $rule_id <= apply_filters( 'alg_wc_order_status_rules_rules_total', 1 ); $rule_id++ ) {
 			new Alg_WC_Order_Status_Rules_Settings_Rule( $rule_id );
 		}
-		require_once( 'class-alg-wc-order-status-rules-settings-advanced.php' );
-		require_once( 'class-alg-wc-order-status-rules-settings-tools.php' );
-		require_once( 'class-alg-wc-order-status-rules-settings-my-account.php' );
-		require_once( 'class-alg-wc-order-status-rules-settings-extra.php' );
+		require_once plugin_dir_path( __FILE__ ) . 'class-alg-wc-order-status-rules-settings-advanced.php';
+		require_once plugin_dir_path( __FILE__ ) . 'class-alg-wc-order-status-rules-settings-tools.php';
+		require_once plugin_dir_path( __FILE__ ) . 'class-alg-wc-order-status-rules-settings-my-account.php';
+		require_once plugin_dir_path( __FILE__ ) . 'class-alg-wc-order-status-rules-settings-extra.php';
 
 	}
 
@@ -117,7 +117,13 @@ class Alg_WC_Settings_Order_Status_Rules extends WC_Settings_Page {
 
 		$copy_rules = array( '' => __( 'Select a rule&hellip;', 'order-status-rules-for-woocommerce' ) );
 		for ( $rule_id = 1; $rule_id <= apply_filters( 'alg_wc_order_status_rules_rules_total', 1 ); $rule_id++ ) {
-			$copy_rules[ 'rule_' . $rule_id ] = strtoupper( sprintf( __( 'Rule #%d', 'order-status-rules-for-woocommerce' ), $rule_id ) );
+			$copy_rules[ 'rule_' . $rule_id ] = strtoupper(
+				sprintf(
+					/* Translators: %d: Rule ID. */
+					__( 'Rule #%d', 'order-status-rules-for-woocommerce' ),
+					$rule_id
+				)
+			);
 		}
 		unset( $copy_rules[ $current_section ] );
 
@@ -152,7 +158,9 @@ class Alg_WC_Settings_Order_Status_Rules extends WC_Settings_Page {
 			}
 
 			if ( method_exists( 'WC_Admin_Settings', 'add_message' ) ) {
-				WC_Admin_Settings::add_message( __( 'Your settings have been copied.', 'order-status-rules-for-woocommerce' ) );
+				WC_Admin_Settings::add_message(
+					__( 'Your settings have been copied.', 'order-status-rules-for-woocommerce' )
+				);
 			}
 
 		}
@@ -188,7 +196,9 @@ class Alg_WC_Settings_Order_Status_Rules extends WC_Settings_Page {
 			}
 
 			if ( method_exists( 'WC_Admin_Settings', 'add_message' ) ) {
-				WC_Admin_Settings::add_message( __( 'Your settings have been reset.', 'order-status-rules-for-woocommerce' ) );
+				WC_Admin_Settings::add_message(
+					__( 'Your settings have been reset.', 'order-status-rules-for-woocommerce' )
+				);
 			} else {
 				add_action( 'admin_notices', array( $this, 'admin_notice_settings_reset' ) );
 			}
@@ -200,12 +210,13 @@ class Alg_WC_Settings_Order_Status_Rules extends WC_Settings_Page {
 	/**
 	 * admin_notice_settings_reset.
 	 *
-	 * @version 1.1.0
+	 * @version 3.8.0
 	 * @since   1.1.0
 	 */
 	function admin_notice_settings_reset() {
 		echo '<div class="notice notice-warning is-dismissible"><p><strong>' .
-			__( 'Your settings have been reset.', 'order-status-rules-for-woocommerce' ) . '</strong></p></div>';
+			esc_html__( 'Your settings have been reset.', 'order-status-rules-for-woocommerce' ) .
+		'</strong></p></div>';
 	}
 
 	/**

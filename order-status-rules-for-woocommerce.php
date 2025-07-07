@@ -3,12 +3,13 @@
 Plugin Name: Scheduled & Automatic Order Status Controller for WooCommerce
 Plugin URI: https://wpfactory.com/item/order-status-rules-for-woocommerce/
 Description: Automate WooCommerce order statuses. Beautifully.
-Version: 3.7.2
+Version: 3.8.0
 Author: WPFactory
 Author URI: https://wpfactory.com
+Requires at least: 4.4
 Text Domain: order-status-rules-for-woocommerce
 Domain Path: /langs
-WC tested up to: 9.7
+WC tested up to: 9.9
 Requires Plugins: woocommerce
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -26,18 +27,21 @@ if ( 'order-status-rules-for-woocommerce.php' === basename( __FILE__ ) ) {
 	$plugin = 'order-status-rules-for-woocommerce-pro/order-status-rules-for-woocommerce-pro.php';
 	if (
 		in_array( $plugin, (array) get_option( 'active_plugins', array() ), true ) ||
-		( is_multisite() && array_key_exists( $plugin, (array) get_site_option( 'active_sitewide_plugins', array() ) ) )
+		(
+			is_multisite() &&
+			array_key_exists( $plugin, (array) get_site_option( 'active_sitewide_plugins', array() ) )
+		)
 	) {
 		defined( 'ALG_WC_ORDER_STATUS_RULES_FILE_FREE' ) || define( 'ALG_WC_ORDER_STATUS_RULES_FILE_FREE', __FILE__ );
 		return;
 	}
 }
 
-defined( 'ALG_WC_ORDER_STATUS_RULES_VERSION' ) || define( 'ALG_WC_ORDER_STATUS_RULES_VERSION', '3.7.2' );
+defined( 'ALG_WC_ORDER_STATUS_RULES_VERSION' ) || define( 'ALG_WC_ORDER_STATUS_RULES_VERSION', '3.8.0' );
 
 defined( 'ALG_WC_ORDER_STATUS_RULES_FILE' ) || define( 'ALG_WC_ORDER_STATUS_RULES_FILE', __FILE__ );
 
-require_once( 'includes/class-alg-wc-order-status-rules.php' );
+require_once plugin_dir_path( __FILE__ ) . 'includes/class-alg-wc-order-status-rules.php';
 
 if ( ! function_exists( 'alg_wc_order_status_rules' ) ) {
 	/**
