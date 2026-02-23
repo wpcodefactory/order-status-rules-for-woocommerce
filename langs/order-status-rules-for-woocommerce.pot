@@ -1,48 +1,49 @@
-# Copyright (C) 2025 WPFactory
+# Copyright (C) 2026 WPFactory
 # This file is distributed under the GNU General Public License v3.0.
 msgid ""
 msgstr ""
-"Project-Id-Version: order-status-rules-for-woocommerce 3.8.1\n"
+"Project-Id-Version: Scheduled & Automatic Order Status Controller for WooCommerce 3.9.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/order-status-rules-for-woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-09-19T16:14:31+00:00\n"
+"POT-Creation-Date: 2026-02-23T18:58:47+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"X-Generator: WP-CLI 2.12.0\n"
+"X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: order-status-rules-for-woocommerce\n"
 
 #. Plugin Name of the plugin
-#: order-status-rules-for-woocommerce-pro.php
-msgid "Scheduled & Automatic Order Status Controller for WooCommerce Pro"
+#: order-status-rules-for-woocommerce.php
+#: includes/class-alg-wc-order-status-rules.php:241
+msgid "Scheduled & Automatic Order Status Controller for WooCommerce"
 msgstr ""
 
 #. Plugin URI of the plugin
-#: order-status-rules-for-woocommerce-pro.php
+#: order-status-rules-for-woocommerce.php
 msgid "https://wpfactory.com/item/order-status-rules-for-woocommerce/"
 msgstr ""
 
 #. Description of the plugin
-#: order-status-rules-for-woocommerce-pro.php
+#: order-status-rules-for-woocommerce.php
 #: includes/settings/class-alg-wc-order-status-rules-settings-general.php:45
 msgid "Automate WooCommerce order statuses. Beautifully."
 msgstr ""
 
 #. Author of the plugin
-#: order-status-rules-for-woocommerce-pro.php
+#: order-status-rules-for-woocommerce.php
 msgid "WPFactory"
 msgstr ""
 
 #. Author URI of the plugin
-#: order-status-rules-for-woocommerce-pro.php
+#: order-status-rules-for-woocommerce.php
 msgid "https://wpfactory.com"
 msgstr ""
 
 #: includes/class-alg-wc-order-status-rules-admin.php:76
-#: includes/settings/class-alg-wc-order-status-rules-settings-section.php:284
-#: includes/settings/class-alg-wc-order-status-rules-settings-section.php:340
+#: includes/settings/class-alg-wc-order-status-rules-settings-section.php:313
+#: includes/settings/class-alg-wc-order-status-rules-settings-section.php:371
 msgid "Guest"
 msgstr ""
 
@@ -73,20 +74,17 @@ msgstr ""
 
 #. Translators: %s: Rule ID.
 #: includes/class-alg-wc-order-status-rules-admin.php:167
-#: includes/class-alg-wc-order-status-rules-core.php:610
-#, php-format
+#: includes/class-alg-wc-order-status-rules-core.php:629
 msgid "Rule #%s"
 msgstr ""
 
 #. Translators: %1$s: Status name, %2$s: Status name, %3$s: Rule name, %4$s: Date and time, %5$s: Time difference text.
 #: includes/class-alg-wc-order-status-rules-admin.php:179
-#, php-format
 msgid "Status scheduled to be updated from %1$s to %2$s (%3$s) on %4$s (i.e., %5$s)."
 msgstr ""
 
 #. Translators: %s: Time difference.
 #: includes/class-alg-wc-order-status-rules-admin.php:187
-#, php-format
 msgid "in %s"
 msgstr ""
 
@@ -98,7 +96,6 @@ msgstr ""
 #. Translators: %s: Time.
 #: includes/class-alg-wc-order-status-rules-admin.php:194
 #: includes/settings/class-alg-wc-order-status-rules-settings-section.php:144
-#, php-format
 msgid "Current time is %s."
 msgstr ""
 
@@ -116,7 +113,6 @@ msgstr ""
 
 #. Translators: %1$s: Option name, %2$s: Section link.
 #: includes/class-alg-wc-order-status-rules-admin.php:220
-#, php-format
 msgid "To change this behaviour, please check the \"%1$s\" option in the %2$s section."
 msgstr ""
 
@@ -235,49 +231,44 @@ msgstr ""
 msgid "\"Run all rules now\" tool executed."
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:496
+#: includes/class-alg-wc-order-status-rules-core.php:515
 msgid "Process rules: Started"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:497
+#: includes/class-alg-wc-order-status-rules-core.php:516
 msgid "manual"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:518
+#: includes/class-alg-wc-order-status-rules-core.php:537
 msgid "Process rules: Maximum number of updated orders reached"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:529
+#: includes/class-alg-wc-order-status-rules-core.php:548
 msgid "Process rules: Finished"
 msgstr ""
 
 #. Translators: %s: Order ID.
-#: includes/class-alg-wc-order-status-rules-core.php:559
-#, php-format
+#: includes/class-alg-wc-order-status-rules-core.php:578
 msgid "Process rules: Order #%s"
 msgstr ""
 
 #. Translators: %s: Order ID.
-#: includes/class-alg-wc-order-status-rules-core.php:574
-#, php-format
+#: includes/class-alg-wc-order-status-rules-core.php:593
 msgid "Process rules: Skipping order #%s"
 msgstr ""
 
 #. Translators: %s: Rule title.
-#: includes/class-alg-wc-order-status-rules-core.php:621
-#, php-format
+#: includes/class-alg-wc-order-status-rules-core.php:640
 msgid "Status updated by \"Order Status Rules for WooCommerce\" plugin (%s)."
 msgstr ""
 
 #. Translators: %1$s: Order ID, %2$s: Order status, %3$s: Order status, %4$s: Rule title.
-#: includes/class-alg-wc-order-status-rules-core.php:636
-#, php-format
+#: includes/class-alg-wc-order-status-rules-core.php:655
 msgid "Process rules: Order #%1$s: from %2$s to %3$s (%4$s)"
 msgstr ""
 
 #. Translators: %s: Order ID.
-#: includes/class-alg-wc-order-status-rules-core.php:656
-#, php-format
+#: includes/class-alg-wc-order-status-rules-core.php:675
 msgid "Process rules: Order #%s: No order status change history found"
 msgstr ""
 
@@ -338,10 +329,6 @@ msgstr ""
 #: includes/settings/class-alg-wc-order-status-rules-settings-general.php:43
 #: includes/settings/class-alg-wc-settings-order-status-rules.php:26
 msgid "Order Status Rules"
-msgstr ""
-
-#: includes/class-alg-wc-order-status-rules.php:241
-msgid "Scheduled & Automatic Order Status Controller for WooCommerce"
 msgstr ""
 
 #: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:55
@@ -429,13 +416,11 @@ msgstr ""
 
 #. Translators: %s: URL.
 #: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:114
-#, php-format
 msgid "This will allow to initiate all rules processing via URL: %s."
 msgstr ""
 
 #. Translators: %s: Section title.
 #: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:125
-#, php-format
 msgid "For example, this could be useful if you are going to disable %s and use \"real\" (i.e., server) cron jobs instead."
 msgstr ""
 
@@ -458,7 +443,6 @@ msgstr ""
 
 #. Translators: %s: Link.
 #: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:150
-#, php-format
 msgid "Will add a log to %s."
 msgstr ""
 
@@ -577,13 +561,11 @@ msgstr ""
 
 #. Translators: %s: Option title.
 #: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:269
-#, php-format
 msgid "If you are going to disable both periodical processing options, you may want to enable the %s option and set up \"real\" (i.e., server) cron job."
 msgstr ""
 
 #. Translators: %s: Tool link.
 #: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:276
-#, php-format
 msgid "Also you can use our %s tool manually."
 msgstr ""
 
@@ -594,7 +576,6 @@ msgstr ""
 
 #. Translators: %s: Name of the constant.
 #: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:285
-#, php-format
 msgid "Crons (%s) are disabled on your site!"
 msgstr ""
 
@@ -606,7 +587,6 @@ msgstr ""
 #. Translators: %s: Action Scheduler link.
 #: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:299
 #: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:322
-#, php-format
 msgid "This will use %s to process the rules periodically."
 msgstr ""
 
@@ -628,7 +608,6 @@ msgstr ""
 
 #. Translators: %1$s: URL, %2$s: Hook name.
 #: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:329
-#, php-format
 msgid "Action Scheduler has a built in <a href=\"%1$s\" target=\"_blank\">administration screen</a> for monitoring, debugging and manually triggering scheduled actions. Search for the %2$s hook there."
 msgstr ""
 
@@ -668,7 +647,6 @@ msgstr ""
 #: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:49
 #: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:75
 #: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:88
-#, php-format
 msgid "WooCommerce default: %s."
 msgstr ""
 
@@ -694,7 +672,6 @@ msgstr ""
 
 #. Translators: %1$s: Order status, %2$s: Order status.
 #: includes/settings/class-alg-wc-order-status-rules-settings-extra.php:101
-#, php-format
 msgid "WooCommerce default: %1$s or %2$s (if the order contains a downloadable product)."
 msgstr ""
 
@@ -770,7 +747,6 @@ msgstr ""
 #: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:77
 #: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:92
 #: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:116
-#, php-format
 msgid "Available placeholders: %s"
 msgstr ""
 
@@ -780,7 +756,6 @@ msgstr ""
 
 #. Translators: %s: Symbol code.
 #: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:104
-#, php-format
 msgid "%s is a HTML code for the right arrow symbol."
 msgstr ""
 
@@ -796,7 +771,6 @@ msgstr ""
 #: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:28
 #: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:65
 #: includes/settings/class-alg-wc-settings-order-status-rules.php:123
-#, php-format
 msgid "Rule #%d"
 msgstr ""
 
@@ -806,7 +780,6 @@ msgstr ""
 
 #. Translators: %d: Rule ID.
 #: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:78
-#, php-format
 msgid "Enable rule #%d"
 msgstr ""
 
@@ -896,7 +869,6 @@ msgstr ""
 
 #. Translators: %1$s: Date format, %2$s: 01, %3$s: 12, %4$s: 01, %5$s: 31.
 #: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:165
-#, php-format
 msgid "Comma-separated list of dates in %1$s format (two digits with leading zeros, month - %2$s to %3$s, day - %4$s to %5$s)."
 msgstr ""
 
@@ -928,7 +900,6 @@ msgstr ""
 
 #. Translators: %s: Date examples.
 #: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:178
-#, php-format
 msgid "E.g.: %s"
 msgstr ""
 
@@ -952,7 +923,6 @@ msgstr ""
 #. Translators: %s: Option title.
 #: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:223
 #: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:253
-#, php-format
 msgid "Used in the \"%s\" option."
 msgstr ""
 
@@ -1262,7 +1232,6 @@ msgstr ""
 
 #. Translators: %1$s: Time, %2$s: Human-readable time difference.
 #: includes/settings/class-alg-wc-order-status-rules-settings-section.php:130
-#, php-format
 msgid "Next cron event is scheduled on %1$s (%2$s)."
 msgstr ""
 
@@ -1272,42 +1241,46 @@ msgstr ""
 
 #. Translators: %s: Human-readable time difference.
 #: includes/settings/class-alg-wc-order-status-rules-settings-section.php:137
-#, php-format
 msgid "i.e., in %s"
 msgstr ""
 
-#. Translators: %s: Rule number list.
-#: includes/settings/class-alg-wc-order-status-rules-settings-section.php:172
-#, php-format
-msgid "Enabled rule(s): %s."
-msgstr ""
+#. Translators: %1$s: Number of enabled rules, %2$s: Rule ID list.
+#: includes/settings/class-alg-wc-order-status-rules-settings-section.php:171
+msgid "%1$s enabled rule: %2$s."
+msgid_plural "%1$s enabled rules: %2$s."
+msgstr[0] ""
+msgstr[1] ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-section.php:174
-#: includes/settings/class-alg-wc-order-status-rules-settings-section.php:176
+#: includes/settings/class-alg-wc-order-status-rules-settings-section.php:179
+#: includes/settings/class-alg-wc-order-status-rules-settings-section.php:181
 msgid "Rule"
 msgstr ""
 
-#. Translators: %s: Term ID.
-#: includes/settings/class-alg-wc-order-status-rules-settings-section.php:241
-#, php-format
-msgid "Product category #%s"
+#: includes/settings/class-alg-wc-order-status-rules-settings-section.php:186
+msgid "enabled rules."
+msgstr ""
+
+#: includes/settings/class-alg-wc-order-status-rules-settings-section.php:228
+msgid "Shipping > Local pickup"
 msgstr ""
 
 #. Translators: %s: Term ID.
 #: includes/settings/class-alg-wc-order-status-rules-settings-section.php:255
-#, php-format
+msgid "Product category #%s"
+msgstr ""
+
+#. Translators: %s: Term ID.
+#: includes/settings/class-alg-wc-order-status-rules-settings-section.php:269
 msgid "Product tag #%s"
 msgstr ""
 
 #. Translators: %d: Product ID.
-#: includes/settings/class-alg-wc-order-status-rules-settings-section.php:333
-#, php-format
+#: includes/settings/class-alg-wc-order-status-rules-settings-section.php:364
 msgid "Product #%d"
 msgstr ""
 
 #. Translators: %d: User ID.
-#: includes/settings/class-alg-wc-order-status-rules-settings-section.php:343
-#, php-format
+#: includes/settings/class-alg-wc-order-status-rules-settings-section.php:374
 msgid "User #%d"
 msgstr ""
 

@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Conditions Class
  *
- * @version 3.5.3
+ * @version 3.9.0
  * @since   2.8.0
  *
  * @author  Algoritmika Ltd.
@@ -110,25 +110,38 @@ class Alg_WC_Order_Status_Rules_Conditions {
 	}
 
 	/**
-	 * get_shipping_method_instance_id.
+	 * get_shipping_method_instance_or_method_id.
 	 *
-	 * @version 2.1.0
+	 * @version 3.9.0
 	 * @since   2.1.0
 	 */
-	function get_shipping_method_instance_id( $shipping_method ) {
-		return $shipping_method->get_instance_id();
+	function get_shipping_method_instance_or_method_id( $shipping_method ) {
+		$instance_id = $shipping_method->get_instance_id();
+		return (
+			$instance_id ?
+			$instance_id :
+			$shipping_method->get_method_id()
+		);
 	}
 
 	/**
 	 * check_shipping_methods.
 	 *
-	 * @version 2.8.0
+	 * @version 3.9.0
 	 * @since   2.8.0
 	 */
 	function check_shipping_methods( $options, $rule_id, $order ) {
 		if ( ! empty( $options['shipping_instances'][ $rule_id ] ) ) {
-			$shipping_methods   = ( is_callable( array( $order, 'get_shipping_methods' ) ) ? $order->get_shipping_methods() : array() );
-			$shipping_instances = ( ! empty( $shipping_methods ) ? array_map( array( $this, 'get_shipping_method_instance_id' ), $shipping_methods ) : array() );
+			$shipping_methods   = (
+				is_callable( array( $order, 'get_shipping_methods' ) ) ?
+				$order->get_shipping_methods() :
+				array()
+			);
+			$shipping_instances = (
+				! empty( $shipping_methods ) ?
+				array_map( array( $this, 'get_shipping_method_instance_or_method_id' ), $shipping_methods ) :
+				array()
+			);
 			if ( ! $this->is_array_intersect( $shipping_instances, $options['shipping_instances'][ $rule_id ] ) ) {
 				return false;
 			}

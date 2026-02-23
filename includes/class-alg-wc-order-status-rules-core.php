@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Core Class
  *
- * @version 3.8.0
+ * @version 3.9.0
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -394,7 +394,7 @@ class Alg_WC_Order_Status_Rules_Core {
 	/**
 	 * init_options.
 	 *
-	 * @version 3.5.3
+	 * @version 3.9.0
 	 * @since   1.6.0
 	 *
 	 * @todo    (dev) call this only once, e.g., in constructor, or on `init` action
@@ -445,12 +445,31 @@ class Alg_WC_Order_Status_Rules_Core {
 					$this->options[ $key ] = ( $is_enabled ? get_option( 'alg_wc_order_status_rules_' . $key, array() ) : array() );
 				}
 			}
-			$this->options['from'] = array_slice( $this->options['from'], 0, apply_filters( 'alg_wc_order_status_rules_rules_total', 1 ), true );
+
+			// Rules options: Sort & slice
+			foreach ( $this->options as &$option ) {
+				ksort( $option );
+				$option = array_filter(
+					$option,
+					array( $this, 'filter_rule' ),
+					ARRAY_FILTER_USE_BOTH
+				);
+			}
 
 			// General options
 			$this->do_use_last_record = ( 'use_last_record' === get_option( 'alg_wc_order_status_rules_non_matching', 'do_nothing' ) );
 
 		}
+	}
+
+	/**
+	 * filter_rule.
+	 *
+	 * @version 3.9.0
+	 * @since   3.9.0
+	 */
+	function filter_rule( $value, $key ) {
+		return ( $key <= apply_filters( 'alg_wc_order_status_rules_rules_total', 1 ) );
 	}
 
 	/**
@@ -530,7 +549,7 @@ class Alg_WC_Order_Status_Rules_Core {
 		}
 
 		if ( isset( $_REQUEST['alg_wc_order_status_rules_process_rules_redirect'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			wp_redirect( sanitize_url( wp_unslash( $_REQUEST['alg_wc_order_status_rules_process_rules_redirect'] ) ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			wp_redirect( sanitize_url( wp_unslash( $_REQUEST['alg_wc_order_status_rules_process_rules_redirect'] ) ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.SafeRedirect.wp_redirect_wp_redirect
 			exit;
 		}
 

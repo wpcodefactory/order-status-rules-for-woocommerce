@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Section Settings
  *
- * @version 3.8.0
+ * @version 3.9.0
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -153,23 +153,28 @@ class Alg_WC_Order_Status_Rules_Settings_Section {
 	/**
 	 * get_enabled_rules_desc.
 	 *
-	 * @version 3.8.0
+	 * @version 3.9.0
 	 * @since   2.0.0
 	 */
 	function get_enabled_rules_desc() {
-		$enabled       = array_slice( get_option( 'alg_wc_order_status_rules_enabled', array() ), 0, apply_filters( 'alg_wc_order_status_rules_rules_total', 1 ), true );
+		alg_wc_order_status_rules()->core->init_options();
 		$enabled_rules = array();
-		foreach ( $enabled as $rule_num => $is_enabled ) {
+		foreach ( alg_wc_order_status_rules()->core->options['enabled'] as $rule_num => $is_enabled ) {
 			if ( 'yes' === $is_enabled ) {
 				$enabled_rules[] = $rule_num;
 			}
 		}
-		asort( $enabled_rules );
 		return (
 			! empty( $enabled_rules ) ?
 			sprintf(
-				/* Translators: %s: Rule number list. */
-				__( 'Enabled rule(s): %s.', 'order-status-rules-for-woocommerce' ),
+				/* Translators: %1$s: Number of enabled rules, %2$s: Rule ID list. */
+				_n(
+					'%1$s enabled rule: %2$s.',
+					'%1$s enabled rules: %2$s.',
+					count( $enabled_rules ),
+					'order-status-rules-for-woocommerce'
+				),
+				'<strong>' . count( $enabled_rules ) . '</strong>',
 				(
 					__( 'Rule', 'order-status-rules-for-woocommerce' ) . ' #' .
 					implode(
@@ -178,7 +183,7 @@ class Alg_WC_Order_Status_Rules_Settings_Section {
 					)
 				)
 			) :
-			''
+			'<strong>0</strong> ' . __( 'enabled rules.', 'order-status-rules-for-woocommerce' ) // No enabled rules
 		);
 	}
 
@@ -201,17 +206,26 @@ class Alg_WC_Order_Status_Rules_Settings_Section {
 	}
 
 	/**
-	 * get_shipping_methods_instances.
+	 * get_shipping_methods_instances_or_local_pickup.
 	 *
-	 * @version 2.1.0
+	 * @version 3.9.0
 	 * @since   2.1.0
 	 */
-	function get_shipping_methods_instances() {
+	function get_shipping_methods_instances_or_local_pickup() {
 		$shipping_methods = array();
 		foreach ( $this->get_shipping_zones() as $zone_id => $zone_data ) {
 			foreach ( $zone_data['shipping_methods'] as $shipping_method ) {
 				$shipping_methods[ $shipping_method->instance_id ] = $zone_data['zone_name'] . ': ' . $shipping_method->title;
 			}
+		}
+		if (
+			is_callable( array(
+				'\Automattic\WooCommerce\StoreApi\Utilities\LocalPickupUtils',
+				'is_local_pickup_enabled'
+			) ) &&
+			\Automattic\WooCommerce\StoreApi\Utilities\LocalPickupUtils::is_local_pickup_enabled()
+		) {
+			$shipping_methods['pickup_location'] = __( 'Shipping > Local pickup', 'order-status-rules-for-woocommerce' );
 		}
 		return $shipping_methods;
 	}
@@ -267,9 +281,23 @@ class Alg_WC_Order_Status_Rules_Settings_Section {
 	 */
 	function get_terms( $taxonomy ) {
 		$terms  = get_option( "alg_wc_order_status_rules_{$taxonomy}s", array() );
-		$terms  = ( ! empty( $terms[ $this->num ] ) ? array_combine( $terms[ $this->num ], array_map( array( $this, "get_missing_{$taxonomy}_title" ), $terms[ $this->num ] ) ) : array() );
+		$terms  = (
+			! empty( $terms[ $this->num ] ) ?
+			array_combine(
+				$terms[ $this->num ],
+				array_map( array( $this, "get_missing_{$taxonomy}_title" ), $terms[ $this->num ] )
+			) :
+			array()
+		);
 		$_terms = get_terms( array( 'taxonomy' => $taxonomy, 'hide_empty' => false ) );
-		$_terms = ( ! empty( $_terms ) && ! is_wp_error( $_terms ) ? array_combine( wp_list_pluck( $_terms, 'term_id' ), wp_list_pluck( $_terms, 'name' ) ) : array() );
+		$_terms = (
+			! empty( $_terms ) && ! is_wp_error( $_terms ) ?
+			array_combine(
+				wp_list_pluck( $_terms, 'term_id' ),
+				wp_list_pluck( $_terms, 'name' )
+			) :
+			array()
+		);
 		return array_replace( $terms, $_terms );
 	}
 
@@ -281,7 +309,10 @@ class Alg_WC_Order_Status_Rules_Settings_Section {
 	 */
 	function get_user_roles() {
 		global $wp_roles;
-		return array_merge( array( 'guest' => __( 'Guest', 'order-status-rules-for-woocommerce' ) ), wp_list_pluck( apply_filters( 'editable_roles', $wp_roles->roles ), 'name' ) );
+		return array_merge(
+			array( 'guest' => __( 'Guest', 'order-status-rules-for-woocommerce' ) ),
+			wp_list_pluck( apply_filters( 'editable_roles', $wp_roles->roles ), 'name' ) // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
+		);
 	}
 
 	/**

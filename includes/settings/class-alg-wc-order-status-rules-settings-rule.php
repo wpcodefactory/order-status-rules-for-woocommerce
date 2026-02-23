@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Rule Section Settings
  *
- * @version 3.8.0
+ * @version 3.9.0
  * @since   2.0.0
  *
  * @author  Algoritmika Ltd.
@@ -36,7 +36,7 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 	/**
 	 * get_settings.
 	 *
-	 * @version 3.8.0
+	 * @version 3.9.0
 	 * @since   2.0.0
 	 *
 	 * @todo    (desc) add description to each subsection
@@ -347,7 +347,7 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 					'default'  => array(),
 					'type'     => 'multiselect',
 					'class'    => 'chosen_select',
-					'options'  => $this->get_shipping_methods_instances(),
+					'options'  => $this->get_shipping_methods_instances_or_local_pickup(),
 				),
 			) );
 		}

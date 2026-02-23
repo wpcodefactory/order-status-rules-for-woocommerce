@@ -50,7 +50,7 @@ class Alg_WC_Settings_Order_Status_Rules extends WC_Settings_Page {
 		global $current_section;
 
 		// Settings
-		$settings = apply_filters( 'woocommerce_get_settings_' . $this->id . '_' . $current_section, array() );
+		$settings = apply_filters( 'woocommerce_get_settings_' . $this->id . '_' . $current_section, array() ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 
 		// Settings Tools: Start
 		$settings_tools = array();
