@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Rule Section Settings
  *
- * @version 3.9.0
+ * @version 3.9.1
  * @since   2.0.0
  *
  * @author  Algoritmika Ltd.
@@ -36,7 +36,7 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 	/**
 	 * get_settings.
 	 *
-	 * @version 3.9.0
+	 * @version 3.9.1
 	 * @since   2.0.0
 	 *
 	 * @todo    (desc) add description to each subsection
@@ -348,6 +348,13 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 					'type'     => 'multiselect',
 					'class'    => 'chosen_select',
 					'options'  => $this->get_shipping_methods_instances_or_local_pickup(),
+				),
+				array(
+					'desc'     => __( 'Local pickup location name', 'order-status-rules-for-woocommerce' ),
+					'desc_tip' => __( 'Optionally compare the "Shipping > Local pickup" location name.', 'order-status-rules-for-woocommerce' ),
+					'id'       => "alg_wc_order_status_rules_pickup_location_name[{$i}]",
+					'default'  => '',
+					'type'     => 'text',
 				),
 			) );
 		}

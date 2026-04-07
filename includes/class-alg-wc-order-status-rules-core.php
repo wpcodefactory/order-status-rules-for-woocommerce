@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Core Class
  *
- * @version 3.9.0
+ * @version 3.9.1
  * @since   1.0.0
  *
  * @author  Algoritmika Ltd.
@@ -394,7 +394,7 @@ class Alg_WC_Order_Status_Rules_Core {
 	/**
 	 * init_options.
 	 *
-	 * @version 3.9.0
+	 * @version 3.9.1
 	 * @since   1.6.0
 	 *
 	 * @todo    (dev) call this only once, e.g., in constructor, or on `init` action
@@ -437,6 +437,9 @@ class Alg_WC_Order_Status_Rules_Core {
 					case 'min_amount':
 					case 'max_amount':
 						$keys = array( $condition_id, "{$condition_id}_type" );
+						break;
+					case 'shipping_instances':
+						$keys = array( $condition_id, 'pickup_location_name' );
 						break;
 					default:
 						$keys = array( $condition_id );

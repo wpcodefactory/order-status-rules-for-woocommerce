@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Conditions Class
  *
- * @version 3.9.0
+ * @version 3.9.1
  * @since   2.8.0
  *
  * @author  Algoritmika Ltd.
@@ -127,7 +127,7 @@ class Alg_WC_Order_Status_Rules_Conditions {
 	/**
 	 * check_shipping_methods.
 	 *
-	 * @version 3.9.0
+	 * @version 3.9.1
 	 * @since   2.8.0
 	 */
 	function check_shipping_methods( $options, $rule_id, $order ) {
@@ -144,6 +144,19 @@ class Alg_WC_Order_Status_Rules_Conditions {
 			);
 			if ( ! $this->is_array_intersect( $shipping_instances, $options['shipping_instances'][ $rule_id ] ) ) {
 				return false;
+			}
+			// Local pickup location name
+			$pickup_location_name = ( $options['pickup_location_name'][ $rule_id ] ?? '' );
+			if (
+				'' !== $pickup_location_name &&
+				in_array( 'pickup_location', $shipping_instances ) &&
+				in_array( 'pickup_location', $options['shipping_instances'][ $rule_id ] )
+			) {
+				foreach ( $shipping_methods as $shipping_method ) {
+					if ( 'pickup_location' === $shipping_method->get_method_id() ) {
+						return ( $pickup_location_name === $shipping_method->get_meta( 'pickup_location' ) );
+					}
+				}
 			}
 		}
 		return true;
