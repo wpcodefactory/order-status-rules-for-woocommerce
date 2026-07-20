@@ -1,4 +1,6 @@
 .wordpress-org/ export-ignore
+.gitattributes export-ignore
+git-tag.sh export-ignore
 .gitignore export-ignore
 .github export-ignore
 README.md export-ignore
