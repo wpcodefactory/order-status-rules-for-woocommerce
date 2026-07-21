@@ -2,10 +2,10 @@
 /**
  * Order Status Rules for WooCommerce - Advanced Section Settings
  *
- * @version 3.8.0
+ * @version 3.9.3
  * @since   1.5.0
  *
- * @author  Algoritmika Ltd.
+ * @author  WPFactory
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -29,7 +29,7 @@ class Alg_WC_Order_Status_Rules_Settings_Advanced extends Alg_WC_Order_Status_Ru
 	/**
 	 * get_settings.
 	 *
-	 * @version 3.8.0
+	 * @version 3.9.3
 	 * @since   1.5.0
 	 *
 	 * @todo    (dev) split into sections, e.g., "Compatibility"
@@ -47,8 +47,6 @@ class Alg_WC_Order_Status_Rules_Settings_Advanced extends Alg_WC_Order_Status_Ru
 	 * @todo    (desc) `alg_wc_order_status_rules_disabled_conditions`: better desc?
 	 */
 	function get_settings() {
-
-		add_action( 'admin_footer', array( $this, 'add_admin_script' ) );
 
 		$advanced_settings = array(
 			array(
@@ -114,8 +112,10 @@ class Alg_WC_Order_Status_Rules_Settings_Advanced extends Alg_WC_Order_Status_Ru
 						__( 'This will allow to initiate all rules processing via URL: %s.', 'order-status-rules-for-woocommerce' ),
 						'<code>' .
 							add_query_arg(
-								'alg_wc_order_status_rules_process_rules',
-								'',
+								array(
+									'alg_wc_order_status_rules_process_rules' => '',
+									'secret'                                  => get_option( 'alg_wc_order_status_rules_url_secret', '' ),
+								),
 								get_site_url()
 							) .
 						'</code>'
@@ -131,6 +131,16 @@ class Alg_WC_Order_Status_Rules_Settings_Advanced extends Alg_WC_Order_Status_Ru
 				'id'       => 'alg_wc_order_status_rules_allow_url',
 				'default'  => 'no',
 				'type'     => 'checkbox',
+			),
+			array(
+				'desc'     => sprintf(
+					/* Translators: %s: Parameter name. */
+					__( '%s URL parameter', 'order-status-rules-for-woocommerce' ),
+					'<code>secret</code>'
+				),
+				'id'       => 'alg_wc_order_status_rules_url_secret',
+				'default'  => '',
+				'type'     => 'text',
 			),
 			array(
 				'title'    => __( 'Disabled conditions', 'order-status-rules-for-woocommerce' ),

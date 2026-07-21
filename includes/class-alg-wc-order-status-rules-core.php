@@ -2,10 +2,10 @@
 /**
  * Order Status Rules for WooCommerce - Core Class
  *
- * @version 3.9.1
+ * @version 3.9.3
  * @since   1.0.0
  *
- * @author  Algoritmika Ltd.
+ * @author  WPFactory
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -262,20 +262,25 @@ class Alg_WC_Order_Status_Rules_Core {
 	/**
 	 * process_rules_url.
 	 *
-	 * @version 3.7.2
+	 * @version 3.9.3
 	 * @since   1.3.0
 	 *
-	 * @todo    (dev) optional "key" (for security)
 	 * @todo    (dev) optional "rule ID to process"
 	 * @todo    (dev) optional "order ID to process" (https://wordpress.org/support/topic/orderid-trigger/)
 	 */
 	function process_rules_url() {
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended
 		if (
-			isset( $_REQUEST['alg_wc_order_status_rules_process_rules'] ) && // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			! is_admin()
+			! isset( $_GET['alg_wc_order_status_rules_process_rules'] ) ||
+			! isset( $_GET['secret'] ) ||
+			get_option( 'alg_wc_order_status_rules_url_secret', '' ) !== sanitize_text_field( wp_unslash( $_GET['secret'] ) ) ||
+			is_admin()
 		) {
-			$this->process_rules();
+			return;
 		}
+		// phpcs:enable WordPress.Security.NonceVerification.Recommended
+
+		$this->process_rules();
 	}
 
 	/**

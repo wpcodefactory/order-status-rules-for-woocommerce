@@ -2,10 +2,10 @@
 /**
  * Order Status Rules for WooCommerce - Crons Class
  *
- * @version 3.0.0
+ * @version 3.9.3
  * @since   1.4.0
  *
- * @author  Algoritmika Ltd.
+ * @author  WPFactory
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -38,13 +38,13 @@ class Alg_WC_Order_Status_Rules_Crons {
 	/**
 	 * process_rules_cron.
 	 *
-	 * @version 1.4.0
+	 * @version 3.9.3
 	 * @since   1.4.0
 	 *
 	 * @todo    (desc) `update_option( 'alg_wc_order_status_rules_process_rules_cron_time', time() );`
 	 */
 	function process_rules_cron() {
-		alg_wc_order_status_rules()->core->process_rules();
+		alg_wc_order_status_rules()->core->process_rules( false );
 	}
 
 	/**

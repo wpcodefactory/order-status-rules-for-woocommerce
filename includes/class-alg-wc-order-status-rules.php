@@ -2,10 +2,10 @@
 /**
  * Order Status Rules for WooCommerce - Main Class
  *
- * @version 3.8.0
+ * @version 3.9.3
  * @since   1.0.0
  *
- * @author  Algoritmika Ltd.
+ * @author  WPFactory
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -57,7 +57,7 @@ final class Alg_WC_Order_Status_Rules {
 	/**
 	 * Alg_WC_Order_Status_Rules Constructor.
 	 *
-	 * @version 3.7.0
+	 * @version 3.9.3
 	 * @since   1.0.0
 	 *
 	 * @access  public
@@ -73,9 +73,6 @@ final class Alg_WC_Order_Status_Rules {
 		if ( is_admin() ) {
 			require_once plugin_dir_path( ALG_WC_ORDER_STATUS_RULES_FILE ) . 'vendor/autoload.php';
 		}
-
-		// Set up localisation
-		add_action( 'init', array( $this, 'localize' ) );
 
 		// Declare compatibility with custom order tables for WooCommerce
 		add_action( 'before_woocommerce_init', array( $this, 'wc_declare_compatibility' ) );
@@ -93,20 +90,6 @@ final class Alg_WC_Order_Status_Rules {
 			$this->admin();
 		}
 
-	}
-
-	/**
-	 * localize.
-	 *
-	 * @version 1.7.0
-	 * @since   1.4.0
-	 */
-	function localize() {
-		load_plugin_textdomain(
-			'order-status-rules-for-woocommerce',
-			false,
-			dirname( plugin_basename( ALG_WC_ORDER_STATUS_RULES_FILE ) ) . '/langs/'
-		);
 	}
 
 	/**
@@ -261,10 +244,18 @@ final class Alg_WC_Order_Status_Rules {
 	/**
 	 * version_updated.
 	 *
-	 * @version 1.1.0
+	 * @version 3.9.3
 	 * @since   1.1.0
 	 */
 	function version_updated() {
+		// Allow rules processing via URL: `secret` URL parameter
+		if ( false === get_option( 'alg_wc_order_status_rules_url_secret' ) ) {
+			update_option(
+				'alg_wc_order_status_rules_url_secret',
+				md5( openssl_random_pseudo_bytes( 32 ) )
+			);
+		}
+
 		update_option( 'alg_wc_order_status_rules_version', $this->version );
 	}
 

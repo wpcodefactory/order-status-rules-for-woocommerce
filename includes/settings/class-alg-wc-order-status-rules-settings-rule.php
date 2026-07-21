@@ -2,10 +2,10 @@
 /**
  * Order Status Rules for WooCommerce - Rule Section Settings
  *
- * @version 3.9.1
+ * @version 3.9.3
  * @since   2.0.0
  *
- * @author  Algoritmika Ltd.
+ * @author  WPFactory
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -36,7 +36,7 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 	/**
 	 * get_settings.
 	 *
-	 * @version 3.9.1
+	 * @version 3.9.3
 	 * @since   2.0.0
 	 *
 	 * @todo    (desc) add description to each subsection
@@ -49,8 +49,6 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 	 */
 	function get_settings() {
 		$settings = array();
-
-		add_action( 'admin_footer', array( $this, 'add_admin_script' ) );
 
 		$disabled_conditions = get_option( 'alg_wc_order_status_rules_disabled_conditions', array() );
 
@@ -455,7 +453,7 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 					'class'             => 'wc-product-search',
 					'options'           => $this->get_ajax_options( 'product', 'alg_wc_order_status_rules_products', $this->num ),
 					'custom_attributes' => array(
-						'data-placeholder' => esc_attr__( 'Search for a product&hellip;', 'woocommerce' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch
+						'data-placeholder' => esc_attr__( 'Search for a product&hellip;', 'order-status-rules-for-woocommerce' ),
 						'data-action'      => 'woocommerce_json_search_products_and_variations',
 						'data-allow_clear' => true,
 					),
@@ -674,7 +672,7 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 					'class'             => 'wc-customer-search',
 					'options'           => $this->get_ajax_options( 'customer', 'alg_wc_order_status_rules_users', $this->num ),
 					'custom_attributes' => array(
-						'data-placeholder' => esc_attr__( 'Search for a user&hellip;', 'woocommerce' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch
+						'data-placeholder' => esc_attr__( 'Search for a user&hellip;', 'order-status-rules-for-woocommerce' ),
 						'data-allow_clear' => true,
 						'data-exclude'     => 'alg_wc_order_status_rules', // workaround for the `wc_customer_search_guest()` function
 					),

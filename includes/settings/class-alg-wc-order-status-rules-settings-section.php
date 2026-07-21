@@ -2,10 +2,10 @@
 /**
  * Order Status Rules for WooCommerce - Section Settings
  *
- * @version 3.9.0
+ * @version 3.9.3
  * @since   1.0.0
  *
- * @author  Algoritmika Ltd.
+ * @author  WPFactory
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -77,32 +77,6 @@ class Alg_WC_Order_Status_Rules_Settings_Section {
 		return
 			'<a href="#" class="button alg-wc-osr-select-all">'   . __( 'Select all', 'order-status-rules-for-woocommerce' )   . '</a>' . ' ' .
 			'<a href="#" class="button alg-wc-osr-deselect-all">' . __( 'Deselect all', 'order-status-rules-for-woocommerce' ) . '</a>';
-	}
-
-	/**
-	 * add_admin_script.
-	 *
-	 * @version 1.8.1
-	 * @since   1.8.1
-	 *
-	 * @todo    (dev) move this to a separate js file
-	 * @todo    (dev) load on needed pages only
-	 */
-	function add_admin_script() {
-		?><script>
-			jQuery( document ).ready( function() {
-				jQuery( '.alg-wc-osr-select-all' ).click( function( event ) {
-					event.preventDefault();
-					jQuery( this ).closest( 'td' ).find( 'select.chosen_select' ).select2( 'destroy' ).find( 'option' ).prop( 'selected', 'selected' ).end().select2();
-					return false;
-				} );
-				jQuery( '.alg-wc-osr-deselect-all' ).click( function( event ) {
-					event.preventDefault();
-					jQuery( this ).closest( 'td' ).find( 'select.chosen_select' ).val( '' ).change();
-					return false;
-				} );
-			} );
-		</script><?php
 	}
 
 	/**
@@ -329,7 +303,7 @@ class Alg_WC_Order_Status_Rules_Settings_Section {
 	/**
 	 * get_ajax_options.
 	 *
-	 * @version 3.5.0
+	 * @version 3.9.3
 	 * @since   2.6.1
 	 *
 	 * @see     https://github.com/woocommerce/woocommerce/blob/6.3.1/plugins/woocommerce/includes/class-wc-ajax.php#L1569
@@ -385,7 +359,7 @@ class Alg_WC_Order_Status_Rules_Settings_Section {
 					case 'customer':
 						$res = sprintf(
 							/* Translators: %1$s: Customer name, %2$s Customer id, %3$s: Customer email. */
-							esc_html__( '%1$s (#%2$s &ndash; %3$s)', 'woocommerce' ), // phpcs:ignore WordPress.WP.I18n.TextDomainMismatch
+							esc_html__( '%1$s (#%2$s &ndash; %3$s)', 'order-status-rules-for-woocommerce' ),
 							$obj->get_first_name() . ' ' . $obj->get_last_name(),
 							$obj->get_id(),
 							$obj->get_email()

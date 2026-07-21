@@ -8,5 +8,6 @@ composer.json export-ignore
 package.json export-ignore
 package-lock.json export-ignore
 webpack.config.js export-ignore
+wpfactory-cross-selling-test.php export-ignore
 # SCSS
 src/scss/* export-ignore

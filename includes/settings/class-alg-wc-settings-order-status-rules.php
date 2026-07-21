@@ -2,10 +2,10 @@
 /**
  * Order Status Rules for WooCommerce - Settings
  *
- * @version 3.8.0
+ * @version 3.9.3
  * @since   1.0.0
  *
- * @author  Algoritmika Ltd.
+ * @author  WPFactory
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -17,7 +17,7 @@ class Alg_WC_Settings_Order_Status_Rules extends WC_Settings_Page {
 	/**
 	 * Constructor.
 	 *
-	 * @version 3.8.0
+	 * @version 3.9.3
 	 * @since   1.0.0
 	 */
 	function __construct() {
@@ -38,6 +38,35 @@ class Alg_WC_Settings_Order_Status_Rules extends WC_Settings_Page {
 		require_once plugin_dir_path( __FILE__ ) . 'class-alg-wc-order-status-rules-settings-my-account.php';
 		require_once plugin_dir_path( __FILE__ ) . 'class-alg-wc-order-status-rules-settings-extra.php';
 
+		// Scripts
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_scripts' ) );
+	}
+
+	/**
+	 * admin_scripts.
+	 *
+	 * @version 3.9.3
+	 * @since   1.8.1
+	 *
+	 * @todo    (v3.9.3) check `$_GET['section']` as well (`rule_X` or `advanced`)?
+	 */
+	function admin_scripts( $hook ) {
+		if (
+			'woocommerce_page_wc-settings' !== $hook ||
+			! isset( $_GET['tab'] ) || // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			'alg_wc_order_status_rules' !== sanitize_text_field( wp_unslash( $_GET['tab'] ) ) // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		) {
+			return;
+		}
+
+		$min_suffix = ( defined( 'WP_DEBUG' ) && true === WP_DEBUG ? '' : '.min' );
+		wp_enqueue_script(
+			'alg-wc-order-status-rules-admin',
+			alg_wc_order_status_rules()->plugin_url() . '/assets/js/alg-wc-order-status-rules-admin' . $min_suffix . '.js',
+			array( 'jquery' ),
+			alg_wc_order_status_rules()->version,
+			true
+		);
 	}
 
 	/**
