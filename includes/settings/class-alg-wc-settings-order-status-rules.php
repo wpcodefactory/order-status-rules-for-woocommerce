@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Settings
  *
- * @version 3.9.3
+ * @version 3.9.4
  * @since   1.0.0
  *
  * @author  WPFactory
@@ -17,7 +17,7 @@ class Alg_WC_Settings_Order_Status_Rules extends WC_Settings_Page {
 	/**
 	 * Constructor.
 	 *
-	 * @version 3.9.3
+	 * @version 3.9.4
 	 * @since   1.0.0
 	 */
 	function __construct() {
@@ -28,14 +28,25 @@ class Alg_WC_Settings_Order_Status_Rules extends WC_Settings_Page {
 
 		// Sections
 		require_once plugin_dir_path( __FILE__ ) . 'class-alg-wc-order-status-rules-settings-section.php';
+
+		// "General" section
 		require_once plugin_dir_path( __FILE__ ) . 'class-alg-wc-order-status-rules-settings-general.php';
+
+		// "Rule" section
 		require_once plugin_dir_path( __FILE__ ) . 'class-alg-wc-order-status-rules-settings-rule.php';
-		for ( $rule_id = 1; $rule_id <= apply_filters( 'alg_wc_order_status_rules_rules_total', 1 ); $rule_id++ ) {
-			new Alg_WC_Order_Status_Rules_Settings_Rule( $rule_id );
-		}
+		new Alg_WC_Order_Status_Rules_Settings_Rule();
+		do_action( 'alg_wc_order_status_rules_settings_after_rule_section' );
+
+		// "Advanced" section
 		require_once plugin_dir_path( __FILE__ ) . 'class-alg-wc-order-status-rules-settings-advanced.php';
+
+		// "Tools" section
 		require_once plugin_dir_path( __FILE__ ) . 'class-alg-wc-order-status-rules-settings-tools.php';
+
+		// "My Account" section
 		require_once plugin_dir_path( __FILE__ ) . 'class-alg-wc-order-status-rules-settings-my-account.php';
+
+		// "Extra" section
 		require_once plugin_dir_path( __FILE__ ) . 'class-alg-wc-order-status-rules-settings-extra.php';
 
 		// Scripts
@@ -72,7 +83,7 @@ class Alg_WC_Settings_Order_Status_Rules extends WC_Settings_Page {
 	/**
 	 * get_settings.
 	 *
-	 * @version 3.5.4
+	 * @version 3.9.4
 	 * @since   1.0.0
 	 */
 	function get_settings() {
@@ -91,21 +102,13 @@ class Alg_WC_Settings_Order_Status_Rules extends WC_Settings_Page {
 			),
 		) );
 
-		// Settings tools: Copy settings
-		if ( ( $copy_rules = $this->get_copy_rules_options() ) ) {
-			$settings_tools = array_merge( $settings_tools, array(
-				array(
-					'title'     => __( 'Copy settings', 'order-status-rules-for-woocommerce' ),
-					'desc'      => __( 'Select a rule to copy settings from and save changes.', 'order-status-rules-for-woocommerce' ),
-					'desc_tip'  => __( 'Please note that there is no undo for this action. Your current rule settings will be overwritten.', 'order-status-rules-for-woocommerce' ),
-					'id'        => $this->id . '_' . $current_section . '_copy_settings',
-					'default'   => '',
-					'type'      => 'select',
-					'options'   => $copy_rules,
-					'class'     => 'chosen_select',
-				),
-			) );
-		}
+		// Filter
+		$settings_tools = apply_filters(
+			'alg_wc_order_status_rules_settings_tools',
+			$settings_tools,
+			$this->id,
+			$current_section
+		);
 
 		// Settings Tools: Reset section settings
 		$settings_tools = array_merge( $settings_tools, array(
@@ -129,34 +132,6 @@ class Alg_WC_Settings_Order_Status_Rules extends WC_Settings_Page {
 
 		// Result
 		return array_merge( $settings, $settings_tools );
-	}
-
-	/**
-	 * get_copy_rules_options.
-	 *
-	 * @version 3.5.4
-	 * @since   3.5.4
-	 */
-	function get_copy_rules_options() {
-		global $current_section;
-
-		if ( 'rule_' !== substr( $current_section, 0, 5 ) ) {
-			return false;
-		}
-
-		$copy_rules = array( '' => __( 'Select a rule&hellip;', 'order-status-rules-for-woocommerce' ) );
-		for ( $rule_id = 1; $rule_id <= apply_filters( 'alg_wc_order_status_rules_rules_total', 1 ); $rule_id++ ) {
-			$copy_rules[ 'rule_' . $rule_id ] = strtoupper(
-				sprintf(
-					/* Translators: %d: Rule ID. */
-					__( 'Rule #%d', 'order-status-rules-for-woocommerce' ),
-					$rule_id
-				)
-			);
-		}
-		unset( $copy_rules[ $current_section ] );
-
-		return ( count( $copy_rules ) > 1 ? $copy_rules : false );
 	}
 
 	/**

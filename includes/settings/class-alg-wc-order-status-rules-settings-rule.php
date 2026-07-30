@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Rule Section Settings
  *
- * @version 3.9.3
+ * @version 3.9.4
  * @since   2.0.0
  *
  * @author  WPFactory
@@ -17,10 +17,10 @@ class Alg_WC_Order_Status_Rules_Settings_Rule extends Alg_WC_Order_Status_Rules_
 	/**
 	 * Constructor.
 	 *
-	 * @version 3.3.0
+	 * @version 3.9.4
 	 * @since   2.0.0
 	 */
-	function __construct( $rule_id ) {
+	function __construct( $rule_id = 1 ) {
 		$this->id   = 'rule_' . $rule_id;
 		$this->desc = strtoupper(
 			sprintf(

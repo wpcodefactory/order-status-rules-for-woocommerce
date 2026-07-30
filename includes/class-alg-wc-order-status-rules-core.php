@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Core Class
  *
- * @version 3.9.3
+ * @version 3.9.4
  * @since   1.0.0
  *
  * @author  WPFactory
@@ -154,14 +154,26 @@ class Alg_WC_Order_Status_Rules_Core {
 	/**
 	 * get_statuses.
 	 *
-	 * @version 3.3.0
+	 * @version 3.9.4
 	 * @since   3.3.0
 	 */
 	function get_statuses() {
-		$statuses         = array();
-		$status_functions = get_option( 'alg_wc_order_status_rules_status_functions', array( 'wc_get_order_statuses' ) );
+		$statuses                 = array();
+		$status_functions         = get_option( 'alg_wc_order_status_rules_status_functions', array( 'wc_get_order_statuses' ) );
+		$allowed_status_functions = array_keys(
+			apply_filters(
+				'alg_wc_order_status_rules_status_functions',
+				array(
+					'wc_get_order_statuses'         => __( 'WooCommerce Order Statuses', 'order-status-rules-for-woocommerce' ),
+					'wcs_get_subscription_statuses' => __( 'WooCommerce Subscription Statuses', 'order-status-rules-for-woocommerce' ),
+				)
+			)
+		);
 		foreach ( $status_functions as $status_function ) {
-			if ( function_exists( $status_function ) ) {
+			if (
+				in_array( $status_function, $allowed_status_functions, true ) &&
+				function_exists( $status_function )
+			) {
 				$statuses = array_merge( $status_function(), $statuses );
 			}
 		}
@@ -227,7 +239,11 @@ class Alg_WC_Order_Status_Rules_Core {
 	 * @todo    (dev) maybe there is an easier way, e.g., use some existing action instead?
 	 */
 	function shop_order_screen() {
-		if ( function_exists( 'get_current_screen' ) && ( $current_screen = get_current_screen() ) && 'shop_order' === $current_screen->id ) {
+		if (
+			function_exists( 'get_current_screen' ) &&
+			( $current_screen = get_current_screen() ) &&
+			'shop_order' === $current_screen->id
+		) {
 			do_action( 'alg_wc_order_status_rules_shop_order_screen', get_the_ID() );
 		}
 	}
@@ -241,7 +257,11 @@ class Alg_WC_Order_Status_Rules_Core {
 	 * @todo    (dev) maybe there is an easier way, e.g., use some existing action instead?
 	 */
 	function shop_subscription_screen() {
-		if ( function_exists( 'get_current_screen' ) && ( $current_screen = get_current_screen() ) && 'shop_subscription' === $current_screen->id ) {
+		if (
+			function_exists( 'get_current_screen' ) &&
+			( $current_screen = get_current_screen() ) &&
+			'shop_subscription' === $current_screen->id
+		) {
 			do_action( 'alg_wc_order_status_rules_shop_subscription_screen', get_the_ID() );
 		}
 	}
@@ -399,7 +419,7 @@ class Alg_WC_Order_Status_Rules_Core {
 	/**
 	 * init_options.
 	 *
-	 * @version 3.9.1
+	 * @version 3.9.4
 	 * @since   1.6.0
 	 *
 	 * @todo    (dev) call this only once, e.g., in constructor, or on `init` action
@@ -457,10 +477,10 @@ class Alg_WC_Order_Status_Rules_Core {
 			// Rules options: Sort & slice
 			foreach ( $this->options as &$option ) {
 				ksort( $option );
-				$option = array_filter(
-					$option,
-					array( $this, 'filter_rule' ),
-					ARRAY_FILTER_USE_BOTH
+				$option = apply_filters(
+					'alg_wc_order_status_rules_init_options',
+					array_intersect_key( $option, array( 1 => true ) ),
+					$option
 				);
 			}
 
@@ -468,16 +488,6 @@ class Alg_WC_Order_Status_Rules_Core {
 			$this->do_use_last_record = ( 'use_last_record' === get_option( 'alg_wc_order_status_rules_non_matching', 'do_nothing' ) );
 
 		}
-	}
-
-	/**
-	 * filter_rule.
-	 *
-	 * @version 3.9.0
-	 * @since   3.9.0
-	 */
-	function filter_rule( $value, $key ) {
-		return ( $key <= apply_filters( 'alg_wc_order_status_rules_rules_total', 1 ) );
 	}
 
 	/**
@@ -693,7 +703,7 @@ class Alg_WC_Order_Status_Rules_Core {
 	/**
 	 * update_status.
 	 *
-	 * @version 3.3.0
+	 * @version 3.9.4
 	 * @since   3.3.0
 	 *
 	 * @todo    (dev) `remove_action`: check with `has_action()`?
@@ -702,14 +712,19 @@ class Alg_WC_Order_Status_Rules_Core {
 
 		$had_action = array();
 		foreach ( array( 'woocommerce_order_status_changed', 'woocommerce_subscription_status_changed' ) as $_hook ) {
-			$had_action[ $_hook ] = remove_action( $_hook, array( $this, 'process_rules_for_order' ) );
+			$priority = apply_filters( 'alg_wc_order_status_rules_hooks_priority', 10, $_hook );
+			$had_action[ $_hook ] = (
+				remove_action( $_hook, array( $this, 'process_rules_for_order' ), $priority ) ?
+				$priority :
+				false
+			);
 		}
 
 		$order->update_status( $new_status, $note );
 
-		foreach ( $had_action as $_hook => $_had_action ) {
-			if ( $_had_action ) {
-				add_action( $_hook, array( $this, 'process_rules_for_order' ) );
+		foreach ( $had_action as $_hook => $_priority ) {
+			if ( false !== $_priority ) {
+				add_action( $_hook, array( $this, 'process_rules_for_order' ), $_priority );
 			}
 		}
 
