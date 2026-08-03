@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v3.0.
 msgid ""
 msgstr ""
-"Project-Id-Version: Scheduled & Automatic Order Status Controller for WooCommerce 3.9.4\n"
+"Project-Id-Version: Scheduled & Automatic Order Status Controller for WooCommerce 3.9.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/order-status-rules-for-woocommerce\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-07-30T15:54:39+00:00\n"
+"POT-Creation-Date: 2026-08-03T15:24:38+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: order-status-rules-for-woocommerce\n"
@@ -74,7 +74,7 @@ msgstr ""
 
 #. Translators: %s: Rule ID.
 #: includes/class-alg-wc-order-status-rules-admin.php:167
-#: includes/class-alg-wc-order-status-rules-core.php:647
+#: includes/class-alg-wc-order-status-rules-core.php:683
 msgid "Rule #%s"
 msgstr ""
 
@@ -241,44 +241,44 @@ msgstr ""
 msgid "\"Run all rules now\" tool executed."
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:533
+#: includes/class-alg-wc-order-status-rules-core.php:569
 msgid "Process rules: Started"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:534
+#: includes/class-alg-wc-order-status-rules-core.php:570
 msgid "manual"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:555
+#: includes/class-alg-wc-order-status-rules-core.php:591
 msgid "Process rules: Maximum number of updated orders reached"
 msgstr ""
 
-#: includes/class-alg-wc-order-status-rules-core.php:566
+#: includes/class-alg-wc-order-status-rules-core.php:602
 msgid "Process rules: Finished"
 msgstr ""
 
 #. Translators: %s: Order ID.
-#: includes/class-alg-wc-order-status-rules-core.php:596
+#: includes/class-alg-wc-order-status-rules-core.php:632
 msgid "Process rules: Order #%s"
 msgstr ""
 
 #. Translators: %s: Order ID.
-#: includes/class-alg-wc-order-status-rules-core.php:611
+#: includes/class-alg-wc-order-status-rules-core.php:647
 msgid "Process rules: Skipping order #%s"
 msgstr ""
 
 #. Translators: %s: Rule title.
-#: includes/class-alg-wc-order-status-rules-core.php:658
+#: includes/class-alg-wc-order-status-rules-core.php:694
 msgid "Status updated by \"Order Status Rules for WooCommerce\" plugin (%s)."
 msgstr ""
 
 #. Translators: %1$s: Order ID, %2$s: Order status, %3$s: Order status, %4$s: Rule title.
-#: includes/class-alg-wc-order-status-rules-core.php:673
+#: includes/class-alg-wc-order-status-rules-core.php:709
 msgid "Process rules: Order #%1$s: from %2$s to %3$s (%4$s)"
 msgstr ""
 
 #. Translators: %s: Order ID.
-#: includes/class-alg-wc-order-status-rules-core.php:693
+#: includes/class-alg-wc-order-status-rules-core.php:729
 msgid "Process rules: Order #%s: No order status change history found"
 msgstr ""
 
@@ -339,29 +339,6 @@ msgstr ""
 #: includes/settings/class-alg-wc-order-status-rules-settings-general.php:43
 #: includes/settings/class-alg-wc-settings-order-status-rules.php:26
 msgid "Order Status Rules"
-msgstr ""
-
-#: includes/pro/class-alg-wc-order-status-rules-pro.php:116
-msgid "Copy settings"
-msgstr ""
-
-#: includes/pro/class-alg-wc-order-status-rules-pro.php:117
-msgid "Select a rule to copy settings from and save changes."
-msgstr ""
-
-#: includes/pro/class-alg-wc-order-status-rules-pro.php:118
-msgid "Please note that there is no undo for this action. Your current rule settings will be overwritten."
-msgstr ""
-
-#: includes/pro/class-alg-wc-order-status-rules-pro.php:143
-msgid "Select a rule&hellip;"
-msgstr ""
-
-#. Translators: %d: Rule ID.
-#: includes/pro/class-alg-wc-order-status-rules-pro.php:148
-#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:28
-#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:63
-msgid "Rule #%d"
 msgstr ""
 
 #: includes/settings/class-alg-wc-order-status-rules-settings-advanced.php:53
@@ -717,11 +694,11 @@ msgstr ""
 msgid "Enable plugin"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-general.php:53
+#: includes/settings/class-alg-wc-order-status-rules-settings-general.php:51
 msgid "Total rules"
 msgstr ""
 
-#: includes/settings/class-alg-wc-order-status-rules-settings-general.php:54
+#: includes/settings/class-alg-wc-order-status-rules-settings-general.php:52
 msgid "New settings sections will be added if you change this option and \"Save changes\"."
 msgstr ""
 
@@ -795,6 +772,13 @@ msgstr ""
 
 #: includes/settings/class-alg-wc-order-status-rules-settings-my-account.php:127
 msgid "Reverse status history"
+msgstr ""
+
+#. Translators: %d: Rule ID.
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:28
+#: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:63
+#: includes/settings/class-alg-wc-settings-order-status-rules.php:164
+msgid "Rule #%d"
 msgstr ""
 
 #: includes/settings/class-alg-wc-order-status-rules-settings-rule.php:72
@@ -1341,27 +1325,43 @@ msgstr ""
 msgid "Check the box and save changes to run all rules now."
 msgstr ""
 
-#: includes/settings/class-alg-wc-settings-order-status-rules.php:99
+#: includes/settings/class-alg-wc-settings-order-status-rules.php:100
 msgid "Settings Tools"
 msgstr ""
 
-#: includes/settings/class-alg-wc-settings-order-status-rules.php:116
+#: includes/settings/class-alg-wc-settings-order-status-rules.php:110
+msgid "Copy settings"
+msgstr ""
+
+#: includes/settings/class-alg-wc-settings-order-status-rules.php:111
+msgid "Select a rule to copy settings from and save changes."
+msgstr ""
+
+#: includes/settings/class-alg-wc-settings-order-status-rules.php:112
+msgid "Please note that there is no undo for this action. Your current rule settings will be overwritten."
+msgstr ""
+
+#: includes/settings/class-alg-wc-settings-order-status-rules.php:125
 msgid "Reset section settings"
 msgstr ""
 
-#: includes/settings/class-alg-wc-settings-order-status-rules.php:117
+#: includes/settings/class-alg-wc-settings-order-status-rules.php:126
 msgid "Reset"
 msgstr ""
 
-#: includes/settings/class-alg-wc-settings-order-status-rules.php:118
+#: includes/settings/class-alg-wc-settings-order-status-rules.php:127
 msgid "Check the box and save changes to reset."
 msgstr ""
 
-#: includes/settings/class-alg-wc-settings-order-status-rules.php:166
+#: includes/settings/class-alg-wc-settings-order-status-rules.php:159
+msgid "Select a rule&hellip;"
+msgstr ""
+
+#: includes/settings/class-alg-wc-settings-order-status-rules.php:203
 msgid "Your settings have been copied."
 msgstr ""
 
-#: includes/settings/class-alg-wc-settings-order-status-rules.php:204
-#: includes/settings/class-alg-wc-settings-order-status-rules.php:222
+#: includes/settings/class-alg-wc-settings-order-status-rules.php:241
+#: includes/settings/class-alg-wc-settings-order-status-rules.php:259
 msgid "Your settings have been reset."
 msgstr ""

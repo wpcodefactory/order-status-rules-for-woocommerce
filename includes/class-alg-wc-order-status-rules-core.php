@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - Core Class
  *
- * @version 3.9.4
+ * @version 3.9.5
  * @since   1.0.0
  *
  * @author  WPFactory
@@ -419,7 +419,7 @@ class Alg_WC_Order_Status_Rules_Core {
 	/**
 	 * init_options.
 	 *
-	 * @version 3.9.4
+	 * @version 3.9.5
 	 * @since   1.6.0
 	 *
 	 * @todo    (dev) call this only once, e.g., in constructor, or on `init` action
@@ -477,10 +477,10 @@ class Alg_WC_Order_Status_Rules_Core {
 			// Rules options: Sort & slice
 			foreach ( $this->options as &$option ) {
 				ksort( $option );
-				$option = apply_filters(
-					'alg_wc_order_status_rules_init_options',
-					array_intersect_key( $option, array( 1 => true ) ),
-					$option
+				$option = array_filter(
+					$option,
+					array( $this, 'filter_rule' ),
+					ARRAY_FILTER_USE_BOTH
 				);
 			}
 
@@ -488,6 +488,42 @@ class Alg_WC_Order_Status_Rules_Core {
 			$this->do_use_last_record = ( 'use_last_record' === get_option( 'alg_wc_order_status_rules_non_matching', 'do_nothing' ) );
 
 		}
+	}
+
+	/**
+	 * filter_rule.
+	 *
+	 * @version 3.9.5
+	 * @since   3.9.0
+	 */
+	function filter_rule( $value, $key ) {
+		return ( $key <= $this->rules_total() );
+	}
+
+	/**
+	 * rules_total.
+	 *
+	 * @version 3.9.5
+	 * @since   1.2.0
+	 */
+	function rules_total() {
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended
+		if (
+			isset( $_REQUEST['page'], $_REQUEST['tab'], $_REQUEST['alg_wc_order_status_rules_total'] ) &&
+			'wc-settings' === $_REQUEST['page'] &&
+			'alg_wc_order_status_rules' === $_REQUEST['tab'] &&
+			! empty( $_REQUEST['alg_wc_order_status_rules_total'] ) &&
+			empty( $_REQUEST['section'] )
+		) {
+			// fixes the issue when "Total rules" option has just been changed
+			return (
+				! empty( $_REQUEST['alg_wc_order_status_rules__reset'] ) ?
+				1 :
+				intval( $_REQUEST['alg_wc_order_status_rules_total'] )
+			);
+		}
+		return get_option( 'alg_wc_order_status_rules_total', 1 );
+		// phpcs:enable WordPress.Security.NonceVerification.Recommended
 	}
 
 	/**

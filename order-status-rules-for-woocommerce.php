@@ -3,7 +3,7 @@
 Plugin Name: Scheduled & Automatic Order Status Controller for WooCommerce
 Plugin URI: https://wpfactory.com/item/order-status-rules-for-woocommerce/
 Description: Automate WooCommerce order statuses. Beautifully.
-Version: 3.9.4
+Version: 3.9.5
 Author: WPFactory
 Author URI: https://wpfactory.com
 Requires at least: 4.8
@@ -40,7 +40,7 @@ if ( 'order-status-rules-for-woocommerce.php' === basename( __FILE__ ) ) {
 /**
  * ALG_WC_ORDER_STATUS_RULES_VERSION.
  */
-defined( 'ALG_WC_ORDER_STATUS_RULES_VERSION' ) || define( 'ALG_WC_ORDER_STATUS_RULES_VERSION', '3.9.4' );
+defined( 'ALG_WC_ORDER_STATUS_RULES_VERSION' ) || define( 'ALG_WC_ORDER_STATUS_RULES_VERSION', '3.9.5' );
 
 /**
  * ALG_WC_ORDER_STATUS_RULES_FILE.

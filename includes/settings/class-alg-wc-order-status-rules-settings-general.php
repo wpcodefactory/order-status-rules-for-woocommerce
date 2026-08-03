@@ -2,7 +2,7 @@
 /**
  * Order Status Rules for WooCommerce - General Section Settings
  *
- * @version 3.9.4
+ * @version 3.9.5
  * @since   1.0.0
  *
  * @author  WPFactory
@@ -29,7 +29,7 @@ class Alg_WC_Order_Status_Rules_Settings_General extends Alg_WC_Order_Status_Rul
 	/**
 	 * get_settings.
 	 *
-	 * @version 3.9.4
+	 * @version 3.9.5
 	 * @since   1.0.0
 	 */
 	function get_settings() {
@@ -47,20 +47,12 @@ class Alg_WC_Order_Status_Rules_Settings_General extends Alg_WC_Order_Status_Rul
 				'default'  => 'yes',
 				'type'     => 'checkbox',
 			),
-			apply_filters(
-				'alg_wc_order_status_rules_settings_total_rules',
-				array(
-					'title'             => __( 'Total rules', 'order-status-rules-for-woocommerce' ),
-					'desc_tip'          => __( 'New settings sections will be added if you change this option and "Save changes".', 'order-status-rules-for-woocommerce' ),
-					'desc'              => sprintf(
-						'<p>You will need %s plugin to add more than one rule.</p>',
-						'<a target="_blank" href="https://wpfactory.com/item/order-status-rules-for-woocommerce/">Order Status Rules for WooCommerce Pro</a>'
-					),
-					'id'                => 'alg_wc_order_status_rules_total',
-					'default'           => 1,
-					'type'              => 'number',
-					'custom_attributes' => array( 'readonly' => 'readonly' ),
-				)
+			array(
+				'title'    => __( 'Total rules', 'order-status-rules-for-woocommerce' ),
+				'desc_tip' => __( 'New settings sections will be added if you change this option and "Save changes".', 'order-status-rules-for-woocommerce' ),
+				'id'       => 'alg_wc_order_status_rules_total',
+				'default'  => 1,
+				'type'     => 'number',
 			),
 			array(
 				'type'     => 'sectionend',
