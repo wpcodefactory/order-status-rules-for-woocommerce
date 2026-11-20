@@ -23,7 +23,8 @@
     ]
   },
   "require-dev":{
-    "wp-cli/wp-cli-bundle": "*"
+    "wp-cli/wp-cli-bundle": "*",
+    "composer/composer": "^2.10.3"
   },
   "require": {
     "wpfactory/wpfactory-admin-menu": "*"

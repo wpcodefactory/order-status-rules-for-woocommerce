@@ -1,37 +1,46 @@
 <?php
-/*
-Plugin Name: Scheduled & Automatic Order Status Controller for WooCommerce
-Plugin URI: https://wpfactory.com/item/order-status-rules-for-woocommerce/
-Description: Automate WooCommerce order statuses. Beautifully.
-Version: 3.9.5
-Author: WPFactory
-Author URI: https://wpfactory.com
-Requires at least: 4.8
-Text Domain: order-status-rules-for-woocommerce
-Domain Path: /langs
-WC tested up to: 10.9
-Requires Plugins: woocommerce
-License: GNU General Public License v3.0
-License URI: http://www.gnu.org/licenses/gpl-3.0.html
-*/
+/**
+ * Plugin Name: Scheduled & Automatic Order Status Controller for WooCommerce
+ * Plugin URI: https://wpfactory.com/item/order-status-rules-for-woocommerce/
+ * Description: Automate WooCommerce order statuses. Beautifully.
+ * Version: 3.9.6
+ * Author: WPFactory
+ * Author URI: https://wpfactory.com
+ * Requires PHP: 7.4
+ * Requires at least: 4.8
+ * Text Domain: order-status-rules-for-woocommerce
+ * Domain Path: /langs
+ * WC tested up to: 11.3
+ * Requires Plugins: woocommerce
+ * License: GNU General Public License v3.0
+ * License URI: http://www.gnu.org/licenses/gpl-3.0.html
+ *
+ * @package WPFactory\WC_Order_Status_Rules
+ */
 
 defined( 'ABSPATH' ) || exit;
 
 if ( 'order-status-rules-for-woocommerce.php' === basename( __FILE__ ) ) {
-	/**
-	 * Check if Pro plugin version is activated.
-	 *
-	 * @version 3.4.0
-	 * @since   1.7.0
-	 */
-	$plugin = 'order-status-rules-for-woocommerce-pro/order-status-rules-for-woocommerce-pro.php';
-	if (
-		in_array( $plugin, (array) get_option( 'active_plugins', array() ), true ) ||
-		(
-			is_multisite() &&
-			array_key_exists( $plugin, (array) get_site_option( 'active_sitewide_plugins', array() ) )
-		)
-	) {
+	if ( ! function_exists( 'alg_wc_order_status_rules_is_pro_activated' ) ) {
+		/**
+		 * Check if Pro plugin version is activated.
+		 *
+		 * @version 3.9.6
+		 * @since   1.7.0
+		 */
+		function alg_wc_order_status_rules_is_pro_activated() {
+			$plugin = 'order-status-rules-for-woocommerce-pro/order-status-rules-for-woocommerce-pro.php';
+			return (
+				in_array( $plugin, (array) get_option( 'active_plugins', array() ), true ) ||
+				(
+					is_multisite() &&
+					array_key_exists( $plugin, (array) get_site_option( 'active_sitewide_plugins', array() ) )
+				)
+			);
+		}
+	}
+
+	if ( alg_wc_order_status_rules_is_pro_activated() ) {
 		defined( 'ALG_WC_ORDER_STATUS_RULES_FILE_FREE' ) || define( 'ALG_WC_ORDER_STATUS_RULES_FILE_FREE', __FILE__ );
 		return;
 	}
@@ -40,7 +49,7 @@ if ( 'order-status-rules-for-woocommerce.php' === basename( __FILE__ ) ) {
 /**
  * ALG_WC_ORDER_STATUS_RULES_VERSION.
  */
-defined( 'ALG_WC_ORDER_STATUS_RULES_VERSION' ) || define( 'ALG_WC_ORDER_STATUS_RULES_VERSION', '3.9.5' );
+defined( 'ALG_WC_ORDER_STATUS_RULES_VERSION' ) || define( 'ALG_WC_ORDER_STATUS_RULES_VERSION', '3.9.6' );
 
 /**
  * ALG_WC_ORDER_STATUS_RULES_FILE.

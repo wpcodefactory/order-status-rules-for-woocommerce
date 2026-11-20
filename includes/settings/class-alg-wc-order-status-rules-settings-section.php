@@ -2,102 +2,141 @@
 /**
  * Order Status Rules for WooCommerce - Section Settings
  *
- * @version 3.9.3
+ * @version 3.9.6
  * @since   1.0.0
  *
- * @author  WPFactory
+ * @author WPFactory
+ *
+ * @package WPFactory\WC_Order_Status_Rules\Settings
  */
 
 defined( 'ABSPATH' ) || exit;
 
 if ( ! class_exists( 'Alg_WC_Order_Status_Rules_Settings_Section' ) ) :
 
-class Alg_WC_Order_Status_Rules_Settings_Section {
-
 	/**
-	 * id.
+	 * Alg_WC_Order_Status_Rules_Settings_Section class.
 	 *
-	 * @version 3.5.0
-	 * @since   3.5.0
-	 */
-	public $id;
-
-	/**
-	 * desc.
-	 *
-	 * @version 3.5.0
-	 * @since   3.5.0
-	 */
-	public $desc;
-
-	/**
-	 * num.
-	 *
-	 * @version 3.5.0
-	 * @since   3.5.0
-	 */
-	public $num;
-
-	/**
-	 * Constructor.
-	 *
-	 * @version 1.1.0
+	 * @version 3.9.6
 	 * @since   1.0.0
 	 */
-	function __construct() {
-		add_filter(
-			'woocommerce_get_sections_alg_wc_order_status_rules',
-			array( $this, 'settings_section' )
-		);
-		add_filter(
-			'woocommerce_get_settings_alg_wc_order_status_rules_' . $this->id,
-			array( $this, 'get_settings' ),
-			PHP_INT_MAX
-		);
-	}
+	class Alg_WC_Order_Status_Rules_Settings_Section {
 
-	/**
-	 * settings_section.
-	 *
-	 * @version 1.0.0
-	 * @since   1.0.0
-	 */
-	function settings_section( $sections ) {
-		$sections[ $this->id ] = $this->desc;
-		return $sections;
-	}
+		/**
+		 * ID.
+		 *
+		 * @version 3.5.0
+		 * @since   3.5.0
+		 *
+		 * @var string
+		 */
+		public $id;
 
-	/**
-	 * get_select_all_buttons.
-	 *
-	 * @version 1.8.1
-	 * @since   1.8.1
-	 */
-	function get_select_all_buttons() {
-		return
-			'<a href="#" class="button alg-wc-osr-select-all">'   . __( 'Select all', 'order-status-rules-for-woocommerce' )   . '</a>' . ' ' .
-			'<a href="#" class="button alg-wc-osr-deselect-all">' . __( 'Deselect all', 'order-status-rules-for-woocommerce' ) . '</a>';
-	}
+		/**
+		 * Description.
+		 *
+		 * @version 3.5.0
+		 * @since   3.5.0
+		 *
+		 * @var string
+		 */
+		public $desc;
 
-	/**
-	 * get_next_scheduled_desc.
-	 *
-	 * @version 3.8.0
-	 * @since   1.2.0
-	 *
-	 * @todo    (desc) `alg_wc_order_status_rules_no_history`: better title and desc
-	 * @todo    (desc) `crons`: desc ("... only when someone visits your site...")
-	 * @todo    (desc) Advanced Options: better description?
-	 */
-	function get_next_scheduled_desc() {
-		if (
-			'yes' === get_option( 'alg_wc_order_status_rules_use_wp_cron', 'yes' ) &&
-			false != ( $next_scheduled = wp_next_scheduled( 'alg_wc_order_status_rules_process_rules', array( get_option( 'alg_wc_order_status_rules_wp_cron_schedule', 'hourly' ) ) ) )
-		) {
+		/**
+		 * Num.
+		 *
+		 * @version 3.5.0
+		 * @since   3.5.0
+		 *
+		 * @var int
+		 */
+		public $num;
+
+		/**
+		 * Constructor.
+		 *
+		 * @version 1.1.0
+		 * @since   1.0.0
+		 */
+		public function __construct() {
+			add_filter(
+				'woocommerce_get_sections_alg_wc_order_status_rules',
+				array( $this, 'settings_section' )
+			);
+			add_filter(
+				'woocommerce_get_settings_alg_wc_order_status_rules_' . $this->id,
+				array( $this, 'get_settings' ),
+				PHP_INT_MAX
+			);
+		}
+
+		/**
+		 * Settings section.
+		 *
+		 * @version 1.0.0
+		 * @since   1.0.0
+		 *
+		 * @param array $sections Sections.
+		 *
+		 * @return array Modified sections.
+		 */
+		public function settings_section( $sections ) {
+			$sections[ $this->id ] = $this->desc;
+			return $sections;
+		}
+
+		/**
+		 * Get select all buttons.
+		 *
+		 * @version 1.8.1
+		 * @since   1.8.1
+		 *
+		 * @return string Select all buttons HTML.
+		 */
+		public function get_select_all_buttons() {
+			return (
+				'<a href="#" class="button alg-wc-osr-select-all">' .
+					__( 'Select all', 'order-status-rules-for-woocommerce' ) .
+				'</a>' .
+				' ' .
+				'<a href="#" class="button alg-wc-osr-deselect-all">' .
+					__( 'Deselect all', 'order-status-rules-for-woocommerce' ) .
+				'</a>'
+			);
+		}
+
+		/**
+		 * Get next scheduled description.
+		 *
+		 * @version 3.9.6
+		 * @since   1.2.0
+		 *
+		 * @return string Next scheduled description.
+		 *
+		 * @todo (desc) `alg_wc_order_status_rules_no_history`: Better title and desc.
+		 * @todo (desc) `crons`: Desc ("... only when someone visits your site...").
+		 * @todo (desc) Advanced Options: Better description?
+		 */
+		public function get_next_scheduled_desc() {
+			if ( 'yes' !== get_option( 'alg_wc_order_status_rules_use_wp_cron', 'yes' ) ) {
+				return '';
+			}
+
+			$next_scheduled = wp_next_scheduled(
+				'alg_wc_order_status_rules_process_rules',
+				array(
+					get_option( 'alg_wc_order_status_rules_wp_cron_schedule', 'hourly' ),
+				)
+			);
+			if ( false === $next_scheduled ) {
+				return '';
+			}
+
 			$date_format    = alg_wc_order_status_rules()->core->get_date_time_format();
-			$current_time   = current_time( 'timestamp' );
+			$current_time   = current_time( 'timestamp' ); // phpcs:ignore WordPress.DateTime.CurrentTimeTimestamp.Requested
 			$server_time    = time();
 			$next_scheduled = $next_scheduled + ( $current_time - $server_time );
+
 			return (
 				sprintf(
 					/* Translators: %1$s: Time, %2$s: Human-readable time difference. */
@@ -119,259 +158,294 @@ class Alg_WC_Order_Status_Rules_Settings_Section {
 					'<code>' . date_i18n( $date_format, $current_time ) . '</code>'
 				)
 			);
-		} else {
-			return '';
 		}
-	}
 
-	/**
-	 * get_enabled_rules_desc.
-	 *
-	 * @version 3.9.0
-	 * @since   2.0.0
-	 */
-	function get_enabled_rules_desc() {
-		alg_wc_order_status_rules()->core->init_options();
-		$enabled_rules = array();
-		foreach ( alg_wc_order_status_rules()->core->options['enabled'] as $rule_num => $is_enabled ) {
-			if ( 'yes' === $is_enabled ) {
-				$enabled_rules[] = $rule_num;
+		/**
+		 * Get enabled rules description.
+		 *
+		 * @version 3.9.0
+		 * @since   2.0.0
+		 *
+		 * @return string Enabled rules description.
+		 */
+		public function get_enabled_rules_desc() {
+			alg_wc_order_status_rules()->core->init_options();
+			$enabled_rules = array();
+			foreach ( alg_wc_order_status_rules()->core->options['enabled'] as $rule_num => $is_enabled ) {
+				if ( 'yes' === $is_enabled ) {
+					$enabled_rules[] = $rule_num;
+				}
 			}
-		}
-		return (
-			! empty( $enabled_rules ) ?
-			sprintf(
-				/* Translators: %1$s: Number of enabled rules, %2$s: Rule ID list. */
-				_n(
-					'%1$s enabled rule: %2$s.',
-					'%1$s enabled rules: %2$s.',
-					count( $enabled_rules ),
-					'order-status-rules-for-woocommerce'
-				),
-				'<strong>' . count( $enabled_rules ) . '</strong>',
-				(
-					__( 'Rule', 'order-status-rules-for-woocommerce' ) . ' #' .
-					implode(
-						', ' . __( 'Rule', 'order-status-rules-for-woocommerce' ) . ' #',
-						$enabled_rules
+			return (
+				! empty( $enabled_rules ) ?
+				sprintf(
+					/* Translators: %1$s: Number of enabled rules, %2$s: Rule ID list. */
+					_n(
+						'%1$s enabled rule: %2$s.',
+						'%1$s enabled rules: %2$s.',
+						count( $enabled_rules ),
+						'order-status-rules-for-woocommerce'
+					),
+					'<strong>' . count( $enabled_rules ) . '</strong>',
+					(
+						__( 'Rule', 'order-status-rules-for-woocommerce' ) . ' #' .
+						implode(
+							', ' . __( 'Rule', 'order-status-rules-for-woocommerce' ) . ' #',
+							$enabled_rules
+						)
 					)
+				) :
+				'<strong>0</strong> ' . __( 'enabled rules.', 'order-status-rules-for-woocommerce' ) // No enabled rules.
+			);
+		}
+
+		/**
+		 * Get shipping zones.
+		 *
+		 * @version 2.1.0
+		 * @since   2.1.0
+		 *
+		 * @param bool $include_empty_zone Whether to include the empty zone.
+		 *
+		 * @return array Shipping zones.
+		 */
+		public function get_shipping_zones( $include_empty_zone = true ) {
+			$zones = WC_Shipping_Zones::get_zones();
+			if ( $include_empty_zone ) {
+				$zone                                = new WC_Shipping_Zone( 0 );
+				$zones[ $zone->get_id() ]            = $zone->get_data();
+				$zones[ $zone->get_id() ]['zone_id'] = $zone->get_id();
+				$zones[ $zone->get_id() ]['formatted_zone_location'] = $zone->get_formatted_location();
+				$zones[ $zone->get_id() ]['shipping_methods']        = $zone->get_shipping_methods();
+			}
+			return $zones;
+		}
+
+		/**
+		 * Get shipping methods instances or local pickup.
+		 *
+		 * @version 3.9.0
+		 * @since   2.1.0
+		 *
+		 * @return array
+		 */
+		public function get_shipping_methods_instances_or_local_pickup() {
+			$shipping_methods = array();
+			foreach ( $this->get_shipping_zones() as $zone_id => $zone_data ) {
+				foreach ( $zone_data['shipping_methods'] as $shipping_method ) {
+					$shipping_methods[ $shipping_method->instance_id ] = $zone_data['zone_name'] . ': ' . $shipping_method->title;
+				}
+			}
+			if (
+				is_callable(
+					array(
+						'\Automattic\WooCommerce\StoreApi\Utilities\LocalPickupUtils',
+						'is_local_pickup_enabled',
+					)
+				) &&
+				\Automattic\WooCommerce\StoreApi\Utilities\LocalPickupUtils::is_local_pickup_enabled()
+			) {
+				$shipping_methods['pickup_location'] = __( 'Shipping > Local pickup', 'order-status-rules-for-woocommerce' );
+			}
+			return $shipping_methods;
+		}
+
+		/**
+		 * Get gateways.
+		 *
+		 * @version 2.5.0
+		 * @since   2.5.0
+		 *
+		 * @return array Gateways array.
+		 *
+		 * @todo (dev) Add "Other" and/or "N/A" options?
+		 */
+		public function get_gateways() {
+			$gateways = WC()->payment_gateways()->payment_gateways;
+			return array_combine( wp_list_pluck( $gateways, 'id' ), wp_list_pluck( $gateways, 'method_title' ) );
+		}
+
+		/**
+		 * Get missing product category title.
+		 *
+		 * @version 1.6.0
+		 * @since   1.6.0
+		 *
+		 * @param int $term_id Term ID.
+		 *
+		 * @return string Missing product category title.
+		 */
+		public function get_missing_product_cat_title( $term_id ) {
+			return sprintf(
+				/* Translators: %s: Term ID. */
+				__( 'Product category #%s', 'order-status-rules-for-woocommerce' ),
+				$term_id
+			);
+		}
+
+		/**
+		 * Get missing product tag title.
+		 *
+		 * @version 1.6.0
+		 * @since   1.6.0
+		 *
+		 * @param int $term_id Term ID.
+		 *
+		 * @return string Missing product tag title.
+		 */
+		public function get_missing_product_tag_title( $term_id ) {
+			return sprintf(
+				/* Translators: %s: Term ID. */
+				__( 'Product tag #%s', 'order-status-rules-for-woocommerce' ),
+				$term_id
+			);
+		}
+
+		/**
+		 * Get terms.
+		 *
+		 * @version 2.5.0
+		 * @since   2.5.0
+		 *
+		 * @param string $taxonomy Taxonomy name.
+		 *
+		 * @return array Terms array.
+		 *
+		 * @todo (desc) Add term ID?
+		 */
+		public function get_terms( $taxonomy ) {
+			$terms  = get_option( "alg_wc_order_status_rules_{$taxonomy}s", array() );
+			$terms  = (
+				! empty( $terms[ $this->num ] ) ?
+				array_combine(
+					$terms[ $this->num ],
+					array_map( array( $this, "get_missing_{$taxonomy}_title" ), $terms[ $this->num ] )
+				) :
+				array()
+			);
+			$_terms = get_terms(
+				array(
+					'taxonomy'   => $taxonomy,
+					'hide_empty' => false,
 				)
-			) :
-			'<strong>0</strong> ' . __( 'enabled rules.', 'order-status-rules-for-woocommerce' ) // No enabled rules
-		);
-	}
-
-	/**
-	 * get_shipping_zones.
-	 *
-	 * @version 2.1.0
-	 * @since   2.1.0
-	 */
-	function get_shipping_zones( $include_empty_zone = true ) {
-		$zones = WC_Shipping_Zones::get_zones();
-		if ( $include_empty_zone ) {
-			$zone = new WC_Shipping_Zone( 0 );
-			$zones[ $zone->get_id() ]                            = $zone->get_data();
-			$zones[ $zone->get_id() ]['zone_id']                 = $zone->get_id();
-			$zones[ $zone->get_id() ]['formatted_zone_location'] = $zone->get_formatted_location();
-			$zones[ $zone->get_id() ]['shipping_methods']        = $zone->get_shipping_methods();
+			);
+			$_terms = (
+				! empty( $_terms ) && ! is_wp_error( $_terms ) ?
+				array_combine(
+					wp_list_pluck( $_terms, 'term_id' ),
+					wp_list_pluck( $_terms, 'name' )
+				) :
+				array()
+			);
+			return array_replace( $terms, $_terms );
 		}
-		return $zones;
-	}
 
-	/**
-	 * get_shipping_methods_instances_or_local_pickup.
-	 *
-	 * @version 3.9.0
-	 * @since   2.1.0
-	 */
-	function get_shipping_methods_instances_or_local_pickup() {
-		$shipping_methods = array();
-		foreach ( $this->get_shipping_zones() as $zone_id => $zone_data ) {
-			foreach ( $zone_data['shipping_methods'] as $shipping_method ) {
-				$shipping_methods[ $shipping_method->instance_id ] = $zone_data['zone_name'] . ': ' . $shipping_method->title;
+		/**
+		 * Get user roles.
+		 *
+		 * @version 2.5.0
+		 * @since   2.5.0
+		 *
+		 * @return array User roles array.
+		 */
+		public function get_user_roles() {
+			global $wp_roles;
+			return array_merge(
+				array( 'guest' => __( 'Guest', 'order-status-rules-for-woocommerce' ) ),
+				wp_list_pluck( apply_filters( 'editable_roles', $wp_roles->roles ), 'name' ) // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
+			);
+		}
+
+		/**
+		 * Get admin title.
+		 *
+		 * @version 2.5.0
+		 * @since   2.5.0
+		 *
+		 * @return string Admin title.
+		 */
+		public function get_admin_title() {
+			$titles = get_option( 'alg_wc_order_status_rules_title', array() );
+			return ( ! empty( $titles[ $this->num ] ) ? ': ' . $titles[ $this->num ] : '' );
+		}
+
+		/**
+		 * Get AJAX options.
+		 *
+		 * @version 3.9.6
+		 * @since   2.6.1
+		 *
+		 * @param string $type    Type of AJAX option (product or customer).
+		 * @param string $option  Option name.
+		 * @param mixed  $key     Optional key for nested options.
+		 *
+		 * @return array AJAX options array.
+		 *
+		 * @see https://github.com/woocommerce/woocommerce/blob/6.3.1/plugins/woocommerce/includes/class-wc-ajax.php#L1569
+		 * @see https://github.com/woocommerce/woocommerce/blob/6.3.1/plugins/woocommerce/includes/class-wc-ajax.php#L1681
+		 */
+		public function get_ajax_options( $type, $option, $key = false ) {
+			$options = array();
+			$current = get_option( $option, array() );
+			if ( false !== $key ) {
+				$current = ( $current[ $key ] ?? array() );
 			}
-		}
-		if (
-			is_callable( array(
-				'\Automattic\WooCommerce\StoreApi\Utilities\LocalPickupUtils',
-				'is_local_pickup_enabled'
-			) ) &&
-			\Automattic\WooCommerce\StoreApi\Utilities\LocalPickupUtils::is_local_pickup_enabled()
-		) {
-			$shipping_methods['pickup_location'] = __( 'Shipping > Local pickup', 'order-status-rules-for-woocommerce' );
-		}
-		return $shipping_methods;
-	}
-
-	/**
-	 * get_gateways.
-	 *
-	 * @version 2.5.0
-	 * @since   2.5.0
-	 *
-	 * @todo    (dev) add "Other" and/or "N/A" options?
-	 */
-	function get_gateways() {
-		$gateways = WC()->payment_gateways()->payment_gateways;
-		return array_combine( wp_list_pluck( $gateways, 'id' ), wp_list_pluck( $gateways, 'method_title' ) );
-	}
-
-	/**
-	 * get_missing_product_cat_title.
-	 *
-	 * @version 1.6.0
-	 * @since   1.6.0
-	 */
-	function get_missing_product_cat_title( $term_id ) {
-		return sprintf(
-			/* Translators: %s: Term ID. */
-			__( 'Product category #%s', 'order-status-rules-for-woocommerce' ),
-			$term_id
-		);
-	}
-
-	/**
-	 * get_missing_product_tag_title.
-	 *
-	 * @version 1.6.0
-	 * @since   1.6.0
-	 */
-	function get_missing_product_tag_title( $term_id ) {
-		return sprintf(
-			/* Translators: %s: Term ID. */
-			__( 'Product tag #%s', 'order-status-rules-for-woocommerce' ),
-			$term_id
-		);
-	}
-
-	/**
-	 * get_terms.
-	 *
-	 * @version 2.5.0
-	 * @since   2.5.0
-	 *
-	 * @todo    (desc) add term ID?
-	 */
-	function get_terms( $taxonomy ) {
-		$terms  = get_option( "alg_wc_order_status_rules_{$taxonomy}s", array() );
-		$terms  = (
-			! empty( $terms[ $this->num ] ) ?
-			array_combine(
-				$terms[ $this->num ],
-				array_map( array( $this, "get_missing_{$taxonomy}_title" ), $terms[ $this->num ] )
-			) :
-			array()
-		);
-		$_terms = get_terms( array( 'taxonomy' => $taxonomy, 'hide_empty' => false ) );
-		$_terms = (
-			! empty( $_terms ) && ! is_wp_error( $_terms ) ?
-			array_combine(
-				wp_list_pluck( $_terms, 'term_id' ),
-				wp_list_pluck( $_terms, 'name' )
-			) :
-			array()
-		);
-		return array_replace( $terms, $_terms );
-	}
-
-	/**
-	 * get_user_roles.
-	 *
-	 * @version 2.5.0
-	 * @since   2.5.0
-	 */
-	function get_user_roles() {
-		global $wp_roles;
-		return array_merge(
-			array( 'guest' => __( 'Guest', 'order-status-rules-for-woocommerce' ) ),
-			wp_list_pluck( apply_filters( 'editable_roles', $wp_roles->roles ), 'name' ) // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
-		);
-	}
-
-	/**
-	 * get_admin_title.
-	 *
-	 * @version 2.5.0
-	 * @since   2.5.0
-	 */
-	function get_admin_title() {
-		$titles = get_option( 'alg_wc_order_status_rules_title', array() );
-		return ( ! empty( $titles[ $this->num ] ) ? ': ' . $titles[ $this->num ] : '' );
-	}
-
-	/**
-	 * get_ajax_options.
-	 *
-	 * @version 3.9.3
-	 * @since   2.6.1
-	 *
-	 * @see     https://github.com/woocommerce/woocommerce/blob/6.3.1/plugins/woocommerce/includes/class-wc-ajax.php#L1569
-	 * @see     https://github.com/woocommerce/woocommerce/blob/6.3.1/plugins/woocommerce/includes/class-wc-ajax.php#L1681
-	 */
-	function get_ajax_options( $type, $option, $key = false ) {
-		$options = array();
-		$current = get_option( $option, array() );
-		if ( false !== $key ) {
-			$current = ( $current[ $key ] ?? array() );
-		}
-		foreach ( $current as $id ) {
-			switch ( $type ) {
-				case 'product':
-					$obj      = wc_get_product( $id );
-					$is_valid = ( $obj && is_object( $obj ) );
-					break;
-				case 'customer':
-					if ( 'guest' === $id ) {
-						$is_valid = false;
-					} else {
-						$obj      = new WC_Customer( $id );
-						$is_valid = ( $obj && is_object( $obj ) && 0 != $obj->get_id() );
-					}
-					break;
-			}
-			if ( ! $is_valid ) {
+			foreach ( $current as $id ) {
 				switch ( $type ) {
 					case 'product':
-						$res = sprintf(
-							/* Translators: %d: Product ID. */
-							esc_html__( 'Product #%d', 'order-status-rules-for-woocommerce' ),
-							$id
-						);
+						$obj      = wc_get_product( $id );
+						$is_valid = ( $obj && is_object( $obj ) );
 						break;
 					case 'customer':
-						$res = (
-							'guest' === $id ?
-							esc_html__( 'Guest', 'order-status-rules-for-woocommerce' ) :
-							sprintf(
-								/* Translators: %d: User ID. */
-								esc_html__( 'User #%d', 'order-status-rules-for-woocommerce' ),
+						if ( 'guest' === $id ) {
+							$is_valid = false;
+						} else {
+							$obj      = new WC_Customer( $id );
+							$is_valid = ( $obj && is_object( $obj ) && 0 !== (int) $obj->get_id() );
+						}
+						break;
+				}
+				if ( ! $is_valid ) {
+					switch ( $type ) {
+						case 'product':
+							$res = sprintf(
+								/* Translators: %d: Product ID. */
+								esc_html__( 'Product #%d', 'order-status-rules-for-woocommerce' ),
 								$id
-							)
-						);
-						break;
+							);
+							break;
+						case 'customer':
+							$res = (
+								'guest' === $id ?
+								esc_html__( 'Guest', 'order-status-rules-for-woocommerce' ) :
+								sprintf(
+									/* Translators: %d: User ID. */
+									esc_html__( 'User #%d', 'order-status-rules-for-woocommerce' ),
+									$id
+								)
+							);
+							break;
+					}
+				} else {
+					switch ( $type ) {
+						case 'product':
+							$res = esc_html( wp_strip_all_tags( $obj->get_formatted_name() ) );
+							break;
+						case 'customer':
+							$res = sprintf(
+								/* Translators: %1$s: Customer name, %2$s Customer id, %3$s: Customer email. */
+								esc_html__( '%1$s (#%2$s &ndash; %3$s)', 'order-status-rules-for-woocommerce' ),
+								$obj->get_first_name() . ' ' . $obj->get_last_name(),
+								$obj->get_id(),
+								$obj->get_email()
+							);
+							break;
+					}
 				}
-			} else {
-				switch ( $type ) {
-					case 'product':
-						$res = esc_html( wp_strip_all_tags( $obj->get_formatted_name() ) );
-						break;
-					case 'customer':
-						$res = sprintf(
-							/* Translators: %1$s: Customer name, %2$s Customer id, %3$s: Customer email. */
-							esc_html__( '%1$s (#%2$s &ndash; %3$s)', 'order-status-rules-for-woocommerce' ),
-							$obj->get_first_name() . ' ' . $obj->get_last_name(),
-							$obj->get_id(),
-							$obj->get_email()
-						);
-						break;
-				}
+				$options[ esc_attr( $id ) ] = $res;
 			}
-			$options[ esc_attr( $id ) ] = $res;
+			return $options;
 		}
-		return $options;
 	}
-
-}
 
 endif;

@@ -2,8 +2,9 @@
 Contributors: wpcodefactory, anbinder, karzin, omardabbas
 Tags: woocommerce, order status, order, status, ecommerce
 Requires at least: 4.8
-Tested up to: 7.0
-Stable tag: 3.9.5
+Tested up to: 7.1
+Requires PHP: 7.4
+Stable tag: 3.9.6
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -47,8 +48,17 @@ For example: automatically change order status to cancelled, when 24 hours have 
 
 == Changelog ==
 
+= 3.9.6 - 20/11/2026 =
+* Dev - Coding standards improved.
+* Dev - WPFactory Admin Menu - Library updated (to v1.1.4).
+* Dev - WPFactory Cross-Selling - Library updated (to v1.1.7).
+* Dev - WPFactory Key Manager - Library updated (to v1.1.1).
+* Tested up to: 7.1.
+* WC tested up to: 11.3.
+* Requires PHP: 7.4.
+
 = 3.9.5 - 03/08/2026 =
-* Dev - The number of rules limitation removed from the free plugin version.
+* Dev - The "number of rules" limitation has been removed from the free plugin version.
 
 = 3.9.4 - 30/07/2026 =
 * Fix - `priority` parameter added when removing action.
